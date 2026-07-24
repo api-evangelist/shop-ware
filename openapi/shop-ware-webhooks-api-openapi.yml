@@ -1,0 +1,250 @@
+openapi: 3.0.1
+info:
+  title: API V1 API Partners Webhooks API
+  version: v1
+  contact:
+    name: API Support
+    email: support@shop-ware.com
+security:
+- api_partner_id: []
+  api_secret: []
+tags:
+- name: Webhooks
+paths:
+  /api/v1/webhooks:
+    get:
+      summary: Get a list of all registered webhooks
+      tags:
+      - Webhooks
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                  - id: 1
+                    url: https://www.example.com/webhook_1
+                    events:
+                    - assignment.created
+                    - assignment.deleted
+                    - assignment.updated
+                    format: null
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      description: Unique identifier of this record.
+                    url:
+                      type: string
+                      description: The url to request on events.
+                    events:
+                      type: array
+                      items:
+                        type: string
+                      description: List of events
+                    format:
+                      type: string
+                      description: Webhook format
+                      nullable: true
+    post:
+      summary: Create a webhook
+      tags:
+      - Webhooks
+      parameters: []
+      responses:
+        '201':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    id: 2
+                    url: https://www.example.com/new_webhook
+                    events:
+                    - assignment.created
+                    - assignment.deleted
+                    - assignment.updated
+                    format: null
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: Unique identifier of this record.
+                  url:
+                    type: string
+                    description: The url to request on events.
+                  events:
+                    type: array
+                    items:
+                      type: string
+                    description: List of events
+                  format:
+                    type: string
+                    description: Webhook format
+                    nullable: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - url
+              - events
+              properties:
+                url:
+                  type: string
+                  description: The URL that webhook requests will be sent to. Must be an HTTPS URL, and may not redirect.
+                events:
+                  type: array
+                  items:
+                    type: string
+                    description: "Available object types: appointment, assignment, canned_job, category, customer, gp_exception, inventory, past_recommendation, payment_transaction, purchase_record, repair_order, shop, staff, status, vehicle \n\nAvailable event actions: created, updated, deleted. Additionally, customers support merged (customer.merged)."
+                  description: An array of events that will trigger a webhook delivery.With an event, you can filter what kind of events you want to receive.Events consist of two parts, an event object and an event action.Events are built according to the "object_type.event_action" principle,so you can subscribe to any event that represents a combination of event object and event action (ex. "staff.updated").
+                format:
+                  type: string
+                  nullable: true
+                  description: "Webhook format \n\n Available formats: nil, zapier"
+              example:
+                url: https://www.example.com/new_webhook
+                events:
+                - assignment.created
+                - assignment.updated
+                - assignment.deleted
+  /api/v1/webhooks/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    get:
+      summary: Get a webhook by ID
+      tags:
+      - Webhooks
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    id: 1
+                    url: https://www.example.com/webhook_1
+                    events:
+                    - assignment.created
+                    - assignment.deleted
+                    - assignment.updated
+                    format: null
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: Unique identifier of this record.
+                  url:
+                    type: string
+                    description: The url to request on events.
+                  events:
+                    type: array
+                    items:
+                      type: string
+                    description: List of events
+                  format:
+                    type: string
+                    description: Webhook format
+                    nullable: true
+    put:
+      summary: Update a webhook
+      tags:
+      - Webhooks
+      parameters: []
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    id: 1
+                    url: https://www.example.com/updated_webhook
+                    events:
+                    - staff.created
+                    - staff.updated
+                    format: null
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: Unique identifier of this record.
+                  url:
+                    type: string
+                    description: The url to request on events.
+                  events:
+                    type: array
+                    items:
+                      type: string
+                    description: List of events
+                  format:
+                    type: string
+                    description: Webhook format
+                    nullable: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  description: The URL that webhook requests will be sent to. Must be an HTTPS URL, and may not redirect.
+                events:
+                  type: array
+                  items:
+                    type: string
+                    description: "Available object types: appointment, assignment, canned_job, category, customer, gp_exception, inventory, past_recommendation, payment_transaction, purchase_record, repair_order, shop, staff, status, vehicle \n\nAvailable event actions: created, updated, deleted. Additionally, customers support merged (customer.merged)."
+                  description: An array of events that will trigger a webhook delivery.With an event, you can filter what kind of events you want to receive.Events consist of two parts, an event object and an event action.Events are built according to the "object_type.event_action" principle,so you can subscribe to any event that represents a combination of event object and event action (ex. "staff.updated").
+                format:
+                  type: string
+                  nullable: true
+                  description: "Webhook format \n\n Available formats: nil, zapier"
+              example:
+                url: https://www.example.com/updated_webhook
+                events:
+                - staff.created
+                - staff.updated
+    delete:
+      summary: Delete a webhook by ID
+      tags:
+      - Webhooks
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value: {}
+              schema:
+                type: object
+                properties: {}
+components:
+  securitySchemes:
+    api_partner_id:
+      type: apiKey
+      name: X-Api-Partner-Id
+      in: header
+    api_secret:
+      type: apiKey
+      name: X-Api-Secret
+      in: header

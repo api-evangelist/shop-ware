@@ -1,0 +1,363 @@
+openapi: 3.0.1
+info:
+  title: API V1 API Partners Payment Transactions API
+  version: v1
+  contact:
+    name: API Support
+    email: support@shop-ware.com
+security:
+- api_partner_id: []
+  api_secret: []
+tags:
+- name: Payment Transactions
+paths:
+  /api/v1/tenants/{tenant_id}/payment_transactions:
+    parameters:
+    - name: tenant_id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    get:
+      summary: Get a list of all payment transactions
+      tags:
+      - Payment Transactions
+      parameters:
+      - name: page
+        in: query
+        required: false
+        example: '1'
+        schema:
+          type: integer
+      - name: per_page
+        in: query
+        required: false
+        example: '30'
+        schema:
+          type: integer
+      - name: updated_after
+        in: query
+        required: false
+        format: date-time
+        description: Filter response to only include records updated after a given time
+        example: 2022-10-24T12%3A00%3A00%2B08%3A00
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    results:
+                    - id: 1
+                      created_at: '2026-06-09T14:24:23Z'
+                      updated_at: '2026-06-09T14:24:23Z'
+                      payment_id: null
+                      repair_order_id: 1
+                      staff_id: 2
+                      status: declined
+                      serial_number: 18238PP21557288
+                      mid: '800000000830'
+                      requested_amount_cents: 279900
+                      amount_cents: 279900
+                      reference_number: '123849201653'
+                      account: '9546981898575454'
+                      name: JOE SMITH
+                      currency: USD
+                      response_code: '54'
+                      response_text: Wrong expiration
+                      bin_type: null
+                      entry_mode: null
+                      avs_response: ''
+                      cvv_response: N
+                      authorization_code: PPS010
+                      integrator_tags:
+                      - id: 1
+                        created_at: '2026-06-09T14:24:23Z'
+                        updated_at: '2026-06-09T14:24:23Z'
+                        taggable_type: PaymentTransaction
+                        taggable_id: 1
+                        name: tag_name
+                        value: tag_value
+                    limit: 1
+                    limited: false
+                    total_count: 1
+                    current_page: 1
+                    total_pages: 1
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: Unique identifier of this record.
+                        payment_id:
+                          type: integer
+                          nullable: true
+                          description: A foreign key which points to a Payment.id. Represents the final payment that is associated with this transaction which will appear on the RO and in reporting. It is only created for authorized transactions.
+                        repair_order_id:
+                          type: integer
+                          description: A foreign key which points to a RepairOrder.id. Represents the RO that this transaction was made against.
+                        staff_id:
+                          type: integer
+                          description: A foreign key which points to a Staff.id. Represents the staff member who attempted the transaction.
+                        status:
+                          type: string
+                          description: The current status of this transaction. One of 'approved', 'retry', 'declined', 'authentication_error', 'invalid_hsn', 'request_error', 'server_error', 'terminal_not_connected_error', 'terminal_in_use_error', 'transaction_cancelled_error', 'pin_debit_not_supported', 'decryption_failure', 'signature_not_supported'. Only 'approved' is a successful status, meaning that the payment transaction was authorized.
+                        serial_number:
+                          type: string
+                          description: The HSN of the credit card reader.
+                        mid:
+                          type: string
+                          description: The merchant ID that the transaction was made against.
+                        requested_amount_cents:
+                          type: integer
+                          description: The amount in cents that the user attempted to charge or refund.
+                        amount_cents:
+                          type: integer
+                          description: The amount that was actually charged or refunded.
+                        reference_number:
+                          type: string
+                          description: The unique reference number for this transaction.
+                        account:
+                          type: string
+                          description: An obfuscated account number of the payment card.
+                        name:
+                          type: string
+                          description: The name on the credit card.
+                        currency:
+                          type: string
+                        response_code:
+                          type: string
+                          description: The raw gateway response code of the transaction.
+                        response_text:
+                          type: string
+                          description: A human readable description of the transaction status.
+                        bin_type:
+                          type: string
+                          nullable: true
+                        entry_mode:
+                          type: string
+                          nullable: true
+                        avs_response:
+                          type: string
+                        cvv_response:
+                          type: string
+                        authorization_code:
+                          type: string
+                        integrator_tags:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                description: The tag primary key.
+                              taggable_id:
+                                type: integer
+                                description: Entity identifier the tag attached to.
+                              taggable_type:
+                                type: string
+                                description: Entity type the tag attached to.
+                              name:
+                                type: string
+                                description: Tag Name.
+                              value:
+                                type: string
+                                description: Tag Value.
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The date and time when tag was created.
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The date and time when tag was last updated.
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: Date and time when record was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: Date and time when record was last updated.
+                  limit:
+                    type: integer
+                  limited:
+                    type: boolean
+                  total_count:
+                    type: integer
+                  current_page:
+                    type: integer
+                  total_pages:
+                    type: integer
+  /api/v1/tenants/{tenant_id}/payment_transactions/{id}:
+    parameters:
+    - name: tenant_id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    - name: id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    get:
+      summary: Get a specific payment transaction by ID
+      tags:
+      - Payment Transactions
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    id: 1
+                    created_at: '2026-06-09T14:24:26Z'
+                    updated_at: '2026-06-09T14:24:26Z'
+                    payment_id: null
+                    repair_order_id: 1
+                    staff_id: 2
+                    status: declined
+                    serial_number: 18238PP21557288
+                    mid: '800000000830'
+                    requested_amount_cents: 279900
+                    amount_cents: 279900
+                    reference_number: '123849201653'
+                    account: '9546981898575454'
+                    name: JOE SMITH
+                    currency: USD
+                    response_code: '54'
+                    response_text: Wrong expiration
+                    bin_type: null
+                    entry_mode: null
+                    avs_response: ''
+                    cvv_response: N
+                    authorization_code: PPS010
+                    integrator_tags:
+                    - id: 1
+                      created_at: '2026-06-09T14:24:26Z'
+                      updated_at: '2026-06-09T14:24:26Z'
+                      taggable_type: PaymentTransaction
+                      taggable_id: 1
+                      name: tag_name
+                      value: tag_value
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: Unique identifier of this record.
+                  payment_id:
+                    type: integer
+                    nullable: true
+                    description: A foreign key which points to a Payment.id. Represents the final payment that is associated with this transaction which will appear on the RO and in reporting. It is only created for authorized transactions.
+                  repair_order_id:
+                    type: integer
+                    description: A foreign key which points to a RepairOrder.id. Represents the RO that this transaction was made against.
+                  staff_id:
+                    type: integer
+                    description: A foreign key which points to a Staff.id. Represents the staff member who attempted the transaction.
+                  status:
+                    type: string
+                    description: The current status of this transaction. One of 'approved', 'retry', 'declined', 'authentication_error', 'invalid_hsn', 'request_error', 'server_error', 'terminal_not_connected_error', 'terminal_in_use_error', 'transaction_cancelled_error', 'pin_debit_not_supported', 'decryption_failure', 'signature_not_supported'. Only 'approved' is a successful status, meaning that the payment transaction was authorized.
+                  serial_number:
+                    type: string
+                    description: The HSN of the credit card reader.
+                  mid:
+                    type: string
+                    description: The merchant ID that the transaction was made against.
+                  requested_amount_cents:
+                    type: integer
+                    description: The amount in cents that the user attempted to charge or refund.
+                  amount_cents:
+                    type: integer
+                    description: The amount that was actually charged or refunded.
+                  reference_number:
+                    type: string
+                    description: The unique reference number for this transaction.
+                  account:
+                    type: string
+                    description: An obfuscated account number of the payment card.
+                  name:
+                    type: string
+                    description: The name on the credit card.
+                  currency:
+                    type: string
+                  response_code:
+                    type: string
+                    description: The raw gateway response code of the transaction.
+                  response_text:
+                    type: string
+                    description: A human readable description of the transaction status.
+                  bin_type:
+                    type: string
+                    nullable: true
+                  entry_mode:
+                    type: string
+                    nullable: true
+                  avs_response:
+                    type: string
+                  cvv_response:
+                    type: string
+                  authorization_code:
+                    type: string
+                  integrator_tags:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The tag primary key.
+                        taggable_id:
+                          type: integer
+                          description: Entity identifier the tag attached to.
+                        taggable_type:
+                          type: string
+                          description: Entity type the tag attached to.
+                        name:
+                          type: string
+                          description: Tag Name.
+                        value:
+                          type: string
+                          description: Tag Value.
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when tag was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when tag was last updated.
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was created.
+                  updated_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was last updated.
+components:
+  securitySchemes:
+    api_partner_id:
+      type: apiKey
+      name: X-Api-Partner-Id
+      in: header
+    api_secret:
+      type: apiKey
+      name: X-Api-Secret
+      in: header

@@ -1,0 +1,177 @@
+openapi: 3.0.1
+info:
+  title: API V1 API Partners API
+  version: v1
+  contact:
+    name: API Support
+    email: support@shop-ware.com
+security:
+- api_partner_id: []
+  api_secret: []
+tags:
+- name: API Partners
+paths:
+  /api/v1/partners/{partner_id}/authorizations:
+    parameters:
+    - name: partner_id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    get:
+      summary: Get current authorizations
+      tags:
+      - API Partners
+      parameters:
+      - name: page
+        in: query
+        required: false
+        example: '1'
+        schema:
+          type: integer
+      - name: per_page
+        in: query
+        required: false
+        example: '30'
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    results:
+                    - id: 1
+                      api_partner_id: 1
+                      tenant_id: null
+                      writable: true
+                      api_tenant_id: 1
+                    limit: 1
+                    limited: false
+                    total_count: 1
+                    current_page: 1
+                    total_pages: 1
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: Unique identifier of this record.
+                        api_partner_id:
+                          type: integer
+                          description: Identifier of API partner.
+                        tenant_id:
+                          type: integer
+                          nullable: true
+                          description: Identifier of tenant.
+                        writable:
+                          type: boolean
+                          description: True if write actions enabled for this authorization, false otherwise.
+                        api_tenant_id:
+                          type: integer
+                          description: Identifier of API tenant.
+                  limit:
+                    type: integer
+                  limited:
+                    type: boolean
+                  total_count:
+                    type: integer
+                  current_page:
+                    type: integer
+                  total_pages:
+                    type: integer
+  /api/v2/partners/{partner_id}/authorizations:
+    parameters:
+    - name: partner_id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    get:
+      summary: Get current authorizations
+      tags:
+      - API Partners
+      parameters:
+      - name: cursor
+        in: query
+        required: false
+        description: Encoded reference to the last record of the current page. It is empty for the first page.
+        example: ''
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        required: false
+        example: '30'
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    results:
+                    - id: 1
+                      api_partner_id: 1
+                      tenant_id: null
+                      writable: true
+                      api_tenant_id: 1
+                    cursor: null
+                    limit: 1
+                    has_next_page: false
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: Unique identifier of this record.
+                        api_partner_id:
+                          type: integer
+                          description: Identifier of API partner.
+                        tenant_id:
+                          type: integer
+                          nullable: true
+                          description: Identifier of tenant.
+                        writable:
+                          type: boolean
+                          description: True if write actions enabled for this authorization, false otherwise.
+                        api_tenant_id:
+                          type: integer
+                          description: Identifier of API tenant.
+                  limit:
+                    type: integer
+                  cursor:
+                    type: string
+                    nullable: true
+                    description: A pagination token that allows you to fetch the next set of records in a paginated list.
+                  has_next_page:
+                    type: boolean
+                    description: A boolean indicating whether there are more pages available after the current one.
+components:
+  securitySchemes:
+    api_partner_id:
+      type: apiKey
+      name: X-Api-Partner-Id
+      in: header
+    api_secret:
+      type: apiKey
+      name: X-Api-Secret
+      in: header

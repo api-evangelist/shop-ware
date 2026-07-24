@@ -1,0 +1,707 @@
+openapi: 3.0.1
+info:
+  title: API V1 API Partners Vehicles API
+  version: v1
+  contact:
+    name: API Support
+    email: support@shop-ware.com
+security:
+- api_partner_id: []
+  api_secret: []
+tags:
+- name: Vehicles
+paths:
+  /api/v1/tenants/{tenant_id}/vehicles:
+    parameters:
+    - name: tenant_id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    get:
+      summary: Get a list of all vehicles
+      tags:
+      - Vehicles
+      parameters:
+      - name: vin
+        in: query
+        required: false
+        description: Filter response to include only Vehicles with this VIN.
+        example: 1FMPU16W14LB56648
+        schema:
+          type: string
+      - name: customer_id
+        in: query
+        required: false
+        description: Filter response to include only Customers with this ID.
+        example: '2'
+        schema:
+          type: integer
+      - name: page
+        in: query
+        required: false
+        example: '1'
+        schema:
+          type: integer
+      - name: per_page
+        in: query
+        required: false
+        example: '30'
+        schema:
+          type: integer
+      - name: updated_after
+        in: query
+        required: false
+        format: date-time
+        description: Filter response to only include records updated after a given time
+        example: 2022-10-24T12%3A00%3A00%2B08%3A00
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    results:
+                    - id: 1
+                      created_at: '2026-06-09T14:26:39Z'
+                      updated_at: '2026-06-09T14:26:39Z'
+                      plate: EZRIDR
+                      detail: Keys in glovebox
+                      fleet_number: 23R
+                      vin: 1FMPU16W14LB56648
+                      year: '2004'
+                      make: Ford
+                      model: Expedition
+                      engine: 4.6L V8
+                      color: BLACK
+                      production_date: '2026-06-08T14:26:39.913Z'
+                      registration_exp_date: '2026-06-08T14:26:39.913Z'
+                      customer_ids:
+                      - 2
+                      integrator_tags:
+                      - id: 1
+                        created_at: '2026-06-09T14:26:39Z'
+                        updated_at: '2026-06-09T14:26:39Z'
+                        taggable_type: Vehicle
+                        taggable_id: 1
+                        name: tag_name
+                        value: tag_value
+                    limit: 1
+                    limited: false
+                    total_count: 1
+                    current_page: 1
+                    total_pages: 1
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: Unique identifier of this record.
+                        plate:
+                          type: string
+                          description: License plate.
+                        production_date:
+                          type: string
+                          description: Production date
+                        registration_exp_date:
+                          type: string
+                          description: Registration expire date
+                        detail:
+                          type: string
+                          description: Notes made by the staff about this vehicle
+                        fleet_number:
+                          type: string
+                          description: Fleet number.
+                        vin:
+                          type: string
+                          description: Vehicle Identification Number.
+                        year:
+                          type: string
+                          description: Year.
+                        make:
+                          type: string
+                          description: Vehicle make.
+                        model:
+                          type: string
+                          description: Vehicle model.
+                        engine:
+                          type: string
+                          description: Vehicle engine
+                        color:
+                          type: string
+                          description: Vehicle color
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: Date and time when record was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: Date and time when record was last updated.
+                        integrator_tags:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                description: The tag primary key.
+                              taggable_type:
+                                type: string
+                                description: Entity type the tag attached to.
+                              taggable_id:
+                                type: integer
+                                description: Entity identifier the tag attached to.
+                              name:
+                                type: string
+                                description: Tag Name.
+                              value:
+                                type: string
+                                description: Tag Value.
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The date and time when tag was created.
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The date and time when tag was last updated.
+                  limit:
+                    type: integer
+                  limited:
+                    type: boolean
+                  total_count:
+                    type: integer
+                  current_page:
+                    type: integer
+                  total_pages:
+                    type: integer
+    post:
+      summary: Create a vehicle
+      tags:
+      - Vehicles
+      parameters: []
+      responses:
+        '201':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    id: 2
+                    created_at: '2026-06-09T14:26:46Z'
+                    updated_at: '2026-06-09T14:26:46Z'
+                    plate: EZRIDR
+                    detail: Keys in glovebox
+                    fleet_number: 23R
+                    vin: 1FMPU16W14LB56648
+                    year: '2004'
+                    make: Ford
+                    model: Expedition
+                    engine: 4.6L V8
+                    color: BLACK
+                    production_date: '2022-10-24T08:00:00.000Z'
+                    registration_exp_date: '2025-10-24T08:00:00.000Z'
+                    customer_ids:
+                    - 1
+                    integrator_tags: []
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: Unique identifier of this record.
+                  plate:
+                    type: string
+                    description: License plate.
+                    nullable: true
+                  detail:
+                    type: string
+                    description: Notes made by the staff about this vehicle
+                    nullable: true
+                  fleet_number:
+                    type: string
+                    description: Fleet number.
+                    nullable: true
+                  vin:
+                    type: string
+                    description: Vehicle Identification Number.
+                    nullable: true
+                  year:
+                    type: string
+                    description: Year.
+                    nullable: true
+                  make:
+                    type: string
+                    description: Vehicle make.
+                    nullable: true
+                  model:
+                    type: string
+                    description: Vehicle model.
+                    nullable: true
+                  engine:
+                    type: string
+                    description: Vehicle engine
+                    nullable: true
+                  production_date:
+                    type: string
+                    description: Production date
+                    nullable: true
+                  registration_exp_date:
+                    type: string
+                    description: Registration expire date
+                    nullable: true
+                  color:
+                    type: string
+                    description: Vehicle color
+                    nullable: true
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was created.
+                  updated_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was last updated.
+                  integrator_tags:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The tag primary key.
+                        taggable_type:
+                          type: string
+                          description: Entity type the tag attached to.
+                        taggable_id:
+                          type: integer
+                          description: Entity identifier the tag attached to.
+                        name:
+                          type: string
+                          description: Tag Name.
+                        value:
+                          type: string
+                          description: Tag Value.
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when tag was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when tag was last updated.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - make
+              properties:
+                plate:
+                  type: string
+                  nullable: true
+                  description: License plate.
+                production_date:
+                  type: string
+                  nullable: true
+                  format: date
+                  description: Production date
+                registration_exp_date:
+                  type: string
+                  nullable: true
+                  format: date
+                  description: Registration expire date
+                detail:
+                  type: string
+                  nullable: true
+                  description: Notes made by the staff about this vehicle
+                fleet_number:
+                  type: string
+                  nullable: true
+                  description: Fleet number.
+                vin:
+                  type: string
+                  nullable: true
+                  description: Vehicle Identification Number.
+                year:
+                  type: string
+                  nullable: true
+                  description: Year.
+                make:
+                  type: string
+                  minLength: 1
+                  description: Vehicle make.
+                model:
+                  type: string
+                  nullable: true
+                  description: Vehicle model.
+                engine:
+                  type: string
+                  nullable: true
+                  description: Vehicle engine
+                color:
+                  type: string
+                  nullable: true
+                  description: Vehicle color
+                customer_ids:
+                  type: array
+                  nullable: true
+                  items:
+                    type: integer
+                  description: A list of foreign keys that point to zero or more Customer.id. This represents the list of customers who own this vehicle. Multiple customers may own a vehicle.
+              example:
+                plate: EZRIDR
+                detail: Keys in glovebox
+                fleet_number: 23R
+                vin: 1FMPU16W14LB56648
+                year: '2004'
+                make: Ford
+                model: Expedition
+                engine: 4.6L V8
+                customer_ids:
+                - 1
+                production_date: '2022-10-24'
+                registration_exp_date: '2025-10-24'
+                color: Black
+  /api/v1/tenants/{tenant_id}/vehicles/{id}:
+    parameters:
+    - name: tenant_id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    - name: id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    get:
+      summary: Get a specific vehicle by ID
+      tags:
+      - Vehicles
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    id: 1
+                    created_at: '2026-06-09T14:26:49Z'
+                    updated_at: '2026-06-09T14:26:49Z'
+                    plate: EZRIDR
+                    detail: Keys in glovebox
+                    fleet_number: 23R
+                    vin: 1FMPU16W14LB56648
+                    year: '2004'
+                    make: Ford
+                    model: Expedition
+                    engine: 4.6L V8
+                    color: BLACK
+                    production_date: '2026-06-08T14:26:49.632Z'
+                    registration_exp_date: '2026-06-08T14:26:49.632Z'
+                    customer_ids:
+                    - 2
+                    integrator_tags:
+                    - id: 1
+                      created_at: '2026-06-09T14:26:49Z'
+                      updated_at: '2026-06-09T14:26:49Z'
+                      taggable_type: Vehicle
+                      taggable_id: 1
+                      name: tag_name
+                      value: tag_value
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: Unique identifier of this record.
+                  plate:
+                    type: string
+                    description: License plate.
+                  production_date:
+                    type: string
+                    description: Production date
+                  registration_exp_date:
+                    type: string
+                    description: Registration expire date
+                  detail:
+                    type: string
+                    description: Notes made by the staff about this vehicle
+                  fleet_number:
+                    type: string
+                    description: Fleet number.
+                  vin:
+                    type: string
+                    description: Vehicle Identification Number.
+                  year:
+                    type: string
+                    description: Year.
+                  make:
+                    type: string
+                    description: Vehicle make.
+                  model:
+                    type: string
+                    description: Vehicle model.
+                  engine:
+                    type: string
+                    description: Vehicle engine
+                  color:
+                    type: string
+                    description: Vehicle color
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was created.
+                  updated_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was last updated.
+                  integrator_tags:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The tag primary key.
+                        taggable_type:
+                          type: string
+                          description: Entity type the tag attached to.
+                        taggable_id:
+                          type: integer
+                          description: Entity identifier the tag attached to.
+                        name:
+                          type: string
+                          description: Tag Name.
+                        value:
+                          type: string
+                          description: Tag Value.
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when tag was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when tag was last updated.
+    put:
+      summary: Update a specific vehicle by ID
+      tags:
+      - Vehicles
+      parameters: []
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    id: 1
+                    created_at: '2026-06-09T14:26:52Z'
+                    updated_at: '2022-10-23T02:05:00Z'
+                    plate: EZRIDR
+                    detail: Keys in glovebox
+                    fleet_number: 23R
+                    vin: 1FMPU16W14LB56648
+                    year: UPDATED YEAR
+                    make: Ford
+                    model: Expedition
+                    engine: 4.6L V8
+                    color: BLACK
+                    production_date: '2022-10-24T08:00:00.000Z'
+                    registration_exp_date: '2022-10-24T08:00:00.000Z'
+                    customer_ids:
+                    - 1
+                    integrator_tags:
+                    - id: 1
+                      created_at: '2026-06-09T14:26:52Z'
+                      updated_at: '2026-06-09T14:26:52Z'
+                      taggable_type: Vehicle
+                      taggable_id: 1
+                      name: tag_name
+                      value: tag_value
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: Unique identifier of this record.
+                  plate:
+                    type: string
+                    description: License plate.
+                    nullable: true
+                  detail:
+                    type: string
+                    description: Notes made by the staff about this vehicle
+                    nullable: true
+                  fleet_number:
+                    type: string
+                    description: Fleet number.
+                    nullable: true
+                  vin:
+                    type: string
+                    description: Vehicle Identification Number.
+                    nullable: true
+                  year:
+                    type: string
+                    description: Year.
+                    nullable: true
+                  make:
+                    type: string
+                    description: Vehicle make.
+                  model:
+                    type: string
+                    description: Vehicle model.
+                    nullable: true
+                  engine:
+                    type: string
+                    description: Vehicle engine
+                    nullable: true
+                  production_date:
+                    type: string
+                    description: Production date
+                    nullable: true
+                  registration_exp_date:
+                    type: string
+                    description: Registration expire date
+                    nullable: true
+                  color:
+                    type: string
+                    description: Vehicle color
+                    nullable: true
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was created.
+                  updated_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was last updated.
+                  integrator_tags:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The tag primary key.
+                        taggable_type:
+                          type: string
+                          description: Entity type the tag attached to.
+                        taggable_id:
+                          type: integer
+                          description: Entity identifier the tag attached to.
+                        name:
+                          type: string
+                          description: Tag Name.
+                        value:
+                          type: string
+                          description: Tag Value.
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when tag was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when tag was last updated.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                plate:
+                  type: string
+                  nullable: true
+                  description: License plate.
+                production_date:
+                  type: string
+                  nullable: true
+                  format: date
+                  description: Production date
+                registration_exp_date:
+                  type: string
+                  nullable: true
+                  format: date
+                  description: Registration expire date
+                detail:
+                  type: string
+                  nullable: true
+                  description: Notes made by the staff about this vehicle
+                fleet_number:
+                  type: string
+                  nullable: true
+                  description: Fleet number.
+                vin:
+                  type: string
+                  nullable: true
+                  description: Vehicle Identification Number.
+                year:
+                  type: string
+                  nullable: true
+                  description: Year.
+                make:
+                  type: string
+                  minLength: 1
+                  description: Vehicle make.
+                model:
+                  type: string
+                  nullable: true
+                  description: Vehicle model.
+                engine:
+                  type: string
+                  nullable: true
+                  description: Vehicle engine
+                color:
+                  type: string
+                  nullable: true
+                  description: Vehicle color
+                customer_ids:
+                  type: array
+                  nullable: true
+                  items:
+                    type: integer
+                  description: A list of foreign keys that point to zero or more Customer.id. This represents the list of customers who own this vehicle. Multiple customers may own a vehicle.
+              example:
+                year: UPDATED YEAR
+                plate: EZRIDR
+                detail: Keys in glovebox
+                fleet_number: 23R
+                vin: 1FMPU16W14LB56648
+                make: Ford
+                model: Expedition
+                engine: 4.6L V8
+                customer_ids:
+                - 1
+                color: BLACK
+                production_date: '2022-10-24'
+                registration_exp_date: '2022-10-24'
+components:
+  securitySchemes:
+    api_partner_id:
+      type: apiKey
+      name: X-Api-Partner-Id
+      in: header
+    api_secret:
+      type: apiKey
+      name: X-Api-Secret
+      in: header

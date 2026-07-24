@@ -1,0 +1,460 @@
+openapi: 3.0.1
+info:
+  title: API V1 API Partners Pay Rates API
+  version: v1
+  contact:
+    name: API Support
+    email: support@shop-ware.com
+security:
+- api_partner_id: []
+  api_secret: []
+tags:
+- name: Pay Rates
+paths:
+  /api/v1/tenants/{tenant_id}/pay_rates:
+    parameters:
+    - name: tenant_id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    get:
+      summary: Get a list of all pay rates
+      tags:
+      - Pay Rates
+      parameters:
+      - name: page
+        in: query
+        required: false
+        example: '1'
+        schema:
+          type: integer
+      - name: per_page
+        in: query
+        required: false
+        example: '30'
+        schema:
+          type: integer
+      - name: updated_after
+        in: query
+        required: false
+        format: date-time
+        description: Filter response to only include records updated after a given time
+        example: 2022-10-24T12%3A00%3A00%2B08%3A00
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    results:
+                    - id: 1
+                      created_at: '2026-06-09T14:24:08Z'
+                      updated_at: '2026-06-09T14:24:08Z'
+                      pay_type: Flat Rate
+                      commission_percent: null
+                      hourly_rate_cents: 1000
+                      hourly_rate_currency: USD
+                      staff_id: 1
+                      effective_date: '2023-01-01'
+                      loaded_cost_percent: '0.1'
+                    limit: 1
+                    limited: false
+                    total_count: 1
+                    current_page: 1
+                    total_pages: 1
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: Unique identifier of this record.
+                        pay_type:
+                          type: string
+                          description: Pay type. Default is 'Flat Rate'.
+                        commission_percent:
+                          type: integer
+                          nullable: true
+                          description: Commission percent.
+                        hourly_rate_cents:
+                          type: integer
+                          description: Hourly rate in cents.
+                        hourly_rate_currency:
+                          type: string
+                          description: Hourly rate currency. Default is 'USD'.
+                        staff_id:
+                          type: integer
+                          description: A foreign key that points to staff associated with this pay rate.
+                        effective_date:
+                          type: string
+                          format: date
+                          description: Effective date in YYYY-MM-DD format. Must be unique within specific employee's pay rates.
+                        loaded_cost_percent:
+                          type: string
+                          nullable: true
+                          description: Loaded cost percent as a decimal.
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: Date and time when record was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: Date and time when record was last updated.
+                  limit:
+                    type: integer
+                  limited:
+                    type: boolean
+                  total_count:
+                    type: integer
+                  current_page:
+                    type: integer
+                  total_pages:
+                    type: integer
+    post:
+      summary: Create a new pay rates
+      tags:
+      - Pay Rates
+      parameters: []
+      responses:
+        '201':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                  - id: 1
+                    created_at: '2026-06-09T14:24:11Z'
+                    updated_at: '2026-06-09T14:24:11Z'
+                    pay_type: Flat Rate
+                    commission_percent: null
+                    hourly_rate_cents: 1000
+                    hourly_rate_currency: USD
+                    staff_id: 1
+                    effective_date: '2023-01-01'
+                    loaded_cost_percent: '0.1'
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      description: Unique identifier of this record.
+                    pay_type:
+                      type: string
+                      description: Pay type. Default is 'Flat Rate'.
+                    commission_percent:
+                      type: integer
+                      nullable: true
+                      description: Commission percent.
+                    hourly_rate_cents:
+                      type: integer
+                      description: Hourly rate in cents.
+                    hourly_rate_currency:
+                      type: string
+                      description: Hourly rate currency. Default is 'USD'.
+                    staff_id:
+                      type: integer
+                      description: A foreign key that points to staff associated with this pay rate.
+                    effective_date:
+                      type: string
+                      format: date
+                      description: Effective date in YYYY-MM-DD format. Must be unique within specific employee's pay rates.
+                    loaded_cost_percent:
+                      type: string
+                      nullable: true
+                      description: Loaded cost percent as a decimal.
+                    created_at:
+                      type: string
+                      format: date-time
+                      description: Date and time when record was created.
+                    updated_at:
+                      type: string
+                      format: date-time
+                      description: Date and time when record was last updated.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - employee_id
+              - shop_id
+              - pay_information
+              properties:
+                employee_id:
+                  type: integer
+                  description: Employee identifier.
+                shop_id:
+                  type: integer
+                  description: A foreign key that points to the Shop this staff is currently assigned to.
+                pay_information:
+                  type: array
+                  items:
+                    type: object
+                    required:
+                    - pay_type
+                    - effective_date
+                    - hourly_rate_cents
+                    description: Pay information.
+                    properties:
+                      pay_type:
+                        type: string
+                        minLength: 1
+                        description: Pay type.
+                      effective_date:
+                        type: string
+                        format: date
+                        description: Effective date in YYYY-MM-DD format. Must be unique within specific employee.
+                      hourly_rate_cents:
+                        type: integer
+                        exclusiveMinimum: 0
+                        description: Hourly rate in cents.
+                      loaded_cost_percent:
+                        type: number
+                        description: Loaded cost percent as a decimal
+                        minimum: 0
+                        maximum: 1
+              example:
+                employee_id: 1
+                shop_id: 2
+                pay_information:
+                - pay_type: Flat Rate
+                  effective_date: '2023-01-01'
+                  hourly_rate_cents: 1000
+                  loaded_cost_percent: 0.1
+    put:
+      summary: Update the specified existing pay rates
+      tags:
+      - Pay Rates
+      parameters: []
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                  - id: 1
+                    created_at: '2026-06-09T14:24:14Z'
+                    updated_at: '2026-06-09T14:24:14Z'
+                    pay_type: Flat Rate
+                    commission_percent: null
+                    hourly_rate_cents: 1000
+                    hourly_rate_currency: USD
+                    staff_id: 1
+                    effective_date: '2023-01-01'
+                    loaded_cost_percent: '0.1'
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      description: Unique identifier of this record.
+                    pay_type:
+                      type: string
+                      description: Pay type. Default is 'Flat Rate'.
+                    commission_percent:
+                      type: integer
+                      nullable: true
+                      description: Commission percent.
+                    hourly_rate_cents:
+                      type: integer
+                      description: Hourly rate in cents.
+                    hourly_rate_currency:
+                      type: string
+                      description: Hourly rate currency. Default is 'USD'.
+                    staff_id:
+                      type: integer
+                      description: A foreign key that points to staff associated with this pay rate.
+                    effective_date:
+                      type: string
+                      format: date
+                      description: Effective date in YYYY-MM-DD format. Must be unique within specific employee's pay rates.
+                    loaded_cost_percent:
+                      type: string
+                      nullable: true
+                      description: Loaded cost percent as a decimal.
+                    created_at:
+                      type: string
+                      format: date-time
+                      description: Date and time when record was created.
+                    updated_at:
+                      type: string
+                      format: date-time
+                      description: Date and time when record was last updated.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - pay_information
+              properties:
+                pay_information:
+                  type: array
+                  items:
+                    type: object
+                    required:
+                    - pay_type
+                    - effective_date
+                    - hourly_rate_cents
+                    description: Pay information.
+                    properties:
+                      id:
+                        type: integer
+                      pay_type:
+                        type: string
+                        minLength: 1
+                        description: Pay type.
+                      effective_date:
+                        type: string
+                        format: date
+                        description: Effective date in YYYY-MM-DD format. Must be unique within specific employee.
+                      hourly_rate_cents:
+                        type: integer
+                        exclusiveMinimum: 0
+                        description: Hourly rate in cents.
+                      loaded_cost_percent:
+                        type: number
+                        description: Loaded cost percent as a decimal
+                        minimum: 0
+                        maximum: 1
+              example:
+                pay_information:
+                - id: 1
+                  pay_type: Flat Rate
+                  effective_date: '2023-01-01'
+                  hourly_rate_cents: 1000
+                  loaded_cost_percent: 0.1
+  /api/v1/tenants/{tenant_id}/pay_rates/{id}:
+    parameters:
+    - name: tenant_id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    - name: id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    get:
+      summary: Get a specific pay rate by ID
+      tags:
+      - Pay Rates
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    id: 1
+                    created_at: '2026-06-09T14:24:17Z'
+                    updated_at: '2026-06-09T14:24:17Z'
+                    pay_type: Flat Rate
+                    commission_percent: null
+                    hourly_rate_cents: 1000
+                    hourly_rate_currency: USD
+                    staff_id: 1
+                    effective_date: '2023-01-01'
+                    loaded_cost_percent: '0.1'
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: Unique identifier of this record.
+                  pay_type:
+                    type: string
+                    description: Pay type. Default is 'Flat Rate'.
+                  commission_percent:
+                    type: integer
+                    nullable: true
+                    description: Commission percent.
+                  hourly_rate_cents:
+                    type: integer
+                    description: Hourly rate in cents.
+                  hourly_rate_currency:
+                    type: string
+                    description: Hourly rate currency. Default is 'USD'.
+                  staff_id:
+                    type: integer
+                    description: A foreign key that points to staff associated with this pay rate.
+                  effective_date:
+                    type: string
+                    format: date
+                    description: Effective date in YYYY-MM-DD format. Must be unique within specific employee's pay rates.
+                  loaded_cost_percent:
+                    type: string
+                    nullable: true
+                    description: Loaded cost percent as a decimal.
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was created.
+                  updated_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was last updated.
+  /api/v1/tenants/{tenant_id}/pay_rates/delete:
+    parameters:
+    - name: tenant_id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    post:
+      summary: Delete the specified pay rates
+      tags:
+      - Pay Rates
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - pay_rate_ids
+              properties:
+                pay_rate_ids:
+                  type: array
+                  description: Pay rate ids to delete.
+                  items:
+                    type: integer
+              example:
+                pay_rate_ids:
+                - 1
+components:
+  securitySchemes:
+    api_partner_id:
+      type: apiKey
+      name: X-Api-Partner-Id
+      in: header
+    api_secret:
+      type: apiKey
+      name: X-Api-Secret
+      in: header

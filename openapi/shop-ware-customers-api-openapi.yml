@@ -1,0 +1,1462 @@
+openapi: 3.0.1
+info:
+  title: API V1 API Partners Customers API
+  version: v1
+  contact:
+    name: API Support
+    email: support@shop-ware.com
+security:
+- api_partner_id: []
+  api_secret: []
+tags:
+- name: Customers
+paths:
+  /api/v1/tenants/{tenant_id}/customers:
+    parameters:
+    - name: tenant_id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    get:
+      summary: Get a list of all customer
+      tags:
+      - Customers
+      parameters:
+      - name: last_name
+        in: query
+        required: false
+        description: Filter response to include only customers with a last_name containing the corresponding characters sequence.
+        example: null
+        schema:
+          type: string
+      - name: email
+        in: query
+        required: false
+        description: Filter response to include only customers with contact_email containing the corresponding character sequence.
+        example: null
+        schema:
+          type: string
+      - name: phone_number
+        in: query
+        required: false
+        description: Filter response to include only customers with phone numbers containing the corresponding digit sequence.
+        example: null
+        schema:
+          type: string
+      - name: phone_number_preferred_only
+        in: query
+        required: false
+        description: Toggle to include only preferred phone numbers according to the search given in phone_number
+        example: null
+        schema:
+          type: boolean
+      - name: type
+        in: query
+        required: false
+        description: 'Filter response to include only corporate or individual (null including) customers. Possible values: ''corporate'' and ''individual''.'
+        example: individual
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        example: '1'
+        schema:
+          type: integer
+      - name: per_page
+        in: query
+        required: false
+        example: '30'
+        schema:
+          type: integer
+      - name: updated_after
+        in: query
+        required: false
+        format: date-time
+        description: Filter response to only include records updated after a given time
+        example: 2022-10-24T12%3A00%3A00%2B08%3A00
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                without filtering:
+                  value:
+                    results:
+                    - id: 2
+                      created_at: '2026-06-09T14:22:11Z'
+                      updated_at: '2026-06-09T14:22:11Z'
+                      first_name: ''
+                      last_name: 'Fleet #01'
+                      phone: '+14158900901'
+                      detail: New customer
+                      address: 321 Main Street
+                      city: San Diego
+                      state: CA
+                      zip: '92111'
+                      marketing_ok: true
+                      shop_ids:
+                      - 2
+                      origin_shop_id: null
+                      customer_type: corporate
+                      fleet_id: FLEET01
+                      business_name: 'Fleet #01'
+                      email: darkside@example.com
+                      integrator_tags:
+                      - id: 2
+                        created_at: '2026-06-09T14:22:11Z'
+                        updated_at: '2026-06-09T14:22:11Z'
+                        taggable_type: Customer
+                        taggable_id: 2
+                        name: tag_name
+                        value: tag_value
+                      phones:
+                      - number: '+14158900901'
+                        international: +1 415-890-0901
+                        national: (415) 890-0901
+                        country_code: '1'
+                        label: null
+                        preferred: true
+                        show_on_ro: false
+                    - id: 1
+                      created_at: '2026-06-09T14:22:11Z'
+                      updated_at: '2026-06-09T14:22:11Z'
+                      first_name: Connor
+                      last_name: McGregor
+                      phone: '+17722277777'
+                      detail: New customer
+                      address: 123 Main Street
+                      city: San Diego
+                      state: CA
+                      zip: '92111'
+                      marketing_ok: true
+                      shop_ids:
+                      - 1
+                      - 2
+                      origin_shop_id: 1
+                      customer_type: individual
+                      fleet_id: null
+                      date_of_birth: '2024-08-16'
+                      email: keeF@example.com
+                      integrator_tags:
+                      - id: 1
+                        created_at: '2026-06-09T14:22:11Z'
+                        updated_at: '2026-06-09T14:22:11Z'
+                        taggable_type: Customer
+                        taggable_id: 1
+                        name: tag_name
+                        value: tag_value
+                      phones:
+                      - number: '+17722277777'
+                        international: +1 772-227-7777
+                        national: (772) 227-7777
+                        country_code: '1'
+                        label: Office
+                        preferred: true
+                        show_on_ro: true
+                    limit: 2
+                    limited: false
+                    total_count: 2
+                    current_page: 1
+                    total_pages: 1
+                filtering by email - `eef`:
+                  value:
+                    results:
+                    - id: 1
+                      created_at: '2026-06-09T14:22:14Z'
+                      updated_at: '2026-06-09T14:22:14Z'
+                      first_name: Connor
+                      last_name: McGregor
+                      phone: '+17722277777'
+                      detail: New customer
+                      address: 123 Main Street
+                      city: San Diego
+                      state: CA
+                      zip: '92111'
+                      marketing_ok: true
+                      shop_ids:
+                      - 1
+                      - 2
+                      origin_shop_id: 1
+                      customer_type: individual
+                      fleet_id: null
+                      date_of_birth: '2024-08-16'
+                      email: keeF@example.com
+                      integrator_tags:
+                      - id: 1
+                        created_at: '2026-06-09T14:22:14Z'
+                        updated_at: '2026-06-09T14:22:14Z'
+                        taggable_type: Customer
+                        taggable_id: 1
+                        name: tag_name
+                        value: tag_value
+                      phones:
+                      - number: '+17722277777'
+                        international: +1 772-227-7777
+                        national: (772) 227-7777
+                        country_code: '1'
+                        label: Office
+                        preferred: true
+                        show_on_ro: true
+                    limit: 1
+                    limited: false
+                    total_count: 1
+                    current_page: 1
+                    total_pages: 1
+                filtering by last_name - `fleet`:
+                  value:
+                    results:
+                    - id: 2
+                      created_at: '2026-06-09T14:22:17Z'
+                      updated_at: '2026-06-09T14:22:17Z'
+                      first_name: ''
+                      last_name: 'Fleet #01'
+                      phone: '+14158900901'
+                      detail: New customer
+                      address: 321 Main Street
+                      city: San Diego
+                      state: CA
+                      zip: '92111'
+                      marketing_ok: true
+                      shop_ids:
+                      - 2
+                      origin_shop_id: null
+                      customer_type: corporate
+                      fleet_id: FLEET01
+                      business_name: 'Fleet #01'
+                      email: darkside@example.com
+                      integrator_tags:
+                      - id: 2
+                        created_at: '2026-06-09T14:22:17Z'
+                        updated_at: '2026-06-09T14:22:17Z'
+                        taggable_type: Customer
+                        taggable_id: 2
+                        name: tag_name
+                        value: tag_value
+                      phones:
+                      - number: '+14158900901'
+                        international: +1 415-890-0901
+                        national: (415) 890-0901
+                        country_code: '1'
+                        label: null
+                        preferred: true
+                        show_on_ro: false
+                    limit: 1
+                    limited: false
+                    total_count: 1
+                    current_page: 1
+                    total_pages: 1
+                filtering by phone - `phone`:
+                  value:
+                    results:
+                    - id: 2
+                      created_at: '2026-06-09T14:22:21Z'
+                      updated_at: '2026-06-09T14:22:21Z'
+                      first_name: ''
+                      last_name: 'Fleet #01'
+                      phone: '+14158900901'
+                      detail: New customer
+                      address: 321 Main Street
+                      city: San Diego
+                      state: CA
+                      zip: '92111'
+                      marketing_ok: true
+                      shop_ids:
+                      - 2
+                      origin_shop_id: null
+                      customer_type: corporate
+                      fleet_id: FLEET01
+                      business_name: 'Fleet #01'
+                      email: darkside@example.com
+                      integrator_tags:
+                      - id: 2
+                        created_at: '2026-06-09T14:22:21Z'
+                        updated_at: '2026-06-09T14:22:21Z'
+                        taggable_type: Customer
+                        taggable_id: 2
+                        name: tag_name
+                        value: tag_value
+                      phones:
+                      - number: '+14158900901'
+                        international: +1 415-890-0901
+                        national: (415) 890-0901
+                        country_code: '1'
+                        label: null
+                        preferred: true
+                        show_on_ro: false
+                    limit: 1
+                    limited: false
+                    total_count: 1
+                    current_page: 1
+                    total_pages: 1
+                filter by type - `corporate`:
+                  value:
+                    results:
+                    - id: 2
+                      created_at: '2026-06-09T14:22:24Z'
+                      updated_at: '2026-06-09T14:22:24Z'
+                      first_name: ''
+                      last_name: 'Fleet #01'
+                      phone: '+14158900901'
+                      detail: New customer
+                      address: 321 Main Street
+                      city: San Diego
+                      state: CA
+                      zip: '92111'
+                      marketing_ok: true
+                      shop_ids:
+                      - 2
+                      origin_shop_id: null
+                      customer_type: corporate
+                      fleet_id: FLEET01
+                      business_name: 'Fleet #01'
+                      email: darkside@example.com
+                      integrator_tags:
+                      - id: 2
+                        created_at: '2026-06-09T14:22:24Z'
+                        updated_at: '2026-06-09T14:22:24Z'
+                        taggable_type: Customer
+                        taggable_id: 2
+                        name: tag_name
+                        value: tag_value
+                      phones:
+                      - number: '+14158900901'
+                        international: +1 415-890-0901
+                        national: (415) 890-0901
+                        country_code: '1'
+                        label: null
+                        preferred: true
+                        show_on_ro: false
+                    limit: 1
+                    limited: false
+                    total_count: 1
+                    current_page: 1
+                    total_pages: 1
+                filter by type - 'individual`:
+                  value:
+                    results:
+                    - id: 1
+                      created_at: '2026-06-09T14:22:27Z'
+                      updated_at: '2026-06-09T14:22:27Z'
+                      first_name: Connor
+                      last_name: McGregor
+                      phone: '+17722277777'
+                      detail: New customer
+                      address: 123 Main Street
+                      city: San Diego
+                      state: CA
+                      zip: '92111'
+                      marketing_ok: true
+                      shop_ids:
+                      - 1
+                      - 2
+                      origin_shop_id: 1
+                      customer_type: individual
+                      fleet_id: null
+                      date_of_birth: '2024-08-16'
+                      email: keeF@example.com
+                      integrator_tags:
+                      - id: 1
+                        created_at: '2026-06-09T14:22:27Z'
+                        updated_at: '2026-06-09T14:22:27Z'
+                        taggable_type: Customer
+                        taggable_id: 1
+                        name: tag_name
+                        value: tag_value
+                      phones:
+                      - number: '+17722277777'
+                        international: +1 772-227-7777
+                        national: (772) 227-7777
+                        country_code: '1'
+                        label: Office
+                        preferred: true
+                        show_on_ro: true
+                    limit: 1
+                    limited: false
+                    total_count: 1
+                    current_page: 1
+                    total_pages: 1
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: Unique identifier of this record.
+                        first_name:
+                          type: string
+                          description: First name.
+                        last_name:
+                          type: string
+                          description: Last name.
+                        email:
+                          type: string
+                          description: Email.
+                        phone:
+                          type: string
+                          description: '[Deprecated] Customer`s phone number in the format of (###) ###-#### for US numbers, otherwise E.164 format.'
+                        phones:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              number:
+                                type: string
+                                description: 'Phone number in E.164 format. Ex: +15554441234.'
+                              national:
+                                type: string
+                                description: 'Phone number in national (in-country) format. Ex: (555) 444-1234.'
+                              international:
+                                type: string
+                                description: 'Phone number in international format. Ex: +1 555-444-1234.'
+                              country_code:
+                                type: string
+                                description: 'The country calling code. Ex: 1.'
+                              label:
+                                type: string
+                                description: A human-readable label for this number.
+                                nullable: true
+                              preferred:
+                                type: boolean
+                                description: True if this phone number is a preferred contact method, false otherwise. Only one phone number per customer can be preferred.
+                              show_on_ro:
+                                type: boolean
+                                nullable: true
+                                description: Defines whether phone is shows on Repair Order.
+                        detail:
+                          type: string
+                          description: Notes made by the staff about this customer.
+                        address:
+                          type: string
+                          description: Customer`s adress.
+                        city:
+                          type: string
+                          description: City.
+                        state:
+                          type: string
+                          description: State.
+                        zip:
+                          type: string
+                          description: Zip.
+                        marketing_ok:
+                          type: boolean
+                          description: true if the customer has opted-in to marketing, false otherwise.
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: Date and time when record was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: Date and time when record was last updated.
+                        shop_ids:
+                          type: array
+                          items:
+                            type: integer
+                          description: A list of the shops a customer had service history.
+                        origin_shop_id:
+                          type: integer
+                          nullable: true
+                          description: A foreign key which points to a Shop.id. Represents the origin shop for this Customer.
+                        integrator_tags:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                description: The tag primary key.
+                              taggable_type:
+                                type: string
+                                description: Entity type the tag attached to.
+                              taggable_id:
+                                type: integer
+                                description: Entity identifier the tag attached to.
+                              name:
+                                type: string
+                                description: Tag Name.
+                              value:
+                                type: string
+                                description: Tag Value.
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The date and time when tag was created.
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The date and time when tag was last updated.
+                        customer_type:
+                          type: string
+                          nullable: true
+                          enum:
+                          - individual
+                          - corporate
+                          description: Customer type.
+                        date_of_birth:
+                          type: string
+                          nullable: true
+                          format: date
+                          description: Customer birthday date.
+                        business_name:
+                          type: string
+                          nullable: true
+                          description: Business name.
+                        fleet_id:
+                          type: string
+                          nullable: true
+                          description: Fleet identifier.
+                  limit:
+                    type: integer
+                  limited:
+                    type: boolean
+                  total_count:
+                    type: integer
+                  current_page:
+                    type: integer
+                  total_pages:
+                    type: integer
+    post:
+      summary: Create a customer
+      tags:
+      - Customers
+      parameters: []
+      responses:
+        '201':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    id: 1
+                    created_at: '2026-06-09T14:22:33Z'
+                    updated_at: '2026-06-09T14:22:33Z'
+                    first_name: Connor
+                    last_name: McGregor
+                    phone: '+17722277777'
+                    detail: New customer
+                    address: 123 Main Street
+                    city: San Diego
+                    state: CA
+                    zip: '92111'
+                    marketing_ok: true
+                    shop_ids:
+                    - 1
+                    - 2
+                    origin_shop_id: 1
+                    customer_type: individual
+                    fleet_id: null
+                    date_of_birth: '2024-08-16'
+                    email: keeF@example.com
+                    integrator_tags:
+                    - id: 1
+                      created_at: '2026-06-09T14:22:33Z'
+                      updated_at: '2026-06-09T14:22:33Z'
+                      taggable_type: Customer
+                      taggable_id: 1
+                      name: tag_name
+                      value: tag_value
+                    phones:
+                    - number: '+17722277777'
+                      international: +1 772-227-7777
+                      national: (772) 227-7777
+                      country_code: '1'
+                      label: Office
+                      preferred: true
+                      show_on_ro: true
+                    contacts:
+                    - id: 1
+                      created_at: '2026-06-09T14:22:33Z'
+                      updated_at: '2026-06-09T14:22:33Z'
+                      first_name: Connor
+                      last_name: McGregor
+                      email: keeF@example.com
+                      personnel: null
+                      phone_number: null
+                      show_on_ro: false
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: Unique identifier of this record.
+                  first_name:
+                    type: string
+                    description: First name.
+                  last_name:
+                    type: string
+                    description: Last name.
+                  email:
+                    type: string
+                    description: Email.
+                  phone:
+                    type: string
+                    description: '[Deprecated] Customer`s phone number in the format of (###) ###-#### for US numbers, otherwise E.164 format.'
+                  phones:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        number:
+                          type: string
+                          description: 'Phone number in E.164 format. Ex: +15554441234.'
+                        national:
+                          type: string
+                          description: 'Phone number in national (in-country) format. Ex: (555) 444-1234.'
+                        international:
+                          type: string
+                          description: 'Phone number in international format. Ex: +1 555-444-1234.'
+                        country_code:
+                          type: string
+                          description: 'The country calling code. Ex: 1.'
+                        label:
+                          type: string
+                          description: A human-readable label for this number.
+                          nullable: true
+                        preferred:
+                          type: boolean
+                          description: True if this phone number is a preferred contact method, false otherwise. Only one phone number per customer can be preferred.
+                        show_on_ro:
+                          type: boolean
+                          nullable: true
+                          description: Defines whether phone is shows on Repair Order.
+                  detail:
+                    type: string
+                    description: Notes made by the staff about this customer.
+                  address:
+                    type: string
+                    description: Customer`s adress.
+                  city:
+                    type: string
+                    description: City.
+                  state:
+                    type: string
+                    description: State.
+                  zip:
+                    type: string
+                    description: Zip.
+                  marketing_ok:
+                    type: boolean
+                    description: true if the customer has opted-in to marketing, false otherwise.
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was created.
+                  updated_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was last updated.
+                  shop_ids:
+                    type: array
+                    items:
+                      type: integer
+                    description: A list of the shops a customer had service history.
+                  origin_shop_id:
+                    type: integer
+                    nullable: true
+                    description: A foreign key which points to a Shop.id. Represents the origin shop for this Customer.
+                  integrator_tags:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The tag primary key.
+                        taggable_type:
+                          type: string
+                          description: Entity type the tag attached to.
+                        taggable_id:
+                          type: integer
+                          description: Entity identifier the tag attached to.
+                        name:
+                          type: string
+                          description: Tag Name.
+                        value:
+                          type: string
+                          description: Tag Value.
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when tag was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when tag was last updated.
+                  customer_type:
+                    type: string
+                    nullable: true
+                    enum:
+                    - individual
+                    - corporate
+                    description: Customer type.
+                  date_of_birth:
+                    type: string
+                    nullable: true
+                    format: date
+                    description: Customer birthday date.
+                  business_name:
+                    type: string
+                    nullable: true
+                    description: Business name.
+                  fleet_id:
+                    type: string
+                    nullable: true
+                    description: Fleet identifier.
+                  contacts:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: Unique identifier of this record.
+                        first_name:
+                          type: string
+                          nullable: true
+                          description: First name,
+                        last_name:
+                          type: string
+                          nullable: true
+                          description: Last name.
+                        email:
+                          type: string
+                          format: email
+                          nullable: true
+                          description: Email.
+                        personnel:
+                          type: string
+                          nullable: true
+                          description: Personnel.
+                        phone_number:
+                          type: string
+                          nullable: true
+                          description: Phone number.
+                        show_on_ro:
+                          type: boolean
+                          nullable: true
+                          description: Defines whether contact is shows on Repair Order.
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: Date and time when record was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: Date and time when record was last updated.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                  nullable: true
+                  description: First name. Will be ignored for corporate customer.
+                last_name:
+                  type: string
+                  nullable: true
+                  description: Last name. Will be ignored for corporate customer.
+                email:
+                  type: string
+                  nullable: true
+                  description: Must compliant to RFC 822. Requests containing an email that has already been taken by another customer or staff member are rejected.
+                phone:
+                  type: string
+                  nullable: true
+                  description: '[Deprecated] Phone number must be in E.164 format. Currently, only USA and Canada numbers (10-digits with country code 1) are allowed. Ex: +15554441234.'
+                detail:
+                  type: string
+                  nullable: true
+                  description: Notes made by the staff about this customer.
+                address:
+                  type: string
+                  nullable: true
+                  description: Address
+                city:
+                  type: string
+                  nullable: true
+                  description: City.
+                state:
+                  type: string
+                  nullable: true
+                  description: "2-character state codes are valid. Including [AL AK AZ AR CA CO CT DE DC FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT\n                                                NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT WA WV WI WY AB BC MB NB NF NS ON PE PQ SK VA PR]."
+                zip:
+                  type: string
+                  nullable: true
+                  description: Zip code.
+                marketing_ok:
+                  type: boolean
+                  nullable: true
+                  description: true if the customer has opted-in to marketing, false otherwise.
+                phones:
+                  type: array
+                  nullable: true
+                  description: Will be ignored for corporate customer.
+                  items:
+                    type: object
+                    properties:
+                      number:
+                        type: string
+                        nullable: true
+                        description: 'Phone number in E.164 format. Ex: +15554441234.'
+                      label:
+                        type: string
+                        nullable: true
+                        description: A human-readable label for this number.
+                      preferred:
+                        type: boolean
+                        nullable: true
+                        description: True if this phone number is a preferred contact method, false otherwise. A customer can only have one preferred phone number.
+                      show_on_ro:
+                        type: boolean
+                        nullable: true
+                        description: Defines whether phone is shows on Repair Order.
+                shop_id:
+                  type: integer
+                  description: A foreign key which points to a Shop.id. Represents the origin shop for this Customer. Need for correct work of 'Clear All Shop Data' option in data migration.
+                customer_type:
+                  type: string
+                  nullable: true
+                  enum:
+                  - individual
+                  - corporate
+                  description: Customer type.
+                date_of_birth:
+                  type: string
+                  nullable: true
+                  format: date
+                  description: Customer birthday date. Will be ignored for corporate customer.
+                business_name:
+                  type: string
+                  description: Business name. Required for corporate customer. Will be ignored for individual customer.
+                fleet_id:
+                  type: string
+                  nullable: true
+                  description: Fleet identifier. Will be ignored for individual customer.
+              example:
+                first_name: Connor
+                last_name: McGregor
+                contact_email: keeF@example.com
+                phone: (415) 890-0906
+                detail: New customer
+                address: 123 Main Street
+                city: San Diego
+                state: CA
+                zip: '92111'
+                marketing_ok: true
+                date_of_birth: '2024-08-16'
+                phones:
+                - number: '+14158900906'
+                  label: null
+                  preferred: true
+                  show_on_ro: true
+                shop_id: 1
+  /api/v1/tenants/{tenant_id}/customers/{id}:
+    parameters:
+    - name: tenant_id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    - name: id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    get:
+      summary: Get a specific customer by ID
+      tags:
+      - Customers
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    id: 2
+                    created_at: '2026-06-09T14:22:36Z'
+                    updated_at: '2026-06-09T14:22:36Z'
+                    first_name: ''
+                    last_name: 'Fleet #01'
+                    phone: '+14158900901'
+                    detail: New customer
+                    address: 321 Main Street
+                    city: San Diego
+                    state: CA
+                    zip: '92111'
+                    marketing_ok: true
+                    shop_ids:
+                    - 2
+                    origin_shop_id: null
+                    customer_type: corporate
+                    fleet_id: FLEET01
+                    business_name: 'Fleet #01'
+                    email: darkside@example.com
+                    integrator_tags:
+                    - id: 2
+                      created_at: '2026-06-09T14:22:36Z'
+                      updated_at: '2026-06-09T14:22:36Z'
+                      taggable_type: Customer
+                      taggable_id: 2
+                      name: tag_name
+                      value: tag_value
+                    phones:
+                    - number: '+14158900901'
+                      international: +1 415-890-0901
+                      national: (415) 890-0901
+                      country_code: '1'
+                      label: null
+                      preferred: true
+                      show_on_ro: false
+                    contacts:
+                    - id: 2
+                      created_at: '2026-06-09T14:22:36Z'
+                      updated_at: '2026-06-09T14:22:36Z'
+                      first_name: null
+                      last_name: 'Fleet #01'
+                      email: darkside@example.com
+                      personnel: null
+                      phone_number: null
+                      show_on_ro: false
+                    - id: 3
+                      created_at: '2026-06-09T14:22:36Z'
+                      updated_at: '2026-06-09T14:22:36Z'
+                      first_name: First Name
+                      last_name: Last Name
+                      email: test@email.com
+                      personnel: Test
+                      phone_number: '+17722271221'
+                      show_on_ro: true
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: Unique identifier of this record.
+                  first_name:
+                    type: string
+                    description: First name.
+                  last_name:
+                    type: string
+                    description: Last name.
+                  email:
+                    type: string
+                    description: Email.
+                  phone:
+                    type: string
+                    description: '[Deprecated] Customer`s phone number in the format of (###) ###-#### for US numbers, otherwise E.164 format.'
+                  phones:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        number:
+                          type: string
+                          description: 'Phone number in E.164 format. Ex: +15554441234.'
+                        national:
+                          type: string
+                          description: 'Phone number in national (in-country) format. Ex: (555) 444-1234.'
+                        international:
+                          type: string
+                          description: 'Phone number in international format. Ex: +1 555-444-1234.'
+                        country_code:
+                          type: string
+                          description: 'The country calling code. Ex: 1.'
+                        label:
+                          type: string
+                          description: A human-readable label for this number.
+                          nullable: true
+                        preferred:
+                          type: boolean
+                          description: True if this phone number is a preferred contact method, false otherwise. Only one phone number per customer can be preferred.
+                        show_on_ro:
+                          type: boolean
+                          nullable: true
+                          description: Defines whether phone is shows on Repair Order.
+                  detail:
+                    type: string
+                    description: Notes made by the staff about this customer.
+                  address:
+                    type: string
+                    description: Customer`s adress.
+                  city:
+                    type: string
+                    description: City.
+                  state:
+                    type: string
+                    description: State.
+                  zip:
+                    type: string
+                    description: Zip.
+                  marketing_ok:
+                    type: boolean
+                    description: true if the customer has opted-in to marketing, false otherwise.
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was created.
+                  updated_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was last updated.
+                  shop_ids:
+                    type: array
+                    items:
+                      type: integer
+                    description: A list of the shops a customer had service history.
+                  origin_shop_id:
+                    type: integer
+                    nullable: true
+                    description: A foreign key which points to a Shop.id. Represents the origin shop for this Customer.
+                  integrator_tags:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The tag primary key.
+                        taggable_type:
+                          type: string
+                          description: Entity type the tag attached to.
+                        taggable_id:
+                          type: integer
+                          description: Entity identifier the tag attached to.
+                        name:
+                          type: string
+                          description: Tag Name.
+                        value:
+                          type: string
+                          description: Tag Value.
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when tag was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when tag was last updated.
+                  customer_type:
+                    type: string
+                    nullable: true
+                    enum:
+                    - individual
+                    - corporate
+                    description: Customer type.
+                  date_of_birth:
+                    type: string
+                    nullable: true
+                    format: date
+                    description: Customer birthday date.
+                  business_name:
+                    type: string
+                    nullable: true
+                    description: Business name.
+                  fleet_id:
+                    type: string
+                    nullable: true
+                    description: Fleet identifier.
+                  contacts:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: Unique identifier of this contact.
+                        first_name:
+                          type: string
+                          nullable: true
+                          description: First name,
+                        last_name:
+                          type: string
+                          nullable: true
+                          description: Last name.
+                        email:
+                          type: string
+                          format: email
+                          nullable: true
+                          description: Email.
+                        personnel:
+                          type: string
+                          nullable: true
+                          description: Personnel.
+                        phone_number:
+                          type: string
+                          nullable: true
+                          description: Phone number.
+                        show_on_ro:
+                          type: boolean
+                          nullable: true
+                          description: Defines whether contact is shows on Repair Order.
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: Date and time when contact was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: Date and time when contact was last updated.
+    put:
+      summary: Update a specific customer
+      tags:
+      - Customers
+      parameters: []
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    id: 1
+                    created_at: '2026-06-09T14:22:39Z'
+                    updated_at: '2026-06-09T14:22:39Z'
+                    first_name: Connor
+                    last_name: McGregor
+                    phone: '+17722277777'
+                    detail: New customer
+                    address: 123 Main Street
+                    city: San Diego
+                    state: CA
+                    zip: '92111'
+                    marketing_ok: true
+                    shop_ids:
+                    - 1
+                    - 2
+                    origin_shop_id: 2
+                    customer_type: individual
+                    fleet_id: null
+                    date_of_birth: '2024-08-16'
+                    email: keeF@example.com
+                    integrator_tags:
+                    - id: 1
+                      created_at: '2026-06-09T14:22:39Z'
+                      updated_at: '2026-06-09T14:22:39Z'
+                      taggable_type: Customer
+                      taggable_id: 1
+                      name: tag_name
+                      value: tag_value
+                    phones:
+                    - number: '+17722277777'
+                      international: +1 772-227-7777
+                      national: (772) 227-7777
+                      country_code: '1'
+                      label: Office
+                      preferred: true
+                      show_on_ro: true
+                    contacts:
+                    - id: 1
+                      created_at: '2026-06-09T14:22:39Z'
+                      updated_at: '2026-06-09T14:22:39Z'
+                      first_name: Connor
+                      last_name: McGregor
+                      email: keeF@example.com
+                      personnel: null
+                      phone_number: null
+                      show_on_ro: false
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: Unique identifier of this record.
+                  first_name:
+                    type: string
+                    description: First name.
+                  last_name:
+                    type: string
+                    description: Last name.
+                  email:
+                    type: string
+                    description: Email.
+                  phone:
+                    type: string
+                    description: '[Deprecated] Customer`s phone number in the format of (###) ###-#### for US numbers, otherwise E.164 format.'
+                  phones:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        number:
+                          type: string
+                          description: 'Phone number in E.164 format. Ex: +15554441234.'
+                        national:
+                          type: string
+                          description: 'Phone number in national (in-country) format. Ex: (555) 444-1234.'
+                        international:
+                          type: string
+                          description: 'Phone number in international format. Ex: +1 555-444-1234.'
+                        country_code:
+                          type: string
+                          description: 'The country calling code. Ex: 1.'
+                        label:
+                          type: string
+                          description: A human-readable label for this number.
+                          nullable: true
+                        preferred:
+                          type: boolean
+                          description: True if this phone number is a preferred contact method, false otherwise. Only one phone number per customer can be preferred.
+                        show_on_ro:
+                          type: boolean
+                          nullable: true
+                          description: Defines whether phone is shows on Repair Order.
+                  detail:
+                    type: string
+                    description: Notes made by the staff about this customer.
+                  address:
+                    type: string
+                    description: Customer`s adress.
+                  city:
+                    type: string
+                    description: City.
+                  state:
+                    type: string
+                    description: State.
+                  zip:
+                    type: string
+                    description: Zip.
+                  marketing_ok:
+                    type: boolean
+                    description: true if the customer has opted-in to marketing, false otherwise.
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was created.
+                  updated_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was last updated.
+                  shop_ids:
+                    type: array
+                    items:
+                      type: integer
+                    description: A list of the shops a customer had service history.
+                  origin_shop_id:
+                    type: integer
+                    nullable: true
+                    description: A foreign key which points to a Shop.id. Represents the origin shop for this Customer.
+                  integrator_tags:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The tag primary key.
+                        taggable_type:
+                          type: string
+                          description: Entity type the tag attached to.
+                        taggable_id:
+                          type: integer
+                          description: Entity identifier the tag attached to.
+                        name:
+                          type: string
+                          description: Tag Name.
+                        value:
+                          type: string
+                          description: Tag Value.
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when tag was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when tag was last updated.
+                  customer_type:
+                    type: string
+                    nullable: true
+                    enum:
+                    - individual
+                    - corporate
+                    description: Customer type.
+                  date_of_birth:
+                    type: string
+                    nullable: true
+                    format: date
+                    description: Customer birthday date.
+                  business_name:
+                    type: string
+                    nullable: true
+                    description: Business name.
+                  fleet_id:
+                    type: string
+                    nullable: true
+                    description: Fleet identifier.
+                  contacts:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: Unique identifier of this contact.
+                        first_name:
+                          type: string
+                          nullable: true
+                          description: First name,
+                        last_name:
+                          type: string
+                          nullable: true
+                          description: Last name.
+                        email:
+                          type: string
+                          format: email
+                          nullable: true
+                          description: Email.
+                        personnel:
+                          type: string
+                          nullable: true
+                          description: Personnel.
+                        phone_number:
+                          type: string
+                          nullable: true
+                          description: Phone number.
+                        show_on_ro:
+                          type: boolean
+                          nullable: true
+                          description: Defines whether contact is shows on Repair Order.
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: Date and time when contact was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: Date and time when contact was last updated.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                  nullable: true
+                  description: First name. Will be ignored for corporate customer.
+                last_name:
+                  type: string
+                  nullable: true
+                  description: Last name. Will be ignored for corporate customer.
+                email:
+                  type: string
+                  nullable: true
+                  description: Must compliant to RFC 822. Requests containing an email that has already been taken by another customer or staff member are rejected.
+                phone:
+                  type: string
+                  nullable: true
+                  description: '[Deprecated] Phone number must be in E.164 format. Currently, only USA and Canada numbers (10-digits with country code 1) are allowed. Ex: +15554441234.'
+                detail:
+                  type: string
+                  nullable: true
+                  description: Notes made by the staff about this customer.
+                address:
+                  type: string
+                  nullable: true
+                  description: Address
+                city:
+                  type: string
+                  nullable: true
+                  description: City.
+                state:
+                  type: string
+                  nullable: true
+                  description: "2-character state codes are valid. Including [AL AK AZ AR CA CO CT DE DC FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT\n                                                NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT WA WV WI WY AB BC MB NB NF NS ON PE PQ SK VA PR]."
+                zip:
+                  type: string
+                  nullable: true
+                  description: Zip code.
+                marketing_ok:
+                  type: boolean
+                  nullable: true
+                  description: true if the customer has opted-in to marketing, false otherwise.
+                phones:
+                  type: array
+                  nullable: true
+                  description: Will be ignored for corporate customer.
+                  items:
+                    type: object
+                    properties:
+                      number:
+                        type: string
+                        nullable: true
+                        description: 'Phone number in E.164 format. Ex: +15554441234.'
+                      label:
+                        type: string
+                        nullable: true
+                        description: A human-readable label for this number.
+                      preferred:
+                        type: boolean
+                        nullable: true
+                        description: True if this phone number is a preferred contact method, false otherwise. Only one phone number per customer can be preferred.
+                      show_on_ro:
+                        type: boolean
+                        nullable: true
+                        description: Defines whether phone is shows on Repair Order.
+                shop_id:
+                  type: integer
+                  description: A foreign key which points to a Shop.id. Represents the origin shop for this Customer. Need for correct work of 'Clear All Shop Data' option in data migration.
+                customer_type:
+                  type: string
+                  nullable: true
+                  enum:
+                  - individual
+                  - corporate
+                  description: Customer type.
+                date_of_birth:
+                  type: string
+                  nullable: true
+                  format: date
+                  description: Customer birthday date. Will be ignored for corporate customer.
+                business_name:
+                  type: string
+                  description: Business name. Will be ignored for individual customer.
+                fleet_id:
+                  type: string
+                  nullable: true
+                  description: Fleet identifier. Will be ignored for individual customer.
+              example:
+                first_name: Connor
+                last_name: McGregor
+                contact_email: keeF@example.com
+                phone: (415) 890-0906
+                detail: New customer
+                address: 123 Main Street
+                city: San Diego
+                state: CA
+                zip: '92111'
+                marketing_ok: true
+                date_of_birth: '2024-08-16'
+                phones:
+                - number: '+14158900906'
+                  label: null
+                  preferred: true
+                shop_id: 2
+components:
+  securitySchemes:
+    api_partner_id:
+      type: apiKey
+      name: X-Api-Partner-Id
+      in: header
+    api_secret:
+      type: apiKey
+      name: X-Api-Secret
+      in: header

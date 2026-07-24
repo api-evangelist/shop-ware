@@ -1,0 +1,1119 @@
+openapi: 3.0.1
+info:
+  title: API V1 API Partners Appointments API
+  version: v1
+  contact:
+    name: API Support
+    email: support@shop-ware.com
+security:
+- api_partner_id: []
+  api_secret: []
+tags:
+- name: Appointments
+paths:
+  /api/v1/tenants/{tenant_id}/appointments:
+    parameters:
+    - name: tenant_id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    get:
+      summary: Get a list of all appointments
+      tags:
+      - Appointments
+      parameters:
+      - name: page
+        in: query
+        required: false
+        example: '1'
+        schema:
+          type: integer
+      - name: per_page
+        in: query
+        required: false
+        example: '30'
+        schema:
+          type: integer
+      - name: shop_id
+        in: query
+        required: false
+        description: Filter response to include only appointments related to specified shop.
+        example: null
+        schema:
+          type: integer
+      - name: customer_id
+        in: query
+        required: false
+        description: Filter response to include only appointments related to work order with specified customer.
+        example: null
+        schema:
+          type: integer
+      - name: repair_order_id
+        in: query
+        required: false
+        description: Filter response to include only appointments related to specified repair order.
+        example: '1'
+        schema:
+          type: integer
+      - name: vehicle_id
+        in: query
+        required: false
+        description: Filter response to include only appointments related to work order with specified vehicle.
+        example: null
+        schema:
+          type: integer
+      - name: start_after
+        in: query
+        required: false
+        description: Filter response to include only appointments that start after specified date. Must be in utc iso8601 date format.
+        example: '2026-06-08T14:21:20Z'
+        schema:
+          type: string
+      - name: end_before
+        in: query
+        required: false
+        description: Filter response to include only appointments that end before specified date. Must be in utc iso8601 date format.
+        example: '2026-06-11T07:59:59Z'
+        schema:
+          type: string
+      - name: updated_after
+        in: query
+        required: false
+        format: date-time
+        description: Filter response to only include records updated after a given time
+        example: 2022-10-24T12%3A00%3A00%2B08%3A00
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    results:
+                    - id: 1
+                      created_at: '2026-06-09T14:21:21Z'
+                      updated_at: '2026-06-09T14:21:21Z'
+                      staff_id: 1
+                      title: title 1
+                      description: ''
+                      shop_id: 1
+                      start_at: '2026-06-09T14:21:20Z'
+                      end_at: '2026-06-10T07:59:59Z'
+                      repair_order_id: 1
+                      integrator_tags: []
+                    limit: 1
+                    limited: false
+                    total_count: 1
+                    current_page: 1
+                    total_pages: 1
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: Unique identifier of this record.
+                        shop_id:
+                          type: integer
+                          description: A foreign key that points to the Shop this appointment was created in.
+                        staff_id:
+                          type: integer
+                          description: A foreign key which points to a Staff.id. Represents the technician assigned to this appointment.  If staff_id is not present, the appointment is unassigned.
+                        repair_order_id:
+                          type: integer
+                          description: A foreign key that points to the RepairOrder that this Note belongs to.
+                        description:
+                          type: string
+                          description: The description of the appointment.
+                        title:
+                          type: string
+                          description: The title of the appointment. Either repair_order_id or title must be set.
+                        integrator_tags:
+                          type: array
+                          description: Array of integrator tags.
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                description: The tag primary key.
+                              taggable_type:
+                                type: string
+                                description: Entity type the tag attached to.
+                              name:
+                                type: string
+                                description: Entity type the tag attached to.
+                              value:
+                                type: integer
+                                description: Entity identifier the tag attached to.
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The datetime when tag was created.
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The datetime when tag was last modified.
+                        start_at:
+                          type: string
+                          format: date-time
+                          description: Date the appointment will start. Must be in utc iso8601 date format. Setting this value does not automatically update the associated repair_order.due_in_at.
+                        end_at:
+                          type: string
+                          format: date-time
+                          description: Date the appointment will end. Must be in utc iso8601 date format. Setting this value does not automatically update the associated repair_order.due_out_at.
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: Date and time when record was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: Date and time when record was last updated.
+                  limit:
+                    type: integer
+                  limited:
+                    type: boolean
+                  total_count:
+                    type: integer
+                  current_page:
+                    type: integer
+                  total_pages:
+                    type: integer
+    post:
+      summary: Create an appointment
+      tags:
+      - Appointments
+      parameters: []
+      responses:
+        '201':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    id: 1
+                    created_at: '2026-06-09T14:21:25Z'
+                    updated_at: '2026-06-09T14:21:26Z'
+                    staff_id: 2
+                    title: My Appointment Title
+                    description: My Appointment Description
+                    shop_id: 1
+                    start_at: '2026-06-09T14:21:25Z'
+                    end_at: '2026-06-10T07:59:59Z'
+                    repair_order_id: 1
+                    integrator_tags: []
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: Unique identifier of this record.
+                  shop_id:
+                    type: integer
+                    description: A foreign key that points to the Shop this appointment was created in.
+                  staff_id:
+                    type: integer
+                    description: A foreign key which points to a Staff.id. Represents the technician assigned to this appointment.  If staff_id is not present, the appointment is unassigned.
+                  repair_order_id:
+                    type: integer
+                    description: A foreign key that points to the RepairOrder that this Note belongs to.
+                  description:
+                    type: string
+                    description: The description of the appointment.
+                  title:
+                    type: string
+                    description: The title of the appointment. Either repair_order_id or title must be set.
+                  integrator_tags:
+                    type: array
+                    description: Array of integrator tags.
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The tag primary key.
+                        taggable_type:
+                          type: string
+                          description: Entity type the tag attached to.
+                        name:
+                          type: string
+                          description: Entity type the tag attached to.
+                        value:
+                          type: integer
+                          description: Entity identifier the tag attached to.
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: The datetime when tag was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: The datetime when tag was last modified.
+                  start_at:
+                    type: string
+                    format: date-time
+                    description: Date the appointment will start. Must be in utc iso8601 date format. Setting this value does not automatically update the associated repair_order.due_in_at.
+                  end_at:
+                    type: string
+                    format: date-time
+                    description: Date the appointment will end. Must be in utc iso8601 date format. Setting this value does not automatically update the associated repair_order.due_out_at.
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was created.
+                  updated_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was last updated.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                shop_id:
+                  type: integer
+                  description: A foreign key that points to the Shop this appointment was created in.
+                staff_id:
+                  type: integer
+                  description: A foreign key which points to a Staff.id. Represents the technician assigned to this appointment.  If staff_id is not present, the appointment is unassigned.
+                repair_order_id:
+                  type: integer
+                  nullable: true
+                  description: A foreign key that points to the RepairOrder that this Note belongs to.
+                description:
+                  type: string
+                  nullable: true
+                  description: The description of the appointment.
+                title:
+                  type: string
+                  nullable: true
+                  description: The title of the appointment. Either repair_order_id or title must be set.
+                start_at:
+                  type: string
+                  format: date-time
+                  minLength: 1
+                  description: Date the appointment will start. Must be in utc iso8601 date format. Setting this value does not automatically update the associated repair_order.due_in_at.
+                end_at:
+                  type: string
+                  nullable: true
+                  format: date-time
+                  description: Date the appointment will end. Must be in utc iso8601 date format. Setting this value does not automatically update the associated repair_order.due_out_at.
+              required:
+              - start_at
+              - shop_id
+              example:
+                staff_id: 2
+                title: My Appointment Title
+                description: My Appointment Description
+                start_at: '2026-06-09T14:21:26Z'
+                repair_order_id: 1
+                shop_id: 1
+  /api/v1/tenants/{tenant_id}/appointments/{id}:
+    parameters:
+    - name: tenant_id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    - name: id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    get:
+      summary: Get a specific appointment by ID
+      tags:
+      - Appointments
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    id: 1
+                    created_at: '2026-06-09T14:21:30Z'
+                    updated_at: '2026-06-09T14:21:30Z'
+                    staff_id: 1
+                    title: title 3
+                    description: ''
+                    shop_id: 1
+                    start_at: '2026-06-09T14:21:30Z'
+                    end_at: '2026-06-10T07:59:59Z'
+                    repair_order_id: 1
+                    integrator_tags: []
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: Unique identifier of this record.
+                  shop_id:
+                    type: integer
+                    description: A foreign key that points to the Shop this appointment was created in.
+                  staff_id:
+                    type: integer
+                    description: A foreign key which points to a Staff.id. Represents the technician assigned to this appointment.  If staff_id is not present, the appointment is unassigned.
+                  repair_order_id:
+                    type: integer
+                    description: A foreign key that points to the RepairOrder that this Note belongs to.
+                  description:
+                    type: string
+                    description: The description of the appointment.
+                  title:
+                    type: string
+                    description: The title of the appointment. Either repair_order_id or title must be set.
+                  integrator_tags:
+                    type: array
+                    description: Array of integrator tags.
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The tag primary key.
+                        taggable_type:
+                          type: string
+                          description: Entity type the tag attached to.
+                        name:
+                          type: string
+                          description: Entity type the tag attached to.
+                        value:
+                          type: integer
+                          description: Entity identifier the tag attached to.
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: The datetime when tag was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: The datetime when tag was last modified.
+                  start_at:
+                    type: string
+                    format: date-time
+                    description: Date the appointment will start. Must be in utc iso8601 date format. Setting this value does not automatically update the associated repair_order.due_in_at.
+                  end_at:
+                    type: string
+                    format: date-time
+                    description: Date the appointment will end. Must be in utc iso8601 date format. Setting this value does not automatically update the associated repair_order.due_out_at.
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was created.
+                  updated_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was last updated.
+    put:
+      summary: Update a specific appointment
+      tags:
+      - Appointments
+      parameters: []
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    id: 1
+                    created_at: '2026-06-09T14:21:33Z'
+                    updated_at: '2022-10-23T02:05:00Z'
+                    staff_id: 1
+                    title: updated title
+                    description: updated description
+                    shop_id: 1
+                    start_at: '2026-06-09T14:21:33Z'
+                    end_at: '2026-06-10T07:59:59Z'
+                    repair_order_id: 1
+                    integrator_tags: []
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: Unique identifier of this record.
+                  shop_id:
+                    type: integer
+                    description: A foreign key that points to the Shop this appointment was created in.
+                  staff_id:
+                    type: integer
+                    description: A foreign key which points to a Staff.id. Represents the technician assigned to this appointment.  If staff_id is not present, the appointment is unassigned.
+                  repair_order_id:
+                    type: integer
+                    description: A foreign key that points to the RepairOrder that this Note belongs to.
+                  description:
+                    type: string
+                    description: The description of the appointment.
+                  title:
+                    type: string
+                    description: The title of the appointment. Either repair_order_id or title must be set.
+                  integrator_tags:
+                    type: array
+                    description: Array of integrator tags.
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The tag primary key.
+                        taggable_type:
+                          type: string
+                          description: Entity type the tag attached to.
+                        name:
+                          type: string
+                          description: Entity type the tag attached to.
+                        value:
+                          type: integer
+                          description: Entity identifier the tag attached to.
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: The datetime when tag was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: The datetime when tag was last modified.
+                  start_at:
+                    type: string
+                    format: date-time
+                    description: Date the appointment will start. Must be in utc iso8601 date format. Setting this value does not automatically update the associated repair_order.due_in_at.
+                  end_at:
+                    type: string
+                    format: date-time
+                    description: Date the appointment will end. Must be in utc iso8601 date format. Setting this value does not automatically update the associated repair_order.due_out_at.
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was created.
+                  updated_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was last updated.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                shop_id:
+                  type: integer
+                  description: A foreign key that points to the Shop this appointment was created in.
+                staff_id:
+                  type: integer
+                  description: A foreign key which points to a Staff.id. Represents the technician assigned to this appointment.  If staff_id is not present, the appointment is unassigned.
+                repair_order_id:
+                  type: integer
+                  nullable: true
+                  description: A foreign key that points to the RepairOrder that this Note belongs to.
+                description:
+                  type: string
+                  nullable: true
+                  description: The description of the appointment.
+                title:
+                  type: string
+                  nullable: true
+                  description: The title of the appointment. Either repair_order_id or title must be set.
+                start_at:
+                  type: string
+                  format: date-time
+                  minLength: 1
+                  description: Date the appointment will start. Must be in utc iso8601 date format. Setting this value does not automatically update the associated repair_order.due_in_at.
+                end_at:
+                  type: string
+                  nullable: true
+                  format: date-time
+                  description: Date the appointment will end. Must be in utc iso8601 date format. Setting this value does not automatically update the associated repair_order.due_out_at.
+              example:
+                title: updated title
+                description: updated description
+                repair_order_id: 1
+    delete:
+      summary: Delete a specific appointment
+      tags:
+      - Appointments
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value: {}
+              schema:
+                type: object
+                properties: {}
+  /api/v2/tenants/{tenant_id}/appointments:
+    parameters:
+    - name: tenant_id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    get:
+      summary: Get a list of all appointments
+      tags:
+      - Appointments
+      parameters:
+      - name: cursor
+        in: query
+        required: false
+        description: Encoded reference to the last record of the current page. It is empty for the first page.
+        example: ''
+        schema:
+          type: string
+      - name: per_page
+        in: query
+        required: false
+        example: '1'
+        schema:
+          type: integer
+      - name: shop_id
+        in: query
+        required: false
+        description: Filter response to include only appointments related to specified shop.
+        example: null
+        schema:
+          type: integer
+      - name: customer_id
+        in: query
+        required: false
+        description: Filter response to include only appointments related to work order with specified customer.
+        example: null
+        schema:
+          type: integer
+      - name: repair_order_id
+        in: query
+        required: false
+        description: Filter response to include only appointments related to specified repair order.
+        example: '1'
+        schema:
+          type: integer
+      - name: vehicle_id
+        in: query
+        required: false
+        description: Filter response to include only appointments related to work order with specified vehicle.
+        example: null
+        schema:
+          type: integer
+      - name: start_after
+        in: query
+        required: false
+        description: Filter response to include only appointments that start after specified date. Must be in utc iso8601 date format.
+        example: '2026-06-08T14:27:23Z'
+        schema:
+          type: string
+      - name: end_before
+        in: query
+        required: false
+        description: Filter response to include only appointments that end before specified date. Must be in utc iso8601 date format.
+        example: '2026-06-11T07:59:59Z'
+        schema:
+          type: string
+      - name: updated_after
+        in: query
+        required: false
+        format: date-time
+        description: Filter response to only include records updated after a given time
+        example: 2022-10-24T12%3A00%3A00%2B08%3A00
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    results:
+                    - id: 1
+                      created_at: '2026-06-09T14:27:23Z'
+                      updated_at: '2026-06-09T14:27:23Z'
+                      staff_id: 1
+                      title: title 6
+                      description: ''
+                      shop_id: 1
+                      start_at: '2026-06-09T14:27:23Z'
+                      end_at: '2026-06-10T07:59:59Z'
+                      repair_order_id: 1
+                      integrator_tags: []
+                    cursor: null
+                    limit: 1
+                    has_next_page: false
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: Unique identifier of this record.
+                        shop_id:
+                          type: integer
+                          description: A foreign key that points to the Shop this appointment was created in.
+                        staff_id:
+                          type: integer
+                          description: A foreign key which points to a Staff.id. Represents the technician assigned to this appointment.  If staff_id is not present, the appointment is unassigned.
+                        repair_order_id:
+                          type: integer
+                          description: A foreign key that points to the RepairOrder that this Note belongs to.
+                        description:
+                          type: string
+                          description: The description of the appointment.
+                        title:
+                          type: string
+                          description: The title of the appointment. Either repair_order_id or title must be set.
+                        integrator_tags:
+                          type: array
+                          description: Array of integrator tags.
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                description: The tag primary key.
+                              taggable_type:
+                                type: string
+                                description: Entity type the tag attached to.
+                              name:
+                                type: string
+                                description: Entity type the tag attached to.
+                              value:
+                                type: integer
+                                description: Entity identifier the tag attached to.
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The datetime when tag was created.
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The datetime when tag was last modified.
+                        start_at:
+                          type: string
+                          format: date-time
+                          description: Date the appointment will start. Must be in utc iso8601 date format. Setting this value does not automatically update the associated repair_order.due_in_at.
+                        end_at:
+                          type: string
+                          format: date-time
+                          description: Date the appointment will end. Must be in utc iso8601 date format. Setting this value does not automatically update the associated repair_order.due_out_at.
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: Date and time when record was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: Date and time when record was last updated.
+                  limit:
+                    type: integer
+                  cursor:
+                    type: string
+                    nullable: true
+                    description: A pagination token that allows you to fetch the next set of records in a paginated list.
+                  has_next_page:
+                    type: boolean
+                    description: A boolean indicating whether there are more pages available after the current one.
+    post:
+      summary: Create an appointment
+      tags:
+      - Appointments
+      parameters: []
+      responses:
+        '201':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    id: 1
+                    created_at: '2026-06-09T14:27:26Z'
+                    updated_at: '2026-06-09T14:27:26Z'
+                    staff_id: 2
+                    title: My Appointment Title
+                    description: My Appointment Description
+                    shop_id: 1
+                    start_at: '2026-06-09T14:27:26Z'
+                    end_at: '2026-06-10T07:59:59Z'
+                    repair_order_id: 1
+                    integrator_tags: []
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: Unique identifier of this record.
+                  shop_id:
+                    type: integer
+                    description: A foreign key that points to the Shop this appointment was created in.
+                  staff_id:
+                    type: integer
+                    description: A foreign key which points to a Staff.id. Represents the technician assigned to this appointment.  If staff_id is not present, the appointment is unassigned.
+                  repair_order_id:
+                    type: integer
+                    description: A foreign key that points to the RepairOrder that this Note belongs to.
+                  description:
+                    type: string
+                    description: The description of the appointment.
+                  title:
+                    type: string
+                    description: The title of the appointment. Either repair_order_id or title must be set.
+                  integrator_tags:
+                    type: array
+                    description: Array of integrator tags.
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The tag primary key.
+                        taggable_type:
+                          type: string
+                          description: Entity type the tag attached to.
+                        name:
+                          type: string
+                          description: Entity type the tag attached to.
+                        value:
+                          type: integer
+                          description: Entity identifier the tag attached to.
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: The datetime when tag was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: The datetime when tag was last modified.
+                  start_at:
+                    type: string
+                    format: date-time
+                    description: Date the appointment will start. Must be in utc iso8601 date format. Setting this value does not automatically update the associated repair_order.due_in_at.
+                  end_at:
+                    type: string
+                    format: date-time
+                    description: Date the appointment will end. Must be in utc iso8601 date format. Setting this value does not automatically update the associated repair_order.due_out_at.
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was created.
+                  updated_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was last updated.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                shop_id:
+                  type: integer
+                  description: A foreign key that points to the Shop this appointment was created in.
+                staff_id:
+                  type: integer
+                  description: A foreign key which points to a Staff.id. Represents the technician assigned to this appointment.  If staff_id is not present, the appointment is unassigned.
+                repair_order_id:
+                  type: integer
+                  nullable: true
+                  description: A foreign key that points to the RepairOrder that this Note belongs to.
+                description:
+                  type: string
+                  nullable: true
+                  description: The description of the appointment.
+                title:
+                  type: string
+                  nullable: true
+                  description: The title of the appointment. Either repair_order_id or title must be set.
+                start_at:
+                  type: string
+                  format: date-time
+                  minLength: 1
+                  description: Date the appointment will start. Must be in utc iso8601 date format. Setting this value does not automatically update the associated repair_order.due_in_at.
+                end_at:
+                  type: string
+                  nullable: true
+                  format: date-time
+                  description: Date the appointment will end. Must be in utc iso8601 date format. Setting this value does not automatically update the associated repair_order.due_out_at.
+              required:
+              - start_at
+              - shop_id
+              example:
+                staff_id: 2
+                title: My Appointment Title
+                description: My Appointment Description
+                start_at: '2026-06-09T14:27:26Z'
+                repair_order_id: 1
+                shop_id: 1
+  /api/v2/tenants/{tenant_id}/appointments/{id}:
+    parameters:
+    - name: tenant_id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    - name: id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    get:
+      summary: Get a specific appointment by ID
+      tags:
+      - Appointments
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    id: 1
+                    created_at: '2026-06-09T14:27:29Z'
+                    updated_at: '2026-06-09T14:27:29Z'
+                    staff_id: 1
+                    title: title 8
+                    description: ''
+                    shop_id: 1
+                    start_at: '2026-06-09T14:27:29Z'
+                    end_at: '2026-06-10T07:59:59Z'
+                    repair_order_id: 1
+                    integrator_tags: []
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: Unique identifier of this record.
+                  shop_id:
+                    type: integer
+                    description: A foreign key that points to the Shop this appointment was created in.
+                  staff_id:
+                    type: integer
+                    description: A foreign key which points to a Staff.id. Represents the technician assigned to this appointment.  If staff_id is not present, the appointment is unassigned.
+                  repair_order_id:
+                    type: integer
+                    description: A foreign key that points to the RepairOrder that this Note belongs to.
+                  description:
+                    type: string
+                    description: The description of the appointment.
+                  title:
+                    type: string
+                    description: The title of the appointment. Either repair_order_id or title must be set.
+                  integrator_tags:
+                    type: array
+                    description: Array of integrator tags.
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The tag primary key.
+                        taggable_type:
+                          type: string
+                          description: Entity type the tag attached to.
+                        name:
+                          type: string
+                          description: Entity type the tag attached to.
+                        value:
+                          type: integer
+                          description: Entity identifier the tag attached to.
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: The datetime when tag was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: The datetime when tag was last modified.
+                  start_at:
+                    type: string
+                    format: date-time
+                    description: Date the appointment will start. Must be in utc iso8601 date format. Setting this value does not automatically update the associated repair_order.due_in_at.
+                  end_at:
+                    type: string
+                    format: date-time
+                    description: Date the appointment will end. Must be in utc iso8601 date format. Setting this value does not automatically update the associated repair_order.due_out_at.
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was created.
+                  updated_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was last updated.
+    put:
+      summary: Update a specific appointment
+      tags:
+      - Appointments
+      parameters: []
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    id: 1
+                    created_at: '2026-06-09T14:27:32Z'
+                    updated_at: '2022-10-23T02:05:00Z'
+                    staff_id: 1
+                    title: updated title
+                    description: updated description
+                    shop_id: 1
+                    start_at: '2026-06-09T14:27:32Z'
+                    end_at: '2026-06-10T07:59:59Z'
+                    repair_order_id: 1
+                    integrator_tags: []
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: Unique identifier of this record.
+                  shop_id:
+                    type: integer
+                    description: A foreign key that points to the Shop this appointment was created in.
+                  staff_id:
+                    type: integer
+                    description: A foreign key which points to a Staff.id. Represents the technician assigned to this appointment.  If staff_id is not present, the appointment is unassigned.
+                  repair_order_id:
+                    type: integer
+                    description: A foreign key that points to the RepairOrder that this Note belongs to.
+                  description:
+                    type: string
+                    description: The description of the appointment.
+                  title:
+                    type: string
+                    description: The title of the appointment. Either repair_order_id or title must be set.
+                  integrator_tags:
+                    type: array
+                    description: Array of integrator tags.
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The tag primary key.
+                        taggable_type:
+                          type: string
+                          description: Entity type the tag attached to.
+                        name:
+                          type: string
+                          description: Entity type the tag attached to.
+                        value:
+                          type: integer
+                          description: Entity identifier the tag attached to.
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: The datetime when tag was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: The datetime when tag was last modified.
+                  start_at:
+                    type: string
+                    format: date-time
+                    description: Date the appointment will start. Must be in utc iso8601 date format. Setting this value does not automatically update the associated repair_order.due_in_at.
+                  end_at:
+                    type: string
+                    format: date-time
+                    description: Date the appointment will end. Must be in utc iso8601 date format. Setting this value does not automatically update the associated repair_order.due_out_at.
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was created.
+                  updated_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was last updated.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                shop_id:
+                  type: integer
+                  description: A foreign key that points to the Shop this appointment was created in.
+                staff_id:
+                  type: integer
+                  description: A foreign key which points to a Staff.id. Represents the technician assigned to this appointment.  If staff_id is not present, the appointment is unassigned.
+                repair_order_id:
+                  type: integer
+                  nullable: true
+                  description: A foreign key that points to the RepairOrder that this Note belongs to.
+                description:
+                  type: string
+                  nullable: true
+                  description: The description of the appointment.
+                title:
+                  type: string
+                  nullable: true
+                  description: The title of the appointment. Either repair_order_id or title must be set.
+                start_at:
+                  type: string
+                  format: date-time
+                  minLength: 1
+                  description: Date the appointment will start. Must be in utc iso8601 date format. Setting this value does not automatically update the associated repair_order.due_in_at.
+                end_at:
+                  type: string
+                  nullable: true
+                  format: date-time
+                  description: Date the appointment will end. Must be in utc iso8601 date format. Setting this value does not automatically update the associated repair_order.due_out_at.
+              example:
+                title: updated title
+                description: updated description
+                repair_order_id: 1
+    delete:
+      summary: Delete a specific appointment
+      tags:
+      - Appointments
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value: {}
+              schema:
+                type: object
+                properties: {}
+components:
+  securitySchemes:
+    api_partner_id:
+      type: apiKey
+      name: X-Api-Partner-Id
+      in: header
+    api_secret:
+      type: apiKey
+      name: X-Api-Secret
+      in: header

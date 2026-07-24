@@ -1,0 +1,223 @@
+openapi: 3.0.1
+info:
+  title: API V1 API Partners Categories API
+  version: v1
+  contact:
+    name: API Support
+    email: support@shop-ware.com
+security:
+- api_partner_id: []
+  api_secret: []
+tags:
+- name: Categories
+paths:
+  /api/v1/tenants/{tenant_id}/categories:
+    parameters:
+    - name: tenant_id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    get:
+      summary: Get a list of all categories
+      tags:
+      - Categories
+      parameters:
+      - name: updated_after
+        in: query
+        required: false
+        format: date-time
+        description: Filter response to only include records updated after a given time
+        example: 2022-10-24T12%3A00%3A00%2B08%3A00
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    results:
+                    - id: 3
+                      created_at: '2026-06-09T14:21:52Z'
+                      updated_at: '2026-06-09T14:21:52Z'
+                      text: Repair
+                      integrator_tags: []
+                    - id: 2
+                      created_at: '2026-06-09T14:21:52Z'
+                      updated_at: '2026-06-09T14:21:52Z'
+                      text: Diagnosis
+                      integrator_tags: []
+                    - id: 1
+                      created_at: '2026-06-09T14:21:52Z'
+                      updated_at: '2026-06-09T14:21:52Z'
+                      text: Maintenance
+                      integrator_tags:
+                      - id: 1
+                        created_at: '2026-06-09T14:21:52Z'
+                        updated_at: '2026-06-09T14:21:52Z'
+                        taggable_type: Category
+                        taggable_id: 1
+                        name: tag_name
+                        value: tag_value
+                    limit: 3
+                    limited: false
+                    total_count: 3
+                    current_page: 1
+                    total_pages: 1
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: Unique identifier of this record.
+                        text:
+                          type: string
+                          description: The category description.
+                        integrator_tags:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                description: The tag primary key.
+                              taggable_type:
+                                type: string
+                                description: Entity type the tag attached to.
+                              taggable_id:
+                                type: integer
+                                description: Entity identifier the tag attached to.
+                              name:
+                                type: string
+                                description: Tag Name.
+                              value:
+                                type: string
+                                description: Tag Value.
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The date and time when tag was created.
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The date and time when tag was last updated.
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: Date and time when record was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: Date and time when record was last updated.
+                  limit:
+                    type: integer
+                  limited:
+                    type: boolean
+                  total_count:
+                    type: integer
+                  current_page:
+                    type: integer
+                  total_pages:
+                    type: integer
+  /api/v1/tenants/{tenant_id}/categories/{id}:
+    parameters:
+    - name: tenant_id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    - name: id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    get:
+      summary: Get a specific category by ID
+      tags:
+      - Categories
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    id: 1
+                    created_at: '2026-06-09T14:21:55Z'
+                    updated_at: '2026-06-09T14:21:55Z'
+                    text: Maintenance
+                    integrator_tags:
+                    - id: 1
+                      created_at: '2026-06-09T14:21:55Z'
+                      updated_at: '2026-06-09T14:21:55Z'
+                      taggable_type: Category
+                      taggable_id: 1
+                      name: tag_name
+                      value: tag_value
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: Unique identifier of this record.
+                  text:
+                    type: string
+                    description: The category description.
+                  integrator_tags:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The tag primary key.
+                        taggable_type:
+                          type: string
+                          description: Entity type the tag attached to.
+                        taggable_id:
+                          type: integer
+                          description: Entity identifier the tag attached to.
+                        name:
+                          type: string
+                          description: Tag Name.
+                        value:
+                          type: string
+                          description: Tag Value.
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when tag was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when tag was last updated.
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was created.
+                  updated_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was last updated.
+components:
+  securitySchemes:
+    api_partner_id:
+      type: apiKey
+      name: X-Api-Partner-Id
+      in: header
+    api_secret:
+      type: apiKey
+      name: X-Api-Secret
+      in: header

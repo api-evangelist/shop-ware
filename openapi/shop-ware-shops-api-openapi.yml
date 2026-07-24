@@ -1,0 +1,351 @@
+openapi: 3.0.1
+info:
+  title: API V1 API Partners Shops API
+  version: v1
+  contact:
+    name: API Support
+    email: support@shop-ware.com
+security:
+- api_partner_id: []
+  api_secret: []
+tags:
+- name: Shops
+paths:
+  /api/v1/tenants/{tenant_id}/shops:
+    parameters:
+    - name: tenant_id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    get:
+      summary: Get a list of all shops
+      tags:
+      - Shops
+      parameters:
+      - name: page
+        in: query
+        required: false
+        example: '1'
+        schema:
+          type: integer
+      - name: per_page
+        in: query
+        required: false
+        example: '30'
+        schema:
+          type: integer
+      - name: updated_after
+        in: query
+        required: false
+        format: date-time
+        description: Filter response to only include records updated after a given time
+        example: 2022-10-24T12%3A00%3A00%2B08%3A00
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    results:
+                    - id: 1
+                      created_at: '2026-06-10T14:25:47Z'
+                      updated_at: '2026-06-10T14:25:47Z'
+                      identifier: '02'
+                      name: Shop 02
+                      address: 123 Shop Street
+                      phone: (111) 111-1111
+                      time_zone: Pacific Time (US & Canada)
+                      service_desk_email: shop02@example.com
+                      avg_labor_cost_cents: 5000
+                      part_tax_rate: 4.4
+                      labor_tax_rate: 3.3
+                      hazmat_tax_rate: 2.2
+                      sublet_tax_rate: 1.1
+                      supply_fee_rate: 0.0
+                      part_supply_fee_rate: 0.0
+                      supply_fee_name: null
+                      supply_fee_cap_cents: 0.0
+                      mycarfax_enabled: false
+                      live_at: '2026-06-08T14:25:47Z'
+                      integrator_tags:
+                      - id: 1
+                        created_at: '2026-06-09T14:25:47Z'
+                        updated_at: '2026-06-09T14:25:47Z'
+                        taggable_type: Shop
+                        taggable_id: 1
+                        name: tag_name
+                        value: tag_value
+                    limit: 1
+                    limited: false
+                    total_count: 1
+                    current_page: 1
+                    total_pages: 1
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: Unique identifier of this record.
+                        identifier:
+                          type: string
+                          description: A name used to uniquely identify a shop.
+                        name:
+                          type: string
+                          description: Shop`s name.
+                        address:
+                          type: string
+                          description: Shop`s address.
+                        phone:
+                          type: string
+                          description: Shop`s phone.
+                        live_at:
+                          type: string
+                          format: date-time
+                          description: The datetime the Shop went live.
+                        time_zone:
+                          type: string
+                          description: Shop`s timezone
+                        service_desk_email:
+                          type: string
+                          description: Shop`s service desk email.
+                        avg_labor_cost_cents:
+                          type: number
+                          description: Average labor cost cents. It used to estimate Labor GP % and GP/hr on unassigned labor lines or for technicians that don’t have a pay structure set up.
+                        part_tax_rate:
+                          type: number
+                          description: Part tax rate.
+                        labor_tax_rate:
+                          type: number
+                          description: Labor tax rate.
+                        hazmat_tax_rate:
+                          type: number
+                          description: Hazmat tax rate.
+                        supply_fee_rate:
+                          type: number
+                          description: Supply fee rate for labor.
+                        part_supply_fee_rate:
+                          type: number
+                          description: Supply fee rate for parts.
+                        supply_fee_name:
+                          type: string
+                          description: Supply fee name.
+                          nullable: true
+                        sublet_tax_rate:
+                          type: number
+                          description: Supply tax rate.
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: Date and time when record was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: Date and time when record was last updated.
+                        mycarfax_enabled:
+                          type: boolean
+                          description: true if the shop has Carfax enabled, false if Carfax disabled.
+                        integrator_tags:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                description: The tag primary key.
+                              taggable_type:
+                                type: string
+                                description: Entity type the tag attached to.
+                              taggable_id:
+                                type: integer
+                                description: Entity identifier the tag attached to.
+                              name:
+                                type: string
+                                description: Tag Name.
+                              value:
+                                type: string
+                                description: Tag Value.
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The date and time when tag was created.
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The date and time when tag was last updated.
+                  limit:
+                    type: integer
+                  limited:
+                    type: boolean
+                  total_count:
+                    type: integer
+                  current_page:
+                    type: integer
+                  total_pages:
+                    type: integer
+  /api/v1/tenants/{tenant_id}/shops/{id}:
+    parameters:
+    - name: tenant_id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    - name: id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    get:
+      summary: Get a specific shop by ID
+      tags:
+      - Shops
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    id: 1
+                    created_at: '2026-06-10T14:25:50Z'
+                    updated_at: '2026-06-10T14:25:50Z'
+                    identifier: '02'
+                    name: Shop 02
+                    address: 123 Shop Street
+                    phone: (111) 111-1111
+                    time_zone: Pacific Time (US & Canada)
+                    service_desk_email: shop02@example.com
+                    avg_labor_cost_cents: 5000
+                    part_tax_rate: 4.4
+                    labor_tax_rate: 3.3
+                    hazmat_tax_rate: 2.2
+                    sublet_tax_rate: 1.1
+                    supply_fee_rate: 0.0
+                    part_supply_fee_rate: 0.0
+                    supply_fee_name: null
+                    supply_fee_cap_cents: 0.0
+                    mycarfax_enabled: false
+                    live_at: '2026-06-08T14:25:50Z'
+                    integrator_tags:
+                    - id: 1
+                      created_at: '2026-06-09T14:25:50Z'
+                      updated_at: '2026-06-09T14:25:50Z'
+                      taggable_type: Shop
+                      taggable_id: 1
+                      name: tag_name
+                      value: tag_value
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: Unique identifier of this record.
+                  identifier:
+                    type: string
+                    description: A name used to uniquely identify a shop.
+                  name:
+                    type: string
+                    description: Shop`s name.
+                  address:
+                    type: string
+                    description: Shop`s address.
+                  phone:
+                    type: string
+                    description: Shop`s phone.
+                  live_at:
+                    type: string
+                    format: date-time
+                    description: The datetime the Shop went live.
+                  time_zone:
+                    type: string
+                    description: Shop`s timezone
+                  service_desk_email:
+                    type: string
+                    description: Shop`s service desk email.
+                  avg_labor_cost_cents:
+                    type: number
+                    description: Average labor cost cents. It used to estimate Labor GP % and GP/hr on unassigned labor lines or for technicians that don’t have a pay structure set up.
+                  part_tax_rate:
+                    type: number
+                    description: Part tax rate.
+                  labor_tax_rate:
+                    type: number
+                    description: Labor tax rate.
+                  hazmat_tax_rate:
+                    type: number
+                    description: Hazmat tax rate.
+                  supply_fee_rate:
+                    type: number
+                    description: Supply fee rate for labor.
+                  part_supply_fee_rate:
+                    type: number
+                    description: Supply fee rate for parts.
+                  supply_fee_name:
+                    type: string
+                    description: Supply fee name.
+                    nullable: true
+                  sublet_tax_rate:
+                    type: number
+                    description: Supply tax rate.
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was created.
+                  updated_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was last updated.
+                  mycarfax_enabled:
+                    type: boolean
+                    description: true if the shop has Carfax enabled, false if Carfax disabled.
+                  integrator_tags:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The tag primary key.
+                        taggable_type:
+                          type: string
+                          description: Entity type the tag attached to.
+                        taggable_id:
+                          type: integer
+                          description: Entity identifier the tag attached to.
+                        name:
+                          type: string
+                          description: Tag Name.
+                        value:
+                          type: string
+                          description: Tag Value.
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when tag was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when tag was last updated.
+components:
+  securitySchemes:
+    api_partner_id:
+      type: apiKey
+      name: X-Api-Partner-Id
+      in: header
+    api_secret:
+      type: apiKey
+      name: X-Api-Secret
+      in: header

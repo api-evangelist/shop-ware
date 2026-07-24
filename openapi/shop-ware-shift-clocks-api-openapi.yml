@@ -1,0 +1,139 @@
+openapi: 3.0.1
+info:
+  title: API V1 API Partners Shift clocks API
+  version: v1
+  contact:
+    name: API Support
+    email: support@shop-ware.com
+security:
+- api_partner_id: []
+  api_secret: []
+tags:
+- name: Shift clocks
+paths:
+  /api/v1/tenants/{tenant_id}/time_clocks:
+    parameters:
+    - name: tenant_id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    get:
+      summary: Get shift clocks
+      tags:
+      - Shift clocks
+      parameters:
+      - name: start_after
+        in: query
+        required: false
+        format: date-time
+        description: Filter to include records with clocked_in_at after specified date and time in ISO 8601 format
+        example: '2022-10-12T12:30:00+00:00'
+        schema:
+          type: string
+      - name: end_before
+        in: query
+        required: false
+        format: date-time
+        description: Filter to include records with clocked_out_at before specified date and time in ISO 8601 format
+        example: '2022-10-14T12:30:00+00:00'
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        example: '1'
+        schema:
+          type: integer
+      - name: per_page
+        in: query
+        required: false
+        example: '30'
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                when not passing start_after and end_before params:
+                  value:
+                    results:
+                    - staff_id: 1
+                      clock_in_at: '2022-10-12T00:00:00-08:00'
+                      clock_out_at: '2022-10-12T04:00:00-08:00'
+                    - staff_id: 1
+                      clock_in_at: '2022-10-12T05:00:00-08:00'
+                      clock_out_at: '2022-10-12T09:00:00-08:00'
+                    - staff_id: 1
+                      clock_in_at: '2022-10-13T00:00:00-08:00'
+                      clock_out_at: '2022-10-13T08:00:00-08:00'
+                    - staff_id: 1
+                      clock_in_at: '2022-10-14T00:00:00-08:00'
+                      clock_out_at: '2022-10-14T04:00:00-08:00'
+                    - staff_id: 1
+                      clock_in_at: '2022-10-14T06:00:00-08:00'
+                      clock_out_at: '2022-10-14T10:00:00-08:00'
+                    limit: 5
+                    limited: false
+                    total_count: 5
+                    current_page: 1
+                    total_pages: 1
+                when passing start_after and end_before params:
+                  value:
+                    results:
+                    - staff_id: 1
+                      clock_in_at: '2022-10-12T05:00:00-08:00'
+                      clock_out_at: '2022-10-12T09:00:00-08:00'
+                    - staff_id: 1
+                      clock_in_at: '2022-10-13T00:00:00-08:00'
+                      clock_out_at: '2022-10-13T08:00:00-08:00'
+                    - staff_id: 1
+                      clock_in_at: '2022-10-14T00:00:00-08:00'
+                      clock_out_at: '2022-10-14T04:00:00-08:00'
+                    limit: 3
+                    limited: false
+                    total_count: 3
+                    current_page: 1
+                    total_pages: 1
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        staff_id:
+                          type: integer
+                          description: A foreign key that points to the Staff this Time Clock is belongs to.
+                        clock_in_at:
+                          type: string
+                          format: date-time
+                          description: Date and time when staff clocked in.
+                        clock_out_at:
+                          type: string
+                          format: date-time
+                          description: Date and time when staff clocked out.
+                  limit:
+                    type: integer
+                  limited:
+                    type: boolean
+                  total_count:
+                    type: integer
+                  current_page:
+                    type: integer
+                  total_pages:
+                    type: integer
+components:
+  securitySchemes:
+    api_partner_id:
+      type: apiKey
+      name: X-Api-Partner-Id
+      in: header
+    api_secret:
+      type: apiKey
+      name: X-Api-Secret
+      in: header

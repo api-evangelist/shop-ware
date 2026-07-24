@@ -1,0 +1,297 @@
+openapi: 3.0.1
+info:
+  title: API V1 API Partners Payments API
+  version: v1
+  contact:
+    name: API Support
+    email: support@shop-ware.com
+security:
+- api_partner_id: []
+  api_secret: []
+tags:
+- name: Payments
+paths:
+  /api/v1/tenants/{tenant_id}/payments/customer_payment_types:
+    parameters:
+    - name: tenant_id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    get:
+      summary: Get custom payment types
+      tags:
+      - Payments
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                  - Coupon
+                  - Special Offer
+              schema:
+                type: array
+                items:
+                  type: string
+  /api/v1/tenants/{tenant_id}/payments:
+    parameters:
+    - name: tenant_id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    get:
+      summary: Get a list of all payments
+      tags:
+      - Payments
+      parameters:
+      - name: page
+        in: query
+        example: '1'
+        schema:
+          type: integer
+      - name: per_page
+        in: query
+        example: '30'
+        schema:
+          type: integer
+      - name: updated_after
+        in: query
+        required: false
+        format: date-time
+        description: Filter response to only include records updated after a given time
+        example: 2022-10-24T12%3A00%3A00%2B08%3A00
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    results:
+                    - id: 1
+                      created_at: '2026-06-09T14:24:32Z'
+                      updated_at: '2026-06-09T14:24:32Z'
+                      repair_order_id: 1
+                      payment_type: Credit Card - Visa
+                      payment_type_details:
+                        type: Credit Card
+                        name: Visa
+                      notes: Customer made partial payment
+                      amount_cents: 21849
+                      integrator_tags:
+                      - id: 1
+                        created_at: '2026-06-09T14:24:32Z'
+                        updated_at: '2026-06-09T14:24:32Z'
+                        taggable_type: Payment
+                        taggable_id: 1
+                        name: tag_name
+                        value: tag_value
+                    limit: 1
+                    limited: false
+                    total_count: 1
+                    current_page: 1
+                    total_pages: 1
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: Unique identifier of this record.
+                        repair_order_id:
+                          type: integer
+                          description: ID of the associated repair order.
+                        payment_type:
+                          type: string
+                          description: 'Type of the payment and the name associated. Example: ''Credit Card - VISA''.'
+                        payment_type_details:
+                          type: object
+                          properties:
+                            type:
+                              type: string
+                              description: 'Type of the payment: ''Credit Card'', ''Check'', ''Cash'', ''Other'''
+                            name:
+                              type: string
+                              description: Name of the payment type. Only present if type is 'Credit Card' or 'Other'.Must be at must 25 characters and alphanumeric, if present.
+                        notes:
+                          type: string
+                          description: Notes about the payment.
+                        amount_cents:
+                          type: integer
+                          description: Amount of the payment in cents.
+                        integrator_tags:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                description: The tag primary key.
+                              taggable_type:
+                                type: string
+                                description: Entity type the tag attached to.
+                              taggable_id:
+                                type: integer
+                                description: Entity identifier the tag attached to.
+                              name:
+                                type: string
+                                description: Tag Name.
+                              value:
+                                type: string
+                                description: Tag Value.
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The date and time when tag was created.
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The date and time when tag was last updated.
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: Date and time when record was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: Date and time when record was last updated.
+                  limit:
+                    type: integer
+                  limited:
+                    type: boolean
+                  total_count:
+                    type: integer
+                  current_page:
+                    type: integer
+                  total_pages:
+                    type: integer
+  /api/v1/tenants/{tenant_id}/payments/{id}:
+    parameters:
+    - name: tenant_id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    - name: id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    get:
+      summary: Get a specific payment by ID
+      tags:
+      - Payments
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    id: 1
+                    created_at: '2026-06-09T14:24:38Z'
+                    updated_at: '2026-06-09T14:24:38Z'
+                    repair_order_id: 1
+                    payment_type: Credit Card - Visa
+                    payment_type_details:
+                      type: Credit Card
+                      name: Visa
+                    notes: Customer made partial payment
+                    amount_cents: 21849
+                    integrator_tags:
+                    - id: 1
+                      created_at: '2026-06-09T14:24:38Z'
+                      updated_at: '2026-06-09T14:24:38Z'
+                      taggable_type: Payment
+                      taggable_id: 1
+                      name: tag_name
+                      value: tag_value
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: Unique identifier of this record.
+                  repair_order_id:
+                    type: integer
+                    description: ID of the associated repair order.
+                  payment_type:
+                    type: string
+                    description: 'Type of the payment and the name associated. Example: ''Credit Card - VISA''.'
+                  payment_type_details:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        description: 'Type of the payment: ''Credit Card'', ''Check'', ''Cash'', ''Other'''
+                      name:
+                        type: string
+                        description: Name of the payment type. Only present if type is 'Credit Card' or 'Other'.Must be at must 25 characters and alphanumeric, if present.
+                  notes:
+                    type: string
+                    description: Notes about the payment.
+                  amount_cents:
+                    type: integer
+                    description: Amount of the payment in cents.
+                  integrator_tags:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The tag primary key.
+                        taggable_type:
+                          type: string
+                          description: Entity type the tag attached to.
+                        taggable_id:
+                          type: integer
+                          description: Entity identifier the tag attached to.
+                        name:
+                          type: string
+                          description: Tag Name.
+                        value:
+                          type: string
+                          description: Tag Value.
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when tag was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when tag was last updated.
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was created.
+                  updated_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was last updated.
+components:
+  securitySchemes:
+    api_partner_id:
+      type: apiKey
+      name: X-Api-Partner-Id
+      in: header
+    api_secret:
+      type: apiKey
+      name: X-Api-Secret
+      in: header

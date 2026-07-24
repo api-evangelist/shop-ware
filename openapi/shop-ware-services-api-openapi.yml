@@ -1,0 +1,1347 @@
+openapi: 3.0.1
+info:
+  title: API V1 API Partners Services API
+  version: v1
+  contact:
+    name: API Support
+    email: support@shop-ware.com
+security:
+- api_partner_id: []
+  api_secret: []
+tags:
+- name: Services
+paths:
+  /api/v1/tenants/{tenant_id}/services:
+    parameters:
+    - name: tenant_id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    get:
+      summary: Get a list of all services
+      tags:
+      - Services
+      parameters:
+      - name: repair_order_id
+        in: query
+        required: false
+        description: A foreign key which points to a WorkOrder.id. Represents the repair order related with this service.
+        example: null
+        schema:
+          type: integer
+      - name: technician_id
+        in: query
+        required: false
+        description: Filter response to only include Services with labors assigned to this Technican ID.
+        example: null
+        schema:
+          type: integer
+      - name: updated_after
+        in: query
+        required: false
+        format: date-time
+        description: Filter response to only include Services updated after a given time
+        example: '2026-09-08T14:25:34Z'
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                without filter:
+                  value:
+                    results:
+                    - id: 2
+                      created_at: '2026-09-09T14:25:23Z'
+                      updated_at: '2026-09-09T14:25:23Z'
+                      title: Test Service
+                      completed: false
+                      category_id: null
+                      canned_job_id: null
+                      comment: No comment
+                      fixed_price_cents: null
+                      fixed_price_labor_total_cents: null
+                      is_fixed_price_service: false
+                      labor_rate_cents: 10000
+                      repair_order_id: 2
+                      completed_at: null
+                      last_completed_at: null
+                      labors:
+                      - id: 2
+                        created_at: '2026-09-09T14:25:23Z'
+                        updated_at: '2026-09-09T14:25:23Z'
+                        name: Test labor 6
+                        technician_id: null
+                        taxable: true
+                        hours: 1.0
+                      parts:
+                      - id: 2
+                        created_at: '2026-09-09T14:25:23Z'
+                        updated_at: '2026-09-09T14:25:23Z'
+                        brand: null
+                        description: null
+                        number: null
+                        quoted_price_cents: null
+                        cost_cents: null
+                        part_inventory_id: 2
+                        taxable: true
+                        sell_price_cents: null
+                        quantity: 1.0
+                      hazmats:
+                      - id: 2
+                        created_at: '2026-09-09T14:25:23Z'
+                        updated_at: '2026-09-09T14:25:23Z'
+                        name: Test hazmat fee 6
+                        fee_cents: 25
+                        taxable: true
+                        quantity: 1.0
+                      sublets:
+                      - id: 2
+                        created_at: '2026-09-09T14:25:23Z'
+                        updated_at: '2026-09-09T14:25:23Z'
+                        name: Test sublet 6
+                        price_cents: 50
+                        cost_cents: null
+                        provider: ''
+                        invoice_number: '1111'
+                        description: null
+                        taxable: true
+                        vendor_id: null
+                        invoice_date: null
+                      inspections:
+                      - id: 2
+                        created_at: '2026-09-09T14:25:23Z'
+                        updated_at: '2026-09-09T14:25:23Z'
+                        name: Test inspection 6
+                        state: null
+                    - id: 1
+                      created_at: '2026-06-09T14:25:23Z'
+                      updated_at: '2026-06-09T14:25:23Z'
+                      title: Test Service
+                      completed: false
+                      category_id: null
+                      canned_job_id: null
+                      comment: No comment
+                      fixed_price_cents: null
+                      fixed_price_labor_total_cents: null
+                      is_fixed_price_service: false
+                      labor_rate_cents: 10000
+                      repair_order_id: 1
+                      completed_at: null
+                      last_completed_at: null
+                      labors:
+                      - id: 1
+                        created_at: '2026-06-09T14:25:23Z'
+                        updated_at: '2026-06-09T14:25:23Z'
+                        name: Test labor 5
+                        technician_id: null
+                        taxable: true
+                        hours: 1.0
+                      parts:
+                      - id: 1
+                        created_at: '2026-06-09T14:25:23Z'
+                        updated_at: '2026-06-09T14:25:23Z'
+                        brand: null
+                        description: null
+                        number: null
+                        quoted_price_cents: null
+                        cost_cents: null
+                        part_inventory_id: 1
+                        taxable: true
+                        sell_price_cents: null
+                        quantity: 1.0
+                      hazmats:
+                      - id: 1
+                        created_at: '2026-06-09T14:25:23Z'
+                        updated_at: '2026-06-09T14:25:23Z'
+                        name: Test hazmat fee 5
+                        fee_cents: 25
+                        taxable: true
+                        quantity: 1.0
+                      sublets:
+                      - id: 1
+                        created_at: '2026-06-09T14:25:23Z'
+                        updated_at: '2026-06-09T14:25:23Z'
+                        name: Test sublet 5
+                        price_cents: 50
+                        cost_cents: null
+                        provider: ''
+                        invoice_number: '1111'
+                        description: null
+                        taxable: true
+                        vendor_id: null
+                        invoice_date: null
+                      inspections:
+                      - id: 1
+                        created_at: '2026-06-09T14:25:23Z'
+                        updated_at: '2026-06-09T14:25:23Z'
+                        name: Test inspection 5
+                        state: null
+                    limit: 2
+                    limited: false
+                    total_count: 2
+                    current_page: 1
+                    total_pages: 1
+                filtering by repair_order_id:
+                  value:
+                    results:
+                    - id: 1
+                      created_at: '2026-06-09T14:25:26Z'
+                      updated_at: '2026-06-09T14:25:27Z'
+                      title: Test Service
+                      completed: false
+                      category_id: null
+                      canned_job_id: null
+                      comment: No comment
+                      fixed_price_cents: null
+                      fixed_price_labor_total_cents: null
+                      is_fixed_price_service: false
+                      labor_rate_cents: 10000
+                      repair_order_id: 1
+                      completed_at: null
+                      last_completed_at: null
+                      labors:
+                      - id: 1
+                        created_at: '2026-06-09T14:25:27Z'
+                        updated_at: '2026-06-09T14:25:27Z'
+                        name: Test labor 7
+                        technician_id: null
+                        taxable: true
+                        hours: 1.0
+                      parts:
+                      - id: 1
+                        created_at: '2026-06-09T14:25:27Z'
+                        updated_at: '2026-06-09T14:25:27Z'
+                        brand: null
+                        description: null
+                        number: null
+                        quoted_price_cents: null
+                        cost_cents: null
+                        part_inventory_id: 1
+                        taxable: true
+                        sell_price_cents: null
+                        quantity: 1.0
+                      hazmats:
+                      - id: 1
+                        created_at: '2026-06-09T14:25:27Z'
+                        updated_at: '2026-06-09T14:25:27Z'
+                        name: Test hazmat fee 7
+                        fee_cents: 25
+                        taxable: true
+                        quantity: 1.0
+                      sublets:
+                      - id: 1
+                        created_at: '2026-06-09T14:25:27Z'
+                        updated_at: '2026-06-09T14:25:27Z'
+                        name: Test sublet 7
+                        price_cents: 50
+                        cost_cents: null
+                        provider: ''
+                        invoice_number: '1111'
+                        description: null
+                        taxable: true
+                        vendor_id: null
+                        invoice_date: null
+                      inspections:
+                      - id: 1
+                        created_at: '2026-06-09T14:25:27Z'
+                        updated_at: '2026-06-09T14:25:27Z'
+                        name: Test inspection 7
+                        state: null
+                    limit: 1
+                    limited: false
+                    total_count: 1
+                    current_page: 1
+                    total_pages: 1
+                filtering by technician_id:
+                  value:
+                    results:
+                    - id: 2
+                      created_at: '2026-09-09T14:25:30Z'
+                      updated_at: '2026-09-09T14:25:30Z'
+                      title: Test Service
+                      completed: false
+                      category_id: null
+                      canned_job_id: null
+                      comment: No comment
+                      fixed_price_cents: null
+                      fixed_price_labor_total_cents: null
+                      is_fixed_price_service: false
+                      labor_rate_cents: 10000
+                      repair_order_id: 2
+                      completed_at: null
+                      last_completed_at: null
+                      labors:
+                      - id: 2
+                        created_at: '2026-09-09T14:25:30Z'
+                        updated_at: '2026-09-09T14:25:30Z'
+                        name: Test labor 10
+                        technician_id: null
+                        taxable: true
+                        hours: 1.0
+                      parts:
+                      - id: 2
+                        created_at: '2026-09-09T14:25:30Z'
+                        updated_at: '2026-09-09T14:25:30Z'
+                        brand: null
+                        description: null
+                        number: null
+                        quoted_price_cents: null
+                        cost_cents: null
+                        part_inventory_id: 2
+                        taxable: true
+                        sell_price_cents: null
+                        quantity: 1.0
+                      hazmats:
+                      - id: 2
+                        created_at: '2026-09-09T14:25:30Z'
+                        updated_at: '2026-09-09T14:25:30Z'
+                        name: Test hazmat fee 10
+                        fee_cents: 25
+                        taxable: true
+                        quantity: 1.0
+                      sublets:
+                      - id: 2
+                        created_at: '2026-09-09T14:25:30Z'
+                        updated_at: '2026-09-09T14:25:30Z'
+                        name: Test sublet 10
+                        price_cents: 50
+                        cost_cents: null
+                        provider: ''
+                        invoice_number: '1111'
+                        description: null
+                        taxable: true
+                        vendor_id: null
+                        invoice_date: null
+                      inspections:
+                      - id: 2
+                        created_at: '2026-09-09T14:25:30Z'
+                        updated_at: '2026-09-09T14:25:30Z'
+                        name: Test inspection 10
+                        state: null
+                    - id: 1
+                      created_at: '2026-06-09T14:25:30Z'
+                      updated_at: '2026-06-09T14:25:30Z'
+                      title: Test Service
+                      completed: false
+                      category_id: null
+                      canned_job_id: null
+                      comment: No comment
+                      fixed_price_cents: null
+                      fixed_price_labor_total_cents: null
+                      is_fixed_price_service: false
+                      labor_rate_cents: 10000
+                      repair_order_id: 1
+                      completed_at: null
+                      last_completed_at: null
+                      labors:
+                      - id: 1
+                        created_at: '2026-06-09T14:25:30Z'
+                        updated_at: '2026-06-09T14:25:30Z'
+                        name: Test labor 9
+                        technician_id: null
+                        taxable: true
+                        hours: 1.0
+                      parts:
+                      - id: 1
+                        created_at: '2026-06-09T14:25:30Z'
+                        updated_at: '2026-06-09T14:25:30Z'
+                        brand: null
+                        description: null
+                        number: null
+                        quoted_price_cents: null
+                        cost_cents: null
+                        part_inventory_id: 1
+                        taxable: true
+                        sell_price_cents: null
+                        quantity: 1.0
+                      hazmats:
+                      - id: 1
+                        created_at: '2026-06-09T14:25:30Z'
+                        updated_at: '2026-06-09T14:25:30Z'
+                        name: Test hazmat fee 9
+                        fee_cents: 25
+                        taxable: true
+                        quantity: 1.0
+                      sublets:
+                      - id: 1
+                        created_at: '2026-06-09T14:25:30Z'
+                        updated_at: '2026-06-09T14:25:30Z'
+                        name: Test sublet 9
+                        price_cents: 50
+                        cost_cents: null
+                        provider: ''
+                        invoice_number: '1111'
+                        description: null
+                        taxable: true
+                        vendor_id: null
+                        invoice_date: null
+                      inspections:
+                      - id: 1
+                        created_at: '2026-06-09T14:25:30Z'
+                        updated_at: '2026-06-09T14:25:30Z'
+                        name: Test inspection 9
+                        state: null
+                    limit: 2
+                    limited: false
+                    total_count: 2
+                    current_page: 1
+                    total_pages: 1
+                filtering by updated_after:
+                  value:
+                    results:
+                    - id: 2
+                      created_at: '2026-09-09T14:25:34Z'
+                      updated_at: '2026-09-09T14:25:34Z'
+                      title: Test Service
+                      completed: false
+                      category_id: null
+                      canned_job_id: null
+                      comment: No comment
+                      fixed_price_cents: null
+                      fixed_price_labor_total_cents: null
+                      is_fixed_price_service: false
+                      labor_rate_cents: 10000
+                      repair_order_id: 2
+                      completed_at: null
+                      last_completed_at: null
+                      labors:
+                      - id: 2
+                        created_at: '2026-09-09T14:25:34Z'
+                        updated_at: '2026-09-09T14:25:34Z'
+                        name: Test labor 12
+                        technician_id: null
+                        taxable: true
+                        hours: 1.0
+                      parts:
+                      - id: 2
+                        created_at: '2026-09-09T14:25:34Z'
+                        updated_at: '2026-09-09T14:25:34Z'
+                        brand: null
+                        description: null
+                        number: null
+                        quoted_price_cents: null
+                        cost_cents: null
+                        part_inventory_id: 2
+                        taxable: true
+                        sell_price_cents: null
+                        quantity: 1.0
+                      hazmats:
+                      - id: 2
+                        created_at: '2026-09-09T14:25:34Z'
+                        updated_at: '2026-09-09T14:25:34Z'
+                        name: Test hazmat fee 12
+                        fee_cents: 25
+                        taxable: true
+                        quantity: 1.0
+                      sublets:
+                      - id: 2
+                        created_at: '2026-09-09T14:25:34Z'
+                        updated_at: '2026-09-09T14:25:34Z'
+                        name: Test sublet 12
+                        price_cents: 50
+                        cost_cents: null
+                        provider: ''
+                        invoice_number: '1111'
+                        description: null
+                        taxable: true
+                        vendor_id: null
+                        invoice_date: null
+                      inspections:
+                      - id: 2
+                        created_at: '2026-09-09T14:25:34Z'
+                        updated_at: '2026-09-09T14:25:34Z'
+                        name: Test inspection 12
+                        state: null
+                    limit: 1
+                    limited: false
+                    total_count: 1
+                    current_page: 1
+                    total_pages: 1
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: Unique identifier of this record.
+                        title:
+                          type: string
+                          description: The title of the service.
+                        completed:
+                          type: boolean
+                          description: True if the service has been completed.
+                        category_id:
+                          type: integer
+                          description: A foreign key that points to a Category ID.
+                          nullable: true
+                        canned_job_id:
+                          type: integer
+                          description: A reference that points to a CannedJob ID.
+                          nullable: true
+                        labor_rate_cents:
+                          type: integer
+                          description: The rate in cents that labor on this service is charged at.
+                          nullable: true
+                        fixed_price_cents:
+                          type: integer
+                          description: The price in cents that this service will be charged at.
+                          nullable: true
+                        fixed_price_labor_total_cents:
+                          type: integer
+                          description: The total price in cents that labors on this service will be charged at.
+                          nullable: true
+                        is_fixed_price_service:
+                          type: boolean
+                          description: Determines if this service has a fixed price.
+                        comment:
+                          type: text
+                          description: Service comments.
+                        completed_at:
+                          type: string
+                          format: date-time
+                          description: The datetime the service was last marked completed. This may occur if the service had been marked completed then restarted and marked completed again.
+                          nullable: true
+                        last_completed_at:
+                          type: string
+                          format: date-time
+                          description: The datetime the service was last marked completed. This may occur if the service had been marked completed then restarted and marked completed again.
+                          nullable: true
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: Date and time when record was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: Date and time when record was last updated.
+                        labors:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                description: The labor primary key.
+                              name:
+                                type: string
+                                description: The name of this labor as it will appear on the RO.
+                              technician_id:
+                                type: integer
+                                description: A foreign key which points to a Staff.id. Represents the technician assigned to this specific labor item.
+                                nullable: true
+                              taxable:
+                                type: boolean
+                                description: Determines if labor tax rate will be applied to this labor.
+                              hours:
+                                type: number
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The date and time when labor was created.
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The date and time when labor was last updated.
+                        parts:
+                          type: array
+                          description: If you hit a guardrail on a fixed price service, you will get two lines for the part as they could have separate prices
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                description: The part primary key.
+                              brand:
+                                type: string
+                                description: Part`s brand
+                                nullable: true
+                              description:
+                                type: string
+                                description: Part`s description
+                                nullable: true
+                              quoted_price_cents:
+                                type: number
+                                description: The price of this part that is being sold to the customer in cents per unit.
+                                nullable: true
+                                deprecated: true
+                              sell_price_cents:
+                                type: number
+                                description: The price of this part that is being sold to the customer in cents per unit.
+                                nullable: true
+                              cost_cents:
+                                type: number
+                                description: The wholesale cost of this part to the shop in cents per unit.
+                                nullable: true
+                              part_inventory_id:
+                                type: integer
+                                description: A foreign key which points to an Inventory.id. Represents the associated inventory and quantity information for this part.
+                                nullable: true
+                              quantity:
+                                type: number
+                                description: The number of units this part line item represents.
+                              taxable:
+                                type: boolean
+                                description: Determines if part tax rate will be applied to this part.
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The date and time when part was created.
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The date and time when part was last updated.
+                        hazmats:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                description: The hazmat primary key.
+                              name:
+                                type: string
+                                description: The name of this hazmat as it will appear on the RO.
+                              fee_cents:
+                                type: integer
+                                description: The price of this fee or hazmat in cents per unit.
+                              quantity:
+                                type: number
+                                description: The number of units.
+                              taxable:
+                                type: boolean
+                                description: Determines if hazmat tax rate will be applied to this hazmat.
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The date and time when hazmat was created.
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The date and time when hazmat was last updated.
+                        sublets:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                description: The sublet primary key.
+                              name:
+                                type: string
+                                description: The name of this sublet as it will appear on the RO.
+                              price_cents:
+                                type: integer
+                                description: The price in cents of sublet being sold to customer.
+                              cost_cents:
+                                type: number
+                                description: The amount in cents paid to provider for services.
+                                nullable: true
+                              provider:
+                                type: string
+                                description: The name of the entity providing services for sublet.
+                              invoice_number:
+                                type: string
+                                description: A string which identifies invoice from provider.
+                              invoice_date:
+                                type: string
+                                format: date-time
+                                description: The date when the invoice from provider was created.
+                                nullable: true
+                              taxable:
+                                type: boolean
+                                description: Determines if sublet tax rate will be applied to this sublet.
+                              vendor_id:
+                                type: integer
+                                description: A foreign key which points to a Vendor.id. Represents a vendor associated with this sublet item.
+                                nullable: true
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The date and time when sublet was created.
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The date and time when sublet was last updated.
+                        inspections:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                description: The inspection primary key.
+                              name:
+                                type: string
+                                description: The name of this inspection as it will appear on the RO.
+                              state:
+                                type: string
+                                description: One of "yellow", "green", "unchecked", "red". More states may be added.
+                                nullable: true
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The date and time when inspection was created.
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The date and time when inspection was last updated.
+                  limit:
+                    type: integer
+                  limited:
+                    type: boolean
+                  total_count:
+                    type: integer
+                  current_page:
+                    type: integer
+                  total_pages:
+                    type: integer
+  /api/v1/tenants/{tenant_id}/services/{id}:
+    parameters:
+    - name: tenant_id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    - name: id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    get:
+      summary: Get a specific service by ID
+      tags:
+      - Services
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    id: 1
+                    created_at: '2026-06-09T14:25:37Z'
+                    updated_at: '2026-06-09T14:25:37Z'
+                    title: Test Service
+                    completed: false
+                    category_id: null
+                    canned_job_id: null
+                    comment: No comment
+                    fixed_price_cents: null
+                    fixed_price_labor_total_cents: null
+                    is_fixed_price_service: false
+                    labor_rate_cents: 10000
+                    repair_order_id: 1
+                    completed_at: null
+                    last_completed_at: null
+                    labors:
+                    - id: 1
+                      created_at: '2026-06-09T14:25:37Z'
+                      updated_at: '2026-06-09T14:25:37Z'
+                      name: Test labor 13
+                      technician_id: null
+                      taxable: true
+                      hours: 1.0
+                    parts:
+                    - id: 1
+                      created_at: '2026-06-09T14:25:37Z'
+                      updated_at: '2026-06-09T14:25:37Z'
+                      brand: null
+                      description: null
+                      number: null
+                      quoted_price_cents: null
+                      cost_cents: null
+                      part_inventory_id: 1
+                      taxable: true
+                      sell_price_cents: null
+                      quantity: 1.0
+                    hazmats:
+                    - id: 1
+                      created_at: '2026-06-09T14:25:37Z'
+                      updated_at: '2026-06-09T14:25:37Z'
+                      name: Test hazmat fee 13
+                      fee_cents: 25
+                      taxable: true
+                      quantity: 1.0
+                    sublets:
+                    - id: 1
+                      created_at: '2026-06-09T14:25:37Z'
+                      updated_at: '2026-06-09T14:25:37Z'
+                      name: Test sublet 13
+                      price_cents: 50
+                      cost_cents: null
+                      provider: ''
+                      invoice_number: '1111'
+                      description: null
+                      taxable: true
+                      vendor_id: null
+                      invoice_date: null
+                    inspections:
+                    - id: 1
+                      created_at: '2026-06-09T14:25:37Z'
+                      updated_at: '2026-06-09T14:25:37Z'
+                      name: Test inspection 13
+                      state: null
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: Unique identifier of this record.
+                  title:
+                    type: string
+                    description: The title of the service.
+                  completed:
+                    type: boolean
+                    description: True if the service has been completed.
+                  category_id:
+                    type: integer
+                    description: A foreign key that points to a Category ID.
+                    nullable: true
+                  canned_job_id:
+                    type: integer
+                    description: A reference that points to a CannedJob ID.
+                    nullable: true
+                  labor_rate_cents:
+                    type: integer
+                    description: The rate in cents that labor on this service is charged at.
+                    nullable: true
+                  fixed_price_cents:
+                    type: integer
+                    description: The price in cents that this service will be charged at.
+                    nullable: true
+                  fixed_price_labor_total_cents:
+                    type: integer
+                    description: The total price in cents that labors on this service will be charged at.
+                    nullable: true
+                  is_fixed_price_service:
+                    type: boolean
+                    description: Determines if this service has a fixed price.
+                  comment:
+                    type: string
+                    description: Service comments.
+                  completed_at:
+                    type: string
+                    format: date-time
+                    description: The datetime the service was last marked completed. This may occur if the service had been marked completed then restarted and marked completed again.
+                    nullable: true
+                  last_completed_at:
+                    type: string
+                    format: date-time
+                    description: The datetime the service was last marked completed. This may occur if the service had been marked completed then restarted and marked completed again.
+                    nullable: true
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was created.
+                  updated_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was last updated.
+                  labors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The labor primary key.
+                        name:
+                          type: string
+                          description: The name of this labor as it will appear on the RO.
+                        technician_id:
+                          type: integer
+                          description: A foreign key which points to a Staff.id. Represents the technician assigned to this specific labor item.
+                          nullable: true
+                        taxable:
+                          type: boolean
+                          description: Determines if labor tax rate will be applied to this labor.
+                        hours:
+                          type: number
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when labor was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when labor was last updated.
+                  parts:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The part primary key.
+                        brand:
+                          type: string
+                          description: Part`s brand
+                          nullable: true
+                        description:
+                          type: string
+                          description: Part`s description
+                          nullable: true
+                        quoted_price_cents:
+                          type: number
+                          description: The price of this part that is being sold to the customer in cents per unit.
+                          nullable: true
+                          deprecated: true
+                        sell_price_cents:
+                          type: number
+                          description: The price of this part that is being sold to the customer in cents per unit.
+                          nullable: true
+                        cost_cents:
+                          type: number
+                          description: The wholesale cost of this part to the shop in cents per unit.
+                          nullable: true
+                        part_inventory_id:
+                          type: integer
+                          description: A foreign key which points to an Inventory.id. Represents the associated inventory and quantity information for this part.
+                          nullable: true
+                        quantity:
+                          type: number
+                          description: The number of units this part line item represents.
+                        taxable:
+                          type: boolean
+                          description: Determines if part tax rate will be applied to this part.
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when part was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when part was last updated.
+                  hazmats:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The hazmat primary key.
+                        name:
+                          type: string
+                          description: The name of this hazmat as it will appear on the RO.
+                        fee_cents:
+                          type: integer
+                          description: The price of this fee or hazmat in cents per unit.
+                        quantity:
+                          type: number
+                          description: The number of units.
+                        taxable:
+                          type: boolean
+                          description: Determines if hazmat tax rate will be applied to this hazmat.
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when hazmat was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when hazmat was last updated.
+                  sublets:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The sublet primary key.
+                        name:
+                          type: string
+                          description: The name of this sublet as it will appear on the RO.
+                        price_cents:
+                          type: integer
+                          description: The price in cents of sublet being sold to customer.
+                        cost_cents:
+                          type: number
+                          description: The amount in cents paid to provider for services.
+                          nullable: true
+                        provider:
+                          type: string
+                          description: The name of the entity providing services for sublet.
+                        invoice_number:
+                          type: string
+                          description: A string which identifies invoice from provider.
+                        invoice_date:
+                          type: string
+                          format: date-time
+                          description: The date when the invoice from provider was created.
+                          nullable: true
+                        taxable:
+                          type: boolean
+                          description: Determines if sublet tax rate will be applied to this sublet.
+                        vendor_id:
+                          type: integer
+                          description: A foreign key which points to a Vendor.id. Represents a vendor associated with this sublet item.
+                          nullable: true
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when sublet was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when sublet was last updated.
+                  inspections:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The inspection primary key.
+                        name:
+                          type: string
+                          description: The name of this inspection as it will appear on the RO.
+                        state:
+                          type: string
+                          description: One of "yellow", "green", "unchecked", "red". More states may be added.
+                          nullable: true
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when inspection was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when inspection was last updated.
+    put:
+      summary: Update a specific service
+      tags:
+      - Services
+      parameters: []
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    id: 1
+                    created_at: '2026-06-09T14:25:44Z'
+                    updated_at: '2022-10-23T02:05:00Z'
+                    title: Test Service
+                    completed: false
+                    category_id: null
+                    canned_job_id: null
+                    comment: UPDATED COMMENT
+                    fixed_price_cents: null
+                    fixed_price_labor_total_cents: null
+                    is_fixed_price_service: false
+                    labor_rate_cents: 10000
+                    repair_order_id: 1
+                    completed_at: null
+                    last_completed_at: null
+                    labors:
+                    - id: 1
+                      created_at: '2026-06-09T14:25:44Z'
+                      updated_at: '2026-06-09T14:25:44Z'
+                      name: Test labor 15
+                      technician_id: null
+                      taxable: true
+                      hours: 1.0
+                    parts:
+                    - id: 1
+                      created_at: '2026-06-09T14:25:44Z'
+                      updated_at: '2026-06-09T14:25:44Z'
+                      brand: null
+                      description: null
+                      number: null
+                      quoted_price_cents: null
+                      cost_cents: null
+                      part_inventory_id: 1
+                      taxable: true
+                      sell_price_cents: null
+                      quantity: 1.0
+                    hazmats:
+                    - id: 1
+                      created_at: '2026-06-09T14:25:44Z'
+                      updated_at: '2026-06-09T14:25:44Z'
+                      name: Test hazmat fee 15
+                      fee_cents: 25
+                      taxable: true
+                      quantity: 1.0
+                    sublets:
+                    - id: 1
+                      created_at: '2026-06-09T14:25:44Z'
+                      updated_at: '2026-06-09T14:25:44Z'
+                      name: Test sublet 15
+                      price_cents: 50
+                      cost_cents: null
+                      provider: ''
+                      invoice_number: '1111'
+                      description: null
+                      taxable: true
+                      vendor_id: null
+                      invoice_date: null
+                    inspections:
+                    - id: 1
+                      created_at: '2026-06-09T14:25:44Z'
+                      updated_at: '2026-06-09T14:25:44Z'
+                      name: Test inspection 15
+                      state: null
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: Unique identifier of this record.
+                  title:
+                    type: string
+                    description: The title of the service.
+                  completed:
+                    type: boolean
+                    description: True if the service has been completed.
+                  category_id:
+                    type: integer
+                    description: A foreign key that points to a Category ID.
+                    nullable: true
+                  canned_job_id:
+                    type: integer
+                    description: A reference that points to a CannedJob ID.
+                    nullable: true
+                  labor_rate_cents:
+                    type: integer
+                    description: The rate in cents that labor on this service is charged at.
+                    nullable: true
+                  fixed_price_cents:
+                    type: integer
+                    description: The price in cents that this service will be charged at.
+                    nullable: true
+                  fixed_price_labor_total_cents:
+                    type: integer
+                    description: The total price in cents that labors on this service will be charged at.
+                    nullable: true
+                  is_fixed_price_service:
+                    type: boolean
+                    description: Determines if this service has a fixed price.
+                  comment:
+                    type: string
+                    description: Service comments.
+                  completed_at:
+                    type: string
+                    format: date-time
+                    description: The datetime the service was last marked completed. This may occur if the service had been marked completed then restarted and marked completed again.
+                    nullable: true
+                  last_completed_at:
+                    type: string
+                    format: date-time
+                    description: The datetime the service was last marked completed. This may occur if the service had been marked completed then restarted and marked completed again.
+                    nullable: true
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was created.
+                  updated_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was last updated.
+                  labors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The labor primary key.
+                        name:
+                          type: string
+                          description: The name of this labor as it will appear on the RO.
+                        technician_id:
+                          type: integer
+                          description: A foreign key which points to a Staff.id. Represents the technician assigned to this specific labor item.
+                          nullable: true
+                        taxable:
+                          type: boolean
+                          description: Determines if labor tax rate will be applied to this labor.
+                        hours:
+                          type: number
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when labor was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when labor was last updated.
+                  parts:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The part primary key.
+                        brand:
+                          type: string
+                          description: Part`s brand
+                          nullable: true
+                        description:
+                          type: string
+                          description: Part`s description
+                          nullable: true
+                        quoted_price_cents:
+                          type: number
+                          description: The price of this part that is being sold to the customer in cents per unit.
+                          nullable: true
+                          deprecated: true
+                        sell_price_cents:
+                          type: number
+                          description: The price of this part that is being sold to the customer in cents per unit.
+                          nullable: true
+                        cost_cents:
+                          type: number
+                          description: The wholesale cost of this part to the shop in cents per unit.
+                          nullable: true
+                        part_inventory_id:
+                          type: integer
+                          description: A foreign key which points to an Inventory.id. Represents the associated inventory and quantity information for this part.
+                          nullable: true
+                        quantity:
+                          type: number
+                          description: The number of units this part line item represents.
+                        taxable:
+                          type: boolean
+                          description: Determines if part tax rate will be applied to this part.
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when part was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when part was last updated.
+                  hazmats:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The hazmat primary key.
+                        name:
+                          type: string
+                          description: The name of this hazmat as it will appear on the RO.
+                        fee_cents:
+                          type: integer
+                          description: The price of this fee or hazmat in cents per unit.
+                        quantity:
+                          type: number
+                          description: The number of units.
+                        taxable:
+                          type: boolean
+                          description: Determines if hazmat tax rate will be applied to this hazmat.
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when hazmat was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when hazmat was last updated.
+                  sublets:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The sublet primary key.
+                        name:
+                          type: string
+                          description: The name of this sublet as it will appear on the RO.
+                        price_cents:
+                          type: integer
+                          description: The price in cents of sublet being sold to customer.
+                        cost_cents:
+                          type: number
+                          description: The amount in cents paid to provider for services.
+                          nullable: true
+                        provider:
+                          type: string
+                          description: The name of the entity providing services for sublet.
+                        invoice_number:
+                          type: string
+                          description: A string which identifies invoice from provider.
+                        invoice_date:
+                          type: string
+                          format: date-time
+                          description: The date when the invoice from provider was created.
+                          nullable: true
+                        taxable:
+                          type: boolean
+                          description: Determines if sublet tax rate will be applied to this sublet.
+                        vendor_id:
+                          type: integer
+                          description: A foreign key which points to a Vendor.id. Represents a vendor associated with this sublet item.
+                          nullable: true
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when sublet was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when sublet was last updated.
+                  inspections:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The inspection primary key.
+                        name:
+                          type: string
+                          description: The name of this inspection as it will appear on the RO.
+                        state:
+                          type: string
+                          description: One of "yellow", "green", "unchecked", "red". More states may be added.
+                          nullable: true
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when inspection was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when inspection was last updated.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - comment
+              properties:
+                comment:
+                  type: string
+                  minLength: 1
+                  description: Service comments.
+              example:
+                comment: UPDATED COMMENT
+components:
+  securitySchemes:
+    api_partner_id:
+      type: apiKey
+      name: X-Api-Partner-Id
+      in: header
+    api_secret:
+      type: apiKey
+      name: X-Api-Secret
+      in: header

@@ -1,0 +1,335 @@
+openapi: 3.0.1
+info:
+  title: API V1 API Partners Past Recommendations API
+  version: v1
+  contact:
+    name: API Support
+    email: support@shop-ware.com
+security:
+- api_partner_id: []
+  api_secret: []
+tags:
+- name: Past Recommendations
+paths:
+  /api/v1/tenants/{tenant_id}/past_recommendations:
+    parameters:
+    - name: tenant_id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    get:
+      summary: Get a list of all past recommendations
+      tags:
+      - Past Recommendations
+      parameters:
+      - name: page
+        in: query
+        required: false
+        example: '1'
+        schema:
+          type: integer
+      - name: per_page
+        in: query
+        required: false
+        example: '30'
+        schema:
+          type: integer
+      - name: done
+        in: query
+        required: false
+        example: null
+        schema:
+          type: boolean
+      - name: vehicle_id
+        in: query
+        required: false
+        example: null
+        schema:
+          type: integer
+      - name: customer_id
+        in: query
+        required: false
+        example: '1'
+        schema:
+          type: integer
+      - name: updated_after
+        in: query
+        required: false
+        format: date-time
+        description: Filter response to only include records updated after a given time
+        example: 2022-10-24T12%3A00%3A00%2B08%3A00
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                without filter:
+                  value:
+                    results:
+                    - id: 2
+                      created_at: '2026-06-09T14:23:47Z'
+                      updated_at: '2026-06-09T14:23:47Z'
+                      description: Rotate tires
+                      approved: false
+                      approver_id: null
+                      approval_type: null
+                      imported: false
+                      vehicle_id: 2
+                      done: false
+                      recommendation_id: 1
+                      approval_at: null
+                    - id: 1
+                      created_at: '2026-06-09T14:23:47Z'
+                      updated_at: '2026-06-09T14:23:47Z'
+                      description: Change oil
+                      approved: true
+                      approver_id: 1
+                      approval_type: phone
+                      imported: true
+                      vehicle_id: 1
+                      done: true
+                      recommendation_id: 1
+                      approval_at: '2026-06-08T14:23:47Z'
+                    limit: 2
+                    limited: false
+                    total_count: 2
+                    current_page: 1
+                    total_pages: 1
+                filter when done param equal to false:
+                  value:
+                    results:
+                    - id: 2
+                      created_at: '2026-06-09T14:23:50Z'
+                      updated_at: '2026-06-09T14:23:50Z'
+                      description: Rotate tires
+                      approved: false
+                      approver_id: null
+                      approval_type: null
+                      imported: false
+                      vehicle_id: 2
+                      done: false
+                      recommendation_id: 1
+                      approval_at: null
+                    limit: 1
+                    limited: false
+                    total_count: 1
+                    current_page: 1
+                    total_pages: 1
+                filter when  done param equal to true:
+                  value:
+                    results:
+                    - id: 1
+                      created_at: '2026-06-09T14:23:53Z'
+                      updated_at: '2026-06-09T14:23:53Z'
+                      description: Change oil
+                      approved: true
+                      approver_id: 1
+                      approval_type: phone
+                      imported: true
+                      vehicle_id: 1
+                      done: true
+                      recommendation_id: 1
+                      approval_at: '2026-06-08T14:23:53Z'
+                    limit: 1
+                    limited: false
+                    total_count: 1
+                    current_page: 1
+                    total_pages: 1
+                filter by vehicle_id:
+                  value:
+                    results:
+                    - id: 2
+                      created_at: '2026-06-09T14:23:56Z'
+                      updated_at: '2026-06-09T14:23:56Z'
+                      description: Rotate tires
+                      approved: false
+                      approver_id: null
+                      approval_type: null
+                      imported: false
+                      vehicle_id: 2
+                      done: false
+                      recommendation_id: 1
+                      approval_at: null
+                    limit: 1
+                    limited: false
+                    total_count: 1
+                    current_page: 1
+                    total_pages: 1
+                filter by customer_id:
+                  value:
+                    results:
+                    - id: 1
+                      created_at: '2026-06-09T14:23:59Z'
+                      updated_at: '2026-06-09T14:23:59Z'
+                      description: Change oil
+                      approved: true
+                      approver_id: 1
+                      approval_type: phone
+                      imported: true
+                      vehicle_id: 1
+                      done: true
+                      recommendation_id: 1
+                      approval_at: '2026-06-08T14:23:59Z'
+                    limit: 1
+                    limited: false
+                    total_count: 1
+                    current_page: 1
+                    total_pages: 1
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: Unique identifier of this record.
+                        description:
+                          type: string
+                          description: The title of the previously recommended service
+                        approved:
+                          type: boolean
+                          description: True if the past recommendation has since been approved by the customer, false if it has been declined, and null otherwise.
+                        approver_id:
+                          type: integer
+                          nullable: true
+                          description: A foreign key that points to a Staff or Customer ID. This represents the person who approved the recommendation (if it has been approved, null otherwise).
+                        approval_at:
+                          type: string
+                          nullable: true
+                          format: date-time
+                          description: Date and time the recommendation was approved if it has been approved, null otherwise.
+                        approval_type:
+                          type: string
+                          nullable: true
+                          description: 'Type of approval: one of "customer" (Approved by customer), "email" (Approved by email), "estimate" (Approved in estimate), "person" (Approved in person), "phone" (Approved by phone). Null if unapproved or declined.'
+                        imported:
+                          type: boolean
+                          description: True if the past recommendation has been added as a service on an Repair Order, false otherwise. All imported=true past recommendations will also be done=true, but not all done=true past recommendations will be imported=true.
+                        vehicle_id:
+                          type: integer
+                          description: A foreign key that points to a Vehicle ID. This represents the vehicle that this service was recommended for.
+                        done:
+                          type: boolean
+                          description: True if the past recommendation has been either sold to the customer, or has been manually marked as done by a staff member (for example, work since performed by another shop). These past recommendations will no longer be presented to the vehicle owner on future visits.
+                        recommendation_id:
+                          type: integer
+                          description: A foreign key which points to the Recommendation that was unsold at the time that the original source repair order was closed, resulting in the creation of this past recommendation.
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: Date and time when record was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: Date and time when record was last updated.
+                  limit:
+                    type: integer
+                  limited:
+                    type: boolean
+                  total_count:
+                    type: integer
+                  current_page:
+                    type: integer
+                  total_pages:
+                    type: integer
+  /api/v1/tenants/{tenant_id}/past_recommendations/{id}:
+    parameters:
+    - name: tenant_id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    - name: id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    get:
+      summary: Get a specific past recommendation by ID
+      tags:
+      - Past Recommendations
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    id: 1
+                    created_at: '2026-06-09T14:24:05Z'
+                    updated_at: '2026-06-09T14:24:05Z'
+                    description: Change oil
+                    approved: true
+                    approver_id: 1
+                    approval_type: phone
+                    imported: true
+                    vehicle_id: 1
+                    done: true
+                    recommendation_id: 1
+                    approval_at: '2026-06-08T14:24:05Z'
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: Unique identifier of this record.
+                  description:
+                    type: string
+                    description: The title of the previously recommended service
+                  approved:
+                    type: boolean
+                    description: True if the past recommendation has since been approved by the customer, false if it has been declined, and null otherwise.
+                  approver_id:
+                    type: integer
+                    nullable: true
+                    description: A foreign key that points to a Staff or Customer ID. This represents the person who approved the recommendation (if it has been approved, null otherwise).
+                  approval_at:
+                    type: string
+                    nullable: true
+                    format: date-time
+                    description: Date and time the recommendation was approved if it has been approved, null otherwise.
+                  approval_type:
+                    type: string
+                    nullable: true
+                    description: 'Type of approval: one of "customer" (Approved by customer), "email" (Approved by email), "estimate" (Approved in estimate), "person" (Approved in person), "phone" (Approved by phone). Null if unapproved or declined.'
+                  imported:
+                    type: boolean
+                    description: True if the past recommendation has been added as a service on an Repair Order, false otherwise. All imported=true past recommendations will also be done=true, but not all done=true past recommendations will be imported=true.
+                  vehicle_id:
+                    type: integer
+                    description: A foreign key that points to a Vehicle ID. This represents the vehicle that this service was recommended for.
+                  done:
+                    type: boolean
+                    description: True if the past recommendation has been either sold to the customer, or has been manually marked as done by a staff member (for example, work since performed by another shop). These past recommendations will no longer be presented to the vehicle owner on future visits.
+                  recommendation_id:
+                    type: integer
+                    description: A foreign key which points to the Recommendation that was unsold at the time that the original source repair order was closed, resulting in the creation of this past recommendation.
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was created.
+                  updated_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was last updated.
+components:
+  securitySchemes:
+    api_partner_id:
+      type: apiKey
+      name: X-Api-Partner-Id
+      in: header
+    api_secret:
+      type: apiKey
+      name: X-Api-Secret
+      in: header

@@ -1,0 +1,381 @@
+openapi: 3.0.1
+info:
+  title: API V1 API Partners Purchase Records API
+  version: v1
+  contact:
+    name: API Support
+    email: support@shop-ware.com
+security:
+- api_partner_id: []
+  api_secret: []
+tags:
+- name: Purchase Records
+paths:
+  /api/v1/tenants/{tenant_id}/purchase_records:
+    parameters:
+    - name: tenant_id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    get:
+      summary: Get a list of all purchase records
+      tags:
+      - Purchase Records
+      parameters:
+      - name: page
+        in: query
+        required: false
+        example: '1'
+        schema:
+          type: integer
+      - name: per_page
+        in: query
+        required: false
+        example: '30'
+        schema:
+          type: integer
+      - name: updated_after
+        in: query
+        required: false
+        format: date-time
+        description: Filter response to only include records updated after a given time
+        example: 2022-10-24T12%3A00%3A00%2B08%3A00
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    results:
+                    - id: 1
+                      created_at: '2026-06-09T14:24:41Z'
+                      updated_at: '2026-06-09T14:24:41Z'
+                      shop_id: 1
+                      invoice_number: IN1
+                      purchase_order_number: PO-number-1
+                      vendor_id: 1
+                      payment_type: Credit Card
+                      ecomm_integrator_order_id: 100
+                      is_return: false
+                      line_items:
+                      - inventory_id: 1
+                        quantity: 1.0
+                        list_price_cents: 0
+                        msrp_cents: 0
+                        cost_cents: 50
+                        ecomm_integrator_part_id: PARTSTECH_PART_ID
+                      applied_fees:
+                      - id: 1
+                        amount_cents: 1000
+                        fee_name: fee-type-name-1
+                        fee_id: 1
+                      integrator_tags:
+                      - id: 1
+                        created_at: '2026-06-09T14:24:41Z'
+                        updated_at: '2026-06-09T14:24:41Z'
+                        taggable_type: PurchaseRecord
+                        taggable_id: 1
+                        name: tag_name
+                        value: tag_value
+                    limit: 1
+                    limited: false
+                    total_count: 1
+                    current_page: 1
+                    total_pages: 1
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: Unique identifier of this record.
+                        shop_id:
+                          type: integer
+                          description: A foreign key that points to a Shop.id. Represents the shop in which the order was created.
+                        invoice_number:
+                          type: string
+                          description: A string which identifies invoice from provider.
+                        purchase_order_number:
+                          type: string
+                          description: A string which identifies purchase order from provider.
+                        vendor_id:
+                          type: integer
+                          description: A foreign key which points to a Vendor.id. Represents a vendor associated with this purchase record.
+                        payment_type:
+                          type: string
+                          description: The form of payment that was used to pay for these parts.
+                        ecomm_integrator_order_id:
+                          type: integer
+                          description: An identifier assigned to this order by the parts eComm integrator (if any).
+                        is_return:
+                          type: boolean
+                          description: True if this Purchase Record is a return.
+                        line_items:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              inventory_id:
+                                type: integer
+                                description: A foreign key that points to an Inventory.id. Represents the inventory that has been received.
+                              quantity:
+                                type: number
+                                description: The number of units.
+                              list_price_cents:
+                                type: integer
+                                description: The MSRP in cents per unit.
+                                deprecated: true
+                              msrp_cents:
+                                type: integer
+                                description: The MSRP in cents per unit.
+                              cost_cents:
+                                type: integer
+                                description: The cost of this line item to the shop, in cents per unit.
+                              ecomm_integrator_part_id:
+                                type: string
+                                description: An identifier assigned to this line item by the parts eComm integrator (if any).
+                        applied_fees:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                description: Unique identifier of this record.
+                              amount_cents:
+                                type: integer
+                                description: AppliedFee amount in cents per unit.
+                              fee_name:
+                                type: string
+                                nullable: true
+                                description: Name of the FeeType applied to this purchase record.
+                              fee_id:
+                                type: integer
+                                description: Identifier of the FeeType applied to this purchase record.
+                        integrator_tags:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                description: The tag primary key.
+                              taggable_id:
+                                type: integer
+                                description: Entity identifier the tag attached to.
+                              taggable_type:
+                                type: string
+                                description: Entity type the tag attached to.
+                              name:
+                                type: string
+                                description: Tag Name.
+                              value:
+                                type: string
+                                description: Tag Value.
+                              created_at:
+                                type: string
+                                format: date-time
+                                description: The date and time when tag was created.
+                              updated_at:
+                                type: string
+                                format: date-time
+                                description: The date and time when tag was last updated.
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: Date and time when record was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: Date and time when record was last updated.
+                  limit:
+                    type: integer
+                  limited:
+                    type: boolean
+                  total_count:
+                    type: integer
+                  current_page:
+                    type: integer
+                  total_pages:
+                    type: integer
+  /api/v1/tenants/{tenant_id}/purchase_records/{id}:
+    parameters:
+    - name: tenant_id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    - name: id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    get:
+      summary: Get a specific purchase record by ID
+      tags:
+      - Purchase Records
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    id: 1
+                    created_at: '2026-06-09T14:24:44Z'
+                    updated_at: '2026-06-09T14:24:44Z'
+                    shop_id: 1
+                    invoice_number: IN2
+                    purchase_order_number: PO-number-3
+                    vendor_id: 1
+                    payment_type: Credit Card
+                    ecomm_integrator_order_id: 100
+                    is_return: false
+                    line_items:
+                    - inventory_id: 1
+                      quantity: 1.0
+                      list_price_cents: 0
+                      msrp_cents: 0
+                      cost_cents: 50
+                      ecomm_integrator_part_id: PARTSTECH_PART_ID
+                    applied_fees:
+                    - id: 1
+                      amount_cents: 1000
+                      fee_name: fee-type-name-2
+                      fee_id: 1
+                    integrator_tags:
+                    - id: 1
+                      created_at: '2026-06-09T14:24:45Z'
+                      updated_at: '2026-06-09T14:24:45Z'
+                      taggable_type: PurchaseRecord
+                      taggable_id: 1
+                      name: tag_name
+                      value: tag_value
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: Unique identifier of this record.
+                  shop_id:
+                    type: integer
+                    description: A foreign key that points to a Shop.id. Represents the shop in which the order was created.
+                  invoice_number:
+                    type: string
+                    description: A string which identifies invoice from provider.
+                  purchase_order_number:
+                    type: string
+                    description: A string which identifies purchase order from provider.
+                  vendor_id:
+                    type: integer
+                    description: A foreign key which points to a Vendor.id. Represents a vendor associated with this purchase record.
+                  payment_type:
+                    type: string
+                    description: The form of payment that was used to pay for these parts.
+                  ecomm_integrator_order_id:
+                    type: integer
+                    description: An identifier assigned to this order by the parts eComm integrator (if any).
+                  is_return:
+                    type: boolean
+                    description: True if this Purchase Record is a return.
+                  line_items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        inventory_id:
+                          type: integer
+                          description: A foreign key that points to an Inventory.id. Represents the inventory that has been received.
+                        quantity:
+                          type: number
+                          description: The number of units.
+                        list_price_cents:
+                          type: integer
+                          description: The MSRP in cents per unit.
+                          deprecated: true
+                        msrp_cents:
+                          type: integer
+                          description: The MSRP in cents per unit.
+                        cost_cents:
+                          type: integer
+                          description: The cost of this line item to the shop, in cents per unit.
+                        ecomm_integrator_part_id:
+                          type: string
+                          description: An identifier assigned to this line item by the parts eComm integrator (if any).
+                  applied_fees:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: Unique identifier of this record.
+                        amount_cents:
+                          type: integer
+                          description: AppliedFee amount in cents per unit.
+                        fee_name:
+                          type: string
+                          nullable: true
+                          description: Name of the FeeType applied to this purchase record.
+                        fee_id:
+                          type: integer
+                          description: Identifier of the FeeType applied to this purchase record.
+                  integrator_tags:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The tag primary key.
+                        taggable_id:
+                          type: integer
+                          description: Entity identifier the tag attached to.
+                        taggable_type:
+                          type: string
+                          description: Entity type the tag attached to.
+                        name:
+                          type: string
+                          description: Tag Name.
+                        value:
+                          type: string
+                          description: Tag Value.
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when tag was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: The date and time when tag was last updated.
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was created.
+                  updated_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was last updated.
+components:
+  securitySchemes:
+    api_partner_id:
+      type: apiKey
+      name: X-Api-Partner-Id
+      in: header
+    api_secret:
+      type: apiKey
+      name: X-Api-Secret
+      in: header

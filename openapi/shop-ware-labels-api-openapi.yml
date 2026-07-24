@@ -1,0 +1,147 @@
+openapi: 3.0.1
+info:
+  title: API V1 API Partners Labels API
+  version: v1
+  contact:
+    name: API Support
+    email: support@shop-ware.com
+security:
+- api_partner_id: []
+  api_secret: []
+tags:
+- name: Labels
+paths:
+  /api/v1/tenants/{tenant_id}/labels:
+    parameters:
+    - name: tenant_id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    get:
+      summary: Get a list of all labels
+      tags:
+      - Labels
+      parameters:
+      - name: page
+        in: query
+        required: false
+        example: '1'
+        schema:
+          type: integer
+      - name: per_page
+        in: query
+        required: false
+        example: '30'
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    results:
+                    - id: 1
+                      text: Some Label
+                      color_code: '#FFFFFF'
+                      row_order: 1
+                    limit: 1
+                    limited: false
+                    total_count: 1
+                    current_page: 1
+                    total_pages: 1
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: Unique identifier of this record.
+                        text:
+                          type: string
+                          nullable: true
+                          description: The description of the label.
+                        color_code:
+                          type: string
+                          nullable: true
+                          description: The color code of which the label is represented.
+                        row_order:
+                          type: integer
+                          nullable: true
+                          description: Order of this specific label.
+                  limit:
+                    type: integer
+                  limited:
+                    type: boolean
+                  total_count:
+                    type: integer
+                  current_page:
+                    type: integer
+                  total_pages:
+                    type: integer
+  /api/v1/tenants/{tenant_id}/labels/{id}:
+    parameters:
+    - name: tenant_id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    - name: id
+      in: path
+      required: true
+      example: '1'
+      schema:
+        type: integer
+    get:
+      summary: Get a specific label by ID
+      tags:
+      - Labels
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    id: 1
+                    text: Some Label
+                    color_code: '#FFFFFF'
+                    row_order: 1
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: Unique identifier of this record.
+                  text:
+                    type: string
+                    nullable: true
+                    description: The description of the label.
+                  color_code:
+                    type: string
+                    nullable: true
+                    description: The color code of which the label is represented.
+                  row_order:
+                    type: integer
+                    nullable: true
+                    description: Order of this specific label.
+components:
+  securitySchemes:
+    api_partner_id:
+      type: apiKey
+      name: X-Api-Partner-Id
+      in: header
+    api_secret:
+      type: apiKey
+      name: X-Api-Secret
+      in: header

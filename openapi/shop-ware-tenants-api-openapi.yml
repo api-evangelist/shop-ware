@@ -1,0 +1,171 @@
+openapi: 3.0.1
+info:
+  title: API V1 API Partners Tenants API
+  version: v1
+  contact:
+    name: API Support
+    email: support@shop-ware.com
+security:
+- api_partner_id: []
+  api_secret: []
+tags:
+- name: Tenants
+paths:
+  /api/v1/tenants:
+    get:
+      summary: Get a list of all tenants that this API client is authorized to access
+      tags:
+      - Tenants
+      parameters:
+      - name: page
+        in: query
+        required: false
+        example: '1'
+        schema:
+          type: integer
+      - name: per_page
+        in: query
+        required: false
+        example: '30'
+        schema:
+          type: integer
+      - name: updated_after
+        in: query
+        required: false
+        format: date-time
+        description: Filter response to only include records updated after a given time
+        example: 2022-10-24T12%3A00%3A00%2B08%3A00
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    results:
+                    - id: 2
+                      created_at: '2026-06-09T14:26:27Z'
+                      updated_at: '2026-06-09T14:26:27Z'
+                      cname: atomic91
+                      name: Example Company, Inc.
+                      country_code: US
+                      subscription_status: Active
+                    - id: 1
+                      created_at: '2026-06-09T14:26:27Z'
+                      updated_at: '2026-06-09T14:26:27Z'
+                      cname: atomic90
+                      name: Example Company, Inc.
+                      country_code: US
+                      subscription_status: Active
+                    limit: 2
+                    limited: false
+                    total_count: 2
+                    current_page: 1
+                    total_pages: 1
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: Unique identifier of this record.
+                        cname:
+                          type: string
+                          description: Tenant subdomain in Shop-Ware.
+                        country_code:
+                          type: string
+                          description: Country code of the tenant, e.g. "US"
+                        name:
+                          type: string
+                          description: Name of the tenant.
+                        subscription_status:
+                          type: string
+                          description: Subscription status of the tenant. One of "Active" or "Canceled"
+                        created_at:
+                          type: string
+                          format: date-time
+                          description: Date and time when record was created.
+                        updated_at:
+                          type: string
+                          format: date-time
+                          description: Date and time when record was last updated.
+                  limit:
+                    type: integer
+                  limited:
+                    type: boolean
+                  total_count:
+                    type: integer
+                  current_page:
+                    type: integer
+                  total_pages:
+                    type: integer
+  /api/v1/tenants/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      example: '2'
+      schema:
+        type: integer
+    get:
+      summary: Get a tenant by ID that this API client is authorized to access
+      tags:
+      - Tenants
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                successful:
+                  value:
+                    id: 2
+                    created_at: '2026-06-09T14:26:30Z'
+                    updated_at: '2026-06-09T14:26:30Z'
+                    cname: atomic93
+                    name: Example Company, Inc.
+                    country_code: US
+                    subscription_status: Active
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: Unique identifier of this record.
+                  cname:
+                    type: string
+                    description: Tenant subdomain in Shop-Ware.
+                  country_code:
+                    type: string
+                    description: Country code of the tenant, e.g. "US"
+                  name:
+                    type: string
+                    description: Name of the tenant.
+                  subscription_status:
+                    type: string
+                    description: Subscription status of the tenant. One of "Active" or "Canceled"
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was created.
+                  updated_at:
+                    type: string
+                    format: date-time
+                    description: Date and time when record was last updated.
+components:
+  securitySchemes:
+    api_partner_id:
+      type: apiKey
+      name: X-Api-Partner-Id
+      in: header
+    api_secret:
+      type: apiKey
+      name: X-Api-Secret
+      in: header
