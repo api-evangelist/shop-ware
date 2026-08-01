@@ -1,0 +1,30 @@
+generated: '2026-07-21'
+method: generated
+source: openapi/shop-ware-v1-openapi-original.yml, openapi/shop-ware-v2-openapi-original.yml
+note: >-
+  The public OpenAPI declares no operationIds, so each skill step is grounded in the
+  real HTTP method + path from the spec (verified against the spec, never invented).
+skills:
+  - file: shop-ware-manage-repair-orders.md
+    name: Manage Shop-Ware repair orders
+    api: openapi/shop-ware-v2-openapi-original.yml
+    operations:
+      - "GET /api/v2/tenants/{tenant_id}/repair_orders"
+      - "GET /api/v1/tenants/{tenant_id}/repair_orders/{id}"
+      - "POST /api/v1/tenants/{tenant_id}/repair_orders/{id}/start"
+      - "POST /api/v1/tenants/{tenant_id}/repair_orders/{id}/share"
+  - file: shop-ware-subscribe-webhooks.md
+    name: Subscribe to Shop-Ware webhooks
+    api: openapi/shop-ware-v1-openapi-original.yml
+    operations:
+      - "POST /api/v1/webhooks"
+      - "GET /api/v1/webhooks"
+      - "PUT /api/v1/webhooks/{id}"
+      - "DELETE /api/v1/webhooks/{id}"
+  - file: shop-ware-manage-customers-vehicles.md
+    name: Manage Shop-Ware customers and vehicles
+    api: openapi/shop-ware-v1-openapi-original.yml
+    operations:
+      - "GET /api/v1/tenants/{tenant_id}/customers"
+      - "POST /api/v1/tenants/{tenant_id}/customers/{customer_id}/contacts"
+      - "GET /api/v1/tenants/{tenant_id}/vehicles"

@@ -1,0 +1,57 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/shop-ware-v1-openapi-original.yml, openapi/shop-ware-v2-openapi-original.yml
+summary: >-
+  Cross-cutting request/response conventions for the Shop-Ware Partner API,
+  derived from the public V1 and V2 OpenAPI. Two live major versions are served
+  side by side under URI-path prefixes on api.shop-ware.com. All business
+  resources are scoped to a tenant (shop) via /tenants/{tenant_id}/. V1
+  paginates with page/per_page offset paging; V2 moves to opaque-cursor paging.
+authentication:
+  style: apiKey
+  schemes:
+    - header: X-Api-Partner-Id
+      role: identifies the API partner integration
+    - header: X-Api-Secret
+      role: partner secret credential
+  note: Both headers are required on every request; see authentication/shop-ware-authentication.yml
+versioning:
+  scheme: uri-path
+  current: v2
+  supported: [v1, v2]
+  base: https://api.shop-ware.com
+  note: V1 and V2 are served concurrently; V2 is the recommended version.
+pagination:
+  v1:
+    style: offset
+    params: [page, per_page]
+    default_per_page: 30
+  v2:
+    style: cursor
+    params: [cursor, per_page]
+    response_field: cursor
+    note: cursor is an opaque encoded reference to the last record of the current page; empty for the first page.
+tenancy:
+  model: multi-tenant
+  scope_param: tenant_id
+  path_prefix: /api/{version}/tenants/{tenant_id}/
+  note: Nearly every resource is nested under a tenant (shop); partner authorizations enumerate accessible tenants.
+idempotency:
+  supported: false
+  note: No idempotency-key header or parameter is documented in the OpenAPI.
+rate_limiting:
+  documented: false
+  note: No rate-limit headers or policy are declared in the OpenAPI.
+request_tracing:
+  documented: false
+error_envelope:
+  documented: false
+  note: Only 2xx responses (200/201) are described in the public OpenAPI; error shapes are not published.
+webhooks:
+  supported: true
+  see: asyncapi/shop-ware-webhooks.yml
+cross_links:
+  authentication: authentication/shop-ware-authentication.yml
+  lifecycle: lifecycle/shop-ware-lifecycle.yml
+  webhooks: asyncapi/shop-ware-webhooks.yml
+  data_model: data-model/shop-ware-data-model.yml

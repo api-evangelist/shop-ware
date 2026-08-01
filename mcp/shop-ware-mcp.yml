@@ -1,0 +1,323 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: openapi/shop-ware-v1-openapi-original.yml, openapi/shop-ware-v2-openapi-original.yml
+note: No official hosted Shop-Ware MCP server was found. This is a CANDIDATE tool list derived one-tool-per-operation
+  from the public OpenAPI, for building an MCP server over the Shop-Ware Partner API.
+server:
+  name: shop-ware
+  transport: http
+  auth: apiKey headers X-Api-Partner-Id + X-Api-Secret
+tools:
+- name: list_partners_authorizations
+  description: Get current authorizations
+  source_operation: openapi/shop-ware-v2-openapi-original.yml#GET /api/v2/partners/{partner_id}/authorizations
+- name: list_tenants_appointments
+  description: Get a list of all appointments
+  source_operation: openapi/shop-ware-v2-openapi-original.yml#GET /api/v2/tenants/{tenant_id}/appointments
+- name: create_tenants_appointments
+  description: Create an appointment
+  source_operation: openapi/shop-ware-v2-openapi-original.yml#POST /api/v2/tenants/{tenant_id}/appointments
+- name: get_tenants_appointments
+  description: Get a specific appointment by ID
+  source_operation: openapi/shop-ware-v2-openapi-original.yml#GET /api/v2/tenants/{tenant_id}/appointments/{id}
+- name: update_tenants_appointments
+  description: Update a specific appointment
+  source_operation: openapi/shop-ware-v2-openapi-original.yml#PUT /api/v2/tenants/{tenant_id}/appointments/{id}
+- name: delete_tenants_appointments
+  description: Delete a specific appointment
+  source_operation: openapi/shop-ware-v2-openapi-original.yml#DELETE /api/v2/tenants/{tenant_id}/appointments/{id}
+- name: list_tenants_assignments
+  description: Get a list of all assignments
+  source_operation: openapi/shop-ware-v2-openapi-original.yml#GET /api/v2/tenants/{tenant_id}/assignments
+- name: get_tenants_assignments
+  description: Get a specific assignment by ID
+  source_operation: openapi/shop-ware-v2-openapi-original.yml#GET /api/v2/tenants/{tenant_id}/assignments/{id}
+- name: create_tenants_repair_orders_start
+  description: Start a specific repair order
+  source_operation: openapi/shop-ware-v2-openapi-original.yml#POST /api/v1/tenants/{tenant_id}/repair_orders/{id}/start
+- name: create_tenants_repair_orders_share
+  description: Share repair order via text
+  source_operation: openapi/shop-ware-v2-openapi-original.yml#POST /api/v1/tenants/{tenant_id}/repair_orders/{id}/share
+- name: list_tenants_repair_orders
+  description: Get a list of all repair orders
+  source_operation: openapi/shop-ware-v2-openapi-original.yml#GET /api/v2/tenants/{tenant_id}/repair_orders
+- name: create_tenants_repair_orders
+  description: Create a repair order
+  source_operation: openapi/shop-ware-v2-openapi-original.yml#POST /api/v2/tenants/{tenant_id}/repair_orders
+- name: get_tenants_repair_orders
+  description: Get a specific repair order by ID
+  source_operation: openapi/shop-ware-v2-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/repair_orders/{id}
+- name: update_tenants_repair_orders
+  description: Update a specific repair order
+  source_operation: openapi/shop-ware-v2-openapi-original.yml#PUT /api/v1/tenants/{tenant_id}/repair_orders/{id}
+- name: list_partners_authorizations_2
+  description: Get current authorizations
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/partners/{partner_id}/authorizations
+- name: list_tenants_appointments_2
+  description: Get a list of all appointments
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/appointments
+- name: create_tenants_appointments_2
+  description: Create an appointment
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#POST /api/v1/tenants/{tenant_id}/appointments
+- name: get_tenants_appointments_2
+  description: Get a specific appointment by ID
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/appointments/{id}
+- name: update_tenants_appointments_2
+  description: Update a specific appointment
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#PUT /api/v1/tenants/{tenant_id}/appointments/{id}
+- name: delete_tenants_appointments_2
+  description: Delete a specific appointment
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#DELETE /api/v1/tenants/{tenant_id}/appointments/{id}
+- name: list_tenants_assignments_2
+  description: Get a list of all assignments
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/assignments
+- name: get_tenants_assignments_2
+  description: Get a specific assignment by ID
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/assignments/{id}
+- name: list_tenants_canned_jobs
+  description: Get a list of all canned jobs
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/canned_jobs
+- name: get_tenants_canned_jobs
+  description: Get a specific canned job by ID
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/canned_jobs/{id}
+- name: list_tenants_categories
+  description: Get a list of all categories
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/categories
+- name: get_tenants_categories
+  description: Get a specific category by ID
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/categories/{id}
+- name: list_tenants_customers_contacts
+  description: Get a list of customer's contacts
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/customers/{customer_id}/contacts
+- name: create_tenants_customers_contacts
+  description: Create new contact for customer
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#POST /api/v1/tenants/{tenant_id}/customers/{customer_id}/contacts
+- name: update_tenants_customers_contacts
+  description: Update an existing contact for customer
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#PUT /api/v1/tenants/{tenant_id}/customers/{customer_id}/contacts/{id}
+- name: list_tenants_customers
+  description: Get a list of all customer
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/customers
+- name: create_tenants_customers
+  description: Create a customer
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#POST /api/v1/tenants/{tenant_id}/customers
+- name: get_tenants_customers
+  description: Get a specific customer by ID
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/customers/{id}
+- name: update_tenants_customers
+  description: Update a specific customer
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#PUT /api/v1/tenants/{tenant_id}/customers/{id}
+- name: update_tenants_estimates_canned_jobs
+  description: Add canned job as service
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#PUT /api/v1/tenants/{tenant_id}/estimates/{estimate_id}/canned_jobs/{canned_job_id}
+- name: delete_tenants_estimates_services
+  description: Delete service
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#DELETE /api/v1/tenants/{tenant_id}/estimates/{estimate_id}/services/{service_id}
+- name: list_tenants_gp_exceptions
+  description: Get a list of all gp exceptions
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/gp_exceptions
+- name: get_tenants_gp_exceptions
+  description: Get a specific gp exception by ID
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/gp_exceptions/{id}
+- name: list_tenants_integrator_tags
+  description: Get a list of all integrator tags
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/integrator_tags
+- name: create_tenants_integrator_tags
+  description: Create an integrator tag
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#POST /api/v1/tenants/{tenant_id}/integrator_tags
+- name: get_tenants_integrator_tags
+  description: Get an integrator tag by ID
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/integrator_tags/{id}
+- name: update_tenants_integrator_tags
+  description: Update an integrator tag by ID
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#PUT /api/v1/tenants/{tenant_id}/integrator_tags/{id}
+- name: delete_tenants_integrator_tags
+  description: Delete an integrator tag by ID
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#DELETE /api/v1/tenants/{tenant_id}/integrator_tags/{id}
+- name: list_tenants_inventories
+  description: Get a list of all inventory
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/inventories
+- name: list_tenants_inventories_active_ros_parts_net_value
+  description: Get active RO inventory net value for parts assigned to active work orders
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/inventories/active_ros_parts_net_value
+- name: get_tenants_inventories
+  description: Get specific inventory by ID
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/inventories/{id}
+- name: update_tenants_inventories
+  description: Update specific inventory by ID
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#PUT /api/v1/tenants/{tenant_id}/inventories/{id}
+- name: list_tenants_labels
+  description: Get a list of all labels
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/labels
+- name: get_tenants_labels
+  description: Get a specific label by ID
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/labels/{id}
+- name: list_tenants_notes
+  description: Get a list of all notes
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/notes
+- name: create_tenants_notes
+  description: Create a note
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#POST /api/v1/tenants/{tenant_id}/notes
+- name: get_tenants_notes
+  description: Get a specific note by ID
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/notes/{id}
+- name: update_tenants_notes
+  description: Update a specific note
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#PUT /api/v1/tenants/{tenant_id}/notes/{id}
+- name: list_tenants_past_recommendations
+  description: Get a list of all past recommendations
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/past_recommendations
+- name: get_tenants_past_recommendations
+  description: Get a specific past recommendation by ID
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/past_recommendations/{id}
+- name: list_tenants_pay_rates
+  description: Get a list of all pay rates
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/pay_rates
+- name: create_tenants_pay_rates
+  description: Create a new pay rates
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#POST /api/v1/tenants/{tenant_id}/pay_rates
+- name: update_tenants_pay_rates
+  description: Update the specified existing pay rates
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#PUT /api/v1/tenants/{tenant_id}/pay_rates
+- name: get_tenants_pay_rates
+  description: Get a specific pay rate by ID
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/pay_rates/{id}
+- name: create_tenants_pay_rates_delete
+  description: Delete the specified pay rates
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#POST /api/v1/tenants/{tenant_id}/pay_rates/delete
+- name: list_tenants_payment_transactions
+  description: Get a list of all payment transactions
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/payment_transactions
+- name: get_tenants_payment_transactions
+  description: Get a specific payment transaction by ID
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/payment_transactions/{id}
+- name: list_tenants_payments_customer_payment_types
+  description: Get custom payment types
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/payments/customer_payment_types
+- name: list_tenants_payments
+  description: Get a list of all payments
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/payments
+- name: get_tenants_payments
+  description: Get a specific payment by ID
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/payments/{id}
+- name: list_tenants_purchase_records
+  description: Get a list of all purchase records
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/purchase_records
+- name: get_tenants_purchase_records
+  description: Get a specific purchase record by ID
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/purchase_records/{id}
+- name: list_tenants_recommendations
+  description: Get a list of all recommendations
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/recommendations
+- name: create_tenants_recommendations
+  description: Create a recommendation
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#POST /api/v1/tenants/{tenant_id}/recommendations
+- name: get_tenants_recommendations
+  description: Get a specific recommendation by ID
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/recommendations/{id}
+- name: update_tenants_recommendations
+  description: Update a specific recommendation
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#PUT /api/v1/tenants/{tenant_id}/recommendations/{id}
+- name: create_tenants_repair_orders_start_2
+  description: Start a specific repair order
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#POST /api/v1/tenants/{tenant_id}/repair_orders/{id}/start
+- name: create_tenants_repair_orders_share_2
+  description: Share repair order via text
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#POST /api/v1/tenants/{tenant_id}/repair_orders/{id}/share
+- name: list_tenants_repair_orders_2
+  description: Get a list of all repair orders
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/repair_orders
+- name: create_tenants_repair_orders_2
+  description: Create a repair order
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#POST /api/v1/tenants/{tenant_id}/repair_orders
+- name: get_tenants_repair_orders_2
+  description: Get a specific repair order by ID
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/repair_orders/{id}
+- name: update_tenants_repair_orders_2
+  description: Update a specific repair order
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#PUT /api/v1/tenants/{tenant_id}/repair_orders/{id}
+- name: list_tenants_services
+  description: Get a list of all services
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/services
+- name: get_tenants_services
+  description: Get a specific service by ID
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/services/{id}
+- name: update_tenants_services
+  description: Update a specific service
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#PUT /api/v1/tenants/{tenant_id}/services/{id}
+- name: list_tenants_shops
+  description: Get a list of all shops
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/shops
+- name: get_tenants_shops
+  description: Get a specific shop by ID
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/shops/{id}
+- name: list_tenants_staffs_time_clocks
+  description: Get shift clocks for staff
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/staffs/{staff_id}/time_clocks
+- name: list_tenants_staffs
+  description: Get a list of all staff members
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/staffs
+- name: create_tenants_staffs
+  description: Create a new staff member
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#POST /api/v1/tenants/{tenant_id}/staffs
+- name: update_tenants_staffs
+  description: Update existing staff member
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#PUT /api/v1/tenants/{tenant_id}/staffs
+- name: get_tenants_staffs
+  description: Get a specific staff member by ID
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/staffs/{id}
+- name: update_tenants_staffs_2
+  description: Update a specific staff member by ID
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#PUT /api/v1/tenants/{tenant_id}/staffs/{id}
+- name: create_tenants_staffs_notification
+  description: Notify staff
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#POST /api/v1/tenants/{tenant_id}/staffs/notification
+- name: list_tenants_statuses
+  description: Get a list of all statuses
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/statuses
+- name: get_tenants_statuses
+  description: Get a specific status by ID
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/statuses/{id}
+- name: list_tenants
+  description: Get a list of all tenants that this API client is authorized to access
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants
+- name: get_tenants
+  description: Get a tenant by ID that this API client is authorized to access
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{id}
+- name: list_tenants_time_clocks
+  description: Get shift clocks
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/time_clocks
+- name: list_tenants_vehicles
+  description: Get a list of all vehicles
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/vehicles
+- name: create_tenants_vehicles
+  description: Create a vehicle
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#POST /api/v1/tenants/{tenant_id}/vehicles
+- name: get_tenants_vehicles
+  description: Get a specific vehicle by ID
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/vehicles/{id}
+- name: update_tenants_vehicles
+  description: Update a specific vehicle by ID
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#PUT /api/v1/tenants/{tenant_id}/vehicles/{id}
+- name: list_tenants_vendors
+  description: Get a list of all vendors
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/vendors
+- name: get_tenants_vendors
+  description: Get a vendor by ID
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/tenants/{tenant_id}/vendors/{id}
+- name: list_webhooks
+  description: Get a list of all registered webhooks
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/webhooks
+- name: create_webhooks
+  description: Create a webhook
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#POST /api/v1/webhooks
+- name: get_webhooks
+  description: Get a webhook by ID
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#GET /api/v1/webhooks/{id}
+- name: update_webhooks
+  description: Update a webhook
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#PUT /api/v1/webhooks/{id}
+- name: delete_webhooks
+  description: Delete a webhook by ID
+  source_operation: openapi/shop-ware-v1-openapi-original.yml#DELETE /api/v1/webhooks/{id}

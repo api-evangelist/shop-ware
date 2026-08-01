@@ -1,0 +1,19 @@
+generated: '2026-07-21'
+method: searched
+host: https://api.shop-ware.com
+documents:
+- path: /.well-known/security.txt
+  status: 404
+- path: /.well-known/openid-configuration
+  status: 404
+- path: /.well-known/oauth-authorization-server
+  status: 404
+- path: /.well-known/api-catalog
+  status: 404
+- path: /.well-known/ai-plugin.json
+  status: 404
+also_probed:
+- host: https://www.shop-ware.com
+  path: /.well-known/security.txt
+  status: 404
+note: No /.well-known/ discovery documents are published on the API or website hosts.

@@ -1,0 +1,23 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/shop-ware-v1-openapi-original.yml, openapi/shop-ware-v2-openapi-original.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: api_partner_id
+  type: apiKey
+  in: header
+  parameter: X-Api-Partner-Id
+  sources:
+  - openapi/shop-ware-v1-openapi-original.yml
+  - openapi/shop-ware-v2-openapi-original.yml
+- name: api_secret
+  type: apiKey
+  in: header
+  parameter: X-Api-Secret
+  sources:
+  - openapi/shop-ware-v1-openapi-original.yml
+  - openapi/shop-ware-v2-openapi-original.yml

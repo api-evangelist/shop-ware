@@ -1,0 +1,27 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/shop-ware-v1-openapi-original.yml, openapi/shop-ware-v2-openapi-original.yml
+standards:
+  - id: oauth2
+    conforms: false
+    evidence: securitySchemes are apiKey (X-Api-Partner-Id + X-Api-Secret); no oauth2 flows.
+  - id: oidc
+    conforms: false
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: No application/problem+json responses; only 2xx responses are documented.
+  - id: rest-json
+    conforms: true
+    evidence: JSON request/response bodies over REST resources.
+  - id: apikey-auth
+    conforms: true
+    evidence: Two required apiKey header schemes applied globally.
+  - id: pagination
+    conforms: true
+    evidence: Offset paging (page/per_page) in V1; opaque cursor paging in V2.
+  - id: webhooks
+    conforms: true
+    evidence: CRUD-managed HTTPS webhook subscriptions with object_type.event_action events (Webhooks tag).
+  - id: idempotency
+    conforms: false
+    evidence: No idempotency-key mechanism documented.

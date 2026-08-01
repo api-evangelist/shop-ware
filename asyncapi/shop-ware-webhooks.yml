@@ -1,0 +1,82 @@
+generated: '2026-07-21'
+method: searched
+source: https://api.shop-ware.com/api-docs/public/v1/swagger.yaml (Webhooks tag, webhook
+  create request body event enum)
+delivery:
+  style: http-callback
+  transport: HTTPS POST to subscriber URL (must be HTTPS, no redirects)
+  management: CRUD via /api/v1/webhooks (create/list/get/update/delete)
+  formats:
+  - default (nil)
+  - zapier
+  auth: Subscriptions created with the same X-Api-Partner-Id / X-Api-Secret partner
+    credentials
+event_naming: object_type.event_action (e.g. repair_order.updated)
+object_types:
+- appointment
+- assignment
+- canned_job
+- category
+- customer
+- gp_exception
+- inventory
+- past_recommendation
+- payment_transaction
+- purchase_record
+- repair_order
+- shop
+- staff
+- status
+- vehicle
+event_actions:
+- created
+- updated
+- deleted
+- merged (customer only)
+events:
+- appointment.created
+- appointment.updated
+- appointment.deleted
+- assignment.created
+- assignment.updated
+- assignment.deleted
+- canned_job.created
+- canned_job.updated
+- canned_job.deleted
+- category.created
+- category.updated
+- category.deleted
+- customer.created
+- customer.updated
+- customer.deleted
+- gp_exception.created
+- gp_exception.updated
+- gp_exception.deleted
+- inventory.created
+- inventory.updated
+- inventory.deleted
+- past_recommendation.created
+- past_recommendation.updated
+- past_recommendation.deleted
+- payment_transaction.created
+- payment_transaction.updated
+- payment_transaction.deleted
+- purchase_record.created
+- purchase_record.updated
+- purchase_record.deleted
+- repair_order.created
+- repair_order.updated
+- repair_order.deleted
+- shop.created
+- shop.updated
+- shop.deleted
+- staff.created
+- staff.updated
+- staff.deleted
+- status.created
+- status.updated
+- status.deleted
+- vehicle.created
+- vehicle.updated
+- vehicle.deleted
+- customer.merged

@@ -1,0 +1,17 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Shop-Ware API V1
+  version: 1.0.0
+extends: openapi/shop-ware-v1-openapi-original.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enriched: '2026-07-21'
+    x-api-evangelist-provider: shop-ware
+    x-authentication: apiKey headers X-Api-Partner-Id + X-Api-Secret
+    x-webhooks: asyncapi/shop-ware-webhooks.yml
+- target: $.servers
+  update:
+  - url: https://api.shop-ware.com
+    description: Production (Shop-Ware Partner API)
+  description: Original spec declares no servers[]; the production host is api.shop-ware.com.

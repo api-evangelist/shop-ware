@@ -1,7 +1,16 @@
 aid: shop-ware
 name: Shop-Ware
-description: Shop-Ware is a company surfaced as a portfolio company of insight-partners and added to the
-  API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Shop-Ware is cloud-based auto repair shop management software for independent
+  automotive repair shops, backed by Insight Partners. It runs the digital
+  workflow of a shop: digital vehicle inspections, repair orders, estimates,
+  canned jobs and services, parts inventory and purchasing, customer and
+  vehicle records, staff time clocks and pay rates, and integrated payments.
+  Shop-Ware exposes a multi-tenant Partner API (V1 and V2, OpenAPI 3.0.1) that
+  lets integrators read and manage these resources per shop (tenant) using two
+  partner header credentials, plus an HTTPS webhook surface delivering
+  object_type.event_action events (created / updated / deleted, and
+  customer.merged) for near-real-time synchronization.
 url: https://raw.githubusercontent.com/api-evangelist/shop-ware/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -9,12 +18,338 @@ x-backed-by:
 - insight-partners
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 16
+  pass: local-v1
+image: https://shop-ware.com/wp-content/uploads/Motor-logo.png
 tags:
 - Company
-apis: []
+- Automotive
+- Auto Repair
+- Shop Management
+- Repair Orders
+- Field Service
+- SaaS
+- Webhooks
+- Payments
+apis:
+- aid: shop-ware:shop-ware-api-partners-api
+  name: Shop-Ware API Partners API
+  description: The API Partners API from Shop-Ware — 2 operation(s) for api partners.
+  humanURL: https://api.shop-ware.com/api-docs/index.html
+  baseURL: https://api.shop-ware.com
+  tags:
+  - API Partners
+  properties:
+  - type: OpenAPI
+    url: openapi/shop-ware-api-partners-api-openapi.yml
+- aid: shop-ware:shop-ware-appointments-api
+  name: Shop-Ware Appointments API
+  description: The Appointments API from Shop-Ware — 4 operation(s) for appointments.
+  humanURL: https://api.shop-ware.com/api-docs/index.html
+  baseURL: https://api.shop-ware.com
+  tags:
+  - Appointments
+  properties:
+  - type: OpenAPI
+    url: openapi/shop-ware-appointments-api-openapi.yml
+- aid: shop-ware:shop-ware-assignments-api
+  name: Shop-Ware Assignments API
+  description: The Assignments API from Shop-Ware — 4 operation(s) for assignments.
+  humanURL: https://api.shop-ware.com/api-docs/index.html
+  baseURL: https://api.shop-ware.com
+  tags:
+  - Assignments
+  properties:
+  - type: OpenAPI
+    url: openapi/shop-ware-assignments-api-openapi.yml
+- aid: shop-ware:shop-ware-canned-jobs-api
+  name: Shop-Ware Canned Jobs API
+  description: The Canned Jobs API from Shop-Ware — 2 operation(s) for canned jobs.
+  humanURL: https://api.shop-ware.com/api-docs/index.html
+  baseURL: https://api.shop-ware.com
+  tags:
+  - Canned Jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/shop-ware-canned-jobs-api-openapi.yml
+- aid: shop-ware:shop-ware-categories-api
+  name: Shop-Ware Categories API
+  description: The Categories API from Shop-Ware — 2 operation(s) for categories.
+  humanURL: https://api.shop-ware.com/api-docs/index.html
+  baseURL: https://api.shop-ware.com
+  tags:
+  - Categories
+  properties:
+  - type: OpenAPI
+    url: openapi/shop-ware-categories-api-openapi.yml
+- aid: shop-ware:shop-ware-contacts-api
+  name: Shop-Ware Contacts API
+  description: The Contacts API from Shop-Ware — 2 operation(s) for contacts.
+  humanURL: https://api.shop-ware.com/api-docs/index.html
+  baseURL: https://api.shop-ware.com
+  tags:
+  - Contacts
+  properties:
+  - type: OpenAPI
+    url: openapi/shop-ware-contacts-api-openapi.yml
+- aid: shop-ware:shop-ware-customers-api
+  name: Shop-Ware Customers API
+  description: The Customers API from Shop-Ware — 2 operation(s) for customers.
+  humanURL: https://api.shop-ware.com/api-docs/index.html
+  baseURL: https://api.shop-ware.com
+  tags:
+  - Customers
+  properties:
+  - type: OpenAPI
+    url: openapi/shop-ware-customers-api-openapi.yml
+- aid: shop-ware:shop-ware-estimates-api
+  name: Shop-Ware Estimates API
+  description: The Estimates API from Shop-Ware — 2 operation(s) for estimates.
+  humanURL: https://api.shop-ware.com/api-docs/index.html
+  baseURL: https://api.shop-ware.com
+  tags:
+  - Estimates
+  properties:
+  - type: OpenAPI
+    url: openapi/shop-ware-estimates-api-openapi.yml
+- aid: shop-ware:shop-ware-gp-exceptions-api
+  name: Shop-Ware GP Exceptions API
+  description: The GP Exceptions API from Shop-Ware — 2 operation(s) for gp exceptions.
+  humanURL: https://api.shop-ware.com/api-docs/index.html
+  baseURL: https://api.shop-ware.com
+  tags:
+  - GP Exceptions
+  properties:
+  - type: OpenAPI
+    url: openapi/shop-ware-gp-exceptions-api-openapi.yml
+- aid: shop-ware:shop-ware-integrator-tags-api
+  name: Shop-Ware Integrator Tags API
+  description: The Integrator Tags API from Shop-Ware — 2 operation(s) for integrator tags.
+  humanURL: https://api.shop-ware.com/api-docs/index.html
+  baseURL: https://api.shop-ware.com
+  tags:
+  - Integrator Tags
+  properties:
+  - type: OpenAPI
+    url: openapi/shop-ware-integrator-tags-api-openapi.yml
+- aid: shop-ware:shop-ware-inventory-api
+  name: Shop-Ware Inventory API
+  description: The Inventory API from Shop-Ware — 3 operation(s) for inventory.
+  humanURL: https://api.shop-ware.com/api-docs/index.html
+  baseURL: https://api.shop-ware.com
+  tags:
+  - Inventory
+  properties:
+  - type: OpenAPI
+    url: openapi/shop-ware-inventory-api-openapi.yml
+- aid: shop-ware:shop-ware-labels-api
+  name: Shop-Ware Labels API
+  description: The Labels API from Shop-Ware — 2 operation(s) for labels.
+  humanURL: https://api.shop-ware.com/api-docs/index.html
+  baseURL: https://api.shop-ware.com
+  tags:
+  - Labels
+  properties:
+  - type: OpenAPI
+    url: openapi/shop-ware-labels-api-openapi.yml
+- aid: shop-ware:shop-ware-notes-api
+  name: Shop-Ware Notes API
+  description: The Notes API from Shop-Ware — 2 operation(s) for notes.
+  humanURL: https://api.shop-ware.com/api-docs/index.html
+  baseURL: https://api.shop-ware.com
+  tags:
+  - Notes
+  properties:
+  - type: OpenAPI
+    url: openapi/shop-ware-notes-api-openapi.yml
+- aid: shop-ware:shop-ware-past-recommendations-api
+  name: Shop-Ware Past Recommendations API
+  description: The Past Recommendations API from Shop-Ware — 2 operation(s) for past recommendations.
+  humanURL: https://api.shop-ware.com/api-docs/index.html
+  baseURL: https://api.shop-ware.com
+  tags:
+  - Past Recommendations
+  properties:
+  - type: OpenAPI
+    url: openapi/shop-ware-past-recommendations-api-openapi.yml
+- aid: shop-ware:shop-ware-pay-rates-api
+  name: Shop-Ware Pay Rates API
+  description: The Pay Rates API from Shop-Ware — 3 operation(s) for pay rates.
+  humanURL: https://api.shop-ware.com/api-docs/index.html
+  baseURL: https://api.shop-ware.com
+  tags:
+  - Pay Rates
+  properties:
+  - type: OpenAPI
+    url: openapi/shop-ware-pay-rates-api-openapi.yml
+- aid: shop-ware:shop-ware-payment-transactions-api
+  name: Shop-Ware Payment Transactions API
+  description: The Payment Transactions API from Shop-Ware — 2 operation(s) for payment transactions.
+  humanURL: https://api.shop-ware.com/api-docs/index.html
+  baseURL: https://api.shop-ware.com
+  tags:
+  - Payment Transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/shop-ware-payment-transactions-api-openapi.yml
+- aid: shop-ware:shop-ware-payments-api
+  name: Shop-Ware Payments API
+  description: The Payments API from Shop-Ware — 3 operation(s) for payments.
+  humanURL: https://api.shop-ware.com/api-docs/index.html
+  baseURL: https://api.shop-ware.com
+  tags:
+  - Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/shop-ware-payments-api-openapi.yml
+- aid: shop-ware:shop-ware-purchase-records-api
+  name: Shop-Ware Purchase Records API
+  description: The Purchase Records API from Shop-Ware — 2 operation(s) for purchase records.
+  humanURL: https://api.shop-ware.com/api-docs/index.html
+  baseURL: https://api.shop-ware.com
+  tags:
+  - Purchase Records
+  properties:
+  - type: OpenAPI
+    url: openapi/shop-ware-purchase-records-api-openapi.yml
+- aid: shop-ware:shop-ware-recommendations-api
+  name: Shop-Ware Recommendations API
+  description: The Recommendations API from Shop-Ware — 2 operation(s) for recommendations.
+  humanURL: https://api.shop-ware.com/api-docs/index.html
+  baseURL: https://api.shop-ware.com
+  tags:
+  - Recommendations
+  properties:
+  - type: OpenAPI
+    url: openapi/shop-ware-recommendations-api-openapi.yml
+- aid: shop-ware:shop-ware-repair-orders-api
+  name: Shop-Ware Repair Orders API
+  description: The Repair Orders API from Shop-Ware — 5 operation(s) for repair orders.
+  humanURL: https://api.shop-ware.com/api-docs/index.html
+  baseURL: https://api.shop-ware.com
+  tags:
+  - Repair Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/shop-ware-repair-orders-api-openapi.yml
+- aid: shop-ware:shop-ware-services-api
+  name: Shop-Ware Services API
+  description: The Services API from Shop-Ware — 2 operation(s) for services.
+  humanURL: https://api.shop-ware.com/api-docs/index.html
+  baseURL: https://api.shop-ware.com
+  tags:
+  - Services
+  properties:
+  - type: OpenAPI
+    url: openapi/shop-ware-services-api-openapi.yml
+- aid: shop-ware:shop-ware-shift-clocks-api
+  name: Shop-Ware Shift clocks API
+  description: The Shift clocks API from Shop-Ware — 1 operation(s) for shift clocks.
+  humanURL: https://api.shop-ware.com/api-docs/index.html
+  baseURL: https://api.shop-ware.com
+  tags:
+  - Shift clocks
+  properties:
+  - type: OpenAPI
+    url: openapi/shop-ware-shift-clocks-api-openapi.yml
+- aid: shop-ware:shop-ware-shops-api
+  name: Shop-Ware Shops API
+  description: The Shops API from Shop-Ware — 2 operation(s) for shops.
+  humanURL: https://api.shop-ware.com/api-docs/index.html
+  baseURL: https://api.shop-ware.com
+  tags:
+  - Shops
+  properties:
+  - type: OpenAPI
+    url: openapi/shop-ware-shops-api-openapi.yml
+- aid: shop-ware:shop-ware-staff-members-api
+  name: Shop-Ware Staff Members API
+  description: The Staff Members API from Shop-Ware — 3 operation(s) for staff members.
+  humanURL: https://api.shop-ware.com/api-docs/index.html
+  baseURL: https://api.shop-ware.com
+  tags:
+  - Staff Members
+  properties:
+  - type: OpenAPI
+    url: openapi/shop-ware-staff-members-api-openapi.yml
+- aid: shop-ware:shop-ware-staff-shift-clocks-api
+  name: Shop-Ware Staff shift clocks API
+  description: The Staff shift clocks API from Shop-Ware — 1 operation(s) for staff shift clocks.
+  humanURL: https://api.shop-ware.com/api-docs/index.html
+  baseURL: https://api.shop-ware.com
+  tags:
+  - Staff shift clocks
+  properties:
+  - type: OpenAPI
+    url: openapi/shop-ware-staff-shift-clocks-api-openapi.yml
+- aid: shop-ware:shop-ware-statuses-api
+  name: Shop-Ware Statuses API
+  description: The Statuses API from Shop-Ware — 2 operation(s) for statuses.
+  humanURL: https://api.shop-ware.com/api-docs/index.html
+  baseURL: https://api.shop-ware.com
+  tags:
+  - Statuses
+  properties:
+  - type: OpenAPI
+    url: openapi/shop-ware-statuses-api-openapi.yml
+- aid: shop-ware:shop-ware-tenants-api
+  name: Shop-Ware Tenants API
+  description: The Tenants API from Shop-Ware — 2 operation(s) for tenants.
+  humanURL: https://api.shop-ware.com/api-docs/index.html
+  baseURL: https://api.shop-ware.com
+  tags:
+  - Tenants
+  properties:
+  - type: OpenAPI
+    url: openapi/shop-ware-tenants-api-openapi.yml
+- aid: shop-ware:shop-ware-vehicles-api
+  name: Shop-Ware Vehicles API
+  description: The Vehicles API from Shop-Ware — 2 operation(s) for vehicles.
+  humanURL: https://api.shop-ware.com/api-docs/index.html
+  baseURL: https://api.shop-ware.com
+  tags:
+  - Vehicles
+  properties:
+  - type: OpenAPI
+    url: openapi/shop-ware-vehicles-api-openapi.yml
+- aid: shop-ware:shop-ware-vendors-api
+  name: Shop-Ware Vendors API
+  description: The Vendors API from Shop-Ware — 2 operation(s) for vendors.
+  humanURL: https://api.shop-ware.com/api-docs/index.html
+  baseURL: https://api.shop-ware.com
+  tags:
+  - Vendors
+  properties:
+  - type: OpenAPI
+    url: openapi/shop-ware-vendors-api-openapi.yml
+- aid: shop-ware:shop-ware-webhooks-api
+  name: Shop-Ware Webhooks API
+  description: The Webhooks API from Shop-Ware — 2 operation(s) for webhooks.
+  humanURL: https://api.shop-ware.com/api-docs/index.html
+  baseURL: https://api.shop-ware.com
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/shop-ware-webhooks-api-openapi.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -23,3 +358,49 @@ maintainers:
 common:
 - type: Website
   url: https://www.shop-ware.com/
+- type: DeveloperPortal
+  url: https://api.shop-ware.com/api-docs/index.html
+- type: Documentation
+  url: https://api.shop-ware.com/api-docs/index.html
+- type: APIReference
+  url: https://api.shop-ware.com/api-docs/index.html
+- type: Support
+  url: https://support.shop-ware.com/s/
+- type: Blog
+  url: https://shop-ware.com/category/blog/
+- type: GitHubOrganization
+  url: https://github.com/shop-ware
+- type: StatusPage
+  url: https://status.shop-ware.com
+- type: Login
+  url: https://app.shop-ware.com/authentication
+- type: SignUp
+  url: https://shop-ware.com/schedule-a-demo/
+- type: TermsOfService
+  url: https://shop-ware.com/terms-conditions/
+- type: PrivacyPolicy
+  url: https://shop-ware.com/privacy-policy/
+- type: Authentication
+  url: authentication/shop-ware-authentication.yml
+- type: Conventions
+  url: conventions/shop-ware-conventions.yml
+- type: Lifecycle
+  url: lifecycle/shop-ware-lifecycle.yml
+- type: Conformance
+  url: conformance/shop-ware-conformance.yml
+- type: DataModel
+  url: data-model/shop-ware-data-model.yml
+- type: DomainSecurity
+  url: security/shop-ware-domain-security.yml
+- type: AgenticAccess
+  url: agentic-access/shop-ware-agentic-access.yml
+- type: MCPServer
+  url: mcp/shop-ware-mcp.yml
+- type: LLMsTxt
+  url: llms/shop-ware-llms.txt
+- type: Webhooks
+  url: asyncapi/shop-ware-webhooks.yml
+- type: AsyncAPI
+  url: asyncapi/shop-ware-webhooks-asyncapi.yml
+- type: AgentSkill
+  url: skills/_index.yml

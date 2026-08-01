@@ -1,0 +1,63 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/shop-ware-v1-openapi-original.yml (path nesting + resource structure)
+note: >-
+  The public OpenAPI defines resources inline (no reusable components.schemas),
+  so the entity graph is derived from the REST path hierarchy. Nearly every
+  entity belongs to a tenant (shop). Nested paths reveal parent/child links.
+entities:
+  - tenant
+  - partner
+  - appointment
+  - assignment
+  - canned_job
+  - category
+  - customer
+  - contact
+  - estimate
+  - gp_exception
+  - integrator_tag
+  - inventory
+  - label
+  - note
+  - past_recommendation
+  - pay_rate
+  - payment
+  - payment_transaction
+  - purchase_record
+  - recommendation
+  - repair_order
+  - service
+  - shop
+  - staff
+  - status
+  - time_clock
+  - vehicle
+  - vendor
+  - webhook
+relationships:
+  - from: tenant
+    type: has_many
+    to: [appointment, assignment, canned_job, category, customer, gp_exception, integrator_tag, inventory, label, note, past_recommendation, pay_rate, payment, payment_transaction, purchase_record, recommendation, repair_order, service, shop, staff, status, time_clock, vehicle, vendor]
+    via: tenant_id
+  - from: partner
+    type: has_many
+    to: [tenant]
+    via: authorizations
+    note: A partner enumerates the tenants it is authorized to access.
+  - from: customer
+    type: has_many
+    to: [contact]
+    via: customer_id
+  - from: estimate
+    type: has_many
+    to: [canned_job, service]
+    via: estimate_id
+  - from: staff
+    type: has_many
+    to: [time_clock]
+    via: staff_id
+actions:
+  - entity: repair_order
+    operations: [start, share]
+    note: Repair orders expose lifecycle actions (start, share) beyond CRUD.
