@@ -1,0 +1,801 @@
+{
+  "item": [
+    {
+      "id": "5e933cd2-0f99-4aa1-a5ad-171c6869fd2b",
+      "name": "Staff Members",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f46ab2d6-b40d-49d9-a4f6-2ff99f2868bb",
+          "name": "Get a list of all staff members",
+          "request": {
+            "name": "Get a list of all staff members",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants",
+                ":tenant_id",
+                "staffs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "is_active",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "assigned_shop_id",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_after",
+                  "value": "<string>",
+                  "description": "Filter response to only include records updated after a given time"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "54fe2b7c-9037-434c-89f1-820f167a31ea",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":tenant_id",
+                    "staffs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "is_active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "assigned_shop_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "updated_after",
+                      "value": "2022-10-24T12%3A00%3A00%2B08%3A00"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:25:59Z\",\n      \"updated_at\": \"2026-06-09T14:25:59Z\",\n      \"first_name\": \"James\",\n      \"last_name\": \"Brown\",\n      \"advisor\": true,\n      \"technician\": true,\n      \"active\": true,\n      \"assigned_shop_id\": 1,\n      \"employee_id\": 1,\n      \"email\": \"mrdynamite@example.com\",\n      \"integrator_tags\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:25:59Z\",\n          \"updated_at\": \"2026-06-09T14:25:59Z\",\n          \"taggable_type\": \"Staff\",\n          \"taggable_id\": 1,\n          \"name\": \"tag_name\",\n          \"value\": \"tag_value\"\n        }\n      ]\n    }\n  ],\n  \"limit\": 1,\n  \"limited\": false,\n  \"total_count\": 1,\n  \"current_page\": 1,\n  \"total_pages\": 1\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d7dab701-8d63-4bdf-ac47-57b882c39e4a",
+          "name": "Create a new staff member",
+          "request": {
+            "name": "Create a new staff member",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants",
+                ":tenant_id",
+                "staffs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"shop_id\": \"<integer>\",\n  \"employee_id\": \"<integer>\",\n  \"advisor\": \"<boolean>\",\n  \"technician\": \"<boolean>\",\n  \"active\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "25821802-2f76-41e4-b69d-00394c5ae43c",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":tenant_id",
+                    "staffs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"James\",\n  \"last_name\": \"Brown\",\n  \"email\": \"mrdynamite@example.com\",\n  \"employee_id\": 1,\n  \"shop_id\": 1,\n  \"advisor\": true,\n  \"technician\": true,\n  \"active\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"created_at\": \"2026-06-09T14:26:02Z\",\n  \"updated_at\": \"2026-06-09T14:26:02Z\",\n  \"first_name\": \"James\",\n  \"last_name\": \"Brown\",\n  \"advisor\": true,\n  \"technician\": true,\n  \"active\": true,\n  \"assigned_shop_id\": 1,\n  \"employee_id\": 1,\n  \"email\": \"mrdynamite@example.com\",\n  \"integrator_tags\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:26:02Z\",\n      \"updated_at\": \"2026-06-09T14:26:02Z\",\n      \"taggable_type\": \"Staff\",\n      \"taggable_id\": 1,\n      \"name\": \"tag_name\",\n      \"value\": \"tag_value\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4a28c7d4-f3f3-4d8d-8efd-4437fa4a78ac",
+          "name": "Update existing staff member",
+          "request": {
+            "name": "Update existing staff member",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants",
+                ":tenant_id",
+                "staffs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"shop_id\": \"<integer>\",\n  \"employee_id\": \"<integer>\",\n  \"advisor\": \"<boolean>\",\n  \"technician\": \"<boolean>\",\n  \"active\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "26738092-4488-4da1-b189-7d2f0b804ded",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":tenant_id",
+                    "staffs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"James\",\n  \"last_name\": \"Brown\",\n  \"email\": \"mrdynamite@example.com\",\n  \"employee_id\": 1,\n  \"shop_id\": 1,\n  \"advisor\": true,\n  \"technician\": true,\n  \"active\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"created_at\": \"2026-06-09T14:26:05Z\",\n  \"updated_at\": \"2026-06-09T14:26:05Z\",\n  \"first_name\": \"James\",\n  \"last_name\": \"Brown\",\n  \"advisor\": true,\n  \"technician\": true,\n  \"active\": true,\n  \"assigned_shop_id\": 1,\n  \"employee_id\": 1,\n  \"email\": \"mrdynamite@example.com\",\n  \"integrator_tags\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:26:05Z\",\n      \"updated_at\": \"2026-06-09T14:26:05Z\",\n      \"taggable_type\": \"Staff\",\n      \"taggable_id\": 1,\n      \"name\": \"tag_name\",\n      \"value\": \"tag_value\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "31dada5b-7292-4e9b-a523-14bb061acf68",
+          "name": "Get a specific staff member by ID",
+          "request": {
+            "name": "Get a specific staff member by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants",
+                ":tenant_id",
+                "staffs",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "475afba1-a9fa-41ce-a272-f5d56f3d07b5",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":tenant_id",
+                    "staffs",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"created_at\": \"2026-06-09T14:26:08Z\",\n  \"updated_at\": \"2026-06-09T14:26:08Z\",\n  \"first_name\": \"James\",\n  \"last_name\": \"Brown\",\n  \"advisor\": true,\n  \"technician\": true,\n  \"active\": true,\n  \"assigned_shop_id\": 1,\n  \"employee_id\": 1,\n  \"email\": \"mrdynamite@example.com\",\n  \"integrator_tags\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:26:08Z\",\n      \"updated_at\": \"2026-06-09T14:26:08Z\",\n      \"taggable_type\": \"Staff\",\n      \"taggable_id\": 1,\n      \"name\": \"tag_name\",\n      \"value\": \"tag_value\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "082b79e1-620d-4f2f-aca9-8961db6e1a35",
+          "name": "Update a specific staff member by ID",
+          "request": {
+            "name": "Update a specific staff member by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants",
+                ":tenant_id",
+                "staffs",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"shop_id\": \"<integer>\",\n  \"employee_id\": \"<integer>\",\n  \"advisor\": \"<boolean>\",\n  \"technician\": \"<boolean>\",\n  \"active\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "738c7c7e-a911-4363-aaef-ad5f6b876112",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":tenant_id",
+                    "staffs",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"James\",\n  \"last_name\": \"Brown\",\n  \"email\": \"mrdynamite@example.com\",\n  \"employee_id\": 1,\n  \"shop_id\": 1,\n  \"advisor\": true,\n  \"technician\": true,\n  \"active\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"created_at\": \"2026-06-09T14:26:15Z\",\n  \"updated_at\": \"2026-06-09T14:26:15Z\",\n  \"first_name\": \"James\",\n  \"last_name\": \"Brown\",\n  \"advisor\": true,\n  \"technician\": true,\n  \"active\": true,\n  \"assigned_shop_id\": 1,\n  \"employee_id\": 1,\n  \"email\": \"mrdynamite@example.com\",\n  \"integrator_tags\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:26:15Z\",\n      \"updated_at\": \"2026-06-09T14:26:15Z\",\n      \"taggable_type\": \"Staff\",\n      \"taggable_id\": 1,\n      \"name\": \"tag_name\",\n      \"value\": \"tag_value\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bd8e8067-9f71-4e12-b265-991c4c5848da",
+          "name": "Notify staff",
+          "request": {
+            "name": "Notify staff",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants",
+                ":tenant_id",
+                "staffs",
+                "notification"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"body\": \"<string>\",\n  \"url\": \"<string>\",\n  \"recipients\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "88006d9a-9891-4737-96f7-dd5a472a7c3d",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":tenant_id",
+                    "staffs",
+                    "notification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"body\": \"<string>\",\n  \"url\": \"<string>\",\n  \"recipients\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Partner-Id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fa85416b-2f6d-4b70-b0b8-0aa9739193f2",
+    "name": "API V1 API Partners Staff Members API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Name: API Support\n Email: support@shop-ware.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,536 @@
+{
+  "item": [
+    {
+      "id": "2af4431f-ea5a-45c6-a3a0-f82463abcc5f",
+      "name": "Assignments",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1dfa1756-c1c8-40d2-a783-02a31c67636a",
+          "name": "Get a list of all assignments",
+          "request": {
+            "name": "Get a list of all assignments",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants",
+                ":tenant_id",
+                "assignments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_after",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6eb00135-77ff-4d17-b642-b88570ad32d5",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":tenant_id",
+                    "assignments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "updated_after",
+                      "value": "2022-10-24T12%3A00%3A00%2B08%3A00"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:21:40Z\",\n      \"updated_at\": \"2026-06-09T14:21:40Z\",\n      \"repair_order_id\": 1,\n      \"transfer_to_id\": 3,\n      \"transfer_from_id\": 2,\n      \"message\": \"some message\",\n      \"accepted_at\": \"2026-06-09T14:21:40Z\",\n      \"cancelled_at\": null,\n      \"integrator_tags\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:21:40Z\",\n          \"updated_at\": \"2026-06-09T14:21:40Z\",\n          \"taggable_type\": \"Assignment\",\n          \"taggable_id\": 1,\n          \"name\": \"tag_name\",\n          \"value\": \"tag_value\"\n        }\n      ]\n    }\n  ],\n  \"limit\": 1,\n  \"limited\": false,\n  \"total_count\": 1,\n  \"current_page\": 1,\n  \"total_pages\": 1\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d51957d2-d718-4f56-b5ca-55ffb50b972f",
+          "name": "Get a specific assignment by ID",
+          "request": {
+            "name": "Get a specific assignment by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants",
+                ":tenant_id",
+                "assignments",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5495dce5-b4fb-4802-b911-1b92334d4f5b",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":tenant_id",
+                    "assignments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"created_at\": \"2026-06-09T14:21:43Z\",\n  \"updated_at\": \"2026-06-09T14:21:43Z\",\n  \"repair_order_id\": 1,\n  \"transfer_to_id\": 3,\n  \"transfer_from_id\": 2,\n  \"message\": \"some message\",\n  \"accepted_at\": \"2026-06-09T14:21:43Z\",\n  \"cancelled_at\": null,\n  \"integrator_tags\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:21:43Z\",\n      \"updated_at\": \"2026-06-09T14:21:43Z\",\n      \"taggable_type\": \"Assignment\",\n      \"taggable_id\": 1,\n      \"name\": \"tag_name\",\n      \"value\": \"tag_value\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a9a7bdf5-35a1-4bcf-8917-9ad3ce5730a1",
+          "name": "Get a list of all assignments",
+          "request": {
+            "name": "Get a list of all assignments",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "tenants",
+                ":tenant_id",
+                "assignments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Encoded reference to the last record of the current page. It is empty for the first page."
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_after",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fe435802-11bf-4fd9-ae70-b34c82deec93",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "tenants",
+                    ":tenant_id",
+                    "assignments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": ""
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "updated_after",
+                      "value": "2022-10-24T12%3A00%3A00%2B08%3A00"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:27:39Z\",\n      \"updated_at\": \"2026-06-09T14:27:39Z\",\n      \"repair_order_id\": 1,\n      \"transfer_to_id\": 3,\n      \"transfer_from_id\": 2,\n      \"message\": \"some message\",\n      \"accepted_at\": \"2026-06-09T14:27:39Z\",\n      \"cancelled_at\": null,\n      \"integrator_tags\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:27:39Z\",\n          \"updated_at\": \"2026-06-09T14:27:39Z\",\n          \"taggable_type\": \"Assignment\",\n          \"taggable_id\": 1,\n          \"name\": \"tag_name\",\n          \"value\": \"tag_value\"\n        }\n      ]\n    }\n  ],\n  \"cursor\": null,\n  \"limit\": 1,\n  \"has_next_page\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "37c713b0-4d52-402c-9513-936f98d0235f",
+          "name": "Get a specific assignment by ID",
+          "request": {
+            "name": "Get a specific assignment by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "tenants",
+                ":tenant_id",
+                "assignments",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f42adafd-abdb-45e0-aa90-b8a9f450aa27",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "tenants",
+                    ":tenant_id",
+                    "assignments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"created_at\": \"2026-06-09T14:27:42Z\",\n  \"updated_at\": \"2026-06-09T14:27:42Z\",\n  \"repair_order_id\": 1,\n  \"transfer_to_id\": 3,\n  \"transfer_from_id\": 2,\n  \"message\": \"some message\",\n  \"accepted_at\": \"2026-06-09T14:27:42Z\",\n  \"cancelled_at\": null,\n  \"integrator_tags\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:27:42Z\",\n      \"updated_at\": \"2026-06-09T14:27:42Z\",\n      \"taggable_type\": \"Assignment\",\n      \"taggable_id\": 1,\n      \"name\": \"tag_name\",\n      \"value\": \"tag_value\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Partner-Id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6270df17-3538-49a8-8438-5eeb1d1eb039",
+    "name": "API V1 API Partners Assignments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Name: API Support\n Email: support@shop-ware.com",
+      "type": "text/plain"
+    }
+  }
+}

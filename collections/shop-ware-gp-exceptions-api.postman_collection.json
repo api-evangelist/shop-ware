@@ -1,0 +1,293 @@
+{
+  "item": [
+    {
+      "id": "6480a919-8339-4c20-b33d-47537ccfb3ed",
+      "name": "GP Exceptions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7a40be4d-8658-4df8-9d4e-e8df7fbae79e",
+          "name": "Get a list of all gp exceptions",
+          "request": {
+            "name": "Get a list of all gp exceptions",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants",
+                ":tenant_id",
+                "gp_exceptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_after",
+                  "value": "<string>",
+                  "description": "Filter response to only include records updated after a given time"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1d07c313-bd45-495a-9851-3eb6bac2bed1",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":tenant_id",
+                    "gp_exceptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "updated_after",
+                      "value": "2022-10-24T12%3A00%3A00%2B08%3A00"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:22:49Z\",\n      \"updated_at\": \"2026-06-09T14:22:49Z\",\n      \"name\": \"Fake Gp Exception Name\",\n      \"shop_id\": 1,\n      \"percent\": 12.3,\n      \"integrator_tags\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:22:49Z\",\n          \"updated_at\": \"2026-06-09T14:22:49Z\",\n          \"taggable_type\": \"GpException\",\n          \"taggable_id\": 1,\n          \"name\": \"tag_name\",\n          \"value\": \"tag_value\"\n        }\n      ]\n    }\n  ],\n  \"limit\": 1,\n  \"limited\": false,\n  \"total_count\": 1,\n  \"current_page\": 1,\n  \"total_pages\": 1\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2675c22b-1904-4f88-ad1c-e44de92e9bb2",
+          "name": "Get a specific gp exception by ID",
+          "request": {
+            "name": "Get a specific gp exception by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants",
+                ":tenant_id",
+                "gp_exceptions",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a5dce664-086b-4ec0-8a5a-b732cdf1a063",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":tenant_id",
+                    "gp_exceptions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"created_at\": \"2026-06-09T14:22:52Z\",\n  \"updated_at\": \"2026-06-09T14:22:52Z\",\n  \"name\": \"Fake Gp Exception Name\",\n  \"shop_id\": 1,\n  \"percent\": 12.3,\n  \"integrator_tags\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:22:52Z\",\n      \"updated_at\": \"2026-06-09T14:22:52Z\",\n      \"taggable_type\": \"GpException\",\n      \"taggable_id\": 1,\n      \"name\": \"tag_name\",\n      \"value\": \"tag_value\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Partner-Id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b1ab609a-22ff-44fa-ab35-671c9ee64292",
+    "name": "API V1 API Partners GP Exceptions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Name: API Support\n Email: support@shop-ware.com",
+      "type": "text/plain"
+    }
+  }
+}

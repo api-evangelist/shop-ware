@@ -1,0 +1,77 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API V1 API Partners Labels API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Partner-Id",
+      "value": "{{X-Api-Partner-Id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Labels",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of all labels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/tenants/:tenant_id/labels",
+            "params": [
+              {
+                "name": "tenant_id",
+                "value": "1",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "per_page",
+                "value": "30",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get a list of all labels"
+        },
+        {
+          "info": {
+            "name": "Get a specific label by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/tenants/:tenant_id/labels/:id",
+            "params": [
+              {
+                "name": "tenant_id",
+                "value": "1",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a specific label by ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

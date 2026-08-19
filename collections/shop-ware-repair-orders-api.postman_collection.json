@@ -1,0 +1,1239 @@
+{
+  "item": [
+    {
+      "id": "4dfaae53-9d2e-4cc3-aa4e-25e269f157d1",
+      "name": "Repair Orders",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4a919b1e-db19-43d1-bc72-9346c8a5c110",
+          "name": "Start a specific repair order",
+          "request": {
+            "name": "Start a specific repair order",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants",
+                ":tenant_id",
+                "repair_orders",
+                ":id",
+                "start"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"initial_assignee_id\": \"<integer>\",\n  \"send_estimate_email\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "54486c5c-6976-4e0e-83d5-b9bd0d5b3be4",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":tenant_id",
+                    "repair_orders",
+                    ":id",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"initial_assignee_id\": 1,\n  \"send_estimate_email\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"created_at\": \"2026-06-09T14:25:00Z\",\n  \"updated_at\": \"2026-06-09T14:25:00Z\",\n  \"number\": 11341,\n  \"odometer\": 90321,\n  \"odometer_out\": null,\n  \"state\": \"in_progress\",\n  \"customer_id\": 3,\n  \"technician_id\": 2,\n  \"advisor_id\": 1,\n  \"vehicle_id\": 1,\n  \"detail\": \"Key tag 84, customer waiting\",\n  \"preferred_contact_type\": \"Text\",\n  \"part_discount_cents\": null,\n  \"labor_discount_cents\": null,\n  \"shop_id\": 2,\n  \"status_id\": null,\n  \"taxable\": true,\n  \"customer_source\": \"Repeat\",\n  \"supply_fee_cents\": 3250,\n  \"part_discount_percentage\": null,\n  \"labor_discount_percentage\": null,\n  \"customer_concern\": \"example of reason for customers to visit\",\n  \"vehicle_use\": \"example of primary use of vehicle\",\n  \"fleet_po\": null,\n  \"started_at\": null,\n  \"closed_at\": null,\n  \"picked_up_at\": null,\n  \"due_in_at\": \"2026-06-12T14:25:00Z\",\n  \"due_out_at\": null,\n  \"part_tax_rate\": 0,\n  \"labor_tax_rate\": 0,\n  \"hazmat_tax_rate\": 0,\n  \"sublet_tax_rate\": 0,\n  \"services\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:25:00Z\",\n      \"updated_at\": \"2026-06-09T14:25:00Z\",\n      \"title\": \"Warning Light On\",\n      \"completed\": false,\n      \"category_id\": 4,\n      \"row_order\": 1,\n      \"fixed_price_cents\": null,\n      \"canned_job_id\": 1,\n      \"comment\": \"\",\n      \"fixed_price_labor_total_cents\": null,\n      \"is_fixed_price_service\": false,\n      \"labor_rate_cents\": 10000,\n      \"completed_at\": null,\n      \"last_completed_at\": null,\n      \"labors\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:25:00Z\",\n          \"updated_at\": \"2026-06-09T14:25:00Z\",\n          \"name\": \"Advise on proper course of action\",\n          \"technician_id\": 2,\n          \"taxable\": false,\n          \"hours\": 0.13,\n          \"row_order\": 1\n        }\n      ],\n      \"parts\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:25:00Z\",\n          \"updated_at\": \"2026-06-09T14:25:00Z\",\n          \"brand\": \"Superbright\",\n          \"description\": \"194 LED - AMBER 120*\",\n          \"number\": \"WLED-A-120\",\n          \"quoted_price_cents\": 395,\n          \"cost_cents\": 85,\n          \"part_inventory_id\": 1,\n          \"taxable\": false,\n          \"sell_price_cents\": 395,\n          \"quantity\": 1,\n          \"quantity_needed\": 1\n        },\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:25:00Z\",\n          \"updated_at\": \"2026-06-09T14:25:00Z\",\n          \"brand\": \"Superbright\",\n          \"description\": \"194 LED - AMBER 120*\",\n          \"number\": \"WLED-A-120\",\n          \"quoted_price_cents\": 500,\n          \"cost_cents\": 85,\n          \"part_inventory_id\": 1,\n          \"taxable\": false,\n          \"sell_price_cents\": 500,\n          \"quantity\": 1,\n          \"quantity_needed\": 0\n        }\n      ],\n      \"hazmats\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:25:00Z\",\n          \"updated_at\": \"2026-06-09T14:25:00Z\",\n          \"name\": \"Recycling fee\",\n          \"fee_cents\": 2000,\n          \"taxable\": true,\n          \"quantity\": 1\n        }\n      ],\n      \"sublets\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:25:00Z\",\n          \"updated_at\": \"2026-06-09T14:25:00Z\",\n          \"name\": \"Windshield repair\",\n          \"price_cents\": 1999,\n          \"cost_cents\": 999,\n          \"provider\": \"Windshield Bros.\",\n          \"invoice_number\": \"1111\",\n          \"description\": \"windshield provider\",\n          \"taxable\": true,\n          \"vendor_id\": 1,\n          \"invoice_date\": \"2026-06-10T14:25:00Z\"\n        }\n      ],\n      \"inspections\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:25:00Z\",\n          \"updated_at\": \"2026-06-09T14:25:00Z\",\n          \"name\": \"Measure tire tread depth\",\n          \"state\": \"red\"\n        }\n      ]\n    }\n  ],\n  \"payments\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:25:00Z\",\n      \"updated_at\": \"2026-06-09T14:25:00Z\",\n      \"payment_type\": \"Credit Card - Visa\",\n      \"payment_type_details\": {\n        \"type\": \"Credit Card\",\n        \"name\": \"Visa\"\n      },\n      \"notes\": \"Customer made partial payment\",\n      \"amount_cents\": 21849\n    }\n  ],\n  \"integrator_tags\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:25:00Z\",\n      \"updated_at\": \"2026-06-09T14:25:00Z\",\n      \"taggable_type\": \"RepairOrder\",\n      \"taggable_id\": 1,\n      \"name\": \"tag_name\",\n      \"value\": \"tag_value\"\n    }\n  ],\n  \"label\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "95597d27-8def-4057-ae24-dbc1175b42d3",
+          "name": "Share repair order via text",
+          "request": {
+            "name": "Share repair order via text",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants",
+                ":tenant_id",
+                "repair_orders",
+                ":id",
+                "share"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone_numbers\": [\n    \"<string>\"\n  ],\n  \"text\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "410ef685-f792-425e-96da-bff18fad8835",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":tenant_id",
+                    "repair_orders",
+                    ":id",
+                    "share"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"phone_numbers\": [\n    \"+14158900906\"\n  ],\n  \"text\": \"Test\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "689c9a0c-f250-4ab8-a5c1-295856188e61",
+          "name": "Get a list of all repair orders",
+          "request": {
+            "name": "Get a list of all repair orders",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants",
+                ":tenant_id",
+                "repair_orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "shop_id",
+                  "value": "<integer>",
+                  "description": "Filter response to include only Repair Orders with this Shop ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "customer_id",
+                  "value": "<integer>",
+                  "description": "Filter response to include only Customer with this ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "vehicle_id",
+                  "value": "<integer>",
+                  "description": "Filter response to include only Vehicle with this ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter response to include only Repair Orders with the provided status: One of 'estimate', 'in_progress', or 'invoice'."
+                },
+                {
+                  "disabled": false,
+                  "key": "number",
+                  "value": "<integer>",
+                  "description": "Filter response to include only Repair Orders with this RO number."
+                },
+                {
+                  "disabled": false,
+                  "key": "closed_after",
+                  "value": "<string>",
+                  "description": "Filter response to include only Repair Orders having been closed (status = invoice) after the provided datetime."
+                },
+                {
+                  "disabled": false,
+                  "key": "technician_id",
+                  "value": "<integer>",
+                  "description": "Filter response to only include Repair Orders assigned to this Technican ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "associations[]",
+                  "value": "<array>",
+                  "description": "\n        An optional list that controls what nested associations are included in the response.         Currently supported values are 'none', 'payments', 'integrator_tags', 'label', 'financials',         'services', 'services.labors', 'services.parts', 'services.hazmats', 'services.inspections', 'services.sublets'         'customer', 'customer.phones', 'customer.integrator_tags'         'vehicle', 'vehicle.integrator_tags.         Note that if you specify a deeply nested association e.g. 'services.hazmats', then 'services' is implied, so it's not necessary to provide 'services,services.hazmats'.         Example: /api/v1/tenants/<tenant id>/repair_orders?associations[]=customer&associations[]=services.inspections&associations[]=vehicle.integrator_tags\n      "
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_after",
+                  "value": "<string>",
+                  "description": "Filter response to only include records updated after a given time"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c693874d-5e02-4f0b-b60a-75620529f171",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":tenant_id",
+                    "repair_orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "shop_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "customer_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "vehicle_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "status",
+                      "value": ""
+                    },
+                    {
+                      "key": "number",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "closed_after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "technician_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "associations[]",
+                      "value": "<array>"
+                    },
+                    {
+                      "key": "updated_after",
+                      "value": "2022-10-24T12%3A00%3A00%2B08%3A00"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:25:10Z\",\n      \"updated_at\": \"2026-06-09T14:25:10Z\",\n      \"number\": 11340,\n      \"odometer\": 90321,\n      \"odometer_out\": 90325,\n      \"state\": \"invoice\",\n      \"customer_id\": 3,\n      \"technician_id\": 2,\n      \"advisor_id\": 1,\n      \"vehicle_id\": 1,\n      \"detail\": \"Key tag 84, customer waiting\",\n      \"preferred_contact_type\": \"text\",\n      \"part_discount_cents\": 2500,\n      \"labor_discount_cents\": 3500,\n      \"shop_id\": 2,\n      \"status_id\": 1,\n      \"taxable\": true,\n      \"customer_source\": \"Repeat\",\n      \"supply_fee_cents\": 3250,\n      \"part_discount_percentage\": null,\n      \"labor_discount_percentage\": null,\n      \"customer_concern\": \"example of reason for customers to visit\",\n      \"vehicle_use\": \"example of primary use of vehicle\",\n      \"fleet_po\": null,\n      \"started_at\": \"2026-06-04T14:25:10Z\",\n      \"closed_at\": \"2026-06-06T14:25:10Z\",\n      \"picked_up_at\": \"2026-06-07T14:25:10Z\",\n      \"due_in_at\": \"2026-06-04T14:25:10Z\",\n      \"due_out_at\": \"2026-06-07T14:25:10Z\",\n      \"part_tax_rate\": 0,\n      \"labor_tax_rate\": 0,\n      \"hazmat_tax_rate\": 0,\n      \"sublet_tax_rate\": 0,\n      \"services\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:25:10Z\",\n          \"updated_at\": \"2026-06-09T14:25:10Z\",\n          \"title\": \"Warning Light On\",\n          \"completed\": false,\n          \"category_id\": 4,\n          \"row_order\": 1,\n          \"fixed_price_cents\": null,\n          \"canned_job_id\": 1,\n          \"comment\": \"\",\n          \"fixed_price_labor_total_cents\": null,\n          \"is_fixed_price_service\": false,\n          \"labor_rate_cents\": 10000,\n          \"completed_at\": null,\n          \"last_completed_at\": null,\n          \"labors\": [\n            {\n              \"id\": 1,\n              \"created_at\": \"2026-06-09T14:25:10Z\",\n              \"updated_at\": \"2026-06-09T14:25:10Z\",\n              \"name\": \"Advise on proper course of action\",\n              \"technician_id\": 2,\n              \"taxable\": false,\n              \"hours\": 0.13,\n              \"row_order\": 1\n            }\n          ],\n          \"parts\": [\n            {\n              \"id\": 1,\n              \"created_at\": \"2026-06-09T14:25:10Z\",\n              \"updated_at\": \"2026-06-09T14:25:10Z\",\n              \"brand\": \"Superbright\",\n              \"description\": \"194 LED - AMBER 120*\",\n              \"number\": \"WLED-A-120\",\n              \"quoted_price_cents\": 395,\n              \"cost_cents\": 85,\n              \"part_inventory_id\": 1,\n              \"taxable\": false,\n              \"sell_price_cents\": 395,\n              \"quantity\": 1,\n              \"quantity_needed\": 1\n            },\n            {\n              \"id\": 1,\n              \"created_at\": \"2026-06-09T14:25:10Z\",\n              \"updated_at\": \"2026-06-09T14:25:10Z\",\n              \"brand\": \"Superbright\",\n              \"description\": \"194 LED - AMBER 120*\",\n              \"number\": \"WLED-A-120\",\n              \"quoted_price_cents\": 500,\n              \"cost_cents\": 85,\n              \"part_inventory_id\": 1,\n              \"taxable\": false,\n              \"sell_price_cents\": 500,\n              \"quantity\": 1,\n              \"quantity_needed\": 0\n            }\n          ],\n          \"hazmats\": [\n            {\n              \"id\": 1,\n              \"created_at\": \"2026-06-09T14:25:10Z\",\n              \"updated_at\": \"2026-06-09T14:25:10Z\",\n              \"name\": \"Recycling fee\",\n              \"fee_cents\": 2000,\n              \"taxable\": true,\n              \"quantity\": 1\n            }\n          ],\n          \"sublets\": [\n            {\n              \"id\": 1,\n              \"created_at\": \"2026-06-09T14:25:10Z\",\n              \"updated_at\": \"2026-06-09T14:25:10Z\",\n              \"name\": \"Windshield repair\",\n              \"price_cents\": 1999,\n              \"cost_cents\": 999,\n              \"provider\": \"Windshield Bros.\",\n              \"invoice_number\": \"1111\",\n              \"description\": \"windshield provider\",\n              \"taxable\": true,\n              \"vendor_id\": 1,\n              \"invoice_date\": \"2026-06-10T14:25:10Z\"\n            }\n          ],\n          \"inspections\": [\n            {\n              \"id\": 1,\n              \"created_at\": \"2026-06-09T14:25:10Z\",\n              \"updated_at\": \"2026-06-09T14:25:10Z\",\n              \"name\": \"Measure tire tread depth\",\n              \"state\": \"red\"\n            }\n          ]\n        }\n      ],\n      \"payments\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:25:10Z\",\n          \"updated_at\": \"2026-06-09T14:25:10Z\",\n          \"payment_type\": \"Credit Card - Visa\",\n          \"payment_type_details\": {\n            \"type\": \"Credit Card\",\n            \"name\": \"Visa\"\n          },\n          \"notes\": \"Customer made partial payment\",\n          \"amount_cents\": 21849\n        }\n      ],\n      \"integrator_tags\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:25:10Z\",\n          \"updated_at\": \"2026-06-09T14:25:10Z\",\n          \"taggable_type\": \"RepairOrder\",\n          \"taggable_id\": 1,\n          \"name\": \"tag_name\",\n          \"value\": \"tag_value\"\n        }\n      ],\n      \"label\": {\n        \"id\": 1,\n        \"text\": null,\n        \"color_code\": null,\n        \"row_order\": null\n      }\n    }\n  ],\n  \"limit\": 1,\n  \"limited\": false,\n  \"total_count\": 1,\n  \"current_page\": 1,\n  \"total_pages\": 1\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3579ccb9-8077-4418-b6d4-334c9be6d57e",
+          "name": "Create a repair order",
+          "request": {
+            "name": "Create a repair order",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants",
+                ":tenant_id",
+                "repair_orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customer_id\": \"<integer>\",\n  \"shop_id\": \"<integer>\",\n  \"number\": \"<integer>\",\n  \"odometer\": \"<integer>\",\n  \"technician_id\": \"<integer>\",\n  \"advisor_id\": \"<integer>\",\n  \"vehicle_id\": \"<integer>\",\n  \"label_id\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"preferred_contact_type\": \"<string>\",\n  \"taxable\": \"<boolean>\",\n  \"due_in_at\": \"<date-tiem>\",\n  \"customer_source\": \"<string>\",\n  \"fleet_po\": \"<string>\",\n  \"part_discount_percentage\": \"<number>\",\n  \"part_discount_cents\": \"<integer>\",\n  \"labor_discount_percentage\": \"<number>\",\n  \"labor_discount_cents\": \"<integer>\",\n  \"part_tax_rate\": \"<number>\",\n  \"labor_tax_rate\": \"<number>\",\n  \"sublet_tax_rate\": \"<number>\",\n  \"hazmat_tax_rate\": \"<number>\",\n  \"customer_concern\": \"<string>\",\n  \"vehicle_use\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7d3e1fcd-05d0-473c-b7fa-997aa9dc70d0",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":tenant_id",
+                    "repair_orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"number\": 175038587,\n  \"odometer\": 90321,\n  \"customer_id\": 1,\n  \"technician_id\": 2,\n  \"advisor_id\": 3,\n  \"vehicle_id\": 1,\n  \"detail\": \"Key tag 84, customer waiting\",\n  \"preferred_contact_type\": \"text\",\n  \"shop_id\": 2,\n  \"label_id\": 1,\n  \"taxable\": true,\n  \"due_in_at\": \"2026-06-12T14:25:14Z\",\n  \"customer_source\": \"Repeat\",\n  \"fleet_po\": \"PO#123\",\n  \"part_discount_percentage\": 50,\n  \"labor_discount_cents\": 5000,\n  \"part_tax_rate\": 10,\n  \"labor_tax_rate\": 20,\n  \"sublet_tax_rate\": 30,\n  \"hazmat_tax_rate\": 40,\n  \"customer_concern\": \"example of reason for customers to visit\",\n  \"vehicle_use\": \"example of primary use of vehicle\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"created_at\": \"2026-06-09T14:25:13Z\",\n  \"updated_at\": \"2026-06-09T14:25:14Z\",\n  \"number\": 175038586,\n  \"odometer\": null,\n  \"odometer_out\": null,\n  \"state\": \"estimate\",\n  \"customer_id\": 1,\n  \"technician_id\": null,\n  \"advisor_id\": null,\n  \"vehicle_id\": 1,\n  \"detail\": null,\n  \"preferred_contact_type\": null,\n  \"part_discount_cents\": null,\n  \"labor_discount_cents\": 5000,\n  \"shop_id\": 1,\n  \"status_id\": null,\n  \"taxable\": true,\n  \"customer_source\": null,\n  \"supply_fee_cents\": null,\n  \"part_discount_percentage\": 50,\n  \"labor_discount_percentage\": null,\n  \"customer_concern\": \"example of reason for customers to visit\",\n  \"vehicle_use\": \"example of primary use of vehicle\",\n  \"fleet_po\": \"PO#123\",\n  \"started_at\": null,\n  \"closed_at\": null,\n  \"picked_up_at\": null,\n  \"due_in_at\": null,\n  \"due_out_at\": null,\n  \"part_tax_rate\": 10,\n  \"labor_tax_rate\": 20,\n  \"hazmat_tax_rate\": 40,\n  \"sublet_tax_rate\": 30,\n  \"services\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:25:13Z\",\n      \"updated_at\": \"2026-06-09T14:25:14Z\",\n      \"title\": \"Warning Light On\",\n      \"completed\": false,\n      \"category_id\": 4,\n      \"row_order\": 1,\n      \"fixed_price_cents\": null,\n      \"canned_job_id\": 1,\n      \"comment\": \"\",\n      \"fixed_price_labor_total_cents\": null,\n      \"is_fixed_price_service\": false,\n      \"labor_rate_cents\": 10000,\n      \"completed_at\": null,\n      \"last_completed_at\": null,\n      \"labors\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:25:14Z\",\n          \"updated_at\": \"2026-06-09T14:25:14Z\",\n          \"name\": \"Advise on proper course of action\",\n          \"technician_id\": 2,\n          \"taxable\": false,\n          \"hours\": 0.13,\n          \"row_order\": 1\n        }\n      ],\n      \"parts\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:25:14Z\",\n          \"updated_at\": \"2026-06-09T14:25:14Z\",\n          \"brand\": \"Superbright\",\n          \"description\": \"194 LED - AMBER 120*\",\n          \"number\": \"WLED-A-120\",\n          \"quoted_price_cents\": 395,\n          \"cost_cents\": 85,\n          \"part_inventory_id\": 1,\n          \"taxable\": false,\n          \"sell_price_cents\": 395,\n          \"quantity\": 1,\n          \"quantity_needed\": 1\n        },\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:25:14Z\",\n          \"updated_at\": \"2026-06-09T14:25:14Z\",\n          \"brand\": \"Superbright\",\n          \"description\": \"194 LED - AMBER 120*\",\n          \"number\": \"WLED-A-120\",\n          \"quoted_price_cents\": 500,\n          \"cost_cents\": 85,\n          \"part_inventory_id\": 1,\n          \"taxable\": false,\n          \"sell_price_cents\": 500,\n          \"quantity\": 1,\n          \"quantity_needed\": 0\n        }\n      ],\n      \"hazmats\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:25:14Z\",\n          \"updated_at\": \"2026-06-09T14:25:14Z\",\n          \"name\": \"Recycling fee\",\n          \"fee_cents\": 2000,\n          \"taxable\": true,\n          \"quantity\": 1\n        }\n      ],\n      \"sublets\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:25:14Z\",\n          \"updated_at\": \"2026-06-09T14:25:14Z\",\n          \"name\": \"Windshield repair\",\n          \"price_cents\": 1999,\n          \"cost_cents\": 999,\n          \"provider\": \"Windshield Bros.\",\n          \"invoice_number\": \"1111\",\n          \"description\": \"windshield provider\",\n          \"taxable\": true,\n          \"vendor_id\": 1,\n          \"invoice_date\": \"2026-06-10T14:25:14Z\"\n        }\n      ],\n      \"inspections\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:25:14Z\",\n          \"updated_at\": \"2026-06-09T14:25:14Z\",\n          \"name\": \"Measure tire tread depth\",\n          \"state\": \"red\"\n        }\n      ]\n    }\n  ],\n  \"payments\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:25:13Z\",\n      \"updated_at\": \"2026-06-09T14:25:13Z\",\n      \"payment_type\": \"Credit Card - Visa\",\n      \"payment_type_details\": {\n        \"type\": \"Credit Card\",\n        \"name\": \"Visa\"\n      },\n      \"notes\": \"Customer made partial payment\",\n      \"amount_cents\": 21849\n    }\n  ],\n  \"integrator_tags\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:25:14Z\",\n      \"updated_at\": \"2026-06-09T14:25:14Z\",\n      \"taggable_type\": \"RepairOrder\",\n      \"taggable_id\": 1,\n      \"name\": \"tag_name\",\n      \"value\": \"tag_value\"\n    }\n  ],\n  \"label\": {\n    \"id\": 1,\n    \"text\": null,\n    \"color_code\": null,\n    \"row_order\": null\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6d2551fe-a2f2-4d83-aba6-cf613d0832e3",
+          "name": "Get a specific repair order by ID",
+          "request": {
+            "name": "Get a specific repair order by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants",
+                ":tenant_id",
+                "repair_orders",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "associations[]",
+                  "value": "<array>",
+                  "description": "\n        An optional list that controls what nested associations are included in the response.         Currently supported values are 'none', 'payments', 'integrator_tags', 'label', 'financials',         'services', 'services.labors', 'services.parts', 'services.hazmats', 'services.inspections', 'services.sublets'         'customer', 'customer.phones', 'customer.integrator_tags'         'vehicle', 'vehicle.integrator_tags.         Note that if you specify a deeply nested association e.g. 'services.hazmats', then 'services' is implied, so it's not necessary to provide 'services,services.hazmats'.         Example: /api/v1/tenants/<tenant id>/repair_orders?associations[]=customer&associations[]=services.inspections&associations[]=vehicle.integrator_tags\n      "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bde23287-d4c2-4371-95be-b4aab59dd059",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":tenant_id",
+                    "repair_orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "associations[]",
+                      "value": "<array>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"created_at\": \"2026-06-09T14:25:17Z\",\n  \"updated_at\": \"2026-06-09T14:25:17Z\",\n  \"number\": 11340,\n  \"odometer\": 90321,\n  \"odometer_out\": 90325,\n  \"state\": \"invoice\",\n  \"customer_id\": 3,\n  \"technician_id\": 2,\n  \"advisor_id\": 1,\n  \"vehicle_id\": 1,\n  \"detail\": \"Key tag 84, customer waiting\",\n  \"preferred_contact_type\": \"text\",\n  \"part_discount_cents\": 2500,\n  \"labor_discount_cents\": 3500,\n  \"shop_id\": 2,\n  \"status_id\": 1,\n  \"taxable\": true,\n  \"customer_source\": \"Repeat\",\n  \"supply_fee_cents\": 3250,\n  \"part_discount_percentage\": null,\n  \"labor_discount_percentage\": null,\n  \"customer_concern\": \"example of reason for customers to visit\",\n  \"vehicle_use\": \"example of primary use of vehicle\",\n  \"fleet_po\": null,\n  \"started_at\": \"2026-06-04T14:25:17Z\",\n  \"closed_at\": \"2026-06-06T14:25:17Z\",\n  \"picked_up_at\": \"2026-06-07T14:25:17Z\",\n  \"due_in_at\": \"2026-06-04T14:25:17Z\",\n  \"due_out_at\": \"2026-06-07T14:25:17Z\",\n  \"part_tax_rate\": 0,\n  \"labor_tax_rate\": 0,\n  \"hazmat_tax_rate\": 0,\n  \"sublet_tax_rate\": 0,\n  \"services\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:25:17Z\",\n      \"updated_at\": \"2026-06-09T14:25:17Z\",\n      \"title\": \"Warning Light On\",\n      \"completed\": false,\n      \"category_id\": 4,\n      \"row_order\": 1,\n      \"fixed_price_cents\": null,\n      \"canned_job_id\": 1,\n      \"comment\": \"\",\n      \"fixed_price_labor_total_cents\": null,\n      \"is_fixed_price_service\": false,\n      \"labor_rate_cents\": 10000,\n      \"completed_at\": null,\n      \"last_completed_at\": null,\n      \"labors\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:25:17Z\",\n          \"updated_at\": \"2026-06-09T14:25:17Z\",\n          \"name\": \"Advise on proper course of action\",\n          \"technician_id\": 2,\n          \"taxable\": false,\n          \"hours\": 0.13,\n          \"row_order\": 1\n        }\n      ],\n      \"parts\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:25:17Z\",\n          \"updated_at\": \"2026-06-09T14:25:17Z\",\n          \"brand\": \"Superbright\",\n          \"description\": \"194 LED - AMBER 120*\",\n          \"number\": \"WLED-A-120\",\n          \"quoted_price_cents\": 395,\n          \"cost_cents\": 85,\n          \"part_inventory_id\": 1,\n          \"taxable\": false,\n          \"sell_price_cents\": 395,\n          \"quantity\": 1,\n          \"quantity_needed\": 1\n        },\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:25:17Z\",\n          \"updated_at\": \"2026-06-09T14:25:17Z\",\n          \"brand\": \"Superbright\",\n          \"description\": \"194 LED - AMBER 120*\",\n          \"number\": \"WLED-A-120\",\n          \"quoted_price_cents\": 500,\n          \"cost_cents\": 85,\n          \"part_inventory_id\": 1,\n          \"taxable\": false,\n          \"sell_price_cents\": 500,\n          \"quantity\": 1,\n          \"quantity_needed\": 0\n        }\n      ],\n      \"hazmats\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:25:17Z\",\n          \"updated_at\": \"2026-06-09T14:25:17Z\",\n          \"name\": \"Recycling fee\",\n          \"fee_cents\": 2000,\n          \"taxable\": true,\n          \"quantity\": 1\n        }\n      ],\n      \"sublets\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:25:17Z\",\n          \"updated_at\": \"2026-06-09T14:25:17Z\",\n          \"name\": \"Windshield repair\",\n          \"price_cents\": 1999,\n          \"cost_cents\": 999,\n          \"provider\": \"Windshield Bros.\",\n          \"invoice_number\": \"1111\",\n          \"description\": \"windshield provider\",\n          \"taxable\": true,\n          \"vendor_id\": 1,\n          \"invoice_date\": \"2026-06-10T14:25:17Z\"\n        }\n      ],\n      \"inspections\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:25:17Z\",\n          \"updated_at\": \"2026-06-09T14:25:17Z\",\n          \"name\": \"Measure tire tread depth\",\n          \"state\": \"red\"\n        }\n      ]\n    }\n  ],\n  \"payments\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:25:17Z\",\n      \"updated_at\": \"2026-06-09T14:25:17Z\",\n      \"payment_type\": \"Credit Card - Visa\",\n      \"payment_type_details\": {\n        \"type\": \"Credit Card\",\n        \"name\": \"Visa\"\n      },\n      \"notes\": \"Customer made partial payment\",\n      \"amount_cents\": 21849\n    }\n  ],\n  \"integrator_tags\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:25:17Z\",\n      \"updated_at\": \"2026-06-09T14:25:17Z\",\n      \"taggable_type\": \"RepairOrder\",\n      \"taggable_id\": 1,\n      \"name\": \"tag_name\",\n      \"value\": \"tag_value\"\n    }\n  ],\n  \"label\": {\n    \"id\": 1,\n    \"text\": null,\n    \"color_code\": null,\n    \"row_order\": null\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b8ac9330-e6c0-4db7-b6c4-925178fb60ae",
+          "name": "Update a specific repair order",
+          "request": {
+            "name": "Update a specific repair order",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants",
+                ":tenant_id",
+                "repair_orders",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"number\": \"<integer>\",\n  \"odometer\": \"<integer>\",\n  \"technician_id\": \"<integer>\",\n  \"advisor_id\": \"<integer>\",\n  \"label_id\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"preferred_contact_type\": \"<string>\",\n  \"taxable\": \"<boolean>\",\n  \"due_in_at\": \"<dateTime>\",\n  \"status_id\": \"<integer>\",\n  \"customer_source\": \"<string>\",\n  \"part_discount_percentage\": \"<number>\",\n  \"part_discount_cents\": \"<integer>\",\n  \"labor_discount_percentage\": \"<number>\",\n  \"labor_discount_cents\": \"<integer>\",\n  \"part_tax_rate\": \"<number>\",\n  \"labor_tax_rate\": \"<number>\",\n  \"sublet_tax_rate\": \"<number>\",\n  \"hazmat_tax_rate\": \"<number>\",\n  \"customer_concern\": \"<string>\",\n  \"vehicle_use\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ea8b6c52-0289-4c5f-a905-ec5cedfa07b9",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":tenant_id",
+                    "repair_orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"number\": 1222,\n  \"odometer\": 99999,\n  \"technician_id\": 1,\n  \"advisor_id\": 2,\n  \"detail\": \"Key tag 85, customer waiting\",\n  \"preferred_contact_type\": \"phone\",\n  \"taxable\": false,\n  \"due_in_at\": \"2026-06-12T14:25:20Z\",\n  \"status_id\": 1,\n  \"customer_source\": \"Website\",\n  \"part_discount_cents\": 400,\n  \"labor_discount_percentage\": 50,\n  \"label_id\": 1,\n  \"part_tax_rate\": 15,\n  \"labor_tax_rate\": 25,\n  \"sublet_tax_rate\": 35,\n  \"hazmat_tax_rate\": 45,\n  \"customer_concern\": \"example of reason for customers to visit\",\n  \"vehicle_use\": \"example of primary use of vehicle\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"created_at\": \"2026-06-09T14:25:20Z\",\n  \"updated_at\": \"2026-06-09T14:25:20Z\",\n  \"number\": 1222,\n  \"odometer\": 99999,\n  \"odometer_out\": null,\n  \"state\": \"estimate\",\n  \"customer_id\": 3,\n  \"technician_id\": 1,\n  \"advisor_id\": 2,\n  \"vehicle_id\": 1,\n  \"detail\": \"Key tag 85, customer waiting\",\n  \"preferred_contact_type\": \"phone\",\n  \"part_discount_cents\": 400,\n  \"labor_discount_cents\": null,\n  \"shop_id\": 2,\n  \"status_id\": 1,\n  \"taxable\": false,\n  \"customer_source\": \"Website\",\n  \"supply_fee_cents\": 3250,\n  \"part_discount_percentage\": null,\n  \"labor_discount_percentage\": 50,\n  \"customer_concern\": \"example of reason for customers to visit\",\n  \"vehicle_use\": \"example of primary use of vehicle\",\n  \"fleet_po\": null,\n  \"started_at\": null,\n  \"closed_at\": null,\n  \"picked_up_at\": null,\n  \"due_in_at\": \"2026-06-12T14:25:20Z\",\n  \"due_out_at\": null,\n  \"part_tax_rate\": 15,\n  \"labor_tax_rate\": 25,\n  \"hazmat_tax_rate\": 45,\n  \"sublet_tax_rate\": 35,\n  \"services\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:25:20Z\",\n      \"updated_at\": \"2026-06-09T14:25:20Z\",\n      \"title\": \"Warning Light On\",\n      \"completed\": false,\n      \"category_id\": 4,\n      \"row_order\": 1,\n      \"fixed_price_cents\": null,\n      \"canned_job_id\": 1,\n      \"comment\": \"\",\n      \"fixed_price_labor_total_cents\": null,\n      \"is_fixed_price_service\": false,\n      \"labor_rate_cents\": 10000,\n      \"completed_at\": null,\n      \"last_completed_at\": null,\n      \"labors\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:25:20Z\",\n          \"updated_at\": \"2026-06-09T14:25:20Z\",\n          \"name\": \"Advise on proper course of action\",\n          \"technician_id\": 2,\n          \"taxable\": false,\n          \"hours\": 0.13,\n          \"row_order\": 1\n        }\n      ],\n      \"parts\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:25:20Z\",\n          \"updated_at\": \"2026-06-09T14:25:20Z\",\n          \"brand\": \"Superbright\",\n          \"description\": \"194 LED - AMBER 120*\",\n          \"number\": \"WLED-A-120\",\n          \"quoted_price_cents\": 395,\n          \"cost_cents\": 85,\n          \"part_inventory_id\": 1,\n          \"taxable\": false,\n          \"sell_price_cents\": 395,\n          \"quantity\": 1,\n          \"quantity_needed\": 1\n        },\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:25:20Z\",\n          \"updated_at\": \"2026-06-09T14:25:20Z\",\n          \"brand\": \"Superbright\",\n          \"description\": \"194 LED - AMBER 120*\",\n          \"number\": \"WLED-A-120\",\n          \"quoted_price_cents\": 500,\n          \"cost_cents\": 85,\n          \"part_inventory_id\": 1,\n          \"taxable\": false,\n          \"sell_price_cents\": 500,\n          \"quantity\": 1,\n          \"quantity_needed\": 0\n        }\n      ],\n      \"hazmats\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:25:20Z\",\n          \"updated_at\": \"2026-06-09T14:25:20Z\",\n          \"name\": \"Recycling fee\",\n          \"fee_cents\": 2000,\n          \"taxable\": true,\n          \"quantity\": 1\n        }\n      ],\n      \"sublets\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:25:20Z\",\n          \"updated_at\": \"2026-06-09T14:25:20Z\",\n          \"name\": \"Windshield repair\",\n          \"price_cents\": 1999,\n          \"cost_cents\": 999,\n          \"provider\": \"Windshield Bros.\",\n          \"invoice_number\": \"1111\",\n          \"description\": \"windshield provider\",\n          \"taxable\": true,\n          \"vendor_id\": 1,\n          \"invoice_date\": \"2026-06-10T14:25:20Z\"\n        }\n      ],\n      \"inspections\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:25:20Z\",\n          \"updated_at\": \"2026-06-09T14:25:20Z\",\n          \"name\": \"Measure tire tread depth\",\n          \"state\": \"red\"\n        }\n      ]\n    }\n  ],\n  \"payments\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:25:20Z\",\n      \"updated_at\": \"2026-06-09T14:25:20Z\",\n      \"payment_type\": \"Credit Card - Visa\",\n      \"payment_type_details\": {\n        \"type\": \"Credit Card\",\n        \"name\": \"Visa\"\n      },\n      \"notes\": \"Customer made partial payment\",\n      \"amount_cents\": 21849\n    }\n  ],\n  \"integrator_tags\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:25:20Z\",\n      \"updated_at\": \"2026-06-09T14:25:20Z\",\n      \"taggable_type\": \"RepairOrder\",\n      \"taggable_id\": 1,\n      \"name\": \"tag_name\",\n      \"value\": \"tag_value\"\n    }\n  ],\n  \"label\": {\n    \"id\": 1,\n    \"text\": null,\n    \"color_code\": null,\n    \"row_order\": null\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "78548588-66ab-4dad-8dc2-8efc9c4c3eb1",
+          "name": "Get a list of all repair orders",
+          "request": {
+            "name": "Get a list of all repair orders",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "tenants",
+                ":tenant_id",
+                "repair_orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Encoded reference to the last record of the current page. It is empty for the first page."
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "shop_id",
+                  "value": "<integer>",
+                  "description": "Filter response to include only Repair Orders with this Shop ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "customer_id",
+                  "value": "<integer>",
+                  "description": "Filter response to include only Customer with this ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "vehicle_id",
+                  "value": "<integer>",
+                  "description": "Filter response to include only Vehicle with this ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter response to include only Repair Orders with the provided status: One of 'estimate', 'in_progress', or 'invoice'."
+                },
+                {
+                  "disabled": false,
+                  "key": "number",
+                  "value": "<integer>",
+                  "description": "Filter response to include only Repair Orders with this RO number."
+                },
+                {
+                  "disabled": false,
+                  "key": "closed_after",
+                  "value": "<string>",
+                  "description": "Filter response to include only Repair Orders having been closed (status = invoice) after the provided datetime."
+                },
+                {
+                  "disabled": false,
+                  "key": "technician_id",
+                  "value": "<integer>",
+                  "description": "Filter response to only include Repair Orders assigned to this Technican ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "associations[]",
+                  "value": "<array>",
+                  "description": "\n    An optional list that controls what nested associations are included in the response.     Currently supported values are 'none', 'payments', 'integrator_tags', 'label', 'financials',     'services', 'services.labors', 'services.parts', 'services.hazmats', 'services.inspections', 'services.sublets'     'customer', 'customer.phones', 'customer.integrator_tags'     'vehicle', 'vehicle.integrator_tags.     Note that if you specify a deeply nested association e.g. 'services.hazmats', then 'services' is implied, so it's not necessary to provide 'services,services.hazmats'.     Example: /api/v1/tenants/<tenant id>/repair_orders?associations[]=customer&associations[]=services.inspections&associations[]=vehicle.integrator_tags\n  "
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_after",
+                  "value": "<string>",
+                  "description": "Filter response to only include records updated after a given time"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6b66d7ee-8398-4d7b-8f55-82215868d6e5",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "tenants",
+                    ":tenant_id",
+                    "repair_orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": ""
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "shop_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "customer_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "vehicle_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "status",
+                      "value": ""
+                    },
+                    {
+                      "key": "number",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "closed_after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "technician_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "associations[]",
+                      "value": "<array>"
+                    },
+                    {
+                      "key": "updated_after",
+                      "value": "2022-10-24T12%3A00%3A00%2B08%3A00"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:27:55Z\",\n      \"updated_at\": \"2026-06-09T14:27:55Z\",\n      \"number\": 11340,\n      \"odometer\": 90321,\n      \"odometer_out\": 90325,\n      \"state\": \"invoice\",\n      \"customer_id\": 3,\n      \"technician_id\": 2,\n      \"advisor_id\": 1,\n      \"vehicle_id\": 1,\n      \"detail\": \"Key tag 84, customer waiting\",\n      \"preferred_contact_type\": \"text\",\n      \"part_discount_cents\": 2500,\n      \"labor_discount_cents\": 3500,\n      \"shop_id\": 2,\n      \"status_id\": 1,\n      \"taxable\": true,\n      \"customer_source\": \"Repeat\",\n      \"supply_fee_cents\": 3250,\n      \"part_discount_percentage\": null,\n      \"labor_discount_percentage\": null,\n      \"customer_concern\": \"example of reason for customers to visit\",\n      \"vehicle_use\": \"example of primary use of vehicle\",\n      \"fleet_po\": null,\n      \"started_at\": \"2026-06-04T14:27:55Z\",\n      \"closed_at\": \"2026-06-06T14:27:55Z\",\n      \"picked_up_at\": \"2026-06-07T14:27:55Z\",\n      \"due_in_at\": \"2026-06-04T14:27:55Z\",\n      \"due_out_at\": \"2026-06-07T14:27:55Z\",\n      \"part_tax_rate\": 0,\n      \"labor_tax_rate\": 0,\n      \"hazmat_tax_rate\": 0,\n      \"sublet_tax_rate\": 0,\n      \"services\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:27:55Z\",\n          \"updated_at\": \"2026-06-09T14:27:55Z\",\n          \"title\": \"Warning Light On\",\n          \"completed\": false,\n          \"category_id\": 4,\n          \"row_order\": 1,\n          \"fixed_price_cents\": null,\n          \"canned_job_id\": 1,\n          \"comment\": \"\",\n          \"fixed_price_labor_total_cents\": null,\n          \"is_fixed_price_service\": false,\n          \"labor_rate_cents\": 10000,\n          \"completed_at\": null,\n          \"last_completed_at\": null,\n          \"labors\": [\n            {\n              \"id\": 1,\n              \"created_at\": \"2026-06-09T14:27:55Z\",\n              \"updated_at\": \"2026-06-09T14:27:55Z\",\n              \"name\": \"Advise on proper course of action\",\n              \"technician_id\": 2,\n              \"taxable\": false,\n              \"hours\": 0.13,\n              \"row_order\": 1\n            }\n          ],\n          \"parts\": [\n            {\n              \"id\": 1,\n              \"created_at\": \"2026-06-09T14:27:55Z\",\n              \"updated_at\": \"2026-06-09T14:27:55Z\",\n              \"brand\": \"Superbright\",\n              \"description\": \"194 LED - AMBER 120*\",\n              \"number\": \"WLED-A-120\",\n              \"quoted_price_cents\": 395,\n              \"cost_cents\": 85,\n              \"part_inventory_id\": 1,\n              \"taxable\": false,\n              \"sell_price_cents\": 395,\n              \"quantity\": 2,\n              \"quantity_needed\": 1\n            }\n          ],\n          \"hazmats\": [\n            {\n              \"id\": 1,\n              \"created_at\": \"2026-06-09T14:27:55Z\",\n              \"updated_at\": \"2026-06-09T14:27:55Z\",\n              \"name\": \"Recycling fee\",\n              \"fee_cents\": 2000,\n              \"taxable\": true,\n              \"quantity\": 1\n            }\n          ],\n          \"sublets\": [\n            {\n              \"id\": 1,\n              \"created_at\": \"2026-06-09T14:27:55Z\",\n              \"updated_at\": \"2026-06-09T14:27:55Z\",\n              \"name\": \"Windshield repair\",\n              \"price_cents\": 1999,\n              \"cost_cents\": 999,\n              \"provider\": \"Windshield Bros.\",\n              \"invoice_number\": \"1111\",\n              \"description\": \"windshield provider\",\n              \"taxable\": true,\n              \"vendor_id\": 1,\n              \"invoice_date\": \"2026-06-10T14:27:55Z\"\n            }\n          ],\n          \"inspections\": [\n            {\n              \"id\": 1,\n              \"created_at\": \"2026-06-09T14:27:55Z\",\n              \"updated_at\": \"2026-06-09T14:27:55Z\",\n              \"name\": \"Measure tire tread depth\",\n              \"state\": \"red\"\n            }\n          ]\n        }\n      ],\n      \"payments\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:27:55Z\",\n          \"updated_at\": \"2026-06-09T14:27:55Z\",\n          \"payment_type\": \"Credit Card - Visa\",\n          \"payment_type_details\": {\n            \"type\": \"Credit Card\",\n            \"name\": \"Visa\"\n          },\n          \"notes\": \"Customer made partial payment\",\n          \"amount_cents\": 21849\n        }\n      ],\n      \"integrator_tags\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:27:55Z\",\n          \"updated_at\": \"2026-06-09T14:27:55Z\",\n          \"taggable_type\": \"RepairOrder\",\n          \"taggable_id\": 1,\n          \"name\": \"tag_name\",\n          \"value\": \"tag_value\"\n        }\n      ],\n      \"label\": {\n        \"id\": 1,\n        \"text\": null,\n        \"color_code\": null,\n        \"row_order\": null\n      }\n    }\n  ],\n  \"cursor\": null,\n  \"limit\": 1,\n  \"has_next_page\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6caadae7-d004-42f4-9438-f1e1c42304e5",
+          "name": "Create a repair order",
+          "request": {
+            "name": "Create a repair order",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "tenants",
+                ":tenant_id",
+                "repair_orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customer_id\": \"<integer>\",\n  \"shop_id\": \"<integer>\",\n  \"number\": \"<integer>\",\n  \"odometer\": \"<integer>\",\n  \"technician_id\": \"<integer>\",\n  \"advisor_id\": \"<integer>\",\n  \"vehicle_id\": \"<integer>\",\n  \"label_id\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"preferred_contact_type\": \"<string>\",\n  \"taxable\": \"<boolean>\",\n  \"due_in_at\": \"<date-tiem>\",\n  \"customer_source\": \"<string>\",\n  \"fleet_po\": \"<string>\",\n  \"part_discount_percentage\": \"<number>\",\n  \"part_discount_cents\": \"<integer>\",\n  \"labor_discount_percentage\": \"<number>\",\n  \"labor_discount_cents\": \"<integer>\",\n  \"part_tax_rate\": \"<number>\",\n  \"labor_tax_rate\": \"<number>\",\n  \"sublet_tax_rate\": \"<number>\",\n  \"hazmat_tax_rate\": \"<number>\",\n  \"customer_concern\": \"<string>\",\n  \"vehicle_use\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3c5250cc-9e50-4358-9704-75af21918117",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "tenants",
+                    ":tenant_id",
+                    "repair_orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"number\": 733598650,\n  \"odometer\": 90321,\n  \"customer_id\": 1,\n  \"technician_id\": 2,\n  \"advisor_id\": 3,\n  \"vehicle_id\": 1,\n  \"detail\": \"Key tag 84, customer waiting\",\n  \"preferred_contact_type\": \"text\",\n  \"shop_id\": 2,\n  \"label_id\": 1,\n  \"taxable\": true,\n  \"due_in_at\": \"2026-06-12T14:27:59Z\",\n  \"customer_source\": \"Repeat\",\n  \"fleet_po\": \"PO#123\",\n  \"part_discount_percentage\": 50,\n  \"labor_discount_cents\": 5000,\n  \"part_tax_rate\": 10,\n  \"labor_tax_rate\": 20,\n  \"sublet_tax_rate\": 30,\n  \"hazmat_tax_rate\": 40,\n  \"customer_concern\": \"example of reason for customers to visit\",\n  \"vehicle_use\": \"example of primary use of vehicle\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"created_at\": \"2026-06-09T14:27:59Z\",\n  \"updated_at\": \"2026-06-09T14:27:59Z\",\n  \"number\": 733598649,\n  \"odometer\": null,\n  \"odometer_out\": null,\n  \"state\": \"estimate\",\n  \"customer_id\": 1,\n  \"technician_id\": null,\n  \"advisor_id\": null,\n  \"vehicle_id\": 1,\n  \"detail\": null,\n  \"preferred_contact_type\": null,\n  \"part_discount_cents\": null,\n  \"labor_discount_cents\": 5000,\n  \"shop_id\": 1,\n  \"status_id\": null,\n  \"taxable\": true,\n  \"customer_source\": null,\n  \"supply_fee_cents\": null,\n  \"part_discount_percentage\": 50,\n  \"labor_discount_percentage\": null,\n  \"customer_concern\": \"example of reason for customers to visit\",\n  \"vehicle_use\": \"example of primary use of vehicle\",\n  \"fleet_po\": \"PO#123\",\n  \"started_at\": null,\n  \"closed_at\": null,\n  \"picked_up_at\": null,\n  \"due_in_at\": null,\n  \"due_out_at\": null,\n  \"part_tax_rate\": 10,\n  \"labor_tax_rate\": 20,\n  \"hazmat_tax_rate\": 40,\n  \"sublet_tax_rate\": 30,\n  \"services\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:27:59Z\",\n      \"updated_at\": \"2026-06-09T14:27:59Z\",\n      \"title\": \"Warning Light On\",\n      \"completed\": false,\n      \"category_id\": 4,\n      \"row_order\": 1,\n      \"fixed_price_cents\": null,\n      \"canned_job_id\": 1,\n      \"comment\": \"\",\n      \"fixed_price_labor_total_cents\": null,\n      \"is_fixed_price_service\": false,\n      \"labor_rate_cents\": 10000,\n      \"completed_at\": null,\n      \"last_completed_at\": null,\n      \"labors\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:27:59Z\",\n          \"updated_at\": \"2026-06-09T14:27:59Z\",\n          \"name\": \"Advise on proper course of action\",\n          \"technician_id\": 2,\n          \"taxable\": false,\n          \"hours\": 0.13,\n          \"row_order\": 1\n        }\n      ],\n      \"parts\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:27:59Z\",\n          \"updated_at\": \"2026-06-09T14:27:59Z\",\n          \"brand\": \"Superbright\",\n          \"description\": \"194 LED - AMBER 120*\",\n          \"number\": \"WLED-A-120\",\n          \"quoted_price_cents\": 395,\n          \"cost_cents\": 85,\n          \"part_inventory_id\": 1,\n          \"taxable\": false,\n          \"sell_price_cents\": 395,\n          \"quantity\": 2,\n          \"quantity_needed\": 1\n        }\n      ],\n      \"hazmats\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:27:59Z\",\n          \"updated_at\": \"2026-06-09T14:27:59Z\",\n          \"name\": \"Recycling fee\",\n          \"fee_cents\": 2000,\n          \"taxable\": true,\n          \"quantity\": 1\n        }\n      ],\n      \"sublets\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:27:59Z\",\n          \"updated_at\": \"2026-06-09T14:27:59Z\",\n          \"name\": \"Windshield repair\",\n          \"price_cents\": 1999,\n          \"cost_cents\": 999,\n          \"provider\": \"Windshield Bros.\",\n          \"invoice_number\": \"1111\",\n          \"description\": \"windshield provider\",\n          \"taxable\": true,\n          \"vendor_id\": 1,\n          \"invoice_date\": \"2026-06-10T14:27:59Z\"\n        }\n      ],\n      \"inspections\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:27:59Z\",\n          \"updated_at\": \"2026-06-09T14:27:59Z\",\n          \"name\": \"Measure tire tread depth\",\n          \"state\": \"red\"\n        }\n      ]\n    }\n  ],\n  \"payments\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:27:59Z\",\n      \"updated_at\": \"2026-06-09T14:27:59Z\",\n      \"payment_type\": \"Credit Card - Visa\",\n      \"payment_type_details\": {\n        \"type\": \"Credit Card\",\n        \"name\": \"Visa\"\n      },\n      \"notes\": \"Customer made partial payment\",\n      \"amount_cents\": 21849\n    }\n  ],\n  \"integrator_tags\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:27:59Z\",\n      \"updated_at\": \"2026-06-09T14:27:59Z\",\n      \"taggable_type\": \"RepairOrder\",\n      \"taggable_id\": 1,\n      \"name\": \"tag_name\",\n      \"value\": \"tag_value\"\n    }\n  ],\n  \"label\": {\n    \"id\": 1,\n    \"text\": null,\n    \"color_code\": null,\n    \"row_order\": null\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Partner-Id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2c30c565-997c-4b34-a12f-399de95a2daa",
+    "name": "API V1 API Partners Repair Orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Name: API Support\n Email: support@shop-ware.com",
+      "type": "text/plain"
+    }
+  }
+}

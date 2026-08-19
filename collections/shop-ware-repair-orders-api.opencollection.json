@@ -1,0 +1,345 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API V1 API Partners Repair Orders API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Partner-Id",
+      "value": "{{X-Api-Partner-Id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Repair Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Start a specific repair order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/tenants/:tenant_id/repair_orders/:id/start",
+            "params": [
+              {
+                "name": "tenant_id",
+                "value": "1",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Start a specific repair order"
+        },
+        {
+          "info": {
+            "name": "Share repair order via text",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/tenants/:tenant_id/repair_orders/:id/share",
+            "params": [
+              {
+                "name": "tenant_id",
+                "value": "1",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Share repair order via text"
+        },
+        {
+          "info": {
+            "name": "Get a list of all repair orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/tenants/:tenant_id/repair_orders",
+            "params": [
+              {
+                "name": "tenant_id",
+                "value": "1",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "per_page",
+                "value": "30",
+                "type": "query"
+              },
+              {
+                "name": "shop_id",
+                "value": "null",
+                "type": "query",
+                "description": "Filter response to include only Repair Orders with this Shop ID."
+              },
+              {
+                "name": "customer_id",
+                "value": "null",
+                "type": "query",
+                "description": "Filter response to include only Customer with this ID."
+              },
+              {
+                "name": "vehicle_id",
+                "value": "null",
+                "type": "query",
+                "description": "Filter response to include only Vehicle with this ID."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter response to include only Repair Orders with the provided status: One of 'estimate', 'in_progress', or 'invoice'."
+              },
+              {
+                "name": "number",
+                "value": "null",
+                "type": "query",
+                "description": "Filter response to include only Repair Orders with this RO number."
+              },
+              {
+                "name": "closed_after",
+                "value": "null",
+                "type": "query",
+                "description": "Filter response to include only Repair Orders having been closed (status = invoice) after the provided datetime."
+              },
+              {
+                "name": "technician_id",
+                "value": "null",
+                "type": "query",
+                "description": "Filter response to only include Repair Orders assigned to this Technican ID."
+              },
+              {
+                "name": "associations[]",
+                "value": "null",
+                "type": "query",
+                "description": "\n        An optional list that controls what nested associations are included in the response.         Currently supported values are 'none', 'payments', 'integrator_tags', 'label', 'financials',         'services', 'services.labors', 'services.parts', 'services.hazmats', 'services.inspections', 'services.sublets'         'customer', 'customer.phones', 'customer.integrator_tags'         'vehicle', 'vehicle.integrator_tags.         Note that if you specify a deeply nested association e.g. 'services.hazmats', then 'services' is implied, so it's not necessary to provide 'services,services.hazmats'.         Example: /api/v1/tenants/<tenant id>/repair_orders?associations[]=customer&associations[]=services.inspections&associations[]=vehicle.integrator_tags\n      "
+              },
+              {
+                "name": "updated_after",
+                "value": "2022-10-24T12%3A00%3A00%2B08%3A00",
+                "type": "query",
+                "description": "Filter response to only include records updated after a given time"
+              }
+            ]
+          },
+          "docs": "Get a list of all repair orders"
+        },
+        {
+          "info": {
+            "name": "Create a repair order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/tenants/:tenant_id/repair_orders",
+            "params": [
+              {
+                "name": "tenant_id",
+                "value": "1",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a repair order"
+        },
+        {
+          "info": {
+            "name": "Get a specific repair order by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/tenants/:tenant_id/repair_orders/:id",
+            "params": [
+              {
+                "name": "tenant_id",
+                "value": "1",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path"
+              },
+              {
+                "name": "associations[]",
+                "value": "null",
+                "type": "query",
+                "description": "\n        An optional list that controls what nested associations are included in the response.         Currently supported values are 'none', 'payments', 'integrator_tags', 'label', 'financials',         'services', 'services.labors', 'services.parts', 'services.hazmats', 'services.inspections', 'services.sublets'         'customer', 'customer.phones', 'customer.integrator_tags'         'vehicle', 'vehicle.integrator_tags.         Note that if you specify a deeply nested association e.g. 'services.hazmats', then 'services' is implied, so it's not necessary to provide 'services,services.hazmats'.         Example: /api/v1/tenants/<tenant id>/repair_orders?associations[]=customer&associations[]=services.inspections&associations[]=vehicle.integrator_tags\n      "
+              }
+            ]
+          },
+          "docs": "Get a specific repair order by ID"
+        },
+        {
+          "info": {
+            "name": "Update a specific repair order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v1/tenants/:tenant_id/repair_orders/:id",
+            "params": [
+              {
+                "name": "tenant_id",
+                "value": "1",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a specific repair order"
+        },
+        {
+          "info": {
+            "name": "Get a list of all repair orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/tenants/:tenant_id/repair_orders",
+            "params": [
+              {
+                "name": "tenant_id",
+                "value": "1",
+                "type": "path"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Encoded reference to the last record of the current page. It is empty for the first page."
+              },
+              {
+                "name": "per_page",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "shop_id",
+                "value": "null",
+                "type": "query",
+                "description": "Filter response to include only Repair Orders with this Shop ID."
+              },
+              {
+                "name": "customer_id",
+                "value": "null",
+                "type": "query",
+                "description": "Filter response to include only Customer with this ID."
+              },
+              {
+                "name": "vehicle_id",
+                "value": "null",
+                "type": "query",
+                "description": "Filter response to include only Vehicle with this ID."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter response to include only Repair Orders with the provided status: One of 'estimate', 'in_progress', or 'invoice'."
+              },
+              {
+                "name": "number",
+                "value": "null",
+                "type": "query",
+                "description": "Filter response to include only Repair Orders with this RO number."
+              },
+              {
+                "name": "closed_after",
+                "value": "null",
+                "type": "query",
+                "description": "Filter response to include only Repair Orders having been closed (status = invoice) after the provided datetime."
+              },
+              {
+                "name": "technician_id",
+                "value": "null",
+                "type": "query",
+                "description": "Filter response to only include Repair Orders assigned to this Technican ID."
+              },
+              {
+                "name": "associations[]",
+                "value": "null",
+                "type": "query",
+                "description": "\n    An optional list that controls what nested associations are included in the response.     Currently supported values are 'none', 'payments', 'integrator_tags', 'label', 'financials',     'services', 'services.labors', 'services.parts', 'services.hazmats', 'services.inspections', 'services.sublets'     'customer', 'customer.phones', 'customer.integrator_tags'     'vehicle', 'vehicle.integrator_tags.     Note that if you specify a deeply nested association e.g. 'services.hazmats', then 'services' is implied, so it's not necessary to provide 'services,services.hazmats'.     Example: /api/v1/tenants/<tenant id>/repair_orders?associations[]=customer&associations[]=services.inspections&associations[]=vehicle.integrator_tags\n  "
+              },
+              {
+                "name": "updated_after",
+                "value": "2022-10-24T12%3A00%3A00%2B08%3A00",
+                "type": "query",
+                "description": "Filter response to only include records updated after a given time"
+              }
+            ]
+          },
+          "docs": "Get a list of all repair orders"
+        },
+        {
+          "info": {
+            "name": "Create a repair order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/tenants/:tenant_id/repair_orders",
+            "params": [
+              {
+                "name": "tenant_id",
+                "value": "1",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a repair order"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

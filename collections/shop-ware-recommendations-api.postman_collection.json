@@ -1,0 +1,549 @@
+{
+  "item": [
+    {
+      "id": "069cb53a-cd0e-4fb5-9ed5-b1ebdd0c7d28",
+      "name": "Recommendations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8550003f-7650-489e-baec-056c262afd01",
+          "name": "Get a list of all recommendations",
+          "request": {
+            "name": "Get a list of all recommendations",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants",
+                ":tenant_id",
+                "recommendations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_after",
+                  "value": "<string>",
+                  "description": "Filter response to only include records updated after a given time"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "124db20f-b5c1-4bc1-a35e-84e15ccde55e",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":tenant_id",
+                    "recommendations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "updated_after",
+                      "value": "2022-10-24T12%3A00%3A00%2B08%3A00"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"id\": 2,\n      \"created_at\": \"2026-06-09T14:24:48Z\",\n      \"updated_at\": \"2026-06-09T14:24:48Z\",\n      \"description\": null,\n      \"approved\": null,\n      \"approver_id\": null,\n      \"approval_type\": null,\n      \"imported\": false,\n      \"quick_price_cents\": 355000,\n      \"service\": {},\n      \"repair_order_id\": 3,\n      \"approval_at\": null,\n      \"integrator_tags\": []\n    },\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:24:48Z\",\n      \"updated_at\": \"2026-06-09T14:24:48Z\",\n      \"description\": \"Test Service\",\n      \"approved\": \"true\",\n      \"approver_id\": null,\n      \"approval_type\": null,\n      \"imported\": false,\n      \"quick_price_cents\": null,\n      \"service\": {\n        \"id\": 1,\n        \"created_at\": \"2026-06-09T14:24:48Z\",\n        \"updated_at\": \"2026-06-09T14:24:48Z\",\n        \"title\": \"Test Service\",\n        \"completed\": false,\n        \"category_id\": null,\n        \"row_order\": 1,\n        \"fixed_price_cents\": null,\n        \"canned_job_id\": null,\n        \"comment\": \"\",\n        \"fixed_price_labor_total_cents\": null,\n        \"is_fixed_price_service\": false,\n        \"labor_rate_cents\": 10000,\n        \"labors\": [\n          {\n            \"id\": 1,\n            \"created_at\": \"2026-06-09T14:24:48Z\",\n            \"updated_at\": \"2026-06-09T14:24:48Z\",\n            \"name\": \"Test labor 1\",\n            \"technician_id\": null,\n            \"taxable\": true,\n            \"hours\": 1,\n            \"row_order\": 1\n          }\n        ],\n        \"parts\": [\n          {\n            \"id\": 1,\n            \"created_at\": \"2026-06-09T14:24:48Z\",\n            \"updated_at\": \"2026-06-09T14:24:48Z\",\n            \"brand\": null,\n            \"description\": null,\n            \"number\": null,\n            \"quoted_price_cents\": null,\n            \"cost_cents\": null,\n            \"part_inventory_id\": 1,\n            \"taxable\": true,\n            \"sell_price_cents\": null,\n            \"quantity\": 1,\n            \"quantity_needed\": 0\n          }\n        ],\n        \"hazmats\": [\n          {\n            \"id\": 1,\n            \"created_at\": \"2026-06-09T14:24:48Z\",\n            \"updated_at\": \"2026-06-09T14:24:48Z\",\n            \"name\": \"Test hazmat fee 1\",\n            \"fee_cents\": 25,\n            \"taxable\": true,\n            \"quantity\": 1\n          }\n        ],\n        \"sublets\": [\n          {\n            \"id\": 1,\n            \"created_at\": \"2026-06-09T14:24:48Z\",\n            \"updated_at\": \"2026-06-09T14:24:48Z\",\n            \"name\": \"Test sublet 1\",\n            \"price_cents\": 50,\n            \"cost_cents\": null,\n            \"provider\": \"\",\n            \"invoice_number\": \"1111\",\n            \"description\": null,\n            \"taxable\": true,\n            \"vendor_id\": null,\n            \"invoice_date\": null\n          }\n        ],\n        \"inspections\": [\n          {\n            \"id\": 1,\n            \"created_at\": \"2026-06-09T14:24:48Z\",\n            \"updated_at\": \"2026-06-09T14:24:48Z\",\n            \"name\": \"Test inspection 1\",\n            \"state\": null\n          }\n        ]\n      },\n      \"repair_order_id\": 2,\n      \"approval_at\": null,\n      \"integrator_tags\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:24:48Z\",\n          \"updated_at\": \"2026-06-09T14:24:48Z\",\n          \"taggable_type\": \"Recommendation\",\n          \"taggable_id\": 1,\n          \"name\": \"tag_name\",\n          \"value\": \"tag_value\"\n        }\n      ]\n    }\n  ],\n  \"limit\": 2,\n  \"limited\": false,\n  \"total_count\": 2,\n  \"current_page\": 1,\n  \"total_pages\": 1\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4161a347-1f25-4c89-b560-a7f61b4f4d67",
+          "name": "Create a recommendation",
+          "request": {
+            "name": "Create a recommendation",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants",
+                ":tenant_id",
+                "recommendations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"repair_order_id\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"canned_job_id\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "81925807-6f5d-481c-9444-cc5c53c9a1fa",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":tenant_id",
+                    "recommendations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"repair_order_id\": 4,\n  \"description\": \"Test Service 1\",\n  \"canned_job_id\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"created_at\": \"2026-06-09T14:24:51Z\",\n  \"updated_at\": \"2026-06-09T14:24:51Z\",\n  \"description\": \"Test Service 1\",\n  \"approved\": \"true\",\n  \"approver_id\": null,\n  \"approval_type\": null,\n  \"imported\": false,\n  \"quick_price_cents\": null,\n  \"service\": {\n    \"id\": 1,\n    \"created_at\": \"2026-06-09T14:24:51Z\",\n    \"updated_at\": \"2026-06-09T14:24:51Z\",\n    \"title\": \"Test Service 1\",\n    \"completed\": false,\n    \"category_id\": null,\n    \"row_order\": 1,\n    \"fixed_price_cents\": null,\n    \"canned_job_id\": null,\n    \"comment\": \"\",\n    \"fixed_price_labor_total_cents\": null,\n    \"is_fixed_price_service\": false,\n    \"labor_rate_cents\": 10000,\n    \"labors\": [\n      {\n        \"id\": 1,\n        \"created_at\": \"2026-06-09T14:24:51Z\",\n        \"updated_at\": \"2026-06-09T14:24:51Z\",\n        \"name\": \"Test labor 2\",\n        \"technician_id\": null,\n        \"taxable\": true,\n        \"hours\": 1,\n        \"row_order\": 1\n      }\n    ],\n    \"parts\": [\n      {\n        \"id\": 1,\n        \"created_at\": \"2026-06-09T14:24:51Z\",\n        \"updated_at\": \"2026-06-09T14:24:51Z\",\n        \"brand\": null,\n        \"description\": null,\n        \"number\": null,\n        \"quoted_price_cents\": null,\n        \"cost_cents\": null,\n        \"part_inventory_id\": 1,\n        \"taxable\": true,\n        \"sell_price_cents\": null,\n        \"quantity\": 1,\n        \"quantity_needed\": 0\n      }\n    ],\n    \"hazmats\": [\n      {\n        \"id\": 1,\n        \"created_at\": \"2026-06-09T14:24:51Z\",\n        \"updated_at\": \"2026-06-09T14:24:51Z\",\n        \"name\": \"Test hazmat fee 2\",\n        \"fee_cents\": 25,\n        \"taxable\": true,\n        \"quantity\": 1\n      }\n    ],\n    \"sublets\": [\n      {\n        \"id\": 1,\n        \"created_at\": \"2026-06-09T14:24:51Z\",\n        \"updated_at\": \"2026-06-09T14:24:51Z\",\n        \"name\": \"Test sublet 2\",\n        \"price_cents\": 50,\n        \"cost_cents\": null,\n        \"provider\": \"\",\n        \"invoice_number\": \"1111\",\n        \"description\": null,\n        \"taxable\": true,\n        \"vendor_id\": null,\n        \"invoice_date\": null\n      }\n    ],\n    \"inspections\": [\n      {\n        \"id\": 1,\n        \"created_at\": \"2026-06-09T14:24:51Z\",\n        \"updated_at\": \"2026-06-09T14:24:51Z\",\n        \"name\": \"Test inspection 2\",\n        \"state\": null\n      }\n    ]\n  },\n  \"repair_order_id\": 2,\n  \"approval_at\": null,\n  \"integrator_tags\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:24:51Z\",\n      \"updated_at\": \"2026-06-09T14:24:51Z\",\n      \"taggable_type\": \"Recommendation\",\n      \"taggable_id\": 1,\n      \"name\": \"tag_name\",\n      \"value\": \"tag_value\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f19c118a-c3f2-4d15-861d-844abbc63452",
+          "name": "Get a specific recommendation by ID",
+          "request": {
+            "name": "Get a specific recommendation by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants",
+                ":tenant_id",
+                "recommendations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9f8cb253-6871-458d-8344-945325b7e43f",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":tenant_id",
+                    "recommendations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"created_at\": \"2026-06-09T14:24:54Z\",\n  \"updated_at\": \"2026-06-09T14:24:54Z\",\n  \"description\": \"Test Service\",\n  \"approved\": \"true\",\n  \"approver_id\": null,\n  \"approval_type\": null,\n  \"imported\": false,\n  \"quick_price_cents\": null,\n  \"service\": {\n    \"id\": 1,\n    \"created_at\": \"2026-06-09T14:24:54Z\",\n    \"updated_at\": \"2026-06-09T14:24:54Z\",\n    \"title\": \"Test Service\",\n    \"completed\": false,\n    \"category_id\": null,\n    \"row_order\": 1,\n    \"fixed_price_cents\": null,\n    \"canned_job_id\": null,\n    \"comment\": \"\",\n    \"fixed_price_labor_total_cents\": null,\n    \"is_fixed_price_service\": false,\n    \"labor_rate_cents\": 10000,\n    \"labors\": [\n      {\n        \"id\": 1,\n        \"created_at\": \"2026-06-09T14:24:54Z\",\n        \"updated_at\": \"2026-06-09T14:24:54Z\",\n        \"name\": \"Test labor 3\",\n        \"technician_id\": null,\n        \"taxable\": true,\n        \"hours\": 1,\n        \"row_order\": 1\n      }\n    ],\n    \"parts\": [\n      {\n        \"id\": 1,\n        \"created_at\": \"2026-06-09T14:24:54Z\",\n        \"updated_at\": \"2026-06-09T14:24:54Z\",\n        \"brand\": null,\n        \"description\": null,\n        \"number\": null,\n        \"quoted_price_cents\": null,\n        \"cost_cents\": null,\n        \"part_inventory_id\": 1,\n        \"taxable\": true,\n        \"sell_price_cents\": null,\n        \"quantity\": 1,\n        \"quantity_needed\": 0\n      }\n    ],\n    \"hazmats\": [\n      {\n        \"id\": 1,\n        \"created_at\": \"2026-06-09T14:24:54Z\",\n        \"updated_at\": \"2026-06-09T14:24:54Z\",\n        \"name\": \"Test hazmat fee 3\",\n        \"fee_cents\": 25,\n        \"taxable\": true,\n        \"quantity\": 1\n      }\n    ],\n    \"sublets\": [\n      {\n        \"id\": 1,\n        \"created_at\": \"2026-06-09T14:24:54Z\",\n        \"updated_at\": \"2026-06-09T14:24:54Z\",\n        \"name\": \"Test sublet 3\",\n        \"price_cents\": 50,\n        \"cost_cents\": null,\n        \"provider\": \"\",\n        \"invoice_number\": \"1111\",\n        \"description\": null,\n        \"taxable\": true,\n        \"vendor_id\": null,\n        \"invoice_date\": null\n      }\n    ],\n    \"inspections\": [\n      {\n        \"id\": 1,\n        \"created_at\": \"2026-06-09T14:24:54Z\",\n        \"updated_at\": \"2026-06-09T14:24:54Z\",\n        \"name\": \"Test inspection 3\",\n        \"state\": null\n      }\n    ]\n  },\n  \"repair_order_id\": 2,\n  \"approval_at\": null,\n  \"integrator_tags\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:24:54Z\",\n      \"updated_at\": \"2026-06-09T14:24:54Z\",\n      \"taggable_type\": \"Recommendation\",\n      \"taggable_id\": 1,\n      \"name\": \"tag_name\",\n      \"value\": \"tag_value\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b89c7e82-8997-4633-ab23-069fa9e8fbfb",
+          "name": "Update a specific recommendation",
+          "request": {
+            "name": "Update a specific recommendation",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants",
+                ":tenant_id",
+                "recommendations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"repair_order_id\": \"<integer>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0966362c-212a-4b81-a5fd-cf4789b797db",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":tenant_id",
+                    "recommendations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"repair_order_id\": 4,\n  \"description\": \"Test Service 2\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"created_at\": \"2026-06-09T14:24:57Z\",\n  \"updated_at\": \"2026-06-09T14:24:57Z\",\n  \"description\": \"Test Service 2\",\n  \"approved\": \"true\",\n  \"approver_id\": null,\n  \"approval_type\": null,\n  \"imported\": false,\n  \"quick_price_cents\": null,\n  \"service\": {\n    \"id\": 1,\n    \"created_at\": \"2026-06-09T14:24:57Z\",\n    \"updated_at\": \"2026-06-09T14:24:57Z\",\n    \"title\": \"Test Service 2\",\n    \"completed\": false,\n    \"category_id\": null,\n    \"row_order\": 1,\n    \"fixed_price_cents\": null,\n    \"canned_job_id\": null,\n    \"comment\": \"\",\n    \"fixed_price_labor_total_cents\": null,\n    \"is_fixed_price_service\": false,\n    \"labor_rate_cents\": 10000,\n    \"labors\": [\n      {\n        \"id\": 1,\n        \"created_at\": \"2026-06-09T14:24:57Z\",\n        \"updated_at\": \"2026-06-09T14:24:57Z\",\n        \"name\": \"Test labor 4\",\n        \"technician_id\": null,\n        \"taxable\": true,\n        \"hours\": 1,\n        \"row_order\": 1\n      }\n    ],\n    \"parts\": [\n      {\n        \"id\": 1,\n        \"created_at\": \"2026-06-09T14:24:57Z\",\n        \"updated_at\": \"2026-06-09T14:24:57Z\",\n        \"brand\": null,\n        \"description\": null,\n        \"number\": null,\n        \"quoted_price_cents\": null,\n        \"cost_cents\": null,\n        \"part_inventory_id\": 1,\n        \"taxable\": true,\n        \"sell_price_cents\": null,\n        \"quantity\": 1,\n        \"quantity_needed\": 0\n      }\n    ],\n    \"hazmats\": [\n      {\n        \"id\": 1,\n        \"created_at\": \"2026-06-09T14:24:57Z\",\n        \"updated_at\": \"2026-06-09T14:24:57Z\",\n        \"name\": \"Test hazmat fee 4\",\n        \"fee_cents\": 25,\n        \"taxable\": true,\n        \"quantity\": 1\n      }\n    ],\n    \"sublets\": [\n      {\n        \"id\": 1,\n        \"created_at\": \"2026-06-09T14:24:57Z\",\n        \"updated_at\": \"2026-06-09T14:24:57Z\",\n        \"name\": \"Test sublet 4\",\n        \"price_cents\": 50,\n        \"cost_cents\": null,\n        \"provider\": \"\",\n        \"invoice_number\": \"1111\",\n        \"description\": null,\n        \"taxable\": true,\n        \"vendor_id\": null,\n        \"invoice_date\": null\n      }\n    ],\n    \"inspections\": [\n      {\n        \"id\": 1,\n        \"created_at\": \"2026-06-09T14:24:57Z\",\n        \"updated_at\": \"2026-06-09T14:24:57Z\",\n        \"name\": \"Test inspection 4\",\n        \"state\": null\n      }\n    ]\n  },\n  \"repair_order_id\": 2,\n  \"approval_at\": null,\n  \"integrator_tags\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:24:57Z\",\n      \"updated_at\": \"2026-06-09T14:24:57Z\",\n      \"taggable_type\": \"Recommendation\",\n      \"taggable_id\": 1,\n      \"name\": \"tag_name\",\n      \"value\": \"tag_value\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Partner-Id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4f60cc36-304c-40d7-8de2-aa76b7066028",
+    "name": "API V1 API Partners Recommendations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Name: API Support\n Email: support@shop-ware.com",
+      "type": "text/plain"
+    }
+  }
+}

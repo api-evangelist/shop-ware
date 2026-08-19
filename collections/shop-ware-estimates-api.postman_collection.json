@@ -1,0 +1,315 @@
+{
+  "item": [
+    {
+      "id": "7fabeb32-6de8-475e-be57-77a666bc54fe",
+      "name": "Estimates",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ac9afeed-2950-42fc-9005-317114dba90a",
+          "name": "Add canned job as service",
+          "request": {
+            "name": "Add canned job as service",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants",
+                ":tenant_id",
+                "estimates",
+                ":estimate_id",
+                "canned_jobs",
+                ":canned_job_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "estimate_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "canned_job_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7a07ae9b-7867-416b-93f2-94c7e3deecac",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":tenant_id",
+                    "estimates",
+                    ":estimate_id",
+                    "canned_jobs",
+                    ":canned_job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "estimate_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "canned_job_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2,\n  \"created_at\": \"2026-06-09T14:22:43Z\",\n  \"updated_at\": \"2026-06-09T14:22:43Z\",\n  \"number\": 11340,\n  \"odometer\": 90321,\n  \"odometer_out\": null,\n  \"state\": \"estimate\",\n  \"customer_id\": 3,\n  \"technician_id\": 1,\n  \"advisor_id\": 2,\n  \"vehicle_id\": 1,\n  \"detail\": \"Key tag 84, customer waiting\",\n  \"preferred_contact_type\": \"Text\",\n  \"part_discount_cents\": null,\n  \"labor_discount_cents\": null,\n  \"shop_id\": 2,\n  \"status_id\": 1,\n  \"taxable\": true,\n  \"customer_source\": \"Repeat\",\n  \"supply_fee_cents\": 3250,\n  \"part_discount_percentage\": null,\n  \"labor_discount_percentage\": null,\n  \"customer_concern\": \"example of reason for customers to visit\",\n  \"vehicle_use\": \"example of primary use of vehicle\",\n  \"started_at\": null,\n  \"closed_at\": null,\n  \"picked_up_at\": null,\n  \"due_in_at\": \"2026-06-12T14:22:43Z\",\n  \"due_out_at\": null,\n  \"part_tax_rate\": 0,\n  \"labor_tax_rate\": 0,\n  \"hazmat_tax_rate\": 0,\n  \"sublet_tax_rate\": 0,\n  \"services\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:22:42Z\",\n      \"updated_at\": \"2026-06-09T14:22:43Z\",\n      \"title\": \"Warning Light On\",\n      \"completed\": false,\n      \"category_id\": 4,\n      \"row_order\": 1,\n      \"fixed_price_cents\": null,\n      \"canned_job_id\": 1,\n      \"comment\": \"\",\n      \"fixed_price_labor_total_cents\": null,\n      \"is_fixed_price_service\": false,\n      \"labor_rate_cents\": 10000,\n      \"completed_at\": null,\n      \"last_completed_at\": null,\n      \"labors\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:22:42Z\",\n          \"updated_at\": \"2026-06-09T14:22:42Z\",\n          \"name\": \"Advise on proper course of action\",\n          \"technician_id\": 1,\n          \"taxable\": false,\n          \"hours\": 0.13,\n          \"row_order\": 1\n        }\n      ],\n      \"parts\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:22:42Z\",\n          \"updated_at\": \"2026-06-09T14:22:42Z\",\n          \"brand\": \"Superbright\",\n          \"description\": \"194 LED - AMBER 120*\",\n          \"number\": \"WLED-A-120\",\n          \"quoted_price_cents\": 395,\n          \"cost_cents\": 85,\n          \"part_inventory_id\": 1,\n          \"taxable\": false,\n          \"sell_price_cents\": 395,\n          \"quantity\": 2,\n          \"quantity_needed\": 1\n        }\n      ],\n      \"hazmats\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:22:42Z\",\n          \"updated_at\": \"2026-06-09T14:22:42Z\",\n          \"name\": \"Recycling fee\",\n          \"fee_cents\": 2000,\n          \"taxable\": true,\n          \"quantity\": 1\n        }\n      ],\n      \"sublets\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:22:42Z\",\n          \"updated_at\": \"2026-06-09T14:22:42Z\",\n          \"name\": \"Windshield repair\",\n          \"price_cents\": 1999,\n          \"cost_cents\": 999,\n          \"provider\": \"Windshield Bros.\",\n          \"invoice_number\": \"1111\",\n          \"description\": \"windshield provider\",\n          \"taxable\": true,\n          \"vendor_id\": 1,\n          \"invoice_date\": \"2026-06-10T14:22:42Z\"\n        }\n      ],\n      \"inspections\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:22:42Z\",\n          \"updated_at\": \"2026-06-09T14:22:42Z\",\n          \"name\": \"Measure tire tread depth\",\n          \"state\": \"red\"\n        }\n      ]\n    }\n  ],\n  \"payments\": [],\n  \"integrator_tags\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:22:43Z\",\n      \"updated_at\": \"2026-06-09T14:22:43Z\",\n      \"taggable_type\": \"RepairOrder\",\n      \"taggable_id\": 2,\n      \"name\": \"tag_name\",\n      \"value\": \"tag_value\"\n    }\n  ],\n  \"label\": {\n    \"id\": 1,\n    \"text\": \"Test\",\n    \"color_code\": \"#FFFFFF\",\n    \"row_order\": 1\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6cb3381c-468f-4979-9928-b685d789c95d",
+          "name": "Delete service",
+          "request": {
+            "name": "Delete service",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants",
+                ":tenant_id",
+                "estimates",
+                ":estimate_id",
+                "services",
+                ":service_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "estimate_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "service_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "81192758-8c9c-47a6-bf6e-6cc2d7fb16ca",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":tenant_id",
+                    "estimates",
+                    ":estimate_id",
+                    "services",
+                    ":service_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "estimate_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "service_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2,\n  \"created_at\": \"2026-06-09T14:22:46Z\",\n  \"updated_at\": \"2026-06-09T14:22:46Z\",\n  \"number\": 11340,\n  \"odometer\": 90321,\n  \"odometer_out\": null,\n  \"state\": \"estimate\",\n  \"customer_id\": 3,\n  \"technician_id\": 1,\n  \"advisor_id\": 2,\n  \"vehicle_id\": 1,\n  \"detail\": \"Key tag 84, customer waiting\",\n  \"preferred_contact_type\": \"Text\",\n  \"part_discount_cents\": null,\n  \"labor_discount_cents\": null,\n  \"shop_id\": 2,\n  \"status_id\": 1,\n  \"taxable\": true,\n  \"customer_source\": \"Repeat\",\n  \"supply_fee_cents\": 3250,\n  \"part_discount_percentage\": null,\n  \"labor_discount_percentage\": null,\n  \"customer_concern\": \"example of reason for customers to visit\",\n  \"vehicle_use\": \"example of primary use of vehicle\",\n  \"started_at\": null,\n  \"closed_at\": null,\n  \"picked_up_at\": null,\n  \"due_in_at\": \"2026-06-12T14:22:46Z\",\n  \"due_out_at\": null,\n  \"part_tax_rate\": 0,\n  \"labor_tax_rate\": 0,\n  \"hazmat_tax_rate\": 0,\n  \"sublet_tax_rate\": 0,\n  \"services\": [],\n  \"payments\": [],\n  \"integrator_tags\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:22:46Z\",\n      \"updated_at\": \"2026-06-09T14:22:46Z\",\n      \"taggable_type\": \"RepairOrder\",\n      \"taggable_id\": 2,\n      \"name\": \"tag_name\",\n      \"value\": \"tag_value\"\n    }\n  ],\n  \"label\": {\n    \"id\": 1,\n    \"text\": \"Test\",\n    \"color_code\": \"#FFFFFF\",\n    \"row_order\": 1\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Partner-Id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b3051adc-87ea-4dfb-acf8-70c184ed981d",
+    "name": "API V1 API Partners Estimates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Name: API Support\n Email: support@shop-ware.com",
+      "type": "text/plain"
+    }
+  }
+}

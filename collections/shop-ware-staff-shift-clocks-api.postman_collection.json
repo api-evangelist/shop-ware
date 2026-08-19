@@ -1,0 +1,206 @@
+{
+  "item": [
+    {
+      "id": "f8eb60f9-a359-489e-a2e2-cf29d6118970",
+      "name": "Staff shift clocks",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "16fc2c26-4800-4030-97e8-efd0349282f4",
+          "name": "Get shift clocks for staff",
+          "request": {
+            "name": "Get shift clocks for staff",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants",
+                ":tenant_id",
+                "staffs",
+                ":staff_id",
+                "time_clocks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start_after",
+                  "value": "<string>",
+                  "description": "Filter to include records with clocked_in_at after specified date and time in ISO 8601 format"
+                },
+                {
+                  "disabled": false,
+                  "key": "end_before",
+                  "value": "<string>",
+                  "description": "Filter to include records with clocked_out_at before specified date and time in ISO 8601 format"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "staff_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e5117cf6-c42a-44be-a74d-8f281acefbf3",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":tenant_id",
+                    "staffs",
+                    ":staff_id",
+                    "time_clocks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_after",
+                      "value": "2022-10-12T12:30:00+00:00"
+                    },
+                    {
+                      "key": "end_before",
+                      "value": "2022-10-14T12:30:00+00:00"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "staff_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"staff_id\": 1,\n      \"clock_in_at\": \"2022-10-12T00:00:00-08:00\",\n      \"clock_out_at\": \"2022-10-12T04:00:00-08:00\"\n    },\n    {\n      \"staff_id\": 1,\n      \"clock_in_at\": \"2022-10-12T05:00:00-08:00\",\n      \"clock_out_at\": \"2022-10-12T09:00:00-08:00\"\n    },\n    {\n      \"staff_id\": 1,\n      \"clock_in_at\": \"2022-10-13T00:00:00-08:00\",\n      \"clock_out_at\": \"2022-10-13T08:00:00-08:00\"\n    },\n    {\n      \"staff_id\": 1,\n      \"clock_in_at\": \"2022-10-14T00:00:00-08:00\",\n      \"clock_out_at\": \"2022-10-14T04:00:00-08:00\"\n    },\n    {\n      \"staff_id\": 1,\n      \"clock_in_at\": \"2022-10-14T06:00:00-08:00\",\n      \"clock_out_at\": \"2022-10-14T10:00:00-08:00\"\n    }\n  ],\n  \"limit\": 5,\n  \"limited\": false,\n  \"total_count\": 5,\n  \"current_page\": 1,\n  \"total_pages\": 1\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Partner-Id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f42d35f7-cbce-4957-85bc-c2dfe5225bb5",
+    "name": "API V1 API Partners Staff shift clocks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Name: API Support\n Email: support@shop-ware.com",
+      "type": "text/plain"
+    }
+  }
+}

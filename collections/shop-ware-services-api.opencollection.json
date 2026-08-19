@@ -1,0 +1,112 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API V1 API Partners Services API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Partner-Id",
+      "value": "{{X-Api-Partner-Id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Services",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of all services",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/tenants/:tenant_id/services",
+            "params": [
+              {
+                "name": "tenant_id",
+                "value": "1",
+                "type": "path"
+              },
+              {
+                "name": "repair_order_id",
+                "value": "null",
+                "type": "query",
+                "description": "A foreign key which points to a WorkOrder.id. Represents the repair order related with this service."
+              },
+              {
+                "name": "technician_id",
+                "value": "null",
+                "type": "query",
+                "description": "Filter response to only include Services with labors assigned to this Technican ID."
+              },
+              {
+                "name": "updated_after",
+                "value": "2026-09-08T14:25:34Z",
+                "type": "query",
+                "description": "Filter response to only include Services updated after a given time"
+              }
+            ]
+          },
+          "docs": "Get a list of all services"
+        },
+        {
+          "info": {
+            "name": "Get a specific service by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/tenants/:tenant_id/services/:id",
+            "params": [
+              {
+                "name": "tenant_id",
+                "value": "1",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a specific service by ID"
+        },
+        {
+          "info": {
+            "name": "Update a specific service",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v1/tenants/:tenant_id/services/:id",
+            "params": [
+              {
+                "name": "tenant_id",
+                "value": "1",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a specific service"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

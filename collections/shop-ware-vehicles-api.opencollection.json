@@ -1,0 +1,144 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API V1 API Partners Vehicles API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Partner-Id",
+      "value": "{{X-Api-Partner-Id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Vehicles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of all vehicles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/tenants/:tenant_id/vehicles",
+            "params": [
+              {
+                "name": "tenant_id",
+                "value": "1",
+                "type": "path"
+              },
+              {
+                "name": "vin",
+                "value": "1FMPU16W14LB56648",
+                "type": "query",
+                "description": "Filter response to include only Vehicles with this VIN."
+              },
+              {
+                "name": "customer_id",
+                "value": "2",
+                "type": "query",
+                "description": "Filter response to include only Customers with this ID."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "per_page",
+                "value": "30",
+                "type": "query"
+              },
+              {
+                "name": "updated_after",
+                "value": "2022-10-24T12%3A00%3A00%2B08%3A00",
+                "type": "query",
+                "description": "Filter response to only include records updated after a given time"
+              }
+            ]
+          },
+          "docs": "Get a list of all vehicles"
+        },
+        {
+          "info": {
+            "name": "Create a vehicle",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/tenants/:tenant_id/vehicles",
+            "params": [
+              {
+                "name": "tenant_id",
+                "value": "1",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a vehicle"
+        },
+        {
+          "info": {
+            "name": "Get a specific vehicle by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/tenants/:tenant_id/vehicles/:id",
+            "params": [
+              {
+                "name": "tenant_id",
+                "value": "1",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a specific vehicle by ID"
+        },
+        {
+          "info": {
+            "name": "Update a specific vehicle by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v1/tenants/:tenant_id/vehicles/:id",
+            "params": [
+              {
+                "name": "tenant_id",
+                "value": "1",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a specific vehicle by ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

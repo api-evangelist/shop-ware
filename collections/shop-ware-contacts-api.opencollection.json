@@ -1,0 +1,147 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API V1 API Partners Contacts API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Partner-Id",
+      "value": "{{X-Api-Partner-Id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Contacts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of customer's contacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/tenants/:tenant_id/customers/:customer_id/contacts",
+            "headers": [
+              {
+                "name": "X-Api-Partner-Id",
+                "value": "8b2b9d74-1e3c-4259-b464-09a088ca2c3e"
+              },
+              {
+                "name": "X-Api-Secret",
+                "value": "R3n6kpzKwAG5RxgiD9SYzSUudyd_vs7MDCxMsXG9Vtk"
+              }
+            ],
+            "params": [
+              {
+                "name": "tenant_id",
+                "value": "1",
+                "type": "path"
+              },
+              {
+                "name": "customer_id",
+                "value": "1",
+                "type": "path",
+                "description": "Customer id must reference to customer with 'corporate' type."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "per_page",
+                "value": "30",
+                "type": "query"
+              },
+              {
+                "name": "updated_after",
+                "value": "2022-10-24T12%3A00%3A00%2B08%3A00",
+                "type": "query",
+                "description": "Filter response to only include records updated after a given time"
+              }
+            ]
+          },
+          "docs": "Get a list of customer's contacts"
+        },
+        {
+          "info": {
+            "name": "Create new contact for customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/tenants/:tenant_id/customers/:customer_id/contacts",
+            "headers": [
+              {
+                "name": "X-Api-Partner-Id",
+                "value": "8b2b9d74-1e3c-4259-b464-09a088ca2c3e"
+              },
+              {
+                "name": "X-Api-Secret",
+                "value": "R3n6kpzKwAG5RxgiD9SYzSUudyd_vs7MDCxMsXG9Vtk"
+              }
+            ],
+            "params": [
+              {
+                "name": "tenant_id",
+                "value": "1",
+                "type": "path"
+              },
+              {
+                "name": "customer_id",
+                "value": "1",
+                "type": "path",
+                "description": "Customer id must reference to customer with 'corporate' type."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create new contact for customer"
+        },
+        {
+          "info": {
+            "name": "Update an existing contact for customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v1/tenants/:tenant_id/customers/:customer_id/contacts/:id",
+            "params": [
+              {
+                "name": "tenant_id",
+                "value": "1",
+                "type": "path"
+              },
+              {
+                "name": "customer_id",
+                "value": "1",
+                "type": "path",
+                "description": "Customer id must reference to customer with 'corporate' type."
+              },
+              {
+                "name": "id",
+                "value": "2",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing contact for customer"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

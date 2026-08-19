@@ -1,0 +1,357 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API V1 API Partners Appointments API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Partner-Id",
+      "value": "{{X-Api-Partner-Id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Appointments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of all appointments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/tenants/:tenant_id/appointments",
+            "params": [
+              {
+                "name": "tenant_id",
+                "value": "1",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "per_page",
+                "value": "30",
+                "type": "query"
+              },
+              {
+                "name": "shop_id",
+                "value": "null",
+                "type": "query",
+                "description": "Filter response to include only appointments related to specified shop."
+              },
+              {
+                "name": "customer_id",
+                "value": "null",
+                "type": "query",
+                "description": "Filter response to include only appointments related to work order with specified customer."
+              },
+              {
+                "name": "repair_order_id",
+                "value": "1",
+                "type": "query",
+                "description": "Filter response to include only appointments related to specified repair order."
+              },
+              {
+                "name": "vehicle_id",
+                "value": "null",
+                "type": "query",
+                "description": "Filter response to include only appointments related to work order with specified vehicle."
+              },
+              {
+                "name": "start_after",
+                "value": "2026-06-08T14:21:20Z",
+                "type": "query",
+                "description": "Filter response to include only appointments that start after specified date. Must be in utc iso8601 date format."
+              },
+              {
+                "name": "end_before",
+                "value": "2026-06-11T07:59:59Z",
+                "type": "query",
+                "description": "Filter response to include only appointments that end before specified date. Must be in utc iso8601 date format."
+              },
+              {
+                "name": "updated_after",
+                "value": "2022-10-24T12%3A00%3A00%2B08%3A00",
+                "type": "query",
+                "description": "Filter response to only include records updated after a given time"
+              }
+            ]
+          },
+          "docs": "Get a list of all appointments"
+        },
+        {
+          "info": {
+            "name": "Create an appointment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/tenants/:tenant_id/appointments",
+            "params": [
+              {
+                "name": "tenant_id",
+                "value": "1",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an appointment"
+        },
+        {
+          "info": {
+            "name": "Get a specific appointment by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/tenants/:tenant_id/appointments/:id",
+            "params": [
+              {
+                "name": "tenant_id",
+                "value": "1",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a specific appointment by ID"
+        },
+        {
+          "info": {
+            "name": "Update a specific appointment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v1/tenants/:tenant_id/appointments/:id",
+            "params": [
+              {
+                "name": "tenant_id",
+                "value": "1",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a specific appointment"
+        },
+        {
+          "info": {
+            "name": "Delete a specific appointment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v1/tenants/:tenant_id/appointments/:id",
+            "params": [
+              {
+                "name": "tenant_id",
+                "value": "1",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a specific appointment"
+        },
+        {
+          "info": {
+            "name": "Get a list of all appointments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/tenants/:tenant_id/appointments",
+            "params": [
+              {
+                "name": "tenant_id",
+                "value": "1",
+                "type": "path"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Encoded reference to the last record of the current page. It is empty for the first page."
+              },
+              {
+                "name": "per_page",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "shop_id",
+                "value": "null",
+                "type": "query",
+                "description": "Filter response to include only appointments related to specified shop."
+              },
+              {
+                "name": "customer_id",
+                "value": "null",
+                "type": "query",
+                "description": "Filter response to include only appointments related to work order with specified customer."
+              },
+              {
+                "name": "repair_order_id",
+                "value": "1",
+                "type": "query",
+                "description": "Filter response to include only appointments related to specified repair order."
+              },
+              {
+                "name": "vehicle_id",
+                "value": "null",
+                "type": "query",
+                "description": "Filter response to include only appointments related to work order with specified vehicle."
+              },
+              {
+                "name": "start_after",
+                "value": "2026-06-08T14:27:23Z",
+                "type": "query",
+                "description": "Filter response to include only appointments that start after specified date. Must be in utc iso8601 date format."
+              },
+              {
+                "name": "end_before",
+                "value": "2026-06-11T07:59:59Z",
+                "type": "query",
+                "description": "Filter response to include only appointments that end before specified date. Must be in utc iso8601 date format."
+              },
+              {
+                "name": "updated_after",
+                "value": "2022-10-24T12%3A00%3A00%2B08%3A00",
+                "type": "query",
+                "description": "Filter response to only include records updated after a given time"
+              }
+            ]
+          },
+          "docs": "Get a list of all appointments"
+        },
+        {
+          "info": {
+            "name": "Create an appointment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/tenants/:tenant_id/appointments",
+            "params": [
+              {
+                "name": "tenant_id",
+                "value": "1",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an appointment"
+        },
+        {
+          "info": {
+            "name": "Get a specific appointment by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/tenants/:tenant_id/appointments/:id",
+            "params": [
+              {
+                "name": "tenant_id",
+                "value": "1",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a specific appointment by ID"
+        },
+        {
+          "info": {
+            "name": "Update a specific appointment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/tenants/:tenant_id/appointments/:id",
+            "params": [
+              {
+                "name": "tenant_id",
+                "value": "1",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a specific appointment"
+        },
+        {
+          "info": {
+            "name": "Delete a specific appointment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v2/tenants/:tenant_id/appointments/:id",
+            "params": [
+              {
+                "name": "tenant_id",
+                "value": "1",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a specific appointment"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

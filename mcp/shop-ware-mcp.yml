@@ -321,3 +321,9 @@ tools:
 - name: delete_webhooks
   description: Delete a webhook by ID
   source_operation: openapi/shop-ware-v1-openapi-original.yml#DELETE /api/v1/webhooks/{id}
+deployment:
+  mode: none
+  verified: derived
+  tools: 104
+  checked: '2026-08-12'
+  source: catalog MCP census

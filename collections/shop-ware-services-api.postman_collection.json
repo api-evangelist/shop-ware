@@ -1,0 +1,431 @@
+{
+  "item": [
+    {
+      "id": "2d949980-71ac-4226-b437-c03a81013384",
+      "name": "Services",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "aa473097-d780-4d20-8161-f90f9bfbea4a",
+          "name": "Get a list of all services",
+          "request": {
+            "name": "Get a list of all services",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants",
+                ":tenant_id",
+                "services"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "repair_order_id",
+                  "value": "<integer>",
+                  "description": "A foreign key which points to a WorkOrder.id. Represents the repair order related with this service."
+                },
+                {
+                  "disabled": false,
+                  "key": "technician_id",
+                  "value": "<integer>",
+                  "description": "Filter response to only include Services with labors assigned to this Technican ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_after",
+                  "value": "<string>",
+                  "description": "Filter response to only include Services updated after a given time"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "667180f9-3800-45e0-a16e-86b819aa63c6",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":tenant_id",
+                    "services"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "repair_order_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "technician_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "updated_after",
+                      "value": "2026-09-08T14:25:34Z"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"id\": 2,\n      \"created_at\": \"2026-09-09T14:25:23Z\",\n      \"updated_at\": \"2026-09-09T14:25:23Z\",\n      \"title\": \"Test Service\",\n      \"completed\": false,\n      \"category_id\": null,\n      \"canned_job_id\": null,\n      \"comment\": \"No comment\",\n      \"fixed_price_cents\": null,\n      \"fixed_price_labor_total_cents\": null,\n      \"is_fixed_price_service\": false,\n      \"labor_rate_cents\": 10000,\n      \"repair_order_id\": 2,\n      \"completed_at\": null,\n      \"last_completed_at\": null,\n      \"labors\": [\n        {\n          \"id\": 2,\n          \"created_at\": \"2026-09-09T14:25:23Z\",\n          \"updated_at\": \"2026-09-09T14:25:23Z\",\n          \"name\": \"Test labor 6\",\n          \"technician_id\": null,\n          \"taxable\": true,\n          \"hours\": 1\n        }\n      ],\n      \"parts\": [\n        {\n          \"id\": 2,\n          \"created_at\": \"2026-09-09T14:25:23Z\",\n          \"updated_at\": \"2026-09-09T14:25:23Z\",\n          \"brand\": null,\n          \"description\": null,\n          \"number\": null,\n          \"quoted_price_cents\": null,\n          \"cost_cents\": null,\n          \"part_inventory_id\": 2,\n          \"taxable\": true,\n          \"sell_price_cents\": null,\n          \"quantity\": 1\n        }\n      ],\n      \"hazmats\": [\n        {\n          \"id\": 2,\n          \"created_at\": \"2026-09-09T14:25:23Z\",\n          \"updated_at\": \"2026-09-09T14:25:23Z\",\n          \"name\": \"Test hazmat fee 6\",\n          \"fee_cents\": 25,\n          \"taxable\": true,\n          \"quantity\": 1\n        }\n      ],\n      \"sublets\": [\n        {\n          \"id\": 2,\n          \"created_at\": \"2026-09-09T14:25:23Z\",\n          \"updated_at\": \"2026-09-09T14:25:23Z\",\n          \"name\": \"Test sublet 6\",\n          \"price_cents\": 50,\n          \"cost_cents\": null,\n          \"provider\": \"\",\n          \"invoice_number\": \"1111\",\n          \"description\": null,\n          \"taxable\": true,\n          \"vendor_id\": null,\n          \"invoice_date\": null\n        }\n      ],\n      \"inspections\": [\n        {\n          \"id\": 2,\n          \"created_at\": \"2026-09-09T14:25:23Z\",\n          \"updated_at\": \"2026-09-09T14:25:23Z\",\n          \"name\": \"Test inspection 6\",\n          \"state\": null\n        }\n      ]\n    },\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:25:23Z\",\n      \"updated_at\": \"2026-06-09T14:25:23Z\",\n      \"title\": \"Test Service\",\n      \"completed\": false,\n      \"category_id\": null,\n      \"canned_job_id\": null,\n      \"comment\": \"No comment\",\n      \"fixed_price_cents\": null,\n      \"fixed_price_labor_total_cents\": null,\n      \"is_fixed_price_service\": false,\n      \"labor_rate_cents\": 10000,\n      \"repair_order_id\": 1,\n      \"completed_at\": null,\n      \"last_completed_at\": null,\n      \"labors\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:25:23Z\",\n          \"updated_at\": \"2026-06-09T14:25:23Z\",\n          \"name\": \"Test labor 5\",\n          \"technician_id\": null,\n          \"taxable\": true,\n          \"hours\": 1\n        }\n      ],\n      \"parts\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:25:23Z\",\n          \"updated_at\": \"2026-06-09T14:25:23Z\",\n          \"brand\": null,\n          \"description\": null,\n          \"number\": null,\n          \"quoted_price_cents\": null,\n          \"cost_cents\": null,\n          \"part_inventory_id\": 1,\n          \"taxable\": true,\n          \"sell_price_cents\": null,\n          \"quantity\": 1\n        }\n      ],\n      \"hazmats\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:25:23Z\",\n          \"updated_at\": \"2026-06-09T14:25:23Z\",\n          \"name\": \"Test hazmat fee 5\",\n          \"fee_cents\": 25,\n          \"taxable\": true,\n          \"quantity\": 1\n        }\n      ],\n      \"sublets\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:25:23Z\",\n          \"updated_at\": \"2026-06-09T14:25:23Z\",\n          \"name\": \"Test sublet 5\",\n          \"price_cents\": 50,\n          \"cost_cents\": null,\n          \"provider\": \"\",\n          \"invoice_number\": \"1111\",\n          \"description\": null,\n          \"taxable\": true,\n          \"vendor_id\": null,\n          \"invoice_date\": null\n        }\n      ],\n      \"inspections\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:25:23Z\",\n          \"updated_at\": \"2026-06-09T14:25:23Z\",\n          \"name\": \"Test inspection 5\",\n          \"state\": null\n        }\n      ]\n    }\n  ],\n  \"limit\": 2,\n  \"limited\": false,\n  \"total_count\": 2,\n  \"current_page\": 1,\n  \"total_pages\": 1\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c7905b68-8004-4799-8c44-4c10f78cd0ca",
+          "name": "Get a specific service by ID",
+          "request": {
+            "name": "Get a specific service by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants",
+                ":tenant_id",
+                "services",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7d94a1d7-9807-4823-bfce-e1c484fb6284",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":tenant_id",
+                    "services",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"created_at\": \"2026-06-09T14:25:37Z\",\n  \"updated_at\": \"2026-06-09T14:25:37Z\",\n  \"title\": \"Test Service\",\n  \"completed\": false,\n  \"category_id\": null,\n  \"canned_job_id\": null,\n  \"comment\": \"No comment\",\n  \"fixed_price_cents\": null,\n  \"fixed_price_labor_total_cents\": null,\n  \"is_fixed_price_service\": false,\n  \"labor_rate_cents\": 10000,\n  \"repair_order_id\": 1,\n  \"completed_at\": null,\n  \"last_completed_at\": null,\n  \"labors\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:25:37Z\",\n      \"updated_at\": \"2026-06-09T14:25:37Z\",\n      \"name\": \"Test labor 13\",\n      \"technician_id\": null,\n      \"taxable\": true,\n      \"hours\": 1\n    }\n  ],\n  \"parts\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:25:37Z\",\n      \"updated_at\": \"2026-06-09T14:25:37Z\",\n      \"brand\": null,\n      \"description\": null,\n      \"number\": null,\n      \"quoted_price_cents\": null,\n      \"cost_cents\": null,\n      \"part_inventory_id\": 1,\n      \"taxable\": true,\n      \"sell_price_cents\": null,\n      \"quantity\": 1\n    }\n  ],\n  \"hazmats\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:25:37Z\",\n      \"updated_at\": \"2026-06-09T14:25:37Z\",\n      \"name\": \"Test hazmat fee 13\",\n      \"fee_cents\": 25,\n      \"taxable\": true,\n      \"quantity\": 1\n    }\n  ],\n  \"sublets\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:25:37Z\",\n      \"updated_at\": \"2026-06-09T14:25:37Z\",\n      \"name\": \"Test sublet 13\",\n      \"price_cents\": 50,\n      \"cost_cents\": null,\n      \"provider\": \"\",\n      \"invoice_number\": \"1111\",\n      \"description\": null,\n      \"taxable\": true,\n      \"vendor_id\": null,\n      \"invoice_date\": null\n    }\n  ],\n  \"inspections\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:25:37Z\",\n      \"updated_at\": \"2026-06-09T14:25:37Z\",\n      \"name\": \"Test inspection 13\",\n      \"state\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5c65cb19-471c-4507-bc95-22a30a2ca79e",
+          "name": "Update a specific service",
+          "request": {
+            "name": "Update a specific service",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants",
+                ":tenant_id",
+                "services",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comment\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "08ee0af3-9ff0-4b35-871a-0598daf0c5b6",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":tenant_id",
+                    "services",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"comment\": \"UPDATED COMMENT\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"created_at\": \"2026-06-09T14:25:44Z\",\n  \"updated_at\": \"2022-10-23T02:05:00Z\",\n  \"title\": \"Test Service\",\n  \"completed\": false,\n  \"category_id\": null,\n  \"canned_job_id\": null,\n  \"comment\": \"UPDATED COMMENT\",\n  \"fixed_price_cents\": null,\n  \"fixed_price_labor_total_cents\": null,\n  \"is_fixed_price_service\": false,\n  \"labor_rate_cents\": 10000,\n  \"repair_order_id\": 1,\n  \"completed_at\": null,\n  \"last_completed_at\": null,\n  \"labors\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:25:44Z\",\n      \"updated_at\": \"2026-06-09T14:25:44Z\",\n      \"name\": \"Test labor 15\",\n      \"technician_id\": null,\n      \"taxable\": true,\n      \"hours\": 1\n    }\n  ],\n  \"parts\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:25:44Z\",\n      \"updated_at\": \"2026-06-09T14:25:44Z\",\n      \"brand\": null,\n      \"description\": null,\n      \"number\": null,\n      \"quoted_price_cents\": null,\n      \"cost_cents\": null,\n      \"part_inventory_id\": 1,\n      \"taxable\": true,\n      \"sell_price_cents\": null,\n      \"quantity\": 1\n    }\n  ],\n  \"hazmats\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:25:44Z\",\n      \"updated_at\": \"2026-06-09T14:25:44Z\",\n      \"name\": \"Test hazmat fee 15\",\n      \"fee_cents\": 25,\n      \"taxable\": true,\n      \"quantity\": 1\n    }\n  ],\n  \"sublets\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:25:44Z\",\n      \"updated_at\": \"2026-06-09T14:25:44Z\",\n      \"name\": \"Test sublet 15\",\n      \"price_cents\": 50,\n      \"cost_cents\": null,\n      \"provider\": \"\",\n      \"invoice_number\": \"1111\",\n      \"description\": null,\n      \"taxable\": true,\n      \"vendor_id\": null,\n      \"invoice_date\": null\n    }\n  ],\n  \"inspections\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:25:44Z\",\n      \"updated_at\": \"2026-06-09T14:25:44Z\",\n      \"name\": \"Test inspection 15\",\n      \"state\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Partner-Id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0662edb0-0c95-4859-be7c-d15b7f343f93",
+    "name": "API V1 API Partners Services API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Name: API Support\n Email: support@shop-ware.com",
+      "type": "text/plain"
+    }
+  }
+}

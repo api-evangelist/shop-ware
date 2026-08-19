@@ -1,0 +1,569 @@
+{
+  "item": [
+    {
+      "id": "a7b2d385-d525-4cc5-b47b-18257f426cbb",
+      "name": "Vehicles",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7a930147-4c23-4b33-ade4-71ba045a2b4b",
+          "name": "Get a list of all vehicles",
+          "request": {
+            "name": "Get a list of all vehicles",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants",
+                ":tenant_id",
+                "vehicles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "vin",
+                  "value": "<string>",
+                  "description": "Filter response to include only Vehicles with this VIN."
+                },
+                {
+                  "disabled": false,
+                  "key": "customer_id",
+                  "value": "<integer>",
+                  "description": "Filter response to include only Customers with this ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_after",
+                  "value": "<string>",
+                  "description": "Filter response to only include records updated after a given time"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1f9bf608-ed71-48fa-8be1-76eb920999b3",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":tenant_id",
+                    "vehicles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "vin",
+                      "value": "1FMPU16W14LB56648"
+                    },
+                    {
+                      "key": "customer_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "updated_after",
+                      "value": "2022-10-24T12%3A00%3A00%2B08%3A00"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:26:39Z\",\n      \"updated_at\": \"2026-06-09T14:26:39Z\",\n      \"plate\": \"EZRIDR\",\n      \"detail\": \"Keys in glovebox\",\n      \"fleet_number\": \"23R\",\n      \"vin\": \"1FMPU16W14LB56648\",\n      \"year\": \"2004\",\n      \"make\": \"Ford\",\n      \"model\": \"Expedition\",\n      \"engine\": \"4.6L V8\",\n      \"color\": \"BLACK\",\n      \"production_date\": \"2026-06-08T14:26:39.913Z\",\n      \"registration_exp_date\": \"2026-06-08T14:26:39.913Z\",\n      \"customer_ids\": [\n        2\n      ],\n      \"integrator_tags\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:26:39Z\",\n          \"updated_at\": \"2026-06-09T14:26:39Z\",\n          \"taggable_type\": \"Vehicle\",\n          \"taggable_id\": 1,\n          \"name\": \"tag_name\",\n          \"value\": \"tag_value\"\n        }\n      ]\n    }\n  ],\n  \"limit\": 1,\n  \"limited\": false,\n  \"total_count\": 1,\n  \"current_page\": 1,\n  \"total_pages\": 1\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "99f6516d-e709-4ec9-8b5f-3d93faa05695",
+          "name": "Create a vehicle",
+          "request": {
+            "name": "Create a vehicle",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants",
+                ":tenant_id",
+                "vehicles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"make\": \"<string>\",\n  \"plate\": \"<string>\",\n  \"production_date\": \"<date>\",\n  \"registration_exp_date\": \"<date>\",\n  \"detail\": \"<string>\",\n  \"fleet_number\": \"<string>\",\n  \"vin\": \"<string>\",\n  \"year\": \"<string>\",\n  \"model\": \"<string>\",\n  \"engine\": \"<string>\",\n  \"color\": \"<string>\",\n  \"customer_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4ce7f892-da56-4fa7-977a-b4b629b38df7",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":tenant_id",
+                    "vehicles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"make\": \"<string>\",\n  \"plate\": \"<string>\",\n  \"production_date\": \"<date>\",\n  \"registration_exp_date\": \"<date>\",\n  \"detail\": \"<string>\",\n  \"fleet_number\": \"<string>\",\n  \"vin\": \"<string>\",\n  \"year\": \"<string>\",\n  \"model\": \"<string>\",\n  \"engine\": \"<string>\",\n  \"color\": \"<string>\",\n  \"customer_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2,\n  \"created_at\": \"2026-06-09T14:26:46Z\",\n  \"updated_at\": \"2026-06-09T14:26:46Z\",\n  \"plate\": \"EZRIDR\",\n  \"detail\": \"Keys in glovebox\",\n  \"fleet_number\": \"23R\",\n  \"vin\": \"1FMPU16W14LB56648\",\n  \"year\": \"2004\",\n  \"make\": \"Ford\",\n  \"model\": \"Expedition\",\n  \"engine\": \"4.6L V8\",\n  \"color\": \"BLACK\",\n  \"production_date\": \"2022-10-24T08:00:00.000Z\",\n  \"registration_exp_date\": \"2025-10-24T08:00:00.000Z\",\n  \"customer_ids\": [\n    1\n  ],\n  \"integrator_tags\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "33526495-c18c-4ad1-bf6c-0a9ff4cd883e",
+          "name": "Get a specific vehicle by ID",
+          "request": {
+            "name": "Get a specific vehicle by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants",
+                ":tenant_id",
+                "vehicles",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "02291a0d-4533-4050-8f63-7708ea36738e",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":tenant_id",
+                    "vehicles",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"created_at\": \"2026-06-09T14:26:49Z\",\n  \"updated_at\": \"2026-06-09T14:26:49Z\",\n  \"plate\": \"EZRIDR\",\n  \"detail\": \"Keys in glovebox\",\n  \"fleet_number\": \"23R\",\n  \"vin\": \"1FMPU16W14LB56648\",\n  \"year\": \"2004\",\n  \"make\": \"Ford\",\n  \"model\": \"Expedition\",\n  \"engine\": \"4.6L V8\",\n  \"color\": \"BLACK\",\n  \"production_date\": \"2026-06-08T14:26:49.632Z\",\n  \"registration_exp_date\": \"2026-06-08T14:26:49.632Z\",\n  \"customer_ids\": [\n    2\n  ],\n  \"integrator_tags\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:26:49Z\",\n      \"updated_at\": \"2026-06-09T14:26:49Z\",\n      \"taggable_type\": \"Vehicle\",\n      \"taggable_id\": 1,\n      \"name\": \"tag_name\",\n      \"value\": \"tag_value\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bbe5720e-764f-455e-b8bb-8d4f293ae092",
+          "name": "Update a specific vehicle by ID",
+          "request": {
+            "name": "Update a specific vehicle by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants",
+                ":tenant_id",
+                "vehicles",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"plate\": \"<string>\",\n  \"production_date\": \"<date>\",\n  \"registration_exp_date\": \"<date>\",\n  \"detail\": \"<string>\",\n  \"fleet_number\": \"<string>\",\n  \"vin\": \"<string>\",\n  \"year\": \"<string>\",\n  \"make\": \"<string>\",\n  \"model\": \"<string>\",\n  \"engine\": \"<string>\",\n  \"color\": \"<string>\",\n  \"customer_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f5f066f1-afd5-4b95-8334-dc87654e9f3f",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":tenant_id",
+                    "vehicles",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"plate\": \"<string>\",\n  \"production_date\": \"<date>\",\n  \"registration_exp_date\": \"<date>\",\n  \"detail\": \"<string>\",\n  \"fleet_number\": \"<string>\",\n  \"vin\": \"<string>\",\n  \"year\": \"<string>\",\n  \"make\": \"<string>\",\n  \"model\": \"<string>\",\n  \"engine\": \"<string>\",\n  \"color\": \"<string>\",\n  \"customer_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"created_at\": \"2026-06-09T14:26:52Z\",\n  \"updated_at\": \"2022-10-23T02:05:00Z\",\n  \"plate\": \"EZRIDR\",\n  \"detail\": \"Keys in glovebox\",\n  \"fleet_number\": \"23R\",\n  \"vin\": \"1FMPU16W14LB56648\",\n  \"year\": \"UPDATED YEAR\",\n  \"make\": \"Ford\",\n  \"model\": \"Expedition\",\n  \"engine\": \"4.6L V8\",\n  \"color\": \"BLACK\",\n  \"production_date\": \"2022-10-24T08:00:00.000Z\",\n  \"registration_exp_date\": \"2022-10-24T08:00:00.000Z\",\n  \"customer_ids\": [\n    1\n  ],\n  \"integrator_tags\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:26:52Z\",\n      \"updated_at\": \"2026-06-09T14:26:52Z\",\n      \"taggable_type\": \"Vehicle\",\n      \"taggable_id\": 1,\n      \"name\": \"tag_name\",\n      \"value\": \"tag_value\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Partner-Id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c0258e51-0593-4f9c-ac2c-678b5f92bbc5",
+    "name": "API V1 API Partners Vehicles API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Name: API Support\n Email: support@shop-ware.com",
+      "type": "text/plain"
+    }
+  }
+}

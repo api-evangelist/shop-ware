@@ -1,0 +1,584 @@
+{
+  "item": [
+    {
+      "id": "c8a993bc-7ce6-40b0-baf7-52285c662e06",
+      "name": "Inventory",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c3f957fe-f388-4c9e-bb9a-909e89257e46",
+          "name": "Get a list of all inventory",
+          "request": {
+            "name": "Get a list of all inventory",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants",
+                ":tenant_id",
+                "inventories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Filter response to include only on hand inventories (quantity_on_hand > 0) if query parameter key is present.",
+                    "type": "text/plain"
+                  },
+                  "key": "on_hand",
+                  "value": ""
+                },
+                {
+                  "description": {
+                    "content": "Filter response to include only in stock inventories (min_stock > 0) if query parameter key is present.",
+                    "type": "text/plain"
+                  },
+                  "key": "in_stock",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_after",
+                  "value": "<string>",
+                  "description": "Filter response to only include records updated after a given time"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "efe90c17-67d3-4298-9308-3c9601bb7adf",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":tenant_id",
+                    "inventories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "on_hand",
+                      "value": ""
+                    },
+                    {
+                      "key": "in_stock",
+                      "value": ""
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "updated_after",
+                      "value": "2022-10-24T12%3A00%3A00%2B08%3A00"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:23:13Z\",\n      \"updated_at\": \"2026-06-09T14:23:13Z\",\n      \"type\": \"PartInventory\",\n      \"brand\": \"Honda\",\n      \"description\": \"Throttle Body Gasket\",\n      \"number\": \"16176-RTA-004\",\n      \"list_price_cents\": 439,\n      \"cost_cents\": 179,\n      \"gp_price_cents\": 757,\n      \"quantity_on_hand\": 1,\n      \"location\": \"C4\",\n      \"hazmat_rating\": \"none\",\n      \"misc_info\": \"Back of shelf, left side\",\n      \"part_terminology_id\": \"14999\",\n      \"core_inventory_id\": null,\n      \"bosch_extra_points\": 0,\n      \"primary_vendor_id\": 1,\n      \"last_vendor_id\": 2,\n      \"shop_id\": 2,\n      \"gp_exception_id\": 1,\n      \"partstech_part_id\": \"A1B2C3\",\n      \"quantity_in_progress\": 0,\n      \"quantity_needed\": 0,\n      \"quantity_ordered\": 0,\n      \"quantity_ordered_for_stock\": 0,\n      \"quantity_returned\": 0,\n      \"part_type\": \"Part Type 1\",\n      \"reporting_category\": null,\n      \"part_type_metadata\": [\n        {\n          \"diameter\": \"17-inch diameter\",\n          \"rim_size\": 12,\n          \"tire_type\": \"P\",\n          \"load_index\": 70,\n          \"load_range\": \"LL\",\n          \"tire_width\": 205,\n          \"tire_aspect\": 95,\n          \"manufacturer\": \"element\",\n          \"speed_rating\": \"V\",\n          \"vendor_tire_size\": \"string\",\n          \"construction_type\": \"B\"\n        }\n      ],\n      \"gp_optimizer_active\": true,\n      \"ai_parts_matrix_enabled\": true,\n      \"msrp_cents\": 439,\n      \"min_stock\": 1,\n      \"max_stock\": 2,\n      \"tags\": [\n        \"a4\",\n        \"taxi_part\"\n      ],\n      \"integrator_tags\": [\n        {\n          \"id\": 1,\n          \"created_at\": \"2026-06-09T14:23:13Z\",\n          \"updated_at\": \"2026-06-09T14:23:13Z\",\n          \"taggable_type\": \"Inventory\",\n          \"taggable_id\": 1,\n          \"name\": \"tag_name\",\n          \"value\": \"tag_value\"\n        }\n      ]\n    }\n  ],\n  \"limit\": 1,\n  \"limited\": false,\n  \"total_count\": 1,\n  \"current_page\": 1,\n  \"total_pages\": 1\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "240a30bd-f638-479d-9a05-7e32b5f71aeb",
+          "name": "Get active RO inventory net value for parts assigned to active work orders",
+          "request": {
+            "name": "Get active RO inventory net value for parts assigned to active work orders",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants",
+                ":tenant_id",
+                "inventories",
+                "active_ros_parts_net_value"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "shop_id",
+                  "value": "<integer>",
+                  "description": "(Required) Shop ID used to scope active work orders and inventory records for the calculation."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b898483d-ace3-47e6-9b79-54bc72f8004f",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":tenant_id",
+                    "inventories",
+                    "active_ros_parts_net_value"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "shop_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"number\": \"PART-1\",\n      \"name\": \"Brake Pad\",\n      \"quantity\": 3,\n      \"cost_cents\": 250,\n      \"ro_number\": 492914395\n    }\n  ],\n  \"limit\": 1,\n  \"limited\": false,\n  \"total_count\": 1,\n  \"current_page\": 1,\n  \"total_pages\": 1,\n  \"active_ros_parts_net_value_cents\": 750\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "869a019f-7ea1-41a6-9db9-2b4a9521ccd6",
+          "name": "Get specific inventory by ID",
+          "request": {
+            "name": "Get specific inventory by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants",
+                ":tenant_id",
+                "inventories",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "09fd9009-bbec-4dfc-b219-0e728bbabf43",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":tenant_id",
+                    "inventories",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"created_at\": \"2026-06-09T14:23:19Z\",\n  \"updated_at\": \"2026-06-09T14:23:19Z\",\n  \"type\": \"PartInventory\",\n  \"brand\": \"Honda\",\n  \"description\": \"Throttle Body Gasket\",\n  \"number\": \"16176-RTA-004\",\n  \"list_price_cents\": 439,\n  \"cost_cents\": 179,\n  \"gp_price_cents\": 757,\n  \"quantity_on_hand\": 1,\n  \"location\": \"C4\",\n  \"hazmat_rating\": \"none\",\n  \"misc_info\": \"Back of shelf, left side\",\n  \"part_terminology_id\": \"14999\",\n  \"core_inventory_id\": null,\n  \"bosch_extra_points\": 0,\n  \"primary_vendor_id\": 1,\n  \"last_vendor_id\": 2,\n  \"shop_id\": 2,\n  \"gp_exception_id\": 1,\n  \"partstech_part_id\": \"A1B2C3\",\n  \"quantity_in_progress\": 0,\n  \"quantity_needed\": 0,\n  \"quantity_ordered\": 0,\n  \"quantity_ordered_for_stock\": 0,\n  \"quantity_returned\": 0,\n  \"part_type\": \"Part Type 3\",\n  \"reporting_category\": null,\n  \"part_type_metadata\": [\n    {\n      \"diameter\": \"17-inch diameter\",\n      \"rim_size\": 12,\n      \"tire_type\": \"P\",\n      \"load_index\": 70,\n      \"load_range\": \"LL\",\n      \"tire_width\": 205,\n      \"tire_aspect\": 95,\n      \"manufacturer\": \"element\",\n      \"speed_rating\": \"V\",\n      \"vendor_tire_size\": \"string\",\n      \"construction_type\": \"B\"\n    }\n  ],\n  \"gp_optimizer_active\": true,\n  \"ai_parts_matrix_enabled\": true,\n  \"msrp_cents\": 439,\n  \"min_stock\": 1,\n  \"max_stock\": 2,\n  \"tags\": [\n    \"a4\",\n    \"taxi_part\"\n  ],\n  \"integrator_tags\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:23:19Z\",\n      \"updated_at\": \"2026-06-09T14:23:19Z\",\n      \"taggable_type\": \"Inventory\",\n      \"taggable_id\": 1,\n      \"name\": \"tag_name\",\n      \"value\": \"tag_value\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eb3b84ac-ab17-41c6-bcea-d3a12e228ec5",
+          "name": "Update specific inventory by ID",
+          "request": {
+            "name": "Update specific inventory by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tenants",
+                ":tenant_id",
+                "inventories",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cost_cents\": \"<integer>\",\n  \"list_price_cents\": \"<integer>\",\n  \"msrp_cents\": \"<integer>\",\n  \"location\": \"<string>\",\n  \"min_stock\": \"<number>\",\n  \"max_stock\": \"<number>\",\n  \"part_terminology_id\": \"<string>\",\n  \"part_type_metadata\": {\n    \"manufacturer\": \"<string>\",\n    \"tire_type\": \"<string>\",\n    \"tire_width\": \"<number>\",\n    \"tire_aspect\": \"<number>\",\n    \"construction_type\": \"<string>\",\n    \"rim_size\": \"<number>\",\n    \"load_range\": \"<string>\",\n    \"load_index\": \"<number>\",\n    \"speed_rating\": \"<string>\",\n    \"vendor_tire_size\": \"<string>\",\n    \"diameter\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bb53e88a-7a8b-4fdf-8672-6d0dd23a96a6",
+              "name": "successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tenants",
+                    ":tenant_id",
+                    "inventories",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "tenant_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Partner-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cost_cents\": 179,\n  \"list_price_cents\": 439,\n  \"location\": \"C4\",\n  \"min_stock\": 1,\n  \"max_stock\": 2\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"created_at\": \"2026-06-09T14:23:22Z\",\n  \"updated_at\": \"2026-06-09T14:23:22Z\",\n  \"type\": \"PartInventory\",\n  \"brand\": \"Honda\",\n  \"description\": \"Throttle Body Gasket\",\n  \"number\": \"16176-RTA-004\",\n  \"list_price_cents\": 439,\n  \"cost_cents\": 179,\n  \"gp_price_cents\": 757,\n  \"quantity_on_hand\": 1,\n  \"location\": \"C4\",\n  \"hazmat_rating\": \"none\",\n  \"misc_info\": \"Back of shelf, left side\",\n  \"part_terminology_id\": \"14999\",\n  \"core_inventory_id\": null,\n  \"bosch_extra_points\": 0,\n  \"primary_vendor_id\": 1,\n  \"last_vendor_id\": 2,\n  \"shop_id\": 2,\n  \"gp_exception_id\": 1,\n  \"partstech_part_id\": \"A1B2C3\",\n  \"quantity_in_progress\": 0,\n  \"quantity_needed\": 0,\n  \"quantity_ordered\": 0,\n  \"quantity_ordered_for_stock\": 0,\n  \"quantity_returned\": 0,\n  \"part_type\": \"Part Type 4\",\n  \"reporting_category\": null,\n  \"part_type_metadata\": [\n    {\n      \"diameter\": \"17-inch diameter\",\n      \"rim_size\": 12,\n      \"tire_type\": \"P\",\n      \"load_index\": 70,\n      \"load_range\": \"LL\",\n      \"tire_width\": 205,\n      \"tire_aspect\": 95,\n      \"manufacturer\": \"element\",\n      \"speed_rating\": \"V\",\n      \"vendor_tire_size\": \"string\",\n      \"construction_type\": \"B\"\n    }\n  ],\n  \"gp_optimizer_active\": true,\n  \"ai_parts_matrix_enabled\": true,\n  \"msrp_cents\": 439,\n  \"min_stock\": 1,\n  \"max_stock\": 2,\n  \"tags\": [\n    \"a4\",\n    \"taxi_part\"\n  ],\n  \"integrator_tags\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2026-06-09T14:23:22Z\",\n      \"updated_at\": \"2026-06-09T14:23:22Z\",\n      \"taggable_type\": \"Inventory\",\n      \"taggable_id\": 1,\n      \"name\": \"tag_name\",\n      \"value\": \"tag_value\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Partner-Id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0b54fdfe-2bce-4709-a25d-69c159a57b82",
+    "name": "API V1 API Partners Inventory API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Name: API Support\n Email: support@shop-ware.com",
+      "type": "text/plain"
+    }
+  }
+}

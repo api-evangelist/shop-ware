@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API V1 API Partners Staff shift clocks API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Partner-Id",
+      "value": "{{X-Api-Partner-Id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Staff shift clocks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get shift clocks for staff",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/tenants/:tenant_id/staffs/:staff_id/time_clocks",
+            "params": [
+              {
+                "name": "tenant_id",
+                "value": "1",
+                "type": "path"
+              },
+              {
+                "name": "staff_id",
+                "value": "1",
+                "type": "path"
+              },
+              {
+                "name": "start_after",
+                "value": "2022-10-12T12:30:00+00:00",
+                "type": "query",
+                "description": "Filter to include records with clocked_in_at after specified date and time in ISO 8601 format"
+              },
+              {
+                "name": "end_before",
+                "value": "2022-10-14T12:30:00+00:00",
+                "type": "query",
+                "description": "Filter to include records with clocked_out_at before specified date and time in ISO 8601 format"
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "per_page",
+                "value": "30",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get shift clocks for staff"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

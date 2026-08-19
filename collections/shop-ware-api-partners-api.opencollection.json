@@ -1,0 +1,83 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API V1 API Partners API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Partner-Id",
+      "value": "{{X-Api-Partner-Id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "API Partners",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get current authorizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/partners/:partner_id/authorizations",
+            "params": [
+              {
+                "name": "partner_id",
+                "value": "1",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "per_page",
+                "value": "30",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get current authorizations"
+        },
+        {
+          "info": {
+            "name": "Get current authorizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v2/partners/:partner_id/authorizations",
+            "params": [
+              {
+                "name": "partner_id",
+                "value": "1",
+                "type": "path"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Encoded reference to the last record of the current page. It is empty for the first page."
+              },
+              {
+                "name": "per_page",
+                "value": "30",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get current authorizations"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
