@@ -46,6 +46,16 @@ tags:
 - Shop Management
 - Repair Orders
 - Field Service
+- Software-as-a-Service
+- Webhook
+- Payments
+tags_raw:
+- Company
+- Automotive
+- Auto Repair
+- Shop Management
+- Repair Orders
+- Field Service
 - SaaS
 - Webhooks
 - Payments
@@ -306,6 +316,8 @@ apis:
   humanURL: https://api.shop-ware.com/api-docs/index.html
   baseURL: https://api.shop-ware.com
   tags:
+  - Status
+  tags_raw:
   - Statuses
   properties:
   - type: OpenAPI
@@ -346,6 +358,8 @@ apis:
   humanURL: https://api.shop-ware.com/api-docs/index.html
   baseURL: https://api.shop-ware.com
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
