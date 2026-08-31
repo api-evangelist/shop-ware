@@ -308,6 +308,8 @@ apis:
   humanURL: https://api.shop-ware.com/api-docs/index.html
   baseURL: https://api.shop-ware.com
   tags:
+  - StaffMembers
+  tags_raw:
   - Staff Members
   properties:
   - type: OpenAPI
