@@ -1,10 +1,13 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: API V1 API Partners Staff Members API
+  title: V1 API Partners Staff Members API
   version: v1
   contact:
     name: API Support
     email: support@shop-ware.com
+servers:
+- url: https://api.shop-ware.com
+  description: Base URL declared by the provider in apis.yml (roadmap#122).
 security:
 - api_partner_id: []
   api_secret: []
@@ -287,8 +290,9 @@ paths:
                   minLength: 1
                   description: Staff`s email
                 employee_id:
-                  type: integer
-                  nullable: true
+                  type:
+                  - integer
+                  - 'null'
                   description: Staff`s employee identifier
                 shop_id:
                   type: integer
@@ -433,8 +437,9 @@ paths:
                   minLength: 1
                   description: Staff`s email
                 employee_id:
-                  type: integer
-                  nullable: true
+                  type:
+                  - integer
+                  - 'null'
                   description: Staff`s employee identifier
                 shop_id:
                   type: integer
@@ -690,8 +695,9 @@ paths:
                   minLength: 1
                   description: Staff`s email
                 employee_id:
-                  type: integer
-                  nullable: true
+                  type:
+                  - integer
+                  - 'null'
                   description: Staff`s employee identifier
                 shop_id:
                   type: integer
@@ -748,12 +754,14 @@ paths:
                   type: string
                   description: Notification message.
                 url:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: URL that will open in a new window when clicked.
                 recipients:
-                  type: array
-                  nullable: true
+                  type:
+                  - array
+                  - 'null'
                   description: List of staffIDs to whom the notification will be sent. If left blank, sent to all logged in staff.
                   items:
                     type: integer

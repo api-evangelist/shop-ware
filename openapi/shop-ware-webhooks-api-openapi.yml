@@ -1,10 +1,13 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: API V1 API Partners Webhooks API
+  title: V1 API Partners Webhooks API
   version: v1
   contact:
     name: API Support
     email: support@shop-ware.com
+servers:
+- url: https://api.shop-ware.com
+  description: Base URL declared by the provider in apis.yml (roadmap#122).
 security:
 - api_partner_id: []
   api_secret: []
@@ -48,9 +51,10 @@ paths:
                         type: string
                       description: List of events
                     format:
-                      type: string
+                      type:
+                      - string
+                      - 'null'
                       description: Webhook format
-                      nullable: true
     post:
       summary: Create a webhook
       tags:
@@ -86,9 +90,10 @@ paths:
                       type: string
                     description: List of events
                   format:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     description: Webhook format
-                    nullable: true
       requestBody:
         content:
           application/json:
@@ -108,8 +113,9 @@ paths:
                     description: "Available object types: appointment, assignment, canned_job, category, customer, gp_exception, inventory, past_recommendation, payment_transaction, purchase_record, repair_order, shop, staff, status, vehicle \n\nAvailable event actions: created, updated, deleted. Additionally, customers support merged (customer.merged)."
                   description: An array of events that will trigger a webhook delivery.With an event, you can filter what kind of events you want to receive.Events consist of two parts, an event object and an event action.Events are built according to the "object_type.event_action" principle,so you can subscribe to any event that represents a combination of event object and event action (ex. "staff.updated").
                 format:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: "Webhook format \n\n Available formats: nil, zapier"
               example:
                 url: https://www.example.com/new_webhook
@@ -159,9 +165,10 @@ paths:
                       type: string
                     description: List of events
                   format:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     description: Webhook format
-                    nullable: true
     put:
       summary: Update a webhook
       tags:
@@ -196,9 +203,10 @@ paths:
                       type: string
                     description: List of events
                   format:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     description: Webhook format
-                    nullable: true
       requestBody:
         content:
           application/json:
@@ -215,8 +223,9 @@ paths:
                     description: "Available object types: appointment, assignment, canned_job, category, customer, gp_exception, inventory, past_recommendation, payment_transaction, purchase_record, repair_order, shop, staff, status, vehicle \n\nAvailable event actions: created, updated, deleted. Additionally, customers support merged (customer.merged)."
                   description: An array of events that will trigger a webhook delivery.With an event, you can filter what kind of events you want to receive.Events consist of two parts, an event object and an event action.Events are built according to the "object_type.event_action" principle,so you can subscribe to any event that represents a combination of event object and event action (ex. "staff.updated").
                 format:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: "Webhook format \n\n Available formats: nil, zapier"
               example:
                 url: https://www.example.com/updated_webhook

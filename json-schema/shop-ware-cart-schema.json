@@ -1,0 +1,186 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.shopware.com/schemas/cart",
+  "title": "Shopware Cart",
+  "description": "Represents a customer shopping cart in the Shopware Store API.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Cart name, e.g. 'guest-cart'"
+    },
+    "token": {
+      "type": "string",
+      "description": "Context token identifying this cart and the user session"
+    },
+    "price": { "$ref": "#/$defs/CalculatedPrice" },
+    "lineItems": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/LineItem" },
+      "description": "All items within the cart"
+    },
+    "errors": {
+      "type": "object",
+      "description": "Cart errors keyed by error key (e.g. insufficient stock, invalid vouchers)",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "code": { "type": "number" },
+          "key": { "type": "string" },
+          "level": {
+            "type": "number",
+            "description": "0 = notice, 10 = warning, 20 = error"
+          },
+          "message": { "type": "string" },
+          "messageKey": { "type": "string" }
+        },
+        "required": ["code", "key", "level", "message", "messageKey"]
+      }
+    },
+    "deliveries": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/CartDelivery" }
+    },
+    "transactions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "paymentMethodId": { "type": "string" },
+          "amount": { "$ref": "#/$defs/CalculatedPrice" }
+        }
+      }
+    },
+    "modified": {
+      "type": "boolean",
+      "description": "True if the cart was modified since last read"
+    },
+    "customerComment": {
+      "oneOf": [{ "type": "string" }, { "type": "null" }],
+      "description": "Optional customer comment attached to the order"
+    },
+    "affiliateCode": {
+      "oneOf": [{ "type": "string" }, { "type": "null" }],
+      "description": "Affiliate tracking code"
+    },
+    "campaignCode": {
+      "oneOf": [{ "type": "string" }, { "type": "null" }],
+      "description": "Campaign tracking code"
+    }
+  },
+  "$defs": {
+    "CalculatedPrice": {
+      "type": "object",
+      "properties": {
+        "unitPrice": { "type": "number" },
+        "totalPrice": { "type": "number" },
+        "quantity": { "type": "integer" },
+        "calculatedTaxes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "tax": { "type": "number" },
+              "taxRate": { "type": "number" },
+              "price": { "type": "number" }
+            }
+          }
+        },
+        "taxRules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "taxRate": { "type": "number" },
+              "percentage": { "type": "number" }
+            }
+          }
+        },
+        "referencePrice": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "price": { "type": "number" },
+                "purchaseUnit": { "type": "number" },
+                "referenceUnit": { "type": "number" },
+                "unitName": { "type": "string" }
+              }
+            },
+            { "type": "null" }
+          ]
+        },
+        "listPrice": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "price": { "type": "number" },
+                "discount": { "type": "number" },
+                "percentage": { "type": "number" }
+              }
+            },
+            { "type": "null" }
+          ]
+        }
+      }
+    },
+    "LineItem": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "referencedId": {
+          "oneOf": [{ "type": "string" }, { "type": "null" }],
+          "description": "ID of the referenced product or promotion"
+        },
+        "label": { "type": "string" },
+        "quantity": { "type": "integer", "minimum": 1 },
+        "type": {
+          "type": "string",
+          "enum": ["product", "promotion", "credit", "custom", "container"]
+        },
+        "price": { "$ref": "#/$defs/CalculatedPrice" },
+        "priceDefinition": { "type": "object" },
+        "payload": {
+          "type": "object",
+          "description": "Entity-specific payload (product ID, name, options for variants, etc.)"
+        },
+        "deliveryInformation": { "type": "object" },
+        "children": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/LineItem" }
+        },
+        "good": { "type": "boolean" },
+        "description": { "oneOf": [{ "type": "string" }, { "type": "null" }] },
+        "cover": {
+          "type": ["object", "null"],
+          "properties": {
+            "url": { "type": "string", "format": "uri" },
+            "alt": { "type": ["string", "null"] },
+            "title": { "type": ["string", "null"] }
+          }
+        },
+        "removable": { "type": "boolean" },
+        "stackable": { "type": "boolean" },
+        "modified": { "type": "boolean" }
+      }
+    },
+    "CartDelivery": {
+      "type": "object",
+      "properties": {
+        "deliveryDate": { "type": "object" },
+        "shippingMethod": { "type": "object" },
+        "shippingOrderAddress": { "type": "object" },
+        "trackingCodes": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "positions": {
+          "type": "array",
+          "items": { "type": "object" }
+        },
+        "shippingCosts": { "$ref": "#/$defs/CalculatedPrice" }
+      }
+    }
+  }
+}

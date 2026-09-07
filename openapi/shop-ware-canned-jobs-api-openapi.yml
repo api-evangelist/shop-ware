@@ -1,10 +1,13 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: API V1 API Partners Canned Jobs API
+  title: V1 API Partners Canned Jobs API
   version: v1
   contact:
     name: API Support
     email: support@shop-ware.com
+servers:
+- url: https://api.shop-ware.com
+  description: Base URL declared by the provider in apis.yml (roadmap#122).
 security:
 - api_partner_id: []
   api_secret: []
@@ -159,13 +162,15 @@ paths:
                           type: integer
                           description: A foreign key that points to the Shop that this CannedJob belongs to
                         labor_rate_cents:
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           description: Labor rate in cents
-                          nullable: true
                         fixed_price_cents:
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           description: The price in cents that this service will be charged at.
-                          nullable: true
                         is_fixed_price_service:
                           type: boolean
                           description: Determines if this service has a fixed price.
@@ -237,14 +242,16 @@ paths:
                                 type: number
                                 description: The number of units this part line item represents.
                               quoted_price_cents:
-                                type: integer
+                                type:
+                                - integer
+                                - 'null'
                                 description: MSRP in cents.
-                                nullable: true
                                 deprecated: true
                               msrp_cents:
-                                type: integer
+                                type:
+                                - integer
+                                - 'null'
                                 description: MSRP in cents.
-                                nullable: true
                               taxable:
                                 type: boolean
                                 description: Determines if part tax rate will be applied to this part.
@@ -497,13 +504,15 @@ paths:
                     type: integer
                     description: A foreign key that points to the Shop that this CannedJob belongs to
                   labor_rate_cents:
-                    type: integer
+                    type:
+                    - integer
+                    - 'null'
                     description: Labor rate in cents
-                    nullable: true
                   fixed_price_cents:
-                    type: integer
+                    type:
+                    - integer
+                    - 'null'
                     description: The price in cents that this service will be charged at.
-                    nullable: true
                   is_fixed_price_service:
                     type: boolean
                     description: Determines if this service has a fixed price.
@@ -575,14 +584,16 @@ paths:
                           type: number
                           description: The number of units this part line item represents.
                         quoted_price_cents:
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           description: MSRP in cents.
-                          nullable: true
                           deprecated: true
                         msrp_cents:
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           description: MSRP in cents.
-                          nullable: true
                         taxable:
                           type: boolean
                           description: Determines if part tax rate will be applied to this part.

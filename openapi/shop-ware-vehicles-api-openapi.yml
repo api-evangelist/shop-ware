@@ -1,10 +1,13 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: API V1 API Partners Vehicles API
+  title: V1 API Partners Vehicles API
   version: v1
   contact:
     name: API Support
     email: support@shop-ware.com
+servers:
+- url: https://api.shop-ware.com
+  description: Base URL declared by the provider in apis.yml (roadmap#122).
 security:
 - api_partner_id: []
   api_secret: []
@@ -223,49 +226,60 @@ paths:
                     type: integer
                     description: Unique identifier of this record.
                   plate:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     description: License plate.
-                    nullable: true
                   detail:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     description: Notes made by the staff about this vehicle
-                    nullable: true
                   fleet_number:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     description: Fleet number.
-                    nullable: true
                   vin:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     description: Vehicle Identification Number.
-                    nullable: true
                   year:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     description: Year.
-                    nullable: true
                   make:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     description: Vehicle make.
-                    nullable: true
                   model:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     description: Vehicle model.
-                    nullable: true
                   engine:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     description: Vehicle engine
-                    nullable: true
                   production_date:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     description: Production date
-                    nullable: true
                   registration_exp_date:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     description: Registration expire date
-                    nullable: true
                   color:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     description: Vehicle color
-                    nullable: true
                   created_at:
                     type: string
                     format: date-time
@@ -311,54 +325,65 @@ paths:
               - make
               properties:
                 plate:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: License plate.
                 production_date:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   format: date
                   description: Production date
                 registration_exp_date:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   format: date
                   description: Registration expire date
                 detail:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: Notes made by the staff about this vehicle
                 fleet_number:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: Fleet number.
                 vin:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: Vehicle Identification Number.
                 year:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: Year.
                 make:
                   type: string
                   minLength: 1
                   description: Vehicle make.
                 model:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: Vehicle model.
                 engine:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: Vehicle engine
                 color:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: Vehicle color
                 customer_ids:
-                  type: array
-                  nullable: true
+                  type:
+                  - array
+                  - 'null'
                   items:
                     type: integer
                   description: A list of foreign keys that point to zero or more Customer.id. This represents the list of customers who own this vehicle. Multiple customers may own a vehicle.
@@ -545,48 +570,58 @@ paths:
                     type: integer
                     description: Unique identifier of this record.
                   plate:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     description: License plate.
-                    nullable: true
                   detail:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     description: Notes made by the staff about this vehicle
-                    nullable: true
                   fleet_number:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     description: Fleet number.
-                    nullable: true
                   vin:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     description: Vehicle Identification Number.
-                    nullable: true
                   year:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     description: Year.
-                    nullable: true
                   make:
                     type: string
                     description: Vehicle make.
                   model:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     description: Vehicle model.
-                    nullable: true
                   engine:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     description: Vehicle engine
-                    nullable: true
                   production_date:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     description: Production date
-                    nullable: true
                   registration_exp_date:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     description: Registration expire date
-                    nullable: true
                   color:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     description: Vehicle color
-                    nullable: true
                   created_at:
                     type: string
                     format: date-time
@@ -630,54 +665,65 @@ paths:
               type: object
               properties:
                 plate:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: License plate.
                 production_date:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   format: date
                   description: Production date
                 registration_exp_date:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   format: date
                   description: Registration expire date
                 detail:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: Notes made by the staff about this vehicle
                 fleet_number:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: Fleet number.
                 vin:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: Vehicle Identification Number.
                 year:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: Year.
                 make:
                   type: string
                   minLength: 1
                   description: Vehicle make.
                 model:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: Vehicle model.
                 engine:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: Vehicle engine
                 color:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: Vehicle color
                 customer_ids:
-                  type: array
-                  nullable: true
+                  type:
+                  - array
+                  - 'null'
                   items:
                     type: integer
                   description: A list of foreign keys that point to zero or more Customer.id. This represents the list of customers who own this vehicle. Multiple customers may own a vehicle.

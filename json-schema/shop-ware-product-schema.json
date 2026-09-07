@@ -1,0 +1,201 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.shopware.com/schemas/product",
+  "title": "Shopware Product",
+  "description": "Represents a product in the Shopware catalog (Admin API entity, since version 6.0.0.0).",
+  "type": "object",
+  "required": ["id", "taxId", "price", "productNumber", "stock", "name"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$",
+      "description": "Unique 32-character hex identity of the product"
+    },
+    "versionId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$",
+      "description": "Unique identity of the product version"
+    },
+    "parentId": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9a-f]{32}$",
+      "description": "ID of the parent product (set for variant products)"
+    },
+    "manufacturerId": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9a-f]{32}$",
+      "description": "ID of the product manufacturer"
+    },
+    "taxId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$",
+      "description": "ID of the applicable tax rule"
+    },
+    "coverId": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9a-f]{32}$",
+      "description": "ID of the ProductMedia used as product cover image"
+    },
+    "productNumber": {
+      "type": "string",
+      "maxLength": 64,
+      "description": "Unique SKU / article number"
+    },
+    "stock": {
+      "type": "integer",
+      "format": "int64",
+      "minimum": 0,
+      "description": "Current stock quantity"
+    },
+    "availableStock": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Stock available for purchase (may differ from stock due to reservations)"
+    },
+    "name": {
+      "type": "string",
+      "description": "Product name (translatable)"
+    },
+    "description": {
+      "type": ["string", "null"],
+      "description": "Long product description, HTML allowed (translatable)"
+    },
+    "ean": {
+      "type": ["string", "null"],
+      "description": "EAN / GTIN barcode"
+    },
+    "price": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Price" },
+      "description": "Currency-indexed price list"
+    },
+    "active": {
+      "type": "boolean",
+      "description": "Whether the product is visible in the storefront"
+    },
+    "markAsTopseller": {
+      "type": ["boolean", "null"],
+      "description": "Highlights the product as a bestseller"
+    },
+    "weight": {
+      "type": ["number", "null"],
+      "description": "Weight in kg"
+    },
+    "width": {
+      "type": ["number", "null"],
+      "description": "Width in mm"
+    },
+    "height": {
+      "type": ["number", "null"],
+      "description": "Height in mm"
+    },
+    "length": {
+      "type": ["number", "null"],
+      "description": "Length in mm"
+    },
+    "isCloseout": {
+      "type": "boolean",
+      "description": "If true, the product cannot be purchased when out of stock"
+    },
+    "purchaseSteps": {
+      "type": ["integer", "null"],
+      "description": "Quantity increment steps"
+    },
+    "minPurchase": {
+      "type": ["integer", "null"],
+      "minimum": 1,
+      "description": "Minimum order quantity"
+    },
+    "maxPurchase": {
+      "type": ["integer", "null"],
+      "description": "Maximum order quantity"
+    },
+    "shippingFree": {
+      "type": "boolean",
+      "description": "Product qualifies for free shipping"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" }
+        }
+      }
+    },
+    "media": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "position": { "type": "integer" },
+          "media": {
+            "type": "object",
+            "properties": {
+              "url": { "type": "string", "format": "uri" },
+              "alt": { "type": ["string", "null"] },
+              "title": { "type": ["string", "null"] }
+            }
+          }
+        }
+      }
+    },
+    "customFields": {
+      "type": ["object", "null"],
+      "description": "Key-value store for extension-defined custom fields"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of product creation (read-only)"
+    },
+    "updatedAt": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Timestamp of last update (read-only)"
+    }
+  },
+  "$defs": {
+    "Price": {
+      "type": "object",
+      "required": ["currencyId", "gross", "net", "linked"],
+      "properties": {
+        "currencyId": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{32}$",
+          "description": "ID of the currency this price applies to"
+        },
+        "gross": {
+          "type": "number",
+          "description": "Gross price (tax included)"
+        },
+        "net": {
+          "type": "number",
+          "description": "Net price (tax excluded)"
+        },
+        "linked": {
+          "type": "boolean",
+          "description": "If true, the net price is auto-calculated from gross + tax rate"
+        },
+        "listPrice": {
+          "type": ["object", "null"],
+          "description": "Strike-through / original list price",
+          "properties": {
+            "gross": { "type": "number" },
+            "net": { "type": "number" },
+            "linked": { "type": "boolean" }
+          }
+        },
+        "regulationPrice": {
+          "type": ["object", "null"],
+          "description": "Reference price for regulation-required price display",
+          "properties": {
+            "gross": { "type": "number" }
+          }
+        }
+      }
+    }
+  }
+}

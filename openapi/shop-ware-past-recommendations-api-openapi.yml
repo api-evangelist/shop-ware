@@ -1,10 +1,13 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: API V1 API Partners Past Recommendations API
+  title: V1 API Partners Past Recommendations API
   version: v1
   contact:
     name: API Support
     email: support@shop-ware.com
+servers:
+- url: https://api.shop-ware.com
+  description: Base URL declared by the provider in apis.yml (roadmap#122).
 security:
 - api_partner_id: []
   api_secret: []
@@ -198,17 +201,20 @@ paths:
                           type: boolean
                           description: True if the past recommendation has since been approved by the customer, false if it has been declined, and null otherwise.
                         approver_id:
-                          type: integer
-                          nullable: true
+                          type:
+                          - integer
+                          - 'null'
                           description: A foreign key that points to a Staff or Customer ID. This represents the person who approved the recommendation (if it has been approved, null otherwise).
                         approval_at:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           format: date-time
                           description: Date and time the recommendation was approved if it has been approved, null otherwise.
                         approval_type:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: 'Type of approval: one of "customer" (Approved by customer), "email" (Approved by email), "estimate" (Approved in estimate), "person" (Approved in person), "phone" (Approved by phone). Null if unapproved or declined.'
                         imported:
                           type: boolean
@@ -291,17 +297,20 @@ paths:
                     type: boolean
                     description: True if the past recommendation has since been approved by the customer, false if it has been declined, and null otherwise.
                   approver_id:
-                    type: integer
-                    nullable: true
+                    type:
+                    - integer
+                    - 'null'
                     description: A foreign key that points to a Staff or Customer ID. This represents the person who approved the recommendation (if it has been approved, null otherwise).
                   approval_at:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     format: date-time
                     description: Date and time the recommendation was approved if it has been approved, null otherwise.
                   approval_type:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: 'Type of approval: one of "customer" (Approved by customer), "email" (Approved by email), "estimate" (Approved in estimate), "person" (Approved in person), "phone" (Approved by phone). Null if unapproved or declined.'
                   imported:
                     type: boolean

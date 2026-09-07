@@ -1,0 +1,196 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.shopware.com/schemas/order",
+  "title": "Shopware Order",
+  "description": "Represents a completed order in Shopware (Admin API and Store API entity, since version 6.0.0.0).",
+  "type": "object",
+  "required": [
+    "id",
+    "billingAddressId",
+    "currencyId",
+    "languageId",
+    "salesChannelId",
+    "orderDateTime",
+    "currencyFactor",
+    "stateId",
+    "itemRounding",
+    "totalRounding"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$",
+      "description": "Unique order identity"
+    },
+    "versionId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "orderNumber": {
+      "type": "string",
+      "description": "Human-readable order number"
+    },
+    "autoIncrement": {
+      "type": "integer",
+      "format": "int64",
+      "readOnly": true,
+      "description": "Auto-incrementing internal ID"
+    },
+    "billingAddressId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "currencyId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "languageId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "salesChannelId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "orderDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time the order was placed"
+    },
+    "orderDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date portion of orderDateTime"
+    },
+    "price": {
+      "type": "object",
+      "description": "Full calculated price breakdown",
+      "properties": {
+        "totalPrice": { "type": "number" },
+        "netPrice": { "type": "number" },
+        "rawTotal": { "type": "number" },
+        "positionPrice": { "type": "number" },
+        "taxStatus": { "type": "string", "enum": ["gross", "net", "tax-free"] },
+        "calculatedTaxes": { "type": "array", "items": { "type": "object" } },
+        "taxRules": { "type": "array", "items": { "type": "object" } }
+      }
+    },
+    "amountTotal": {
+      "type": "number",
+      "format": "float",
+      "description": "Total order amount (gross)"
+    },
+    "amountNet": {
+      "type": "number",
+      "format": "float",
+      "description": "Net order amount"
+    },
+    "positionPrice": {
+      "type": "number",
+      "format": "float",
+      "description": "Sum of all position prices before shipping"
+    },
+    "currencyFactor": {
+      "type": "number",
+      "description": "Conversion factor from the order currency to the default currency"
+    },
+    "stateId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$",
+      "description": "State machine state ID"
+    },
+    "stateMachineState": {
+      "type": "object",
+      "description": "Resolved state object",
+      "properties": {
+        "name": { "type": "string" },
+        "technicalName": { "type": "string" }
+      }
+    },
+    "lineItems": {
+      "type": "array",
+      "description": "All order line items",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "productId": { "type": "string" },
+          "label": { "type": "string" },
+          "quantity": { "type": "integer" },
+          "unitPrice": { "type": "number" },
+          "totalPrice": { "type": "number" },
+          "type": { "type": "string" },
+          "payload": { "type": "object" }
+        }
+      }
+    },
+    "deliveries": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "transactions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "paymentMethodId": { "type": "string" },
+          "amount": { "type": "object" },
+          "stateMachineState": { "type": "object" }
+        }
+      }
+    },
+    "billingAddress": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "firstName": { "type": "string" },
+        "lastName": { "type": "string" },
+        "street": { "type": "string" },
+        "zipcode": { "type": "string" },
+        "city": { "type": "string" },
+        "country": { "type": "object" }
+      }
+    },
+    "customerComment": {
+      "oneOf": [{ "type": "string" }, { "type": "null" }]
+    },
+    "affiliateCode": {
+      "oneOf": [{ "type": "string" }, { "type": "null" }]
+    },
+    "campaignCode": {
+      "oneOf": [{ "type": "string" }, { "type": "null" }]
+    },
+    "itemRounding": {
+      "type": "object",
+      "description": "Rounding configuration for individual items",
+      "properties": {
+        "decimals": { "type": "integer" },
+        "interval": { "type": "number" },
+        "roundForNet": { "type": "boolean" }
+      }
+    },
+    "totalRounding": {
+      "type": "object",
+      "description": "Rounding configuration for the order total",
+      "properties": {
+        "decimals": { "type": "integer" },
+        "interval": { "type": "number" },
+        "roundForNet": { "type": "boolean" }
+      }
+    },
+    "customFields": {
+      "type": ["object", "null"]
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "updatedAt": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "readOnly": true
+    }
+  }
+}

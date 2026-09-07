@@ -1,10 +1,13 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: API V1 API Partners Pay Rates API
+  title: V1 API Partners Pay Rates API
   version: v1
   contact:
     name: API Support
     email: support@shop-ware.com
+servers:
+- url: https://api.shop-ware.com
+  description: Base URL declared by the provider in apis.yml (roadmap#122).
 security:
 - api_partner_id: []
   api_secret: []
@@ -83,8 +86,9 @@ paths:
                           type: string
                           description: Pay type. Default is 'Flat Rate'.
                         commission_percent:
-                          type: integer
-                          nullable: true
+                          type:
+                          - integer
+                          - 'null'
                           description: Commission percent.
                         hourly_rate_cents:
                           type: integer
@@ -100,8 +104,9 @@ paths:
                           format: date
                           description: Effective date in YYYY-MM-DD format. Must be unique within specific employee's pay rates.
                         loaded_cost_percent:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: Loaded cost percent as a decimal.
                         created_at:
                           type: string
@@ -156,8 +161,9 @@ paths:
                       type: string
                       description: Pay type. Default is 'Flat Rate'.
                     commission_percent:
-                      type: integer
-                      nullable: true
+                      type:
+                      - integer
+                      - 'null'
                       description: Commission percent.
                     hourly_rate_cents:
                       type: integer
@@ -173,8 +179,9 @@ paths:
                       format: date
                       description: Effective date in YYYY-MM-DD format. Must be unique within specific employee's pay rates.
                     loaded_cost_percent:
-                      type: string
-                      nullable: true
+                      type:
+                      - string
+                      - 'null'
                       description: Loaded cost percent as a decimal.
                     created_at:
                       type: string
@@ -270,8 +277,9 @@ paths:
                       type: string
                       description: Pay type. Default is 'Flat Rate'.
                     commission_percent:
-                      type: integer
-                      nullable: true
+                      type:
+                      - integer
+                      - 'null'
                       description: Commission percent.
                     hourly_rate_cents:
                       type: integer
@@ -287,8 +295,9 @@ paths:
                       format: date
                       description: Effective date in YYYY-MM-DD format. Must be unique within specific employee's pay rates.
                     loaded_cost_percent:
-                      type: string
-                      nullable: true
+                      type:
+                      - string
+                      - 'null'
                       description: Loaded cost percent as a decimal.
                     created_at:
                       type: string
@@ -388,8 +397,9 @@ paths:
                     type: string
                     description: Pay type. Default is 'Flat Rate'.
                   commission_percent:
-                    type: integer
-                    nullable: true
+                    type:
+                    - integer
+                    - 'null'
                     description: Commission percent.
                   hourly_rate_cents:
                     type: integer
@@ -405,8 +415,9 @@ paths:
                     format: date
                     description: Effective date in YYYY-MM-DD format. Must be unique within specific employee's pay rates.
                   loaded_cost_percent:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: Loaded cost percent as a decimal.
                   created_at:
                     type: string

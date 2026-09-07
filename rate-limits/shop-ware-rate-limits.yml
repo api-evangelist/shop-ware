@@ -1,0 +1,68 @@
+---
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Shopware
+providerId: shopware
+created: '2026-06-12'
+modified: '2026-06-12'
+reconciled: true
+tags:
+  - Rate Limiting
+  - E-Commerce
+  - Security
+description: >-
+  Shopware 6 applies per-IP rate limits on sensitive endpoints to mitigate
+  brute-force and abuse. The limits are enforced on the SaaS platform and
+  configurable on self-hosted deployments via shopware.yml. Throttled requests
+  receive a 429 Too Many Requests response with a Retry-After header indicating
+  the wait time in seconds before retrying.
+sources:
+  - https://docs.shopware.com/en/en/shopware-6-en/saas/rate-limits
+  - https://developer.shopware.com/docs/guides/hosting/infrastructure/rate-limiter.html
+headers:
+  retryAfter: Retry-After
+responseCodes:
+  throttled: 429
+limits:
+  - name: OAuth Token Generation
+    scope: ip
+    metric: requests_per_minute
+    limit: 10
+    timeFrame: minute
+    endpoint: POST /api/oauth/token
+    notes: >-
+      Token reuse is strongly encouraged; tokens have extended validity periods
+      and should be cached until expiration.
+  - name: Account Registration
+    scope: ip
+    metric: requests_per_minute
+    limit: 3
+    timeFrame: minute
+    endpoint: POST /account/register
+    notes: Limits prevent automated account creation abuse.
+  - name: Email Dispatch
+    scope: ip
+    metric: requests_per_minute
+    limit: 3
+    timeFrame: minute
+    endpoint: POST /api/_action/mail-template/send
+    notes: Prevents excessive outbound email triggering via API.
+  - name: Full Indexing
+    scope: ip
+    metric: requests_per_hour
+    limit: 1
+    timeFrame: hour
+    endpoint: POST /api/_action/index
+    notes: >-
+      Indexing operations are resource-intensive; limit is 1 per hour per IP
+      to protect server performance.
+  - name: Incremental Indexing
+    scope: ip
+    metric: requests_per_hour
+    limit: 1
+    timeFrame: hour
+    endpoint: POST /api/_action/indexing
+    notes: >-
+      Same constraint as full indexing; developers should schedule index
+      operations carefully to avoid hitting this limit.

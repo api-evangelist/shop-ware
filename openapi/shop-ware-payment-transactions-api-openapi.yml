@@ -1,10 +1,13 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: API V1 API Partners Payment Transactions API
+  title: V1 API Partners Payment Transactions API
   version: v1
   contact:
     name: API Support
     email: support@shop-ware.com
+servers:
+- url: https://api.shop-ware.com
+  description: Base URL declared by the provider in apis.yml (roadmap#122).
 security:
 - api_partner_id: []
   api_secret: []
@@ -100,8 +103,9 @@ paths:
                           type: integer
                           description: Unique identifier of this record.
                         payment_id:
-                          type: integer
-                          nullable: true
+                          type:
+                          - integer
+                          - 'null'
                           description: A foreign key which points to a Payment.id. Represents the final payment that is associated with this transaction which will appear on the RO and in reporting. It is only created for authorized transactions.
                         repair_order_id:
                           type: integer
@@ -142,11 +146,13 @@ paths:
                           type: string
                           description: A human readable description of the transaction status.
                         bin_type:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                         entry_mode:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                         avs_response:
                           type: string
                         cvv_response:
@@ -262,8 +268,9 @@ paths:
                     type: integer
                     description: Unique identifier of this record.
                   payment_id:
-                    type: integer
-                    nullable: true
+                    type:
+                    - integer
+                    - 'null'
                     description: A foreign key which points to a Payment.id. Represents the final payment that is associated with this transaction which will appear on the RO and in reporting. It is only created for authorized transactions.
                   repair_order_id:
                     type: integer
@@ -304,11 +311,13 @@ paths:
                     type: string
                     description: A human readable description of the transaction status.
                   bin_type:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                   entry_mode:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                   avs_response:
                     type: string
                   cvv_response:

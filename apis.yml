@@ -385,6 +385,32 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: VulnerabilityDisclosure
+  url: security/shop-ware-vulnerability-disclosure.yml
+- type: OAuthScopes
+  url: scopes/shop-ware-scopes.yml
+- type: LinkedIn
+  url: https://www.linkedin.com/company/shopware-ag/
+- type: Pricing
+  url: https://www.shopware.com/en/pricing/
+- type: X
+  url: https://x.com/shopwaredevs
+- type: Plans
+  url: plans/shop-ware-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/shop-ware-rate-limits.yml
+- type: FinOps
+  url: finops/shop-ware-finops.yml
+- type: Vocabulary
+  url: vocabulary/shop-ware-vocabulary.yml
+- type: JSONLDContext
+  url: json-ld/shop-ware-context.jsonld
+- type: JSONSchema
+  url: json-schema/shop-ware-product-schema.json
+- type: JSONSchema
+  url: json-schema/shop-ware-cart-schema.json
+- type: JSONSchema
+  url: json-schema/shop-ware-order-schema.json
 - type: CapabilityMap
   url: capabilities/shop-ware-capability-edges.yml
   name: Shop-Ware Business Capability Map

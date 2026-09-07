@@ -1,10 +1,13 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: API V1 API Partners Customers API
+  title: V1 API Partners Customers API
   version: v1
   contact:
     name: API Support
     email: support@shop-ware.com
+servers:
+- url: https://api.shop-ware.com
+  description: Base URL declared by the provider in apis.yml (roadmap#122).
 security:
 - api_partner_id: []
   api_secret: []
@@ -422,15 +425,17 @@ paths:
                                 type: string
                                 description: 'The country calling code. Ex: 1.'
                               label:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 description: A human-readable label for this number.
-                                nullable: true
                               preferred:
                                 type: boolean
                                 description: True if this phone number is a preferred contact method, false otherwise. Only one phone number per customer can be preferred.
                               show_on_ro:
-                                type: boolean
-                                nullable: true
+                                type:
+                                - boolean
+                                - 'null'
                                 description: Defines whether phone is shows on Repair Order.
                         detail:
                           type: string
@@ -464,8 +469,9 @@ paths:
                             type: integer
                           description: A list of the shops a customer had service history.
                         origin_shop_id:
-                          type: integer
-                          nullable: true
+                          type:
+                          - integer
+                          - 'null'
                           description: A foreign key which points to a Shop.id. Represents the origin shop for this Customer.
                         integrator_tags:
                           type: array
@@ -496,24 +502,28 @@ paths:
                                 format: date-time
                                 description: The date and time when tag was last updated.
                         customer_type:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           enum:
                           - individual
                           - corporate
                           description: Customer type.
                         date_of_birth:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           format: date
                           description: Customer birthday date.
                         business_name:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: Business name.
                         fleet_id:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: Fleet identifier.
                   limit:
                     type: integer
@@ -620,15 +630,17 @@ paths:
                           type: string
                           description: 'The country calling code. Ex: 1.'
                         label:
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           description: A human-readable label for this number.
-                          nullable: true
                         preferred:
                           type: boolean
                           description: True if this phone number is a preferred contact method, false otherwise. Only one phone number per customer can be preferred.
                         show_on_ro:
-                          type: boolean
-                          nullable: true
+                          type:
+                          - boolean
+                          - 'null'
                           description: Defines whether phone is shows on Repair Order.
                   detail:
                     type: string
@@ -662,8 +674,9 @@ paths:
                       type: integer
                     description: A list of the shops a customer had service history.
                   origin_shop_id:
-                    type: integer
-                    nullable: true
+                    type:
+                    - integer
+                    - 'null'
                     description: A foreign key which points to a Shop.id. Represents the origin shop for this Customer.
                   integrator_tags:
                     type: array
@@ -694,24 +707,28 @@ paths:
                           format: date-time
                           description: The date and time when tag was last updated.
                   customer_type:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     enum:
                     - individual
                     - corporate
                     description: Customer type.
                   date_of_birth:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     format: date
                     description: Customer birthday date.
                   business_name:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: Business name.
                   fleet_id:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: Fleet identifier.
                   contacts:
                     type: array
@@ -722,29 +739,35 @@ paths:
                           type: integer
                           description: Unique identifier of this record.
                         first_name:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: First name,
                         last_name:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: Last name.
                         email:
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           format: email
-                          nullable: true
                           description: Email.
                         personnel:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: Personnel.
                         phone_number:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: Phone number.
                         show_on_ro:
-                          type: boolean
-                          nullable: true
+                          type:
+                          - boolean
+                          - 'null'
                           description: Defines whether contact is shows on Repair Order.
                         created_at:
                           type: string
@@ -761,89 +784,107 @@ paths:
               type: object
               properties:
                 first_name:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: First name. Will be ignored for corporate customer.
                 last_name:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: Last name. Will be ignored for corporate customer.
                 email:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: Must compliant to RFC 822. Requests containing an email that has already been taken by another customer or staff member are rejected.
                 phone:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: '[Deprecated] Phone number must be in E.164 format. Currently, only USA and Canada numbers (10-digits with country code 1) are allowed. Ex: +15554441234.'
                 detail:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: Notes made by the staff about this customer.
                 address:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: Address
                 city:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: City.
                 state:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: "2-character state codes are valid. Including [AL AK AZ AR CA CO CT DE DC FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT\n                                                NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT WA WV WI WY AB BC MB NB NF NS ON PE PQ SK VA PR]."
                 zip:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: Zip code.
                 marketing_ok:
-                  type: boolean
-                  nullable: true
+                  type:
+                  - boolean
+                  - 'null'
                   description: true if the customer has opted-in to marketing, false otherwise.
                 phones:
-                  type: array
-                  nullable: true
+                  type:
+                  - array
+                  - 'null'
                   description: Will be ignored for corporate customer.
                   items:
                     type: object
                     properties:
                       number:
-                        type: string
-                        nullable: true
+                        type:
+                        - string
+                        - 'null'
                         description: 'Phone number in E.164 format. Ex: +15554441234.'
                       label:
-                        type: string
-                        nullable: true
+                        type:
+                        - string
+                        - 'null'
                         description: A human-readable label for this number.
                       preferred:
-                        type: boolean
-                        nullable: true
+                        type:
+                        - boolean
+                        - 'null'
                         description: True if this phone number is a preferred contact method, false otherwise. A customer can only have one preferred phone number.
                       show_on_ro:
-                        type: boolean
-                        nullable: true
+                        type:
+                        - boolean
+                        - 'null'
                         description: Defines whether phone is shows on Repair Order.
                 shop_id:
                   type: integer
                   description: A foreign key which points to a Shop.id. Represents the origin shop for this Customer. Need for correct work of 'Clear All Shop Data' option in data migration.
                 customer_type:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   enum:
                   - individual
                   - corporate
                   description: Customer type.
                 date_of_birth:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   format: date
                   description: Customer birthday date. Will be ignored for corporate customer.
                 business_name:
                   type: string
                   description: Business name. Required for corporate customer. Will be ignored for individual customer.
                 fleet_id:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: Fleet identifier. Will be ignored for individual customer.
               example:
                 first_name: Connor
@@ -979,15 +1020,17 @@ paths:
                           type: string
                           description: 'The country calling code. Ex: 1.'
                         label:
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           description: A human-readable label for this number.
-                          nullable: true
                         preferred:
                           type: boolean
                           description: True if this phone number is a preferred contact method, false otherwise. Only one phone number per customer can be preferred.
                         show_on_ro:
-                          type: boolean
-                          nullable: true
+                          type:
+                          - boolean
+                          - 'null'
                           description: Defines whether phone is shows on Repair Order.
                   detail:
                     type: string
@@ -1021,8 +1064,9 @@ paths:
                       type: integer
                     description: A list of the shops a customer had service history.
                   origin_shop_id:
-                    type: integer
-                    nullable: true
+                    type:
+                    - integer
+                    - 'null'
                     description: A foreign key which points to a Shop.id. Represents the origin shop for this Customer.
                   integrator_tags:
                     type: array
@@ -1053,24 +1097,28 @@ paths:
                           format: date-time
                           description: The date and time when tag was last updated.
                   customer_type:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     enum:
                     - individual
                     - corporate
                     description: Customer type.
                   date_of_birth:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     format: date
                     description: Customer birthday date.
                   business_name:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: Business name.
                   fleet_id:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: Fleet identifier.
                   contacts:
                     type: array
@@ -1081,29 +1129,35 @@ paths:
                           type: integer
                           description: Unique identifier of this contact.
                         first_name:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: First name,
                         last_name:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: Last name.
                         email:
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           format: email
-                          nullable: true
                           description: Email.
                         personnel:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: Personnel.
                         phone_number:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: Phone number.
                         show_on_ro:
-                          type: boolean
-                          nullable: true
+                          type:
+                          - boolean
+                          - 'null'
                           description: Defines whether contact is shows on Repair Order.
                         created_at:
                           type: string
@@ -1208,15 +1262,17 @@ paths:
                           type: string
                           description: 'The country calling code. Ex: 1.'
                         label:
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           description: A human-readable label for this number.
-                          nullable: true
                         preferred:
                           type: boolean
                           description: True if this phone number is a preferred contact method, false otherwise. Only one phone number per customer can be preferred.
                         show_on_ro:
-                          type: boolean
-                          nullable: true
+                          type:
+                          - boolean
+                          - 'null'
                           description: Defines whether phone is shows on Repair Order.
                   detail:
                     type: string
@@ -1250,8 +1306,9 @@ paths:
                       type: integer
                     description: A list of the shops a customer had service history.
                   origin_shop_id:
-                    type: integer
-                    nullable: true
+                    type:
+                    - integer
+                    - 'null'
                     description: A foreign key which points to a Shop.id. Represents the origin shop for this Customer.
                   integrator_tags:
                     type: array
@@ -1282,24 +1339,28 @@ paths:
                           format: date-time
                           description: The date and time when tag was last updated.
                   customer_type:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     enum:
                     - individual
                     - corporate
                     description: Customer type.
                   date_of_birth:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     format: date
                     description: Customer birthday date.
                   business_name:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: Business name.
                   fleet_id:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: Fleet identifier.
                   contacts:
                     type: array
@@ -1310,29 +1371,35 @@ paths:
                           type: integer
                           description: Unique identifier of this contact.
                         first_name:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: First name,
                         last_name:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: Last name.
                         email:
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           format: email
-                          nullable: true
                           description: Email.
                         personnel:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: Personnel.
                         phone_number:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: Phone number.
                         show_on_ro:
-                          type: boolean
-                          nullable: true
+                          type:
+                          - boolean
+                          - 'null'
                           description: Defines whether contact is shows on Repair Order.
                         created_at:
                           type: string
@@ -1349,89 +1416,107 @@ paths:
               type: object
               properties:
                 first_name:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: First name. Will be ignored for corporate customer.
                 last_name:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: Last name. Will be ignored for corporate customer.
                 email:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: Must compliant to RFC 822. Requests containing an email that has already been taken by another customer or staff member are rejected.
                 phone:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: '[Deprecated] Phone number must be in E.164 format. Currently, only USA and Canada numbers (10-digits with country code 1) are allowed. Ex: +15554441234.'
                 detail:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: Notes made by the staff about this customer.
                 address:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: Address
                 city:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: City.
                 state:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: "2-character state codes are valid. Including [AL AK AZ AR CA CO CT DE DC FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT\n                                                NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT WA WV WI WY AB BC MB NB NF NS ON PE PQ SK VA PR]."
                 zip:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: Zip code.
                 marketing_ok:
-                  type: boolean
-                  nullable: true
+                  type:
+                  - boolean
+                  - 'null'
                   description: true if the customer has opted-in to marketing, false otherwise.
                 phones:
-                  type: array
-                  nullable: true
+                  type:
+                  - array
+                  - 'null'
                   description: Will be ignored for corporate customer.
                   items:
                     type: object
                     properties:
                       number:
-                        type: string
-                        nullable: true
+                        type:
+                        - string
+                        - 'null'
                         description: 'Phone number in E.164 format. Ex: +15554441234.'
                       label:
-                        type: string
-                        nullable: true
+                        type:
+                        - string
+                        - 'null'
                         description: A human-readable label for this number.
                       preferred:
-                        type: boolean
-                        nullable: true
+                        type:
+                        - boolean
+                        - 'null'
                         description: True if this phone number is a preferred contact method, false otherwise. Only one phone number per customer can be preferred.
                       show_on_ro:
-                        type: boolean
-                        nullable: true
+                        type:
+                        - boolean
+                        - 'null'
                         description: Defines whether phone is shows on Repair Order.
                 shop_id:
                   type: integer
                   description: A foreign key which points to a Shop.id. Represents the origin shop for this Customer. Need for correct work of 'Clear All Shop Data' option in data migration.
                 customer_type:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   enum:
                   - individual
                   - corporate
                   description: Customer type.
                 date_of_birth:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   format: date
                   description: Customer birthday date. Will be ignored for corporate customer.
                 business_name:
                   type: string
                   description: Business name. Will be ignored for individual customer.
                 fleet_id:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: Fleet identifier. Will be ignored for individual customer.
               example:
                 first_name: Connor

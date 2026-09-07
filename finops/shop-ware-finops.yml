@@ -1,0 +1,67 @@
+---
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Shopware
+providerId: shopware
+created: '2026-06-12'
+modified: '2026-06-12'
+reconciled: true
+tags:
+  - FinOps
+  - FOCUS
+  - E-Commerce
+  - SaaS
+description: >-
+  FOCUS-aligned FinOps profile for Shopware commercial plans. Shopware is billed
+  monthly per shop instance across three paid tiers (Rise, Evolve, Beyond) plus an
+  optional AI add-on. Self-hosted Community Edition deployments incur no platform
+  license fee but carry hosting and operational costs. Cost optimization centers
+  on selecting the appropriate tier for required feature sets and managing the
+  GMV threshold that triggers mandatory plan upgrades.
+sources:
+  - https://www.shopware.com/en/pricing/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Shopware
+serviceCategory: E-Commerce Platform
+billingModel:
+  pricingCategory: Subscription
+  billingFrequency: Monthly
+  billingCurrency: EUR
+focusColumns:
+  ServiceName: Shopware
+  ServiceCategory: E-Commerce Platform
+  ProviderName: Shopware AG
+  PublisherName: Shopware AG
+  BillingCurrency: EUR
+meters:
+  - name: Platform License
+    unit: shop/month
+    aggregation: sum
+  - name: AI Intelligence Add-on
+    unit: shop/month
+    aggregation: sum
+  - name: Plugin/Extension Subscriptions
+    unit: plugin/month
+    aggregation: sum
+principles:
+  - name: Visibility
+    description: >-
+      Track Shopware monthly platform license costs per shop instance, add-on
+      subscriptions, and any third-party plugin costs separately to establish
+      full visibility into total e-commerce platform spend.
+  - name: Optimization
+    description: >-
+      Right-size tier selection based on actual feature usage; avoid paying for
+      Evolve or Beyond features not in active use. Monitor GMV thresholds to
+      plan tier upgrade timing and budget accordingly.
+  - name: Accountability
+    description: >-
+      Map platform costs to business units or storefronts. For multi-shop
+      deployments, allocate per-shop license fees to individual revenue-generating
+      channels to enable accurate cost-per-storefront reporting.

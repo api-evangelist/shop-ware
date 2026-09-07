@@ -1,10 +1,13 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: API V1 API Partners Vendors API
+  title: V1 API Partners Vendors API
   version: v1
   contact:
     name: API Support
     email: support@shop-ware.com
+servers:
+- url: https://api.shop-ware.com
+  description: Base URL declared by the provider in apis.yml (roadmap#122).
 security:
 - api_partner_id: []
   api_secret: []
@@ -101,25 +104,30 @@ paths:
                           type: string
                           description: Vendor name.
                         phone:
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           description: Vendor phone.
-                          nullable: true
                         account_number:
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           description: Account number.
-                          nullable: true
                         info:
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           description: Vendor information.
-                          nullable: true
                         notes:
-                          type: text
+                          type:
+                          - text
+                          - 'null'
                           description: Notes.
-                          nullable: true
                         website:
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           description: Vendor website.
-                          nullable: true
                         shop_id:
                           type: integer
                           description: A foreign key that points to the Shop that this Vendor belongs to.
@@ -231,25 +239,30 @@ paths:
                     type: string
                     description: Vendor name.
                   phone:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     description: Vendor phone.
-                    nullable: true
                   account_number:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     description: Account number.
-                    nullable: true
                   info:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     description: Vendor information.
-                    nullable: true
                   notes:
-                    type: text
+                    type:
+                    - text
+                    - 'null'
                     description: Notes.
-                    nullable: true
                   website:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     description: Vendor website.
-                    nullable: true
                   shop_id:
                     type: integer
                     description: A foreign key that points to the Shop that this Vendor belongs to.

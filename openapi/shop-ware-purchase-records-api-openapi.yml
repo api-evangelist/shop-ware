@@ -1,10 +1,13 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: API V1 API Partners Purchase Records API
+  title: V1 API Partners Purchase Records API
   version: v1
   contact:
     name: API Support
     email: support@shop-ware.com
+servers:
+- url: https://api.shop-ware.com
+  description: Base URL declared by the provider in apis.yml (roadmap#122).
 security:
 - api_partner_id: []
   api_secret: []
@@ -156,8 +159,9 @@ paths:
                                 type: integer
                                 description: AppliedFee amount in cents per unit.
                               fee_name:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                                 description: Name of the FeeType applied to this purchase record.
                               fee_id:
                                 type: integer
@@ -327,8 +331,9 @@ paths:
                           type: integer
                           description: AppliedFee amount in cents per unit.
                         fee_name:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: Name of the FeeType applied to this purchase record.
                         fee_id:
                           type: integer

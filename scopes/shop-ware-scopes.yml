@@ -1,0 +1,19 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/shopware-admin-api-openapi.yml
+schemes:
+- name: oAuth2
+  source: openapi/shopware-admin-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: /api/oauth/token
+  - flow: password
+    tokenUrl: /api/oauth/token
+scopes:
+- scope: write:all
+  description: Full write access to all Admin API resources
+  flows:
+  - clientCredentials
+  - password
+  sources:
+  - openapi/shopware-admin-api-openapi.yml

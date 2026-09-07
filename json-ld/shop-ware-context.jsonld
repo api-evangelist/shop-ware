@@ -1,0 +1,242 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "sw": "https://developer.shopware.com/vocab/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Product": "schema:Product",
+    "productNumber": {
+      "@id": "schema:sku",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "active": {
+      "@id": "sw:active",
+      "@type": "xsd:boolean"
+    },
+    "stock": {
+      "@id": "schema:inventoryLevel",
+      "@type": "xsd:integer"
+    },
+    "availableStock": {
+      "@id": "sw:availableStock",
+      "@type": "xsd:integer"
+    },
+    "ean": {
+      "@id": "schema:gtin13",
+      "@type": "xsd:string"
+    },
+    "weight": {
+      "@id": "schema:weight",
+      "@type": "xsd:decimal"
+    },
+    "markAsTopseller": {
+      "@id": "sw:markAsTopseller",
+      "@type": "xsd:boolean"
+    },
+    "isCloseout": {
+      "@id": "sw:isCloseout",
+      "@type": "xsd:boolean"
+    },
+    "shippingFree": {
+      "@id": "sw:shippingFree",
+      "@type": "xsd:boolean"
+    },
+    "minPurchase": {
+      "@id": "schema:minValue",
+      "@type": "xsd:integer"
+    },
+    "maxPurchase": {
+      "@id": "schema:maxValue",
+      "@type": "xsd:integer"
+    },
+    "purchaseSteps": {
+      "@id": "sw:purchaseSteps",
+      "@type": "xsd:integer"
+    },
+
+    "Price": "schema:PriceSpecification",
+    "price": {
+      "@id": "schema:offers",
+      "@type": "@id"
+    },
+    "gross": {
+      "@id": "schema:price",
+      "@type": "xsd:decimal"
+    },
+    "net": {
+      "@id": "sw:netPrice",
+      "@type": "xsd:decimal"
+    },
+    "linked": {
+      "@id": "sw:priceLinked",
+      "@type": "xsd:boolean"
+    },
+    "listPrice": {
+      "@id": "sw:listPrice",
+      "@type": "@id"
+    },
+    "currencyId": {
+      "@id": "schema:priceCurrency",
+      "@type": "xsd:string"
+    },
+
+    "Order": "schema:Order",
+    "orderNumber": {
+      "@id": "schema:orderNumber",
+      "@type": "xsd:string"
+    },
+    "orderDateTime": {
+      "@id": "schema:orderDate",
+      "@type": "xsd:dateTime"
+    },
+    "amountTotal": {
+      "@id": "schema:price",
+      "@type": "xsd:decimal"
+    },
+    "amountNet": {
+      "@id": "sw:amountNet",
+      "@type": "xsd:decimal"
+    },
+    "currencyFactor": {
+      "@id": "sw:currencyFactor",
+      "@type": "xsd:decimal"
+    },
+    "orderStatus": {
+      "@id": "schema:orderStatus",
+      "@type": "@id"
+    },
+
+    "OrderLineItem": "schema:OrderItem",
+    "lineItems": {
+      "@id": "schema:orderedItem",
+      "@type": "@id"
+    },
+    "quantity": {
+      "@id": "schema:orderQuantity",
+      "@type": "xsd:integer"
+    },
+    "label": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "unitPrice": {
+      "@id": "schema:price",
+      "@type": "xsd:decimal"
+    },
+    "totalPrice": {
+      "@id": "sw:totalPrice",
+      "@type": "xsd:decimal"
+    },
+
+    "Cart": "schema:ShoppingCart",
+    "token": {
+      "@id": "sw:contextToken",
+      "@type": "xsd:string"
+    },
+    "modified": {
+      "@id": "sw:cartModified",
+      "@type": "xsd:boolean"
+    },
+    "customerComment": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "affiliateCode": {
+      "@id": "sw:affiliateCode",
+      "@type": "xsd:string"
+    },
+    "campaignCode": {
+      "@id": "sw:campaignCode",
+      "@type": "xsd:string"
+    },
+
+    "LineItem": "schema:OrderItem",
+    "referencedId": {
+      "@id": "sw:referencedId",
+      "@type": "xsd:string"
+    },
+    "good": {
+      "@id": "sw:isGoodItem",
+      "@type": "xsd:boolean"
+    },
+    "removable": {
+      "@id": "sw:removable",
+      "@type": "xsd:boolean"
+    },
+    "stackable": {
+      "@id": "sw:stackable",
+      "@type": "xsd:boolean"
+    },
+
+    "Customer": "schema:Person",
+    "email": {
+      "@id": "schema:email",
+      "@type": "xsd:string"
+    },
+    "firstName": {
+      "@id": "schema:givenName",
+      "@type": "xsd:string"
+    },
+    "lastName": {
+      "@id": "schema:familyName",
+      "@type": "xsd:string"
+    },
+    "customerNumber": {
+      "@id": "schema:identifier",
+      "@type": "xsd:string"
+    },
+    "guest": {
+      "@id": "sw:isGuestCustomer",
+      "@type": "xsd:boolean"
+    },
+
+    "Category": "schema:ItemList",
+    "parentId": {
+      "@id": "sw:parentCategoryId",
+      "@type": "xsd:string"
+    },
+    "visible": {
+      "@id": "sw:categoryVisible",
+      "@type": "xsd:boolean"
+    },
+    "type": {
+      "@id": "sw:categoryType",
+      "@type": "xsd:string"
+    },
+    "level": {
+      "@id": "sw:categoryLevel",
+      "@type": "xsd:integer"
+    },
+
+    "SalesChannel": "schema:Organization",
+    "taxId": {
+      "@id": "sw:taxId",
+      "@type": "xsd:string"
+    },
+
+    "createdAt": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "updatedAt": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "id": {
+      "@id": "@id"
+    },
+    "customFields": {
+      "@id": "sw:customFields",
+      "@type": "@json"
+    }
+  }
+}

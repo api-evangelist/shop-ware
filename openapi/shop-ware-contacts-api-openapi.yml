@@ -1,10 +1,13 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: API V1 API Partners Contacts API
+  title: V1 API Partners Contacts API
   version: v1
   contact:
     name: API Support
     email: support@shop-ware.com
+servers:
+- url: https://api.shop-ware.com
+  description: Base URL declared by the provider in apis.yml (roadmap#122).
 security:
 - api_partner_id: []
   api_secret: []
@@ -110,25 +113,30 @@ paths:
                           type: string
                           description: First name,
                         last_name:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: Last name.
                         email:
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           format: email
-                          nullable: true
                           description: Email.
                         personnel:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: Personnel.
                         phone_number:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: Phone number.
                         show_on_ro:
-                          type: boolean
-                          nullable: true
+                          type:
+                          - boolean
+                          - 'null'
                           description: Defines whether contact is shows on Repair Order.
                         created_at:
                           type: string
@@ -180,25 +188,30 @@ paths:
                     type: string
                     description: First name,
                   last_name:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: Last name.
                   email:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     format: email
-                    nullable: true
                     description: Email.
                   personnel:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: Personnel.
                   phone_number:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: Phone number.
                   show_on_ro:
-                    type: boolean
-                    nullable: true
+                    type:
+                    - boolean
+                    - 'null'
                     description: Defines whether contact is shows on Repair Order.
                   created_at:
                     type: string
@@ -220,24 +233,29 @@ paths:
                   type: string
                   description: First name
                 last_name:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: Last name
                 email:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: Email.
                 personnel:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: Personnel.
                 phone_number:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: Phone number.
                 show_on_ro:
-                  type: boolean
-                  nullable: true
+                  type:
+                  - boolean
+                  - 'null'
                   description: Defines whether contact is shows on Repair Order.
               example:
                 first_name: First Name
@@ -299,25 +317,30 @@ paths:
                     type: string
                     description: First name,
                   last_name:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: Last name.
                   email:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     format: email
-                    nullable: true
                     description: Email.
                   personnel:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: Personnel.
                   phone_number:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: Phone number.
                   show_on_ro:
-                    type: boolean
-                    nullable: true
+                    type:
+                    - boolean
+                    - 'null'
                     description: Defines whether contact is shows on Repair Order.
                   created_at:
                     type: string
@@ -337,24 +360,29 @@ paths:
                   type: string
                   description: First name
                 last_name:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: Last name
                 email:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: Email.
                 personnel:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: Personnel.
                 phone_number:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: Phone number.
                 show_on_ro:
-                  type: boolean
-                  nullable: true
+                  type:
+                  - boolean
+                  - 'null'
                   description: Defines whether contact is shows on Repair Order.
               example:
                 first_name: First Name

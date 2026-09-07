@@ -1,0 +1,168 @@
+---
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Shopware
+providerId: shopware
+created: '2026-06-12'
+modified: '2026-06-12'
+reconciled: true
+tags:
+  - E-Commerce
+  - Open Source
+  - SaaS
+  - Headless Commerce
+description: >-
+  Shopware offers a free open-source Community Edition and three paid commercial
+  tiers (Rise, Evolve, Beyond) available as SaaS or self-hosted. Pricing is
+  per-month per shop and scales with features such as B2B components, advanced
+  search, digital sales rooms, and multi-inventory. An optional Shopware
+  Intelligence+ AI add-on is available for all tiers.
+sources:
+  - https://www.shopware.com/en/pricing/
+plans:
+  - id: shopware-community
+    name: Community Edition
+    type: free
+    description: >-
+      Open-source MIT-licensed core of Shopware 6. Free to use with no GMV
+      cap for shops under €1M GMV; merchants over €1M GMV must upgrade to
+      a paid plan. Includes core product management, sales channels, and
+      access to the developer community.
+    entries:
+      - label: License
+        name: license
+        type: boolean
+        metric: included
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '0'
+        userMultiplied: false
+      - label: GMV Threshold for Free Use
+        name: gmv_threshold
+        type: quota
+        metric: EUR_GMV
+        limit: 1000000
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: '0'
+        userMultiplied: false
+  - id: shopware-rise
+    name: Rise
+    type: paid
+    description: >-
+      Entry-level commercial plan starting at €600/month. Includes Shopware
+      Intelligence AI features, unlimited sales channels, Flow Builder,
+      customer groups, promotions, SEO tools, and Basic Support with 8-hour
+      service reaction time.
+    entries:
+      - label: Monthly Platform Fee
+        name: monthly_fee
+        type: metered
+        metric: shop
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '600'
+        userMultiplied: false
+      - label: Support Reaction Time
+        name: support_reaction_hours
+        type: quota
+        metric: hours
+        limit: 8
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '0'
+        userMultiplied: false
+  - id: shopware-evolve
+    name: Evolve
+    type: paid
+    description: >-
+      Mid-tier commercial plan starting at €2,400/month. Includes everything
+      in Rise plus B2B Components, Advanced Search, Dynamic Access controls,
+      quote management, quick ordering, shopping lists, Form Builder, and
+      Enhanced Support with 4-hour reaction time and phone support.
+    entries:
+      - label: Monthly Platform Fee
+        name: monthly_fee
+        type: metered
+        metric: shop
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '2400'
+        userMultiplied: false
+      - label: Support Reaction Time
+        name: support_reaction_hours
+        type: quota
+        metric: hours
+        limit: 4
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '0'
+        userMultiplied: false
+  - id: shopware-beyond
+    name: Beyond
+    type: enterprise
+    description: >-
+      Enterprise-tier plan with custom pricing. Includes everything in Evolve
+      plus Digital Sales Rooms, Multi-Inventory management, customer-specific
+      pricing, subscriptions, and 24/7 Priority Support with 1-hour reaction
+      time, personal account manager, and dedicated onboarding.
+    entries:
+      - label: Monthly Platform Fee
+        name: monthly_fee
+        type: metered
+        metric: shop
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: 'custom'
+        userMultiplied: false
+      - label: Support Reaction Time
+        name: support_reaction_hours
+        type: quota
+        metric: hours
+        limit: 1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '0'
+        userMultiplied: false
+  - id: shopware-intelligence-plus
+    name: Shopware Intelligence+
+    type: paid
+    description: >-
+      Optional AI add-on available for any plan. Provides unlimited usage of
+      Copilot (Agentic and Data Insights), Image Editor, 3D Preview Generator,
+      and CAD to 3D conversion. Priced at €29/month on Community Edition or
+      €19/month on paid plans.
+    entries:
+      - label: Community Edition Add-on
+        name: intelligence_community
+        type: metered
+        metric: shop
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '29'
+        userMultiplied: false
+      - label: Paid Plan Add-on
+        name: intelligence_paid
+        type: metered
+        metric: shop
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '19'
+        userMultiplied: false

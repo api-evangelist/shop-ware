@@ -1,10 +1,13 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: API V1 API Partners Assignments API
+  title: V1 API Partners Assignments API
   version: v1
   contact:
     name: API Support
     email: support@shop-ware.com
+servers:
+- url: https://api.shop-ware.com
+  description: Base URL declared by the provider in apis.yml (roadmap#122).
 security:
 - api_partner_id: []
   api_secret: []
@@ -97,13 +100,15 @@ paths:
                           type: string
                           description: The transfer message.
                         accepted_at:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           format: date-time
                           description: Date and time when the transfer was accepted. Null if not accepted.
                         cancelled_at:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           format: date-time
                           description: Date and time when the transfer was cancelled. Null if not cancelled.
                         integrator_tags:
@@ -214,13 +219,15 @@ paths:
                     type: string
                     description: The transfer message.
                   accepted_at:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     format: date-time
                     description: Date and time when the transfer was accepted. Null if not accepted.
                   cancelled_at:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     format: date-time
                     description: Date and time when the transfer was cancelled. Null if not cancelled.
                   integrator_tags:
@@ -344,13 +351,15 @@ paths:
                           type: string
                           description: The transfer message.
                         accepted_at:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           format: date-time
                           description: Date and time when the transfer was accepted. Null if not accepted.
                         cancelled_at:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           format: date-time
                           description: Date and time when the transfer was cancelled. Null if not cancelled.
                         integrator_tags:
@@ -392,8 +401,9 @@ paths:
                   limit:
                     type: integer
                   cursor:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: A pagination token that allows you to fetch the next set of records in a paginated list.
                   has_next_page:
                     type: boolean
@@ -460,13 +470,15 @@ paths:
                     type: string
                     description: The transfer message.
                   accepted_at:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     format: date-time
                     description: Date and time when the transfer was accepted. Null if not accepted.
                   cancelled_at:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     format: date-time
                     description: Date and time when the transfer was cancelled. Null if not cancelled.
                   integrator_tags:

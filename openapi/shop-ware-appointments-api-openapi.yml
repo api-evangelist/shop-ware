@@ -1,10 +1,13 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: API V1 API Partners Appointments API
+  title: V1 API Partners Appointments API
   version: v1
   contact:
     name: API Support
     email: support@shop-ware.com
+servers:
+- url: https://api.shop-ware.com
+  description: Base URL declared by the provider in apis.yml (roadmap#122).
 security:
 - api_partner_id: []
   api_secret: []
@@ -289,16 +292,19 @@ paths:
                   type: integer
                   description: A foreign key which points to a Staff.id. Represents the technician assigned to this appointment.  If staff_id is not present, the appointment is unassigned.
                 repair_order_id:
-                  type: integer
-                  nullable: true
+                  type:
+                  - integer
+                  - 'null'
                   description: A foreign key that points to the RepairOrder that this Note belongs to.
                 description:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: The description of the appointment.
                 title:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: The title of the appointment. Either repair_order_id or title must be set.
                 start_at:
                   type: string
@@ -306,8 +312,9 @@ paths:
                   minLength: 1
                   description: Date the appointment will start. Must be in utc iso8601 date format. Setting this value does not automatically update the associated repair_order.due_in_at.
                 end_at:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   format: date-time
                   description: Date the appointment will end. Must be in utc iso8601 date format. Setting this value does not automatically update the associated repair_order.due_out_at.
               required:
@@ -520,16 +527,19 @@ paths:
                   type: integer
                   description: A foreign key which points to a Staff.id. Represents the technician assigned to this appointment.  If staff_id is not present, the appointment is unassigned.
                 repair_order_id:
-                  type: integer
-                  nullable: true
+                  type:
+                  - integer
+                  - 'null'
                   description: A foreign key that points to the RepairOrder that this Note belongs to.
                 description:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: The description of the appointment.
                 title:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: The title of the appointment. Either repair_order_id or title must be set.
                 start_at:
                   type: string
@@ -537,8 +547,9 @@ paths:
                   minLength: 1
                   description: Date the appointment will start. Must be in utc iso8601 date format. Setting this value does not automatically update the associated repair_order.due_in_at.
                 end_at:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   format: date-time
                   description: Date the appointment will end. Must be in utc iso8601 date format. Setting this value does not automatically update the associated repair_order.due_out_at.
               example:
@@ -730,8 +741,9 @@ paths:
                   limit:
                     type: integer
                   cursor:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: A pagination token that allows you to fetch the next set of records in a paginated list.
                   has_next_page:
                     type: boolean
@@ -836,16 +848,19 @@ paths:
                   type: integer
                   description: A foreign key which points to a Staff.id. Represents the technician assigned to this appointment.  If staff_id is not present, the appointment is unassigned.
                 repair_order_id:
-                  type: integer
-                  nullable: true
+                  type:
+                  - integer
+                  - 'null'
                   description: A foreign key that points to the RepairOrder that this Note belongs to.
                 description:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: The description of the appointment.
                 title:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: The title of the appointment. Either repair_order_id or title must be set.
                 start_at:
                   type: string
@@ -853,8 +868,9 @@ paths:
                   minLength: 1
                   description: Date the appointment will start. Must be in utc iso8601 date format. Setting this value does not automatically update the associated repair_order.due_in_at.
                 end_at:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   format: date-time
                   description: Date the appointment will end. Must be in utc iso8601 date format. Setting this value does not automatically update the associated repair_order.due_out_at.
               required:
@@ -1067,16 +1083,19 @@ paths:
                   type: integer
                   description: A foreign key which points to a Staff.id. Represents the technician assigned to this appointment.  If staff_id is not present, the appointment is unassigned.
                 repair_order_id:
-                  type: integer
-                  nullable: true
+                  type:
+                  - integer
+                  - 'null'
                   description: A foreign key that points to the RepairOrder that this Note belongs to.
                 description:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: The description of the appointment.
                 title:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   description: The title of the appointment. Either repair_order_id or title must be set.
                 start_at:
                   type: string
@@ -1084,8 +1103,9 @@ paths:
                   minLength: 1
                   description: Date the appointment will start. Must be in utc iso8601 date format. Setting this value does not automatically update the associated repair_order.due_in_at.
                 end_at:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                   format: date-time
                   description: Date the appointment will end. Must be in utc iso8601 date format. Setting this value does not automatically update the associated repair_order.due_out_at.
               example:

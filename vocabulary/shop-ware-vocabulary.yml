@@ -1,0 +1,269 @@
+---
+vocabulary:
+  provider: Shopware
+  description: >-
+    Domain vocabulary for the Shopware e-commerce platform covering the Admin API
+    and Store API. Terms are drawn from official OpenAPI specifications published
+    at https://github.com/shopware/admin-api-reference and
+    https://github.com/shopware/store-api-reference.
+  terms:
+
+    # --- Core Entities ---
+
+    - term: Product
+      definition: >-
+        The primary sellable entity in Shopware. A product has a unique
+        productNumber (SKU), stock quantity, price list, and translatable name
+        and description. Products can have a parentId linking them to a parent
+        product, forming variant/configurator groups.
+      context: Admin API, Store API
+      related: [ProductVariant, ProductMedia, ProductConfiguratorSetting, Price]
+
+    - term: ProductVariant
+      definition: >-
+        A child product that inherits most fields from a parent product but
+        overrides specifics such as price, stock, or attributes (e.g. size,
+        color). Identified by a non-null parentId.
+      context: Admin API
+      related: [Product, ProductConfiguratorSetting]
+
+    - term: ProductConfiguratorSetting
+      definition: >-
+        Maps a property option (e.g. "Size: L") to a product variant within a
+        configurator group. Drives the variant selector on the product detail page.
+      context: Admin API, Store API
+      related: [Product, PropertyGroupOption]
+
+    - term: Order
+      definition: >-
+        A completed purchase transaction. Contains line items, billing/shipping
+        addresses, payment transactions, delivery information, and is tracked
+        through a state machine (open → in_progress → completed / cancelled).
+      context: Admin API, Store API
+      related: [OrderLineItem, OrderDelivery, OrderTransaction, StateMachineState]
+
+    - term: OrderLineItem
+      definition: >-
+        A single position within an order, representing a product, promotion,
+        or credit. Stores quantity, unit price, total price, and product payload
+        at the time of purchase.
+      context: Admin API, Store API
+      related: [Order, Product]
+
+    - term: OrderTransaction
+      definition: >-
+        A payment attempt associated with an order. Tracks payment method,
+        amount, and payment state (open → paid / failed / refunded).
+      context: Admin API
+      related: [Order, PaymentMethod, StateMachineState]
+
+    - term: OrderDelivery
+      definition: >-
+        A shipment grouping within an order. Contains shipping address, delivery
+        dates, shipping method, tracking codes, and delivery positions.
+      context: Admin API
+      related: [Order, ShippingMethod]
+
+    - term: Cart
+      definition: >-
+        A customer's active shopping session container. Identified by a context
+        token. Holds line items, applied promotions, delivery options, and
+        calculated prices. A cart is converted into an Order at checkout.
+      context: Store API
+      related: [LineItem, CartError, CalculatedPrice]
+
+    - term: LineItem
+      definition: >-
+        A single entry in a Cart. Can represent a product, a promotion, a
+        container (bundle), or a custom item. Carries quantity, calculated price,
+        cover image, and a payload with entity-specific attributes.
+      context: Store API
+      related: [Cart, Product]
+
+    - term: Customer
+      definition: >-
+        A registered or guest buyer. Identified by email address and assigned a
+        customerNumber. Customers have billing/shipping addresses and belong to a
+        CustomerGroup which may influence pricing.
+      context: Admin API, Store API
+      related: [CustomerGroup, CustomerAddress, Order]
+
+    - term: CustomerGroup
+      definition: >-
+        A segment that groups customers for pricing, discount, or display
+        eligibility. Products and promotions can be restricted to specific
+        customer groups.
+      context: Admin API
+      related: [Customer]
+
+    - term: Category
+      definition: >-
+        A node in the hierarchical product navigation tree. Categories have a
+        type (page, link, folder), level, parent/child relationships, and CMS
+        page assignments for landing pages.
+      context: Admin API, Store API
+      related: [Product, CmsPage]
+
+    - term: SalesChannel
+      definition: >-
+        A distinct distribution channel (e.g. a storefront, a headless PWA, or a
+        B2B portal) with its own domain, language, currency, and payment/shipping
+        method configuration. Each API request is scoped to a sales channel via
+        the sw-access-key header.
+      context: Admin API, Store API
+      related: [Currency, Language, PaymentMethod, ShippingMethod]
+
+    - term: Price
+      definition: >-
+        A currency-specific price entry on a product. Contains gross, net, and
+        linked flag (auto-compute net from gross). Optionally includes listPrice
+        (strike-through) and regulationPrice (legal reference price).
+      context: Admin API
+      related: [Product, Currency, CalculatedPrice]
+
+    - term: CalculatedPrice
+      definition: >-
+        The runtime-computed price for a line item, cart total, or shipping cost.
+        Includes unit price, total price, quantity, tax breakdown by rate, and
+        optional list/reference price for display.
+      context: Store API
+      related: [Price, LineItem, Cart]
+
+    - term: Tax
+      definition: >-
+        A tax rule entity defining a percentage rate applied to products.
+        Every product must reference a Tax entity. Shopware resolves the
+        applicable rate based on delivery country and customer type at
+        calculation time.
+      context: Admin API
+      related: [Product, CalculatedPrice]
+
+    # --- Infrastructure / Platform Terms ---
+
+    - term: ContextToken
+      definition: >-
+        An opaque string token passed as the sw-context-token header in Store
+        API requests. Identifies the customer session, active cart, language,
+        currency, and sales channel context.
+      context: Store API
+      related: [SalesChannel, Cart, Customer]
+
+    - term: AccessKey
+      definition: >-
+        A sales-channel-specific API key passed as the sw-access-key header.
+        Controls which storefront context is used for Store API requests without
+        OAuth.
+      context: Store API
+      related: [SalesChannel]
+
+    - term: StateMachineState
+      definition: >-
+        The current lifecycle state of an Order, OrderTransaction, or
+        OrderDelivery. States are defined per state machine (order, order.transaction,
+        order.delivery) and transitions are triggered by dedicated _action endpoints.
+      context: Admin API
+      related: [Order, OrderTransaction, OrderDelivery]
+
+    - term: DAL
+      definition: >-
+        Data Abstraction Layer — Shopware's query engine for the Admin API. Exposes
+        a JSON-based criteria object with page, limit, filter, sort, aggregations,
+        term (full-text), and includes (sparse fieldsets) to query any entity.
+      context: Admin API
+      related: [SearchCriteria, Product, Order, Customer]
+
+    - term: SearchCriteria
+      definition: >-
+        The JSON request body accepted by /search/{entity} and POST list endpoints
+        in the Admin API. Supports filter arrays with type/field/value, sort arrays,
+        aggregation definitions, full-text term, pagination, and sparse includes.
+      context: Admin API
+      related: [DAL]
+
+    - term: SyncOperation
+      definition: >-
+        A payload item accepted by the /_action/sync endpoint for bulk upsert or
+        delete operations. Specifies action (upsert | delete), entity name, and
+        a payload array. Up to thousands of records can be processed in one request.
+      context: Admin API
+      related: [DAL]
+
+    - term: Plugin
+      definition: >-
+        An installable Shopware extension that can register new entities, API
+        endpoints, event subscribers, and CMS elements. Plugins may ship their own
+        OpenAPI overlays (e.g. SwagCommercial-adminapi.json).
+      context: Admin API, Store API
+      related: [SalesChannel]
+
+    - term: CmsPage
+      definition: >-
+        A content page built with Shopware's Shopping Experiences (CMS) editor.
+        Can be assigned to categories or products to serve as landing/product
+        detail pages with configurable blocks and slots.
+      context: Admin API, Store API
+      related: [Category, Product]
+
+    - term: Promotion
+      definition: >-
+        A discount rule (percentage, fixed, free shipping, buy-X-get-Y) applied
+        to the cart automatically or via a voucher code. Added as a LineItem of
+        type promotion.
+      context: Admin API, Store API
+      related: [Cart, LineItem, Order]
+
+    - term: Media
+      definition: >-
+        A file asset (image, PDF, video) managed by Shopware's media library.
+        Referenced by products, categories, and CMS slots. Provides auto-generated
+        thumbnails at configurable sizes.
+      context: Admin API, Store API
+      related: [Product, Category]
+
+    - term: PropertyGroup
+      definition: >-
+        A configurable attribute group (e.g. "Size", "Color") with individual
+        PropertyGroupOptions (e.g. "L", "Red"). Used to define product variant
+        configurators and filterable listing properties.
+      context: Admin API, Store API
+      related: [ProductConfiguratorSetting]
+
+    - term: Rule
+      definition: >-
+        A condition-based rule in Shopware's Rule Builder that can gate shipping
+        methods, payment methods, promotions, and prices based on cart state,
+        customer data, time, or custom conditions.
+      context: Admin API
+      related: [Promotion, ShippingMethod, PaymentMethod]
+
+    - term: ShippingMethod
+      definition: >-
+        A configured delivery option (e.g. Standard, Express) with pricing
+        rules, delivery time, and availability conditions. Assigned to sales
+        channels and used in cart delivery calculations.
+      context: Admin API, Store API
+      related: [SalesChannel, OrderDelivery, Rule]
+
+    - term: PaymentMethod
+      definition: >-
+        A configured payment option (e.g. PayPal, credit card, invoice) handled
+        by a payment handler plugin. Assigned to sales channels and used when
+        placing orders.
+      context: Admin API, Store API
+      related: [SalesChannel, OrderTransaction, Rule]
+
+    - term: Currency
+      definition: >-
+        A supported currency with ISO code, symbol, and exchange factor relative
+        to the default currency. Products define per-currency prices; the cart
+        calculates totals in the session currency.
+      context: Admin API, Store API
+      related: [Price, SalesChannel]
+
+    - term: Language
+      definition: >-
+        A locale configuration in Shopware. Translatable entity fields (name,
+        description) are stored per language. The active language is part of the
+        sales channel context.
+      context: Admin API, Store API
+      related: [SalesChannel]

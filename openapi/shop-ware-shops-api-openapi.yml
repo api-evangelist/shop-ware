@@ -1,10 +1,13 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: API V1 API Partners Shops API
+  title: V1 API Partners Shops API
   version: v1
   contact:
     name: API Support
     email: support@shop-ware.com
+servers:
+- url: https://api.shop-ware.com
+  description: Base URL declared by the provider in apis.yml (roadmap#122).
 security:
 - api_partner_id: []
   api_secret: []
@@ -138,9 +141,10 @@ paths:
                           type: number
                           description: Supply fee rate for parts.
                         supply_fee_name:
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           description: Supply fee name.
-                          nullable: true
                         sublet_tax_rate:
                           type: number
                           description: Supply tax rate.
@@ -294,9 +298,10 @@ paths:
                     type: number
                     description: Supply fee rate for parts.
                   supply_fee_name:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     description: Supply fee name.
-                    nullable: true
                   sublet_tax_rate:
                     type: number
                     description: Supply tax rate.

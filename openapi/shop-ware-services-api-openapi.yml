@@ -1,10 +1,13 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: API V1 API Partners Services API
+  title: V1 API Partners Services API
   version: v1
   contact:
     name: API Support
     email: support@shop-ware.com
+servers:
+- url: https://api.shop-ware.com
+  description: Base URL declared by the provider in apis.yml (roadmap#122).
 security:
 - api_partner_id: []
   api_secret: []
@@ -480,25 +483,30 @@ paths:
                           type: boolean
                           description: True if the service has been completed.
                         category_id:
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           description: A foreign key that points to a Category ID.
-                          nullable: true
                         canned_job_id:
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           description: A reference that points to a CannedJob ID.
-                          nullable: true
                         labor_rate_cents:
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           description: The rate in cents that labor on this service is charged at.
-                          nullable: true
                         fixed_price_cents:
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           description: The price in cents that this service will be charged at.
-                          nullable: true
                         fixed_price_labor_total_cents:
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           description: The total price in cents that labors on this service will be charged at.
-                          nullable: true
                         is_fixed_price_service:
                           type: boolean
                           description: Determines if this service has a fixed price.
@@ -506,15 +514,17 @@ paths:
                           type: text
                           description: Service comments.
                         completed_at:
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           format: date-time
                           description: The datetime the service was last marked completed. This may occur if the service had been marked completed then restarted and marked completed again.
-                          nullable: true
                         last_completed_at:
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           format: date-time
                           description: The datetime the service was last marked completed. This may occur if the service had been marked completed then restarted and marked completed again.
-                          nullable: true
                         created_at:
                           type: string
                           format: date-time
@@ -535,9 +545,10 @@ paths:
                                 type: string
                                 description: The name of this labor as it will appear on the RO.
                               technician_id:
-                                type: integer
+                                type:
+                                - integer
+                                - 'null'
                                 description: A foreign key which points to a Staff.id. Represents the technician assigned to this specific labor item.
-                                nullable: true
                               taxable:
                                 type: boolean
                                 description: Determines if labor tax rate will be applied to this labor.
@@ -561,30 +572,36 @@ paths:
                                 type: integer
                                 description: The part primary key.
                               brand:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 description: Part`s brand
-                                nullable: true
                               description:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 description: Part`s description
-                                nullable: true
                               quoted_price_cents:
-                                type: number
+                                type:
+                                - number
+                                - 'null'
                                 description: The price of this part that is being sold to the customer in cents per unit.
-                                nullable: true
                                 deprecated: true
                               sell_price_cents:
-                                type: number
+                                type:
+                                - number
+                                - 'null'
                                 description: The price of this part that is being sold to the customer in cents per unit.
-                                nullable: true
                               cost_cents:
-                                type: number
+                                type:
+                                - number
+                                - 'null'
                                 description: The wholesale cost of this part to the shop in cents per unit.
-                                nullable: true
                               part_inventory_id:
-                                type: integer
+                                type:
+                                - integer
+                                - 'null'
                                 description: A foreign key which points to an Inventory.id. Represents the associated inventory and quantity information for this part.
-                                nullable: true
                               quantity:
                                 type: number
                                 description: The number of units this part line item represents.
@@ -642,9 +659,10 @@ paths:
                                 type: integer
                                 description: The price in cents of sublet being sold to customer.
                               cost_cents:
-                                type: number
+                                type:
+                                - number
+                                - 'null'
                                 description: The amount in cents paid to provider for services.
-                                nullable: true
                               provider:
                                 type: string
                                 description: The name of the entity providing services for sublet.
@@ -652,17 +670,19 @@ paths:
                                 type: string
                                 description: A string which identifies invoice from provider.
                               invoice_date:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 format: date-time
                                 description: The date when the invoice from provider was created.
-                                nullable: true
                               taxable:
                                 type: boolean
                                 description: Determines if sublet tax rate will be applied to this sublet.
                               vendor_id:
-                                type: integer
+                                type:
+                                - integer
+                                - 'null'
                                 description: A foreign key which points to a Vendor.id. Represents a vendor associated with this sublet item.
-                                nullable: true
                               created_at:
                                 type: string
                                 format: date-time
@@ -683,9 +703,10 @@ paths:
                                 type: string
                                 description: The name of this inspection as it will appear on the RO.
                               state:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 description: One of "yellow", "green", "unchecked", "red". More states may be added.
-                                nullable: true
                               created_at:
                                 type: string
                                 format: date-time
@@ -806,25 +827,30 @@ paths:
                     type: boolean
                     description: True if the service has been completed.
                   category_id:
-                    type: integer
+                    type:
+                    - integer
+                    - 'null'
                     description: A foreign key that points to a Category ID.
-                    nullable: true
                   canned_job_id:
-                    type: integer
+                    type:
+                    - integer
+                    - 'null'
                     description: A reference that points to a CannedJob ID.
-                    nullable: true
                   labor_rate_cents:
-                    type: integer
+                    type:
+                    - integer
+                    - 'null'
                     description: The rate in cents that labor on this service is charged at.
-                    nullable: true
                   fixed_price_cents:
-                    type: integer
+                    type:
+                    - integer
+                    - 'null'
                     description: The price in cents that this service will be charged at.
-                    nullable: true
                   fixed_price_labor_total_cents:
-                    type: integer
+                    type:
+                    - integer
+                    - 'null'
                     description: The total price in cents that labors on this service will be charged at.
-                    nullable: true
                   is_fixed_price_service:
                     type: boolean
                     description: Determines if this service has a fixed price.
@@ -832,15 +858,17 @@ paths:
                     type: string
                     description: Service comments.
                   completed_at:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     format: date-time
                     description: The datetime the service was last marked completed. This may occur if the service had been marked completed then restarted and marked completed again.
-                    nullable: true
                   last_completed_at:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     format: date-time
                     description: The datetime the service was last marked completed. This may occur if the service had been marked completed then restarted and marked completed again.
-                    nullable: true
                   created_at:
                     type: string
                     format: date-time
@@ -861,9 +889,10 @@ paths:
                           type: string
                           description: The name of this labor as it will appear on the RO.
                         technician_id:
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           description: A foreign key which points to a Staff.id. Represents the technician assigned to this specific labor item.
-                          nullable: true
                         taxable:
                           type: boolean
                           description: Determines if labor tax rate will be applied to this labor.
@@ -886,30 +915,36 @@ paths:
                           type: integer
                           description: The part primary key.
                         brand:
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           description: Part`s brand
-                          nullable: true
                         description:
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           description: Part`s description
-                          nullable: true
                         quoted_price_cents:
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           description: The price of this part that is being sold to the customer in cents per unit.
-                          nullable: true
                           deprecated: true
                         sell_price_cents:
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           description: The price of this part that is being sold to the customer in cents per unit.
-                          nullable: true
                         cost_cents:
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           description: The wholesale cost of this part to the shop in cents per unit.
-                          nullable: true
                         part_inventory_id:
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           description: A foreign key which points to an Inventory.id. Represents the associated inventory and quantity information for this part.
-                          nullable: true
                         quantity:
                           type: number
                           description: The number of units this part line item represents.
@@ -967,9 +1002,10 @@ paths:
                           type: integer
                           description: The price in cents of sublet being sold to customer.
                         cost_cents:
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           description: The amount in cents paid to provider for services.
-                          nullable: true
                         provider:
                           type: string
                           description: The name of the entity providing services for sublet.
@@ -977,17 +1013,19 @@ paths:
                           type: string
                           description: A string which identifies invoice from provider.
                         invoice_date:
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           format: date-time
                           description: The date when the invoice from provider was created.
-                          nullable: true
                         taxable:
                           type: boolean
                           description: Determines if sublet tax rate will be applied to this sublet.
                         vendor_id:
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           description: A foreign key which points to a Vendor.id. Represents a vendor associated with this sublet item.
-                          nullable: true
                         created_at:
                           type: string
                           format: date-time
@@ -1008,9 +1046,10 @@ paths:
                           type: string
                           description: The name of this inspection as it will appear on the RO.
                         state:
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           description: One of "yellow", "green", "unchecked", "red". More states may be added.
-                          nullable: true
                         created_at:
                           type: string
                           format: date-time
@@ -1108,25 +1147,30 @@ paths:
                     type: boolean
                     description: True if the service has been completed.
                   category_id:
-                    type: integer
+                    type:
+                    - integer
+                    - 'null'
                     description: A foreign key that points to a Category ID.
-                    nullable: true
                   canned_job_id:
-                    type: integer
+                    type:
+                    - integer
+                    - 'null'
                     description: A reference that points to a CannedJob ID.
-                    nullable: true
                   labor_rate_cents:
-                    type: integer
+                    type:
+                    - integer
+                    - 'null'
                     description: The rate in cents that labor on this service is charged at.
-                    nullable: true
                   fixed_price_cents:
-                    type: integer
+                    type:
+                    - integer
+                    - 'null'
                     description: The price in cents that this service will be charged at.
-                    nullable: true
                   fixed_price_labor_total_cents:
-                    type: integer
+                    type:
+                    - integer
+                    - 'null'
                     description: The total price in cents that labors on this service will be charged at.
-                    nullable: true
                   is_fixed_price_service:
                     type: boolean
                     description: Determines if this service has a fixed price.
@@ -1134,15 +1178,17 @@ paths:
                     type: string
                     description: Service comments.
                   completed_at:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     format: date-time
                     description: The datetime the service was last marked completed. This may occur if the service had been marked completed then restarted and marked completed again.
-                    nullable: true
                   last_completed_at:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     format: date-time
                     description: The datetime the service was last marked completed. This may occur if the service had been marked completed then restarted and marked completed again.
-                    nullable: true
                   created_at:
                     type: string
                     format: date-time
@@ -1163,9 +1209,10 @@ paths:
                           type: string
                           description: The name of this labor as it will appear on the RO.
                         technician_id:
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           description: A foreign key which points to a Staff.id. Represents the technician assigned to this specific labor item.
-                          nullable: true
                         taxable:
                           type: boolean
                           description: Determines if labor tax rate will be applied to this labor.
@@ -1188,30 +1235,36 @@ paths:
                           type: integer
                           description: The part primary key.
                         brand:
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           description: Part`s brand
-                          nullable: true
                         description:
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           description: Part`s description
-                          nullable: true
                         quoted_price_cents:
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           description: The price of this part that is being sold to the customer in cents per unit.
-                          nullable: true
                           deprecated: true
                         sell_price_cents:
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           description: The price of this part that is being sold to the customer in cents per unit.
-                          nullable: true
                         cost_cents:
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           description: The wholesale cost of this part to the shop in cents per unit.
-                          nullable: true
                         part_inventory_id:
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           description: A foreign key which points to an Inventory.id. Represents the associated inventory and quantity information for this part.
-                          nullable: true
                         quantity:
                           type: number
                           description: The number of units this part line item represents.
@@ -1269,9 +1322,10 @@ paths:
                           type: integer
                           description: The price in cents of sublet being sold to customer.
                         cost_cents:
-                          type: number
+                          type:
+                          - number
+                          - 'null'
                           description: The amount in cents paid to provider for services.
-                          nullable: true
                         provider:
                           type: string
                           description: The name of the entity providing services for sublet.
@@ -1279,17 +1333,19 @@ paths:
                           type: string
                           description: A string which identifies invoice from provider.
                         invoice_date:
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           format: date-time
                           description: The date when the invoice from provider was created.
-                          nullable: true
                         taxable:
                           type: boolean
                           description: Determines if sublet tax rate will be applied to this sublet.
                         vendor_id:
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           description: A foreign key which points to a Vendor.id. Represents a vendor associated with this sublet item.
-                          nullable: true
                         created_at:
                           type: string
                           format: date-time
@@ -1310,9 +1366,10 @@ paths:
                           type: string
                           description: The name of this inspection as it will appear on the RO.
                         state:
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           description: One of "yellow", "green", "unchecked", "red". More states may be added.
-                          nullable: true
                         created_at:
                           type: string
                           format: date-time

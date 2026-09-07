@@ -1,10 +1,13 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: API V1 API Partners Labels API
+  title: V1 API Partners Labels API
   version: v1
   contact:
     name: API Support
     email: support@shop-ware.com
+servers:
+- url: https://api.shop-ware.com
+  description: Base URL declared by the provider in apis.yml (roadmap#122).
 security:
 - api_partner_id: []
   api_secret: []
@@ -66,16 +69,19 @@ paths:
                           type: integer
                           description: Unique identifier of this record.
                         text:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The description of the label.
                         color_code:
-                          type: string
-                          nullable: true
+                          type:
+                          - string
+                          - 'null'
                           description: The color code of which the label is represented.
                         row_order:
-                          type: integer
-                          nullable: true
+                          type:
+                          - integer
+                          - 'null'
                           description: Order of this specific label.
                   limit:
                     type: integer
@@ -124,16 +130,19 @@ paths:
                     type: integer
                     description: Unique identifier of this record.
                   text:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: The description of the label.
                   color_code:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     description: The color code of which the label is represented.
                   row_order:
-                    type: integer
-                    nullable: true
+                    type:
+                    - integer
+                    - 'null'
                     description: Order of this specific label.
 components:
   securitySchemes:
