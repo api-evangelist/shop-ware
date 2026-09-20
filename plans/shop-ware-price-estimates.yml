@@ -9,15 +9,18 @@ note: ESTIMATES, not quotes. Computed by API Evangelist from the prices this pro
 audience_of_source_pricing: business-product
 pricing_basis: tiered-subscription
 delivery: open-core
-delivery_method: keyword
+delivery_method: page
+delivery_evidence: Yes, the Community Edition is the open source, MIT-licensed core of Shopware that can
+  be downloaded and used for free.
+open_source_license: MIT
 free_self_hosted_tiers:
-- 'Shopware Community Edition: Free € 0'
+- Shopware Community Edition
 managed_premium:
   grade: A
-  usd_per_month: 20.52
-  plan: Shopware Intelligence+ for Shopware Rise, Shopware Evolve and Shopware Beyond
-  price_text: € 19 /month excl. VAT
-  same_product: verified-by-name
+  usd_per_month: 648.0
+  plan: Shopware Rise
+  price_text: From € 600 /month excl. VAT
+  same_product: verified-by-page
   meaning: the cheapest priced tier beside the free edition on the same page. When same_product is verified-by-name
     it is the provider's own price for operating what it gives away; when unverified it may be a different
     product. Self-hosting cost itself is unmeasured.
