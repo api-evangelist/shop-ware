@@ -1,13 +1,11 @@
 openapi: 3.2.0
 info:
-  title: V1 API Partners API
-  version: v1
+  title: Shop Ware API Partners API
   contact:
     name: API Support
     email: support@shop-ware.com
-servers:
-- url: https://api.shop-ware.com
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
+  version: '1.0'
+  description: 'Operations tagged API Partners across 2 of this provider''s published API definitions: shop-ware-v1-openapi-original.yml, shop-ware-v2-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 security:
 - api_partner_id: []
   api_secret: []
@@ -93,6 +91,8 @@ paths:
                     type: integer
                   total_pages:
                     type: integer
+      operationId: getApiV1PartnersByPartnerIdAuthorizations
+      x-operation-id-source: derived
   /api/v2/partners/{partner_id}/authorizations:
     parameters:
     - name: partner_id
@@ -171,6 +171,8 @@ paths:
                   has_next_page:
                     type: boolean
                     description: A boolean indicating whether there are more pages available after the current one.
+      operationId: getApiV2PartnersByPartnerIdAuthorizations
+      x-operation-id-source: derived
 components:
   securitySchemes:
     api_partner_id:
@@ -181,3 +183,6 @@ components:
       type: apiKey
       name: X-Api-Secret
       in: header
+x-refined-from:
+- shop-ware-v1-openapi-original.yml
+- shop-ware-v2-openapi-original.yml

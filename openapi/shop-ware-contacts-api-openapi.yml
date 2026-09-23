@@ -1,13 +1,10 @@
 openapi: 3.2.0
 info:
-  title: V1 API Partners Contacts API
+  title: V1 Contacts API
   version: v1
   contact:
     name: API Support
     email: support@shop-ware.com
-servers:
-- url: https://api.shop-ware.com
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
 security:
 - api_partner_id: []
   api_secret: []
@@ -156,6 +153,8 @@ paths:
                     type: integer
                   total_pages:
                     type: integer
+      operationId: getApiV1TenantsByTenantIdCustomersByCustomerIdContacts
+      x-operation-id-source: derived
     post:
       summary: Create new contact for customer
       tags:
@@ -264,6 +263,8 @@ paths:
                 personnel: Test
                 phone_number: '+17722271221'
                 show_on_ro: true
+      operationId: postApiV1TenantsByTenantIdCustomersByCustomerIdContacts
+      x-operation-id-source: derived
   /api/v1/tenants/{tenant_id}/customers/{customer_id}/contacts/{id}:
     parameters:
     - name: tenant_id
@@ -391,6 +392,8 @@ paths:
                 personnel: Test
                 phone_number: '+17722271221'
                 show_on_ro: true
+      operationId: putApiV1TenantsByTenantIdCustomersByCustomerIdContactsById
+      x-operation-id-source: derived
 components:
   securitySchemes:
     api_partner_id:

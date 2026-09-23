@@ -1,13 +1,10 @@
 openapi: 3.2.0
 info:
-  title: V1 API Partners Payment Transactions API
+  title: V1 Payment Transactions API
   version: v1
   contact:
     name: API Support
     email: support@shop-ware.com
-servers:
-- url: https://api.shop-ware.com
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
 security:
 - api_partner_id: []
   api_secret: []
@@ -205,6 +202,8 @@ paths:
                     type: integer
                   total_pages:
                     type: integer
+      operationId: getApiV1TenantsByTenantIdPaymentTransactions
+      x-operation-id-source: derived
   /api/v1/tenants/{tenant_id}/payment_transactions/{id}:
     parameters:
     - name: tenant_id
@@ -360,6 +359,8 @@ paths:
                     type: string
                     format: date-time
                     description: Date and time when record was last updated.
+      operationId: getApiV1TenantsByTenantIdPaymentTransactionsById
+      x-operation-id-source: derived
 components:
   securitySchemes:
     api_partner_id:

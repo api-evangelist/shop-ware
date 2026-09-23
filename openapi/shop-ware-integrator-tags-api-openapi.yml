@@ -1,13 +1,10 @@
 openapi: 3.2.0
 info:
-  title: V1 API Partners Integrator Tags API
+  title: V1 Integrator Tags API
   version: v1
   contact:
     name: API Support
     email: support@shop-ware.com
-servers:
-- url: https://api.shop-ware.com
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
 security:
 - api_partner_id: []
   api_secret: []
@@ -116,6 +113,8 @@ paths:
                     type: integer
                   total_pages:
                     type: integer
+      operationId: getApiV1TenantsByTenantIdIntegratorTags
+      x-operation-id-source: derived
     post:
       summary: Create an integrator tag
       tags:
@@ -211,6 +210,8 @@ paths:
                 taggable_id: 1
                 name: TagName
                 value: ABC123
+      operationId: postApiV1TenantsByTenantIdIntegratorTags
+      x-operation-id-source: derived
   /api/v1/tenants/{tenant_id}/integrator_tags/{id}:
     parameters:
     - name: tenant_id
@@ -270,6 +271,8 @@ paths:
                     type: string
                     format: date-time
                     description: Date and time when record was last updated.
+      operationId: getApiV1TenantsByTenantIdIntegratorTagsById
+      x-operation-id-source: derived
     put:
       summary: Update an integrator tag by ID
       tags:
@@ -360,6 +363,8 @@ paths:
                 taggable_id: 1
                 name: TagName123
                 value: ABC456
+      operationId: putApiV1TenantsByTenantIdIntegratorTagsById
+      x-operation-id-source: derived
     delete:
       summary: Delete an integrator tag by ID
       tags:
@@ -375,6 +380,8 @@ paths:
               schema:
                 type: object
                 properties: {}
+      operationId: deleteApiV1TenantsByTenantIdIntegratorTagsById
+      x-operation-id-source: derived
 components:
   securitySchemes:
     api_partner_id:

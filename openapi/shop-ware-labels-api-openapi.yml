@@ -1,13 +1,10 @@
 openapi: 3.2.0
 info:
-  title: V1 API Partners Labels API
+  title: V1 Labels API
   version: v1
   contact:
     name: API Support
     email: support@shop-ware.com
-servers:
-- url: https://api.shop-ware.com
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
 security:
 - api_partner_id: []
   api_secret: []
@@ -93,6 +90,8 @@ paths:
                     type: integer
                   total_pages:
                     type: integer
+      operationId: getApiV1TenantsByTenantIdLabels
+      x-operation-id-source: derived
   /api/v1/tenants/{tenant_id}/labels/{id}:
     parameters:
     - name: tenant_id
@@ -144,6 +143,8 @@ paths:
                     - integer
                     - 'null'
                     description: Order of this specific label.
+      operationId: getApiV1TenantsByTenantIdLabelsById
+      x-operation-id-source: derived
 components:
   securitySchemes:
     api_partner_id:

@@ -1,13 +1,10 @@
 openapi: 3.2.0
 info:
-  title: V1 API Partners Vendors API
+  title: V1 Vendors API
   version: v1
   contact:
     name: API Support
     email: support@shop-ware.com
-servers:
-- url: https://api.shop-ware.com
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
 security:
 - api_partner_id: []
   api_secret: []
@@ -175,6 +172,8 @@ paths:
                     type: integer
                   total_pages:
                     type: integer
+      operationId: getApiV1TenantsByTenantIdVendors
+      x-operation-id-source: derived
   /api/v1/tenants/{tenant_id}/vendors/{id}:
     parameters:
     - name: tenant_id
@@ -300,6 +299,8 @@ paths:
                           type: string
                           format: date-time
                           description: The date and time when tag was last updated.
+      operationId: getApiV1TenantsByTenantIdVendorsById
+      x-operation-id-source: derived
 components:
   securitySchemes:
     api_partner_id:

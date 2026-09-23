@@ -1,13 +1,11 @@
 openapi: 3.2.0
 info:
-  title: V1 API Partners Repair Orders API
-  version: v1
+  title: Shop Ware Repair Orders API
   contact:
     name: API Support
     email: support@shop-ware.com
-servers:
-- url: https://api.shop-ware.com
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
+  version: '1.0'
+  description: 'Operations tagged Repair Orders across 2 of this provider''s published API definitions: shop-ware-v1-openapi-original.yml, shop-ware-v2-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 security:
 - api_partner_id: []
   api_secret: []
@@ -695,6 +693,8 @@ paths:
               example:
                 initial_assignee_id: 1
                 send_estimate_email: true
+      operationId: postApiV1TenantsByTenantIdRepairOrdersByIdStart
+      x-operation-id-source: derived
   /api/v1/tenants/{tenant_id}/repair_orders/{id}/share:
     parameters:
     - name: tenant_id
@@ -739,6 +739,8 @@ paths:
                 phone_numbers:
                 - '+14158900906'
                 text: Test
+      operationId: postApiV1TenantsByTenantIdRepairOrdersByIdShare
+      x-operation-id-source: derived
   /api/v1/tenants/{tenant_id}/repair_orders:
     parameters:
     - name: tenant_id
@@ -1500,6 +1502,8 @@ paths:
                     type: integer
                   total_pages:
                     type: integer
+      operationId: getApiV1TenantsByTenantIdRepairOrders
+      x-operation-id-source: derived
     post:
       summary: Create a repair order
       tags:
@@ -2317,6 +2321,8 @@ paths:
                 hazmat_tax_rate: 40
                 customer_concern: example of reason for customers to visit
                 vehicle_use: example of primary use of vehicle
+      operationId: postApiV1TenantsByTenantIdRepairOrders
+      x-operation-id-source: derived
   /api/v1/tenants/{tenant_id}/repair_orders/{id}:
     parameters:
     - name: tenant_id
@@ -2993,6 +2999,8 @@ paths:
                     type: string
                     format: date-time
                     description: Date and time when record was last updated.
+      operationId: getApiV1TenantsByTenantIdRepairOrdersById
+      x-operation-id-source: derived
     put:
       summary: Update a specific repair order
       tags:
@@ -3793,6 +3801,8 @@ paths:
                 hazmat_tax_rate: 45
                 customer_concern: example of reason for customers to visit
                 vehicle_use: example of primary use of vehicle
+      operationId: putApiV1TenantsByTenantIdRepairOrdersById
+      x-operation-id-source: derived
   /api/v2/tenants/{tenant_id}/repair_orders:
     parameters:
     - name: tenant_id
@@ -4539,6 +4549,8 @@ paths:
                   has_next_page:
                     type: boolean
                     description: A boolean indicating whether there are more pages available after the current one.
+      operationId: getApiV2TenantsByTenantIdRepairOrders
+      x-operation-id-source: derived
     post:
       summary: Create a repair order
       tags:
@@ -5342,6 +5354,8 @@ paths:
                 hazmat_tax_rate: 40
                 customer_concern: example of reason for customers to visit
                 vehicle_use: example of primary use of vehicle
+      operationId: postApiV2TenantsByTenantIdRepairOrders
+      x-operation-id-source: derived
 components:
   securitySchemes:
     api_partner_id:
@@ -5352,3 +5366,6 @@ components:
       type: apiKey
       name: X-Api-Secret
       in: header
+x-refined-from:
+- shop-ware-v1-openapi-original.yml
+- shop-ware-v2-openapi-original.yml

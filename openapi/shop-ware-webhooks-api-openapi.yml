@@ -1,13 +1,10 @@
 openapi: 3.2.0
 info:
-  title: V1 API Partners Webhooks API
+  title: V1 Webhooks API
   version: v1
   contact:
     name: API Support
     email: support@shop-ware.com
-servers:
-- url: https://api.shop-ware.com
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
 security:
 - api_partner_id: []
   api_secret: []
@@ -55,6 +52,8 @@ paths:
                       - string
                       - 'null'
                       description: Webhook format
+      operationId: getApiV1Webhooks
+      x-operation-id-source: derived
     post:
       summary: Create a webhook
       tags:
@@ -123,6 +122,8 @@ paths:
                 - assignment.created
                 - assignment.updated
                 - assignment.deleted
+      operationId: postApiV1Webhooks
+      x-operation-id-source: derived
   /api/v1/webhooks/{id}:
     parameters:
     - name: id
@@ -169,6 +170,8 @@ paths:
                     - string
                     - 'null'
                     description: Webhook format
+      operationId: getApiV1WebhooksById
+      x-operation-id-source: derived
     put:
       summary: Update a webhook
       tags:
@@ -232,6 +235,8 @@ paths:
                 events:
                 - staff.created
                 - staff.updated
+      operationId: putApiV1WebhooksById
+      x-operation-id-source: derived
     delete:
       summary: Delete a webhook by ID
       tags:
@@ -247,6 +252,8 @@ paths:
               schema:
                 type: object
                 properties: {}
+      operationId: deleteApiV1WebhooksById
+      x-operation-id-source: derived
 components:
   securitySchemes:
     api_partner_id:

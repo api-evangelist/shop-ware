@@ -1,13 +1,10 @@
 openapi: 3.2.0
 info:
-  title: V1 API Partners Staff Members API
+  title: V1 Staff Members API
   version: v1
   contact:
     name: API Support
     email: support@shop-ware.com
-servers:
-- url: https://api.shop-ware.com
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
 security:
 - api_partner_id: []
   api_secret: []
@@ -173,6 +170,8 @@ paths:
                     type: integer
                   total_pages:
                     type: integer
+      operationId: getApiV1TenantsByTenantIdStaffs
+      x-operation-id-source: derived
     post:
       summary: Create a new staff member
       tags:
@@ -320,6 +319,8 @@ paths:
                 advisor: true
                 technician: true
                 active: true
+      operationId: postApiV1TenantsByTenantIdStaffs
+      x-operation-id-source: derived
     put:
       summary: Update existing staff member
       tags:
@@ -467,6 +468,8 @@ paths:
                 advisor: true
                 technician: true
                 active: true
+      operationId: putApiV1TenantsByTenantIdStaffs
+      x-operation-id-source: derived
   /api/v1/tenants/{tenant_id}/staffs/{id}:
     parameters:
     - name: tenant_id
@@ -578,6 +581,8 @@ paths:
                           type: string
                           format: date-time
                           description: The date and time when tag was last updated.
+      operationId: getApiV1TenantsByTenantIdStaffsById
+      x-operation-id-source: derived
     put:
       summary: Update a specific staff member by ID
       tags:
@@ -725,6 +730,8 @@ paths:
                 advisor: true
                 technician: true
                 active: true
+      operationId: putApiV1TenantsByTenantIdStaffsById
+      x-operation-id-source: derived
   /api/v1/tenants/{tenant_id}/staffs/notification:
     parameters:
     - name: tenant_id
@@ -774,6 +781,8 @@ paths:
                 url: URL
                 recipients:
                 - 1
+      operationId: postApiV1TenantsByTenantIdStaffsNotification
+      x-operation-id-source: derived
 components:
   securitySchemes:
     api_partner_id:

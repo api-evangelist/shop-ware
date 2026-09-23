@@ -1,13 +1,10 @@
 openapi: 3.2.0
 info:
-  title: V1 API Partners Recommendations API
+  title: V1 Recommendations API
   version: v1
   contact:
     name: API Support
     email: support@shop-ware.com
-servers:
-- url: https://api.shop-ware.com
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
 security:
 - api_partner_id: []
   api_secret: []
@@ -511,6 +508,8 @@ paths:
                     type: integer
                   total_pages:
                     type: integer
+      operationId: getApiV1TenantsByTenantIdRecommendations
+      x-operation-id-source: derived
     post:
       summary: Create a recommendation
       tags:
@@ -971,6 +970,8 @@ paths:
                 repair_order_id: 4
                 description: Test Service 1
                 canned_job_id: 1
+      operationId: postApiV1TenantsByTenantIdRecommendations
+      x-operation-id-source: derived
   /api/v1/tenants/{tenant_id}/recommendations/{id}:
     parameters:
     - name: tenant_id
@@ -1419,6 +1420,8 @@ paths:
                     type: string
                     format: date-time
                     description: Date and time when record was last updated.
+      operationId: getApiV1TenantsByTenantIdRecommendationsById
+      x-operation-id-source: derived
     put:
       summary: Update a specific recommendation
       tags:
@@ -1871,6 +1874,8 @@ paths:
               example:
                 repair_order_id: 4
                 description: Test Service 2
+      operationId: putApiV1TenantsByTenantIdRecommendationsById
+      x-operation-id-source: derived
 components:
   securitySchemes:
     api_partner_id:

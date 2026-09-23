@@ -1,13 +1,11 @@
 openapi: 3.2.0
 info:
-  title: V1 API Partners Appointments API
-  version: v1
+  title: Shop Ware Appointments API
   contact:
     name: API Support
     email: support@shop-ware.com
-servers:
-- url: https://api.shop-ware.com
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
+  version: '1.0'
+  description: 'Operations tagged Appointments across 2 of this provider''s published API definitions: shop-ware-v1-openapi-original.yml, shop-ware-v2-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 security:
 - api_partner_id: []
   api_secret: []
@@ -192,6 +190,8 @@ paths:
                     type: integer
                   total_pages:
                     type: integer
+      operationId: getApiV1TenantsByTenantIdAppointments
+      x-operation-id-source: derived
     post:
       summary: Create an appointment
       tags:
@@ -327,6 +327,8 @@ paths:
                 start_at: '2026-06-09T14:21:26Z'
                 repair_order_id: 1
                 shop_id: 1
+      operationId: postApiV1TenantsByTenantIdAppointments
+      x-operation-id-source: derived
   /api/v1/tenants/{tenant_id}/appointments/{id}:
     parameters:
     - name: tenant_id
@@ -427,6 +429,8 @@ paths:
                     type: string
                     format: date-time
                     description: Date and time when record was last updated.
+      operationId: getApiV1TenantsByTenantIdAppointmentsById
+      x-operation-id-source: derived
     put:
       summary: Update a specific appointment
       tags:
@@ -556,6 +560,8 @@ paths:
                 title: updated title
                 description: updated description
                 repair_order_id: 1
+      operationId: putApiV1TenantsByTenantIdAppointmentsById
+      x-operation-id-source: derived
     delete:
       summary: Delete a specific appointment
       tags:
@@ -571,6 +577,8 @@ paths:
               schema:
                 type: object
                 properties: {}
+      operationId: deleteApiV1TenantsByTenantIdAppointmentsById
+      x-operation-id-source: derived
   /api/v2/tenants/{tenant_id}/appointments:
     parameters:
     - name: tenant_id
@@ -748,6 +756,8 @@ paths:
                   has_next_page:
                     type: boolean
                     description: A boolean indicating whether there are more pages available after the current one.
+      operationId: getApiV2TenantsByTenantIdAppointments
+      x-operation-id-source: derived
     post:
       summary: Create an appointment
       tags:
@@ -883,6 +893,8 @@ paths:
                 start_at: '2026-06-09T14:27:26Z'
                 repair_order_id: 1
                 shop_id: 1
+      operationId: postApiV2TenantsByTenantIdAppointments
+      x-operation-id-source: derived
   /api/v2/tenants/{tenant_id}/appointments/{id}:
     parameters:
     - name: tenant_id
@@ -983,6 +995,8 @@ paths:
                     type: string
                     format: date-time
                     description: Date and time when record was last updated.
+      operationId: getApiV2TenantsByTenantIdAppointmentsById
+      x-operation-id-source: derived
     put:
       summary: Update a specific appointment
       tags:
@@ -1112,6 +1126,8 @@ paths:
                 title: updated title
                 description: updated description
                 repair_order_id: 1
+      operationId: putApiV2TenantsByTenantIdAppointmentsById
+      x-operation-id-source: derived
     delete:
       summary: Delete a specific appointment
       tags:
@@ -1127,6 +1143,8 @@ paths:
               schema:
                 type: object
                 properties: {}
+      operationId: deleteApiV2TenantsByTenantIdAppointmentsById
+      x-operation-id-source: derived
 components:
   securitySchemes:
     api_partner_id:
@@ -1137,3 +1155,6 @@ components:
       type: apiKey
       name: X-Api-Secret
       in: header
+x-refined-from:
+- shop-ware-v1-openapi-original.yml
+- shop-ware-v2-openapi-original.yml

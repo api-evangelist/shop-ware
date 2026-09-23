@@ -1,13 +1,10 @@
 openapi: 3.2.0
 info:
-  title: V1 API Partners Estimates API
+  title: V1 Estimates API
   version: v1
   contact:
     name: API Support
     email: support@shop-ware.com
-servers:
-- url: https://api.shop-ware.com
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
 security:
 - api_partner_id: []
   api_secret: []
@@ -659,6 +656,8 @@ paths:
                     type: string
                     format: date-time
                     description: Date and time when record was last updated.
+      operationId: putApiV1TenantsByTenantIdEstimatesByEstimateIdCannedJobsByCannedJobId
+      x-operation-id-source: derived
   /api/v1/tenants/{tenant_id}/estimates/{estimate_id}/services/{service_id}:
     parameters:
     - name: tenant_id
@@ -1239,6 +1238,8 @@ paths:
                     type: string
                     format: date-time
                     description: Date and time when record was last updated.
+      operationId: deleteApiV1TenantsByTenantIdEstimatesByEstimateIdServicesByServiceId
+      x-operation-id-source: derived
 components:
   securitySchemes:
     api_partner_id:

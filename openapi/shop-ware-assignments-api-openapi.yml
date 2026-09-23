@@ -1,13 +1,11 @@
 openapi: 3.2.0
 info:
-  title: V1 API Partners Assignments API
-  version: v1
+  title: Shop Ware Assignments API
   contact:
     name: API Support
     email: support@shop-ware.com
-servers:
-- url: https://api.shop-ware.com
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
+  version: '1.0'
+  description: 'Operations tagged Assignments across 2 of this provider''s published API definitions: shop-ware-v1-openapi-original.yml, shop-ware-v2-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 security:
 - api_partner_id: []
   api_secret: []
@@ -157,6 +155,8 @@ paths:
                     type: integer
                   total_pages:
                     type: integer
+      operationId: getApiV1TenantsByTenantIdAssignments
+      x-operation-id-source: derived
   /api/v1/tenants/{tenant_id}/assignments/{id}:
     parameters:
     - name: tenant_id
@@ -266,6 +266,8 @@ paths:
                     type: string
                     format: date-time
                     description: Date and time when record was last updated.
+      operationId: getApiV1TenantsByTenantIdAssignmentsById
+      x-operation-id-source: derived
   /api/v2/tenants/{tenant_id}/assignments:
     parameters:
     - name: tenant_id
@@ -408,6 +410,8 @@ paths:
                   has_next_page:
                     type: boolean
                     description: A boolean indicating whether there are more pages available after the current one.
+      operationId: getApiV2TenantsByTenantIdAssignments
+      x-operation-id-source: derived
   /api/v2/tenants/{tenant_id}/assignments/{id}:
     parameters:
     - name: tenant_id
@@ -517,6 +521,8 @@ paths:
                     type: string
                     format: date-time
                     description: Date and time when record was last updated.
+      operationId: getApiV2TenantsByTenantIdAssignmentsById
+      x-operation-id-source: derived
 components:
   securitySchemes:
     api_partner_id:
@@ -527,3 +533,6 @@ components:
       type: apiKey
       name: X-Api-Secret
       in: header
+x-refined-from:
+- shop-ware-v1-openapi-original.yml
+- shop-ware-v2-openapi-original.yml
