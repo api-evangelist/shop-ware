@@ -1,0 +1,12 @@
+{
+ "url": "https://api.shop-ware.com/api-docs/public/v1/swagger.yaml",
+ "requested_url": "https://api.shop-ware.com/api-docs/public/v1/swagger.yaml",
+ "status": 200,
+ "content_type": "text/yaml",
+ "bytes": 816667,
+ "sha256": "7bd36e98602f9b9d09b49986997eda332b98b5e6c363edce0688cc4bf422135f",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 1.0), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
