@@ -1,0 +1,449 @@
+generated: '2026-10-12'
+method: searched
+source:
+- https://zapier.com/apps/shop-ware/integrations
+checked:
+- https://composio.dev/toolkits/shop-ware
+- https://monid.ai/tools/shop-ware
+- https://n8n.io/integrations/shop-ware/
+- https://zapier.com/apps/shop-ware/integrations
+summary: null
+marketplace_apps:
+- marketplace: zapier
+  channel: ipaas-listing
+  app: shop-ware
+  url: https://zapier.com/apps/shop-ware/integrations
+  external_url: https://www.shop-ware.com/
+  partner_tier: BRONZE
+  triggers:
+  - key: appointment_created
+    label: Appointment Created
+  - key: appointment_updated
+    label: Appointment Updated
+  - key: customer_created
+    label: Customer Created
+  - key: customer_deleted
+    label: Deleted Customer
+  - key: customer_updated
+    label: Customer Updated
+  - key: repair_order_created
+    label: 'Repair Order Created '
+  - key: repair_order_updated
+    label: Repair Order Updated
+  - key: vehicle_created
+    label: Vehicle Created
+  - key: vehicle_updated
+    label: Vehicle Updated
+  actions:
+  - key: create_appointment
+    label: Create an Appointment
+  - key: create_customer
+    label: Create a Customer
+  - key: create_payment
+    label: Create a Payment
+  - key: create_repair_order
+    label: Create a Repair Order
+  - key: create_vehicle
+    label: Create a Vehicle
+  - key: update_appointment
+    label: Update an Appointment
+  - key: update_customer
+    label: Update a Customer
+  - key: update_repair_order
+    label: Update a Repair Order
+  - key: update_vehicle
+    label: Update a Vehicle
+  searches:
+  - key: find_appointment
+    label: Find an Appointment
+  - key: find_customer
+    label: Find a Customer
+  - key: find_payment
+    label: Find a Payment
+  - key: find_repair_order
+    label: Find a Repair Order
+  - key: find_vehicle
+    label: Find a Vehicle
+edges:
+- partner_name: HubSpot
+  partner: hubspot
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/shop-ware/integrations/hubspot
+  direction: third-party
+  category: Marketing Automation
+  partner_url: http://www.hubspot.com/
+- partner_name: Shopstar
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/shop-ware/integrations/shopstar
+  direction: third-party
+  category: Commerce
+  partner_url: https://www.shopstar.co.za/
+- partner_name: Shopify
+  partner: shopify
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/shop-ware/integrations/shopify
+  direction: third-party
+  category: eCommerce
+  partner_url: https://www.shopify.com/
+- partner_name: Mailgun
+  partner: mailgun
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/shop-ware/integrations/mailgun
+  direction: third-party
+  category: Transactional Email
+  partner_url: https://www.mailgun.com/
+- partner_name: ActiveCampaign
+  partner: activecampaign
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/shop-ware/integrations/activecampaign
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://www.activecampaign.com/?utm_source=unpaid_syndication_website&utm_medium=referral&utm_campaign=zapier_listing
+- partner_name: RingCentral
+  partner: ringcentral
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/shop-ware/integrations/ringcentral
+  direction: third-party
+  category: Phone & SMS
+  partner_url: http://www.ringcentral.com/
+- partner_name: Square
+  partner: square
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/shop-ware/integrations/square
+  direction: third-party
+  category: eCommerce
+  partner_url: https://squareup.com/t/cmtp_performance/pr_developers/d_partnerships/p_zapier/?route=
+- partner_name: Asana
+  partner: asana
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/shop-ware/integrations/asana
+  direction: third-party
+  category: Project Management
+  partner_url: http://asana.com/
+- partner_name: Slack
+  partner: slack
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/shop-ware/integrations/slack
+  direction: third-party
+  category: Team Chat
+  partner_url: https://slack.com/
+- partner_name: Mailchimp
+  partner: mailchimp
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/shop-ware/integrations/mailchimp
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://mailchimp.com/
+- partner_name: Jotform
+  partner: jotform
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/shop-ware/integrations/jotform
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: http://www.jotform.com/
+- partner_name: Brevo
+  partner: brevo
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/shop-ware/integrations/brevo
+  direction: third-party
+  category: Email Newsletters
+  partner_url: https://www.sendinblue.com/?utm_medium=plugin&utm_source=zapier
+- partner_name: umsatz.io
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/shop-ware/integrations/umsatzio
+  direction: third-party
+  category: Sales & CRM
+  partner_url: https://umsatz.io/
+- partner_name: Airtable
+  partner: airtable
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/shop-ware/integrations/airtable
+  direction: third-party
+  category: Databases
+  partner_url: https://airtable.com/
+- partner_name: Twilio
+  partner: twilio
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/shop-ware/integrations/twilio
+  direction: third-party
+  category: Phone & SMS
+  partner_url: https://www.twilio.com/
+- partner_name: Amplifier
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/shop-ware/integrations/amplifier
+  direction: third-party
+  category: eCommerce
+  partner_url: http://amplifier.com/
+- partner_name: monday.com
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/shop-ware/integrations/monday
+  direction: third-party
+  category: Project Management
+  partner_url: https://monday.com/
+- partner_name: Quo
+  partner: quo
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/shop-ware/integrations/quo
+  direction: third-party
+  category: Phone & SMS
+  partner_url: https://quo.com/?utm_source=partnership&utm_medium=partner&utm_campaign=zapier
+- partner_name: GoVisually
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/shop-ware/integrations/govisually
+  direction: third-party
+  category: App Builder
+  partner_url: https://govisually.com/
+- partner_name: Birdeye
+  partner: birdeye
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/shop-ware/integrations/birdeye
+  direction: third-party
+  category: Reviews
+  partner_url: https://birdeye.com/
+- partner_name: Zoho CRM
+  partner: zoho-crm
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/shop-ware/integrations/zoho-crm
+  direction: third-party
+  category: CRM (Customer Relationship Management)
+  partner_url: https://go.zoho.com/wOk
+- partner_name: WooCommerce
+  partner: woocommerce
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/shop-ware/integrations/woocommerce
+  direction: third-party
+  category: eCommerce
+  partner_url: https://woocommerce.com/products/woocommerce-zapier/?utm_source=zapier&utm_medium=website&utm_campaign=integration
+- partner_name: LinkedIn
+  partner: linkedin
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/shop-ware/integrations/linkedin
+  direction: third-party
+  category: Microsoft
+  partner_url: http://www.linkedin.com/
+- partner_name: Motion
+  partner: motion
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/shop-ware/integrations/motion
+  direction: third-party
+  category: Project Management
+  partner_url: https://usemotion.com/
+- partner_name: Odoo ERP Self Hosted
+  partner: odoo
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/shop-ware/integrations/openerp
+  direction: third-party
+  category: CRM (Customer Relationship Management)
+  partner_url: https://www.odoo.com/
+- partner_name: Crisp
+  partner: crisp
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/shop-ware/integrations/crisp
+  direction: third-party
+  category: Customer Support
+  partner_url: https://crisp.chat/
+- partner_name: Memberful
+  partner: memberful
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/shop-ware/integrations/memberful
+  direction: third-party
+  category: eCommerce
+  partner_url: https://memberful.com/
+- partner_name: Hiver
+  partner: hiver
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/shop-ware/integrations/hiver
+  direction: third-party
+  category: Email
+  partner_url: https://hiverhq.com/
+- partner_name: Shopuddy
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/shop-ware/integrations/shopuddy
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://www.shopuddy.com/
+templates:
+- title: Add new Shop-Ware appointments to Google Calendar
+  url: https://zapier.com/apps/google-calendar/integrations/shop-ware/892564/add-new-shop-ware-appointments-to-google-calendar
+  apps:
+  - shop-ware
+  - google-calendar
+- title: Update HubSpot contacts from new customer updates in Shop-Ware
+  url: https://zapier.com/apps/hubspot/integrations/shop-ware/892551/update-hubspot-contacts-from-new-customer-updates-in-shop-ware
+  apps:
+  - shop-ware
+  - hubspot
+- title: Send SMS messages in Twilio for newly-updated appointments in Shop-Ware
+  url: https://zapier.com/apps/shop-ware/integrations/twilio/892544/send-sms-messages-in-twilio-for-newly-updated-appointments-in-shop-ware
+  apps:
+  - shop-ware
+  - twilio
+- title: Send Shop-Ware estimates for new appointments in Acuity Scheduling via Slack
+  url: https://zapier.com/apps/acuity-scheduling/integrations/slack/892566/send-shop-ware-estimates-for-new-appointments-in-acuity-scheduling-via-slack
+  apps:
+  - acuity-scheduling
+  - shop-ware
+  - slack
+- title: Add new Shop-Ware customers to Mailchimp as subscribers instantly
+  url: https://zapier.com/apps/mailchimp/integrations/shop-ware/1395311/add-new-shop-ware-customers-to-mailchimp-as-subscribers-instantly
+  apps:
+  - shop-ware
+  - mailchimp
+- title: Create new HL Pro Tools contacts when Shop-Ware vehicles are created
+  url: https://zapier.com/apps/hl-pro-tools/integrations/shop-ware/1407862/create-new-hl-pro-tools-contacts-when-shop-ware-vehicles-are-created
+  apps:
+  - shop-ware
+  - hl-pro-tools
+- title: Delete Google Calendar events when customers are deleted in Shop-Ware
+  url: https://zapier.com/apps/google-calendar/integrations/shop-ware/1586227/delete-google-calendar-events-when-customers-are-deleted-in-shop-ware
+  apps:
+  - shop-ware
+  - google-calendar
+- title: Create detailed events in Google Calendar when new customers are created in Shop-Ware
+  url: https://zapier.com/apps/google-calendar/integrations/shop-ware/1586238/create-detailed-events-in-google-calendar-when-new-customers-are-created-in-shop-ware
+  apps:
+  - shop-ware
+  - google-calendar
+- title: Create detailed events in Google Calendar for each new appointment created in Shop-Ware
+  url: https://zapier.com/apps/google-calendar/integrations/shop-ware/1591187/create-detailed-events-in-google-calendar-for-each-new-appointment-created-in-shop-ware
+  apps:
+  - shop-ware
+  - google-calendar
+- title: Create new Klaviyo subscribers whenever new customers are added in Shop-Ware
+  url: https://zapier.com/apps/klaviyo/integrations/shop-ware/1621482/create-new-klaviyo-subscribers-whenever-new-customers-are-added-in-shop-ware
+  apps:
+  - shop-ware
+  - klaviyo
+- title: Create new Shop-Ware appointments from new Setmore Appointments entries
+  url: https://zapier.com/apps/setmore-appointment/integrations/shop-ware/1643815/create-new-shop-ware-appointments-from-new-setmore-appointments-entries
+  apps:
+  - setmore-appointment
+  - shop-ware
+- title: Send text review invitations via LocalReviews to new Shop-Ware customers
+  url: https://zapier.com/apps/local-reviews/integrations/shop-ware/1665782/send-text-review-invitations-via-localreviews-to-new-shop-ware-customers
+  apps:
+  - shop-ware
+  - local-reviews
+template_total: 24
