@@ -227,3 +227,9 @@ components:
       type: apiKey
       name: X-Api-Secret
       in: header
+x-provenance:
+  method: harvested
+  publisher: Shop-Ware
+  source: https://api.shop-ware.com/api-docs/public/v1/swagger.yaml
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
