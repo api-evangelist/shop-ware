@@ -64,6 +64,231 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Shop-Ware is a company surfaced as a portfolio company of insight-partners and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+Shop-Ware is cloud-based auto repair shop management software for independent automotive repair shops, backed by Insight Partners. It runs the digital workflow of a shop: digital vehicle inspections, repair orders, estimates, canned jobs and services, parts inventory and purchasing, customer and vehicle records, staff time clocks and pay rates, and integrated payments. Shop-Ware exposes a multi-tenant Partner API (V1 and V2, OpenAPI 3.0.1) that lets integrators read and manage these resources per shop (tenant) using two partner header credentials, plus an HTTPS webhook surface delivering object_type.event_action events (created / updated / deleted, and customer.merged) for near-real-time synchronization.
 
-Backed by: insight-partners — https://www.shop-ware.com/
+**Areas:** Company · Automotive · Auto Repair · Shop Management · Repair Orders · Field Service Management · Software-as-a-Service · Webhook · Payments
+
+## Shop-Ware on APIs.io
+
+Everything profiled for Shop-Ware is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/shop-ware/](https://apis.io/providers/shop-ware/)** — or go straight to one of the APIs or properties below.
+
+### APIs (30)
+
+- [Shop-Ware API Partners API](https://apis.io/apis/shop-ware/shop-ware-api-partners-api/) — The API Partners API from Shop-Ware — 2 operation(s) for api partners.
+- [Shop-Ware Appointments API](https://apis.io/apis/shop-ware/shop-ware-appointments-api/) — The Appointments API from Shop-Ware — 4 operation(s) for appointments.
+- [Shop-Ware Assignments API](https://apis.io/apis/shop-ware/shop-ware-assignments-api/) — The Assignments API from Shop-Ware — 4 operation(s) for assignments.
+- [Shop-Ware Canned Jobs API](https://apis.io/apis/shop-ware/shop-ware-canned-jobs-api/) — The Canned Jobs API from Shop-Ware — 2 operation(s) for canned jobs.
+- [Shop-Ware Categories API](https://apis.io/apis/shop-ware/shop-ware-categories-api/) — The Categories API from Shop-Ware — 2 operation(s) for categories.
+- [Shop-Ware Contacts API](https://apis.io/apis/shop-ware/shop-ware-contacts-api/) — The Contacts API from Shop-Ware — 2 operation(s) for contacts.
+- [Shop-Ware Customers API](https://apis.io/apis/shop-ware/shop-ware-customers-api/) — The Customers API from Shop-Ware — 2 operation(s) for customers.
+- [Shop-Ware Estimates API](https://apis.io/apis/shop-ware/shop-ware-estimates-api/) — The Estimates API from Shop-Ware — 2 operation(s) for estimates.
+- [Shop-Ware GP Exceptions API](https://apis.io/apis/shop-ware/shop-ware-gp-exceptions-api/) — The GP Exceptions API from Shop-Ware — 2 operation(s) for gp exceptions.
+- [Shop-Ware Integrator Tags API](https://apis.io/apis/shop-ware/shop-ware-integrator-tags-api/) — The Integrator Tags API from Shop-Ware — 2 operation(s) for integrator tags.
+- [Shop-Ware Inventory API](https://apis.io/apis/shop-ware/shop-ware-inventory-api/) — The Inventory API from Shop-Ware — 3 operation(s) for inventory.
+- [Shop-Ware Labels API](https://apis.io/apis/shop-ware/shop-ware-labels-api/) — The Labels API from Shop-Ware — 2 operation(s) for labels.
+- [Shop-Ware Notes API](https://apis.io/apis/shop-ware/shop-ware-notes-api/) — The Notes API from Shop-Ware — 2 operation(s) for notes.
+- [Shop-Ware Past Recommendations API](https://apis.io/apis/shop-ware/shop-ware-past-recommendations-api/) — The Past Recommendations API from Shop-Ware — 2 operation(s) for past recommendations.
+- [Shop-Ware Pay Rates API](https://apis.io/apis/shop-ware/shop-ware-pay-rates-api/) — The Pay Rates API from Shop-Ware — 3 operation(s) for pay rates.
+- [Shop-Ware Payment Transactions API](https://apis.io/apis/shop-ware/shop-ware-payment-transactions-api/) — The Payment Transactions API from Shop-Ware — 2 operation(s) for payment transactions.
+- [Shop-Ware Payments API](https://apis.io/apis/shop-ware/shop-ware-payments-api/) — The Payments API from Shop-Ware — 3 operation(s) for payments.
+- [Shop-Ware Purchase Records API](https://apis.io/apis/shop-ware/shop-ware-purchase-records-api/) — The Purchase Records API from Shop-Ware — 2 operation(s) for purchase records.
+- [Shop-Ware Recommendations API](https://apis.io/apis/shop-ware/shop-ware-recommendations-api/) — The Recommendations API from Shop-Ware — 2 operation(s) for recommendations.
+- [Shop-Ware Repair Orders API](https://apis.io/apis/shop-ware/shop-ware-repair-orders-api/) — The Repair Orders API from Shop-Ware — 5 operation(s) for repair orders.
+- [Shop-Ware Services API](https://apis.io/apis/shop-ware/shop-ware-services-api/) — The Services API from Shop-Ware — 2 operation(s) for services.
+- [Shop-Ware Shift clocks API](https://apis.io/apis/shop-ware/shop-ware-shift-clocks-api/) — The Shift clocks API from Shop-Ware — 1 operation(s) for shift clocks.
+- [Shop-Ware Shops API](https://apis.io/apis/shop-ware/shop-ware-shops-api/) — The Shops API from Shop-Ware — 2 operation(s) for shops.
+- [Shop-Ware Staff Members API](https://apis.io/apis/shop-ware/shop-ware-staff-members-api/) — The Staff Members API from Shop-Ware — 3 operation(s) for staff members.
+- [Shop-Ware Staff shift clocks API](https://apis.io/apis/shop-ware/shop-ware-staff-shift-clocks-api/) — The Staff shift clocks API from Shop-Ware — 1 operation(s) for staff shift clocks.
+- [Shop-Ware Statuses API](https://apis.io/apis/shop-ware/shop-ware-statuses-api/) — The Statuses API from Shop-Ware — 2 operation(s) for statuses.
+- [Shop-Ware Tenants API](https://apis.io/apis/shop-ware/shop-ware-tenants-api/) — The Tenants API from Shop-Ware — 2 operation(s) for tenants.
+- [Shop-Ware Vehicles API](https://apis.io/apis/shop-ware/shop-ware-vehicles-api/) — The Vehicles API from Shop-Ware — 2 operation(s) for vehicles.
+- [Shop-Ware Vendors API](https://apis.io/apis/shop-ware/shop-ware-vendors-api/) — The Vendors API from Shop-Ware — 2 operation(s) for vendors.
+- [Shop-Ware Webhooks API](https://apis.io/apis/shop-ware/shop-ware-webhooks-api/) — The Webhooks API from Shop-Ware — 2 operation(s) for webhooks.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (2)
+
+Event-driven and webhook contracts.
+
+- [Shop Ware Webhooks](https://apis.io/asyncapis/shop-ware/shop-ware-webhooks/)
+- [Shop-Ware Webhooks](https://apis.io/asyncapis/shop-ware/shop-ware-webhooks-asyncapi/)
+
+#### Event channels (46)
+
+Individual events and webhooks the provider emits.
+
+- [appointment.created](https://apis.io/channels/shop-ware/appointment-created/)
+- [appointment.deleted](https://apis.io/channels/shop-ware/appointment-deleted/)
+- [appointment.updated](https://apis.io/channels/shop-ware/appointment-updated/)
+- [assignment.created](https://apis.io/channels/shop-ware/assignment-created/)
+- [assignment.deleted](https://apis.io/channels/shop-ware/assignment-deleted/)
+- [assignment.updated](https://apis.io/channels/shop-ware/assignment-updated/)
+- [canned_job.created](https://apis.io/channels/shop-ware/canned-job-created/)
+- [canned_job.deleted](https://apis.io/channels/shop-ware/canned-job-deleted/)
+- [canned_job.updated](https://apis.io/channels/shop-ware/canned-job-updated/)
+- [category.created](https://apis.io/channels/shop-ware/category-created/)
+- [category.deleted](https://apis.io/channels/shop-ware/category-deleted/)
+- [category.updated](https://apis.io/channels/shop-ware/category-updated/)
+- [customer.created](https://apis.io/channels/shop-ware/customer-created/)
+- [customer.deleted](https://apis.io/channels/shop-ware/customer-deleted/)
+- [customer.merged](https://apis.io/channels/shop-ware/customer-merged/)
+- [customer.updated](https://apis.io/channels/shop-ware/customer-updated/)
+- [gp_exception.created](https://apis.io/channels/shop-ware/gp-exception-created/)
+- [gp_exception.deleted](https://apis.io/channels/shop-ware/gp-exception-deleted/)
+- [gp_exception.updated](https://apis.io/channels/shop-ware/gp-exception-updated/)
+- [inventory.created](https://apis.io/channels/shop-ware/inventory-created/)
+- [inventory.deleted](https://apis.io/channels/shop-ware/inventory-deleted/)
+- [inventory.updated](https://apis.io/channels/shop-ware/inventory-updated/)
+- [past_recommendation.created](https://apis.io/channels/shop-ware/past-recommendation-created/)
+- [past_recommendation.deleted](https://apis.io/channels/shop-ware/past-recommendation-deleted/)
+- [past_recommendation.updated](https://apis.io/channels/shop-ware/past-recommendation-updated/)
+- …and 21 more published on APIs.io
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [shop-ware](https://apis.io/servers/shop-ware/shop-ware/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Shop Ware Agentic Access](https://apis.io/agentic-access/shop-ware/shop-ware-agentic-access/)
+
+#### Collections (30)
+
+Postman and Open Collection request collections.
+
+- [API V1 API Partners API](https://apis.io/collections/shop-ware/open-shop-ware-api-partners-api/)
+- [API V1 API Partners Appointments API](https://apis.io/collections/shop-ware/open-shop-ware-appointments-api/)
+- [API V1 API Partners Assignments API](https://apis.io/collections/shop-ware/open-shop-ware-assignments-api/)
+- [API V1 API Partners Canned Jobs API](https://apis.io/collections/shop-ware/open-shop-ware-canned-jobs-api/)
+- [API V1 API Partners Categories API](https://apis.io/collections/shop-ware/open-shop-ware-categories-api/)
+- [API V1 API Partners Contacts API](https://apis.io/collections/shop-ware/open-shop-ware-contacts-api/)
+- [API V1 API Partners Customers API](https://apis.io/collections/shop-ware/open-shop-ware-customers-api/)
+- [API V1 API Partners Estimates API](https://apis.io/collections/shop-ware/open-shop-ware-estimates-api/)
+- [API V1 API Partners GP Exceptions API](https://apis.io/collections/shop-ware/open-shop-ware-gp-exceptions-api/)
+- [API V1 API Partners Integrator Tags API](https://apis.io/collections/shop-ware/open-shop-ware-integrator-tags-api/)
+- [API V1 API Partners Inventory API](https://apis.io/collections/shop-ware/open-shop-ware-inventory-api/)
+- [API V1 API Partners Labels API](https://apis.io/collections/shop-ware/open-shop-ware-labels-api/)
+- [API V1 API Partners Notes API](https://apis.io/collections/shop-ware/open-shop-ware-notes-api/)
+- [API V1 API Partners Past Recommendations API](https://apis.io/collections/shop-ware/open-shop-ware-past-recommendations-api/)
+- [API V1 API Partners Pay Rates API](https://apis.io/collections/shop-ware/open-shop-ware-pay-rates-api/)
+- [API V1 API Partners Payment Transactions API](https://apis.io/collections/shop-ware/open-shop-ware-payment-transactions-api/)
+- [API V1 API Partners Payments API](https://apis.io/collections/shop-ware/open-shop-ware-payments-api/)
+- [API V1 API Partners Purchase Records API](https://apis.io/collections/shop-ware/open-shop-ware-purchase-records-api/)
+- [API V1 API Partners Recommendations API](https://apis.io/collections/shop-ware/open-shop-ware-recommendations-api/)
+- [API V1 API Partners Repair Orders API](https://apis.io/collections/shop-ware/open-shop-ware-repair-orders-api/)
+- [API V1 API Partners Services API](https://apis.io/collections/shop-ware/open-shop-ware-services-api/)
+- [API V1 API Partners Shift clocks API](https://apis.io/collections/shop-ware/open-shop-ware-shift-clocks-api/)
+- [API V1 API Partners Shops API](https://apis.io/collections/shop-ware/open-shop-ware-shops-api/)
+- [API V1 API Partners Staff Members API](https://apis.io/collections/shop-ware/open-shop-ware-staff-members-api/)
+- [API V1 API Partners Staff shift clocks API](https://apis.io/collections/shop-ware/open-shop-ware-staff-shift-clocks-api/)
+- …and 5 more published on APIs.io
+
+#### Overlays (2)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Shop Ware V1 Overlay](https://apis.io/overlays/shop-ware/shop-ware-v1-overlay/)
+- [Shop Ware V2 Overlay](https://apis.io/overlays/shop-ware/shop-ware-v2-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Shop Ware Authentication](https://apis.io/security/shop-ware/shop-ware-authentication/)
+- [Shop Ware Domain Security](https://apis.io/security/shop-ware/shop-ware-domain-security/)
+
+#### Plans and pricing (2)
+
+Published plans, tiers and prices.
+
+- [Shop Ware Plans Pricing](https://apis.io/plans/shop-ware/shop-ware-plans-pricing/)
+- [Shop Ware Price Estimates](https://apis.io/plans/shop-ware/shop-ware-price-estimates/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Shop Ware Rate Limits](https://apis.io/rate-limits/shop-ware/shop-ware-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Shop Ware Finops](https://apis.io/finops/shop-ware/shop-ware-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.shop-ware.com/)
+- [Documentation](https://api.shop-ware.com/api-docs/index.html)
+- [API reference](https://api.shop-ware.com/api-docs/index.html)
+- [Sign up](https://shop-ware.com/schedule-a-demo/)
+- [Support](https://support.shop-ware.com/s/)
+- [Blog](https://shop-ware.com/category/blog/)
+- [Terms of service](https://shop-ware.com/terms-conditions/)
+- [Privacy policy](https://shop-ware.com/privacy-policy/)
+- [GitHub](https://github.com/shop-ware)
+- [Status](https://status.shop-ware.com)
+
+## API Evangelist rating
+
+**Kin Score 56.6** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 59.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 44.7 |
+| Developer ergonomics | 47.0 |
+| Access clarity | 76.3 |
+
+**Agent readiness 28.3** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | partial |
+| Operation Distinctiveness | — |
+
+**Regulatory alignment 36.6** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/shop-ware/](https://apis.io/providers/shop-ware/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Shop-Ware: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/shop-ware/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
